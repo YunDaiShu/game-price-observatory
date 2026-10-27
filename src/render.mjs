@@ -1,104 +1,136 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+const UI = path.join(import.meta.dirname, 'ui');
+const read = (f) => fs.readFileSync(path.join(UI, f), 'utf8');
+
 const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
 const GROUP = (it) => (String(it.source).startsWith('steam') ? 'steam' : it.source);
-const GROUP_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
-const CSS = ":root{--bg:#f7f8fa;--bg2:#ffffff;--panel:#ffffff;--panel2:#eef1f8;--line:#e5e8ef;--fg:#1a1a1a;--dim:#5b6472;--muted:#8b94a3;--brand:#4d6bfe;--brand-soft:#eaeefe;--hot:#e5484d;--free:#12a150;--gold:#b7791f;--ch:178px}\n*{box-sizing:border-box}\nbody{margin:0;background:var(--bg);color:var(--fg);font:14px/1.55 \"PingFang SC\",\"Microsoft YaHei\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif}\n.wrap{max-width:1200px;margin:0 auto;padding:0 16px 56px}\n.topbar{background:var(--bg2);border-bottom:1px solid var(--line)}\n.topbar .in{max-width:1200px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}\nh1{margin:0;font-size:17px;font-weight:700;color:var(--fg)}\nh1 span{color:var(--muted);font-weight:400;font-size:12px;margin-left:8px}\n.search{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 11px;min-width:230px;transition:border-color .15s,box-shadow .15s}\n.search:focus-within{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}\n.search input{background:transparent;border:0;outline:0;color:var(--fg);font:inherit;width:100%;font-size:13px}\n.search input::placeholder{color:var(--muted)}\n.search svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;flex:none}\n.stats{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0 0;font-size:12.5px;color:var(--dim)}\n.stats b{color:var(--fg);font-size:14px;margin-right:3px}\n.filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 10px}\n.chip{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--dim);border-radius:999px;padding:6px 13px;font-size:12.5px;cursor:pointer;font-family:inherit;transition:all .14s ease}\n.chip:hover{border-color:#c3cbe0;color:var(--fg)}\n.chip[aria-pressed=\"true\"]{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(77,107,254,.28)}\n.chip .n{color:var(--muted);margin-left:5px;font-variant-numeric:tabular-nums}\n.chip[aria-pressed=\"true\"] .n{color:rgba(255,255,255,.82)}\n.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}\n.seg{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}\n.sbtn{appearance:none;border:0;background:transparent;padding:6px 12px;font-size:12.5px;color:var(--dim);cursor:pointer;font-family:inherit;transition:background .12s,color .12s}\n.sbtn+.sbtn{border-left:1px solid var(--line)}\n.sbtn:hover{color:var(--fg)}\n.sbtn[aria-pressed=\"true\"]{background:var(--brand-soft);color:var(--brand);font-weight:600}\n.toggle{appearance:none;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:6px 12px;font-size:12.5px;color:var(--dim);cursor:pointer;font-family:inherit;transition:all .14s}\n.toggle:hover{border-color:#bfe3cd;color:var(--free)}\n.toggle[aria-pressed=\"true\"]{background:#e9f8f0;border-color:#b7e4cb;color:var(--free);font-weight:600}\n.showing{margin-left:auto;color:var(--muted);font-size:12.5px}\n.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}\n.card{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:10px;padding:12px 13px;height:var(--ch);display:flex;flex-direction:column;justify-content:space-between;gap:3px;overflow:hidden;cursor:pointer;transition:border-color .16s,box-shadow .16s,transform .16s}\n.card:hover{border-color:#c9d3ea;box-shadow:0 6px 18px rgba(26,35,64,.09);transform:translateY(-2px)}\n.card[hidden]{display:none}\n.card.fade-out{opacity:0;transform:translateY(4px)}\n.card.s-steam{border-left-color:#4d6bfe}.card.s-epic{border-left-color:#8a76e0}.card.s-gog{border-left-color:#c9789a}.card.s-appstore{border-left-color:#e0a95f}\n.card.is-free{border-left-color:var(--free)}\n.ct{display:flex;align-items:center;gap:6px;height:22px;overflow:hidden}\n.src{flex:none;font-size:10.5px;line-height:1.7;padding:0 6px;border-radius:4px;background:#f0f2f7;color:#5b6472;white-space:nowrap}\n.src.s-epic{background:#f0eefc;color:#5b46c4}.src.s-gog{background:#f9eef2;color:#a3415f}.src.s-steam{background:var(--brand-soft);color:var(--brand)}.src.s-appstore{background:#fdf1e3;color:#a2691f}\n.ct h3{margin:0;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;color:var(--fg)}\n.cp{display:flex;align-items:baseline;gap:6px;height:38px;overflow:hidden}\n.cp b{font-size:22px;line-height:1.25;font-variant-numeric:tabular-nums;color:var(--fg)}\n.cp b.free{color:var(--free);font-size:19px}\n.cp s{color:var(--muted);font-size:11.5px}\n.cp em{color:var(--hot);font-style:normal;font-weight:700;font-size:12.5px;background:#fdeced;padding:0 5px;border-radius:4px;white-space:nowrap}\n.cm{display:flex;align-items:center;gap:10px;height:18px;color:var(--dim);font-size:11.5px;overflow:hidden;white-space:nowrap}\n.cw,.cx{height:17px;line-height:17px;font-size:11.5px;overflow:hidden;white-space:nowrap;font-variant-numeric:tabular-nums}\n.cw{color:var(--muted)}.cx{color:var(--gold)}\n.cg{display:flex;align-items:flex-end;gap:5px;height:20px;overflow:hidden}\n.cg i{font-style:normal;font-size:10.5px;line-height:1.9;color:var(--dim);background:#f2f4f9;border-radius:4px;padding:0 6px;white-space:nowrap}\n.empty{grid-column:1/-1;background:var(--panel);border:1px dashed var(--line);border-radius:10px;padding:40px 16px;text-align:center;color:var(--muted);font-size:13px}\n.notice{margin-top:20px;background:#fff8ec;border:1px solid #f0e0bf;border-left:3px solid #d9a300;border-radius:0 8px 8px 0;padding:11px 14px;font-size:12.5px;color:#7a5b00}\nfooter{margin-top:26px;border-top:1px solid var(--line);padding-top:12px;color:var(--muted);font-size:11.5px;line-height:1.9}\nfooter a{color:var(--brand)}\n.dlg{position:fixed;inset:0;background:rgba(20,26,38,.42);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;overflow:auto}\n.dlg[hidden]{display:none}\n.dlg-box{background:#fff;border:1px solid var(--line);border-radius:12px;max-width:700px;width:100%;padding:20px 22px 22px;position:relative;box-shadow:0 24px 60px rgba(20,26,38,.22)}\n.dlg-x{position:absolute;right:12px;top:10px;background:transparent;border:0;color:var(--muted);font-size:22px;cursor:pointer;line-height:1}\n.dlg h2{margin:0 0 4px;font-size:18px;color:var(--fg)}\n.dlg-src{color:var(--muted);font-size:12px;margin-bottom:14px}\n.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}\n.kpi{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px}\n.kpi b{display:block;font-size:16px;font-variant-numeric:tabular-nums;color:var(--fg)}\n.kpi span{color:var(--muted);font-size:11px}\n.chart{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px;margin-bottom:10px}\n.chart svg{display:block;width:100%;height:170px}\n.dlg-note{color:var(--muted);font-size:11.5px;margin-bottom:12px}\n.tbl{width:100%;border-collapse:collapse;font-size:12.5px}\n.tbl th,.tbl td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}\n.tbl th{color:var(--muted);font-weight:600}\n.dlg a.store{display:inline-block;margin-top:12px;color:var(--brand);font-size:12.5px;text-decoration:none;border-bottom:1px solid var(--brand)}\n@keyframes enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}\n.card.enter{animation:enter .24s ease both}\n@media (max-width:1199px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}\n@media (max-width:899px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}\n@media (max-width:640px){:root{--ch:170px}.wrap{padding:0 12px 40px}.grid{grid-template-columns:1fr;gap:9px}.search{min-width:100%;margin-left:0;order:3}.stats{gap:12px}.showing{width:100%;margin:2px 0 0}.kpis{grid-template-columns:repeat(2,1fr)}}\n@media (prefers-reduced-motion:reduce){.card,.chip{transition:none!important;animation:none!important}}";
+const TAB_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
+const INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A' };
+const fmtEnd = (iso) => {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  const p = (n) => (n < 10 ? '0' + n : '' + n);
+  return p(d.getMonth() + 1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+};
+
+function card(it) {
+  const g = GROUP(it);
+  const key = it.source + ':' + it.id;
+  const sym = it.currency === 'USD' ? '$' : '¥';
+  const endMs = it.promo_end ? Date.parse(it.promo_end) || 0 : 0;
+  const endText = fmtEnd(it.promo_end);
+
+  const priceRow = it.price === 0
+    ? '<span class="price free">免费</span>'
+    : '<span class="badge">-' + (it.cut || 0) + '%</span>'.replace('--', '-')
+      + '<span class="price">' + sym + it.price + '</span>'
+      + (it.initial && it.initial > it.price ? '<span class="origin">' + sym + it.initial + '</span>' : '');
+
+  const meta = [];
+  if (it.lowest_price !== null && it.lowest_price !== undefined && it.price > 0) {
+    meta.push('<span>史低 ' + sym + it.lowest_price + '</span>');
+  }
+  if (endText) {
+    meta.push('<span data-end-abs="' + endMs + '">截止 ' + endText + '</span>');
+    meta.push('<span class="cd" data-end-abs="' + endMs + '">剩余 --</span>');
+  } else {
+    meta.push('<span>截止未公布</span>');
+  }
+  if (typeof it.players_online === 'number') meta.push('<span>在线 ' + it.players_online.toLocaleString('en-US') + '</span>');
+
+  const tags = (it.tags || []).slice(0, 3).map((t) => '<span>' + escapeHtml(t) + '</span>').join('');
+
+  return '<article class="card" data-group="' + g + '" data-key="' + key + '" data-name="' + escapeHtml(String(it.name).toLowerCase()) + '"'
+    + ' data-cut="' + (it.cut || 0) + '" data-price="' + (it.price === null || it.price === undefined ? 999999 : it.price) + '"'
+    + ' data-players="' + (typeof it.players_online === 'number' ? it.players_online : -1) + '"'
+    + ' data-end="' + endMs + '" data-free="' + (it.free_kind === 'limited' ? 1 : 0) + '"'
+    + ' data-newlow="' + (it.is_new_low === true ? 1 : 0) + '" tabindex="0">'
+    + '<div class="cover"><span class="cover-tag">' + (LABEL[it.source] || it.source) + '</span>'
+    + '<a class="cover-go" href="detail/?key=' + encodeURIComponent(key) + '" title="打开详情页">↗</a>'
+    + (INITIAL[g] || '?') + '</div>'
+    + '<h3 class="name" title="' + escapeHtml(it.name) + '">' + escapeHtml(it.name) + '</h3>'
+    + '<div class="price-row">' + priceRow + '</div>'
+    + '<div class="card-meta">' + meta.join('') + '</div>'
+    + '<div class="tags">' + tags + '</div>'
+    + '</article>';
+}
+
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
 
 export function renderPage(payload) {
-  const esc = (s) => String(s ?? '').replace(/[&<>\"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;' }[c]));
   const items = payload.items || [];
   const series = payload.series || {};
   const groupCount = {};
   for (const it of items) { const g = GROUP(it); groupCount[g] = (groupCount[g] || 0) + 1; }
-  const groups = ['steam', 'epic', 'gog', 'appstore'];
-  const chips = [{ key: 'all', text: '全部', n: items.length }]
-    .concat(groups.filter((g) => (groupCount[g] || 0) > 0).map((g) => ({ key: g, text: GROUP_LABEL[g] || g, n: groupCount[g] })));
 
-  const priceBlock = (it) => {
-    const sym = it.currency === 'USD' ? '$' : '¥';
-    if (it.price === null || it.price === undefined) return '<b class=\"free\">—</b>';
-    if (it.price === 0) return '<b class=\"free\">免费</b>';
-    const was = it.initial && it.initial > it.price ? '<s>' + sym + it.initial + '</s>' : '';
-    const cut = it.cut > 0 ? '<em>-' + it.cut + '%</em>' : '';
-    return '<b>' + sym + it.price + '</b>' + was + cut;
-  };
+  const tabs = [{ key: 'all', text: '全部', n: items.length }]
+    .concat(['steam', 'epic', 'gog', 'appstore']
+      .filter((g) => groupCount[g])
+      .map((g) => ({ key: g, text: TAB_LABEL[g], n: groupCount[g] })));
 
-  const card = (it) => {
-    const g = GROUP(it);
-    const key = it.source + ':' + it.id;
-    const meta = [];
-    if (typeof it.players_online === 'number') meta.push('在线 ' + it.players_online.toLocaleString('en-US'));
-    if (it.supports_zh === true) meta.push('中文');
-    if (it.lowest_price !== null && it.lowest_price !== undefined) meta.push('史低 ' + (it.currency === 'USD' ? '$' : '¥') + it.lowest_price);
-    const tags = (it.tags || []).slice(0, 3).map((t) => '<i>' + esc(t) + '</i>').join('');
-    const endIso = it.promo_end || '';
-    const attrs = ' data-group=\"' + esc(g) + '\"'
-      + ' data-cut=\"' + (it.cut || 0) + '\"'
-      + ' data-price=\"' + (it.price === null || it.price === undefined ? 999999 : it.price) + '\"'
-      + ' data-players=\"' + (typeof it.players_online === 'number' ? it.players_online : -1) + '\"'
-      + ' data-end=\"' + (endIso ? (Date.parse(endIso) || 0) : 0) + '\"'
-      + ' data-free=\"' + (it.free_kind === 'limited' ? 1 : 0) + '\"'
-      + ' data-key=\"' + esc(key) + '\"'
-      + ' data-name=\"' + esc(String(it.name).toLowerCase()) + '\"';
-    return '<article class=\"card s-' + esc(g) + (it.free_kind === 'limited' ? ' is-free' : '') + '\"' + attrs + ' tabindex=\"0\">'
-      + '<div class=\"ct\"><span class=\"src s-' + esc(g) + '\">' + esc(LABEL[it.source] || it.source) + '</span><h3 title=\"' + esc(it.name) + '\">' + esc(it.name) + '</h3></div>'
-      + '<div class=\"cp\">' + priceBlock(it) + '</div>'
-      + '<div class=\"cm\">' + meta.map((m) => '<span>' + esc(m) + '</span>').join('') + '</div>'
-      + '<div class=\"cw\">' + (endIso ? '<span class=\"end\" data-end=\"' + esc(endIso) + '\">截止 --</span>' : '截止未公布') + '</div>'
-      + '<div class=\"cx\">' + (endIso ? '<span class=\"cd\" data-end=\"' + esc(endIso) + '\">剩余 --</span>' : '') + '</div>'
-      + '<div class=\"cg\">' + tags + '</div>'
-      + '</article>';
-  };
+  const tabsHtml = tabs.map((t) =>
+    '<button class="tab" type="button" role="tab" data-group="' + t.key + '" aria-selected="' + (t.key === 'all' ? 'true' : 'false') + '">'
+    + escapeHtml(t.text) + '<span class="n">' + t.n + '</span></button>'
+  ).join('');
 
-  const errBlock = (payload.errors || []).length
-    ? '<section class=\"notice\"><b>本次未取到数据的来源</b><ul style=\"margin:6px 0 0;padding-left:18px\">'
-      + payload.errors.map((e) => '<li>' + esc(e.source) + '：' + esc(e.error) + '</li>').join('') + '</ul></section>'
+  const errors = payload.errors || [];
+  const toastHtml = errors.length
+    ? '<div class="toast" id="toast">⚠️ <ul class="list">'
+      + errors.map((e) => '<li><b>' + escapeHtml(e.source) + '</b> 数据源暂不可用，已跳过。</li>').join('')
+      + '</ul><button class="x" type="button" aria-label="关闭">✕</button></div>'
     : '';
 
-  const parts = [];
-  parts.push('<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\">');
-  parts.push('<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">');
-  parts.push('<title>免费游戏雷达 · 限免 / 折扣 / 史低</title>');
-  parts.push('<style>' + CSS + SEARCH_CSS + '</style></head><body>');
-  parts.push('<div class=\"topbar\"><div class=\"in\"><h1>免费游戏雷达<span>限免 · 折扣 · 史低</span></h1>');
-  parts.push('<label class=\"search\"><svg viewBox=\"0 0 24 24\"><circle cx=\"11\" cy=\"11\" r=\"7\"></circle><path d=\"M20 20l-4-4\"></path></svg>');
-  parts.push('<input id=\"q\" type=\"search\" placeholder=\"搜索全部数据源（游戏名，如 elden / sky）\" aria-label=\"搜索游戏\" autocomplete=\"off\"></label>');
-  parts.push('</div></div>');
-  parts.push('<div class=\"wrap\">');
-  parts.push('<div class=\"stats\"><span><b>' + items.length + '</b>在榜</span><span><b>' + (payload.counts && payload.counts.limited_free || 0) + '</b>限免</span><span><b>' + (payload.counts && payload.counts.new_low || 0) + '</b>新史低</span><span><b>' + (payload.errors || []).length + '</b>来源异常</span><span>抓取 ' + esc(payload.generated_at_bj || '') + '（北京）</span></div>');
-  parts.push('<div class=\"filters\" role=\"group\" aria-label=\"按来源筛选\">' + chips.map((c) => '<button class=\"chip\" type=\"button\" data-group=\"' + esc(c.key) + '\" aria-pressed=\"' + (c.key === 'all' ? 'true' : 'false') + '\">' + esc(c.text) + '<span class=\"n\">' + c.n + '</span></button>').join('') + '</div>');
-  parts.push('<div class=\"toolbar\"><div class=\"seg\" role=\"group\" aria-label=\"排序\">');
-  parts.push('<button class=\"sbtn\" type=\"button\" data-sort=\"cut\" aria-pressed=\"true\">折扣</button><button class=\"sbtn\" type=\"button\" data-sort=\"price\" aria-pressed=\"false\">价格</button><button class=\"sbtn\" type=\"button\" data-sort=\"players\" aria-pressed=\"false\">在线</button><button class=\"sbtn\" type=\"button\" data-sort=\"end\" aria-pressed=\"false\">截止</button></div>');
-  parts.push('<button class=\"toggle\" type=\"button\" id=\"onlyFree\" aria-pressed=\"false\">只看限免</button>');
-  parts.push('<span class=\"showing\" id=\"showing\">显示 ' + items.length + ' / ' + items.length + '</span></div>');
-  parts.push('<main class=\"grid\" id=\"grid\">' + items.map(card).join('') + '<div class=\"empty\" id=\"empty\" hidden>没有匹配的条目</div></main>');
-  parts.push(errBlock);
-  parts.push('<footer><a href=\"detail/\">Steam 风格详情页演示（React + Tailwind）›</a><br>数据来自各平台公开接口，仅记录抓取时刻的状态；缺失字段显示「—」，不做估算。<br>价格与活动以商店页面为准；游戏名称与商标归其各自权利人所有 · <a href=\"https://github.com/YunDaiShu/game-price-radar\">game-price-radar</a></footer>');
-  parts.push('</div>');
-  parts.push('<div class=\"dlg\" id=\"dlg\" hidden><div class=\"dlg-box\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"dlgTitle\">');
-  parts.push('<button class=\"dlg-x\" id=\"dlgX\" aria-label=\"关闭\">×</button><h2 id=\"dlgTitle\"></h2><div class=\"dlg-src\" id=\"dlgSrc\"></div>');
-  parts.push('<div class=\"kpis\" id=\"dlgKpis\"></div><div class=\"chart\"><svg id=\"dlgChart\" viewBox=\"0 0 620 170\" preserveAspectRatio=\"none\"></svg></div>');
-  parts.push('<div class=\"dlg-note\" id=\"dlgNote\"></div><table class=\"tbl\" id=\"dlgTbl\"></table>');
-  parts.push('<a class=\"store\" id=\"dlgLink\" href=\"#\" target=\"_blank\" rel=\"noopener\">打开商店页</a>');
-  parts.push('</div></div>');
-  parts.push('<script>var DATA=' + JSON.stringify(items.map((i) => ({ k: i.source + ':' + i.id, n: i.name, s: i.source, p: i.price, o: i.initial, c: i.cut, cur: i.currency, u: i.url, end: i.promo_end, pl: i.players_online, zh: i.supports_zh, lo: i.lowest_price, fk: i.free_kind, tg: i.tags || [] }))) + ';');
-  parts.push('var SERIES=' + JSON.stringify(series) + ';');
-  parts.push(SCRIPT);
-  parts.push('</script>');
-  parts.push(ENHANCE_SCRIPT);
-  parts.push('</body></html>');
-  return parts.join('');
+  const data = items.map((it) => ({
+    source: it.source, id: it.id, name: it.name, price: it.price, initial: it.initial, cut: it.cut,
+    currency: it.currency, url: it.url, end: it.promo_end, players: it.players_online,
+    zh: it.supports_zh, lowest: it.lowest_price, freeKind: it.free_kind, tags: it.tags || [], newLow: it.is_new_low
+  }));
+
+  return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
+    + '<meta name="viewport" content="width=device-width,initial-scale=1">'
+    + '<title>免费游戏雷达 · 限免 / 折扣 / 史低</title>'
+    + '<style>' + read('styles.css') + '</style></head><body>'
+    + '<header class="header"><div class="in">'
+    + '<div class="brand"><span class="brand-dot"></span><h1>免费游戏雷达</h1><small>限免 · 折扣 · 史低</small></div>'
+    + '<label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>'
+    + '<input id="q" type="search" placeholder="搜索全部数据源（游戏名）" aria-label="搜索游戏" autocomplete="off"></label>'
+    + '</div></header>'
+    + '<div class="wrap">'
+    + toastHtml
+    + '<div class="meta-row"><span><b>' + items.length + '</b>在榜</span><span><b>' + (payload.counts ? payload.counts.limited_free : 0) + '</b>限免</span>'
+    + '<span><b>' + (payload.counts ? payload.counts.new_low : 0) + '</b>新史低</span><span>抓取 ' + escapeHtml(payload.generated_at_bj || '') + '（北京）</span></div>'
+    + '<div class="sticky-bar"><div class="tabs" role="tablist">' + tabsHtml + '</div>'
+    + '<div class="pills">'
+    + '<button class="pill" type="button" data-filter="newlow" aria-pressed="false">只看新史低</button>'
+    + '<button class="pill" type="button" data-filter="hasend" aria-pressed="false">有截止时间</button>'
+    + '<span style="width:8px"></span>'
+    + '<button class="pill" type="button" data-sort="cut" aria-pressed="true">折扣</button>'
+    + '<button class="pill" type="button" data-sort="price" aria-pressed="false">价格</button>'
+    + '<button class="pill" type="button" data-sort="players" aria-pressed="false">在线</button>'
+    + '<button class="pill" type="button" data-sort="end" aria-pressed="false">截止</button>'
+    + '<button class="toggle" type="button" id="toggleFree" aria-pressed="false"><span class="track"></span>只看限免</button>'
+    + '<span class="showing" id="showing">显示 ' + items.length + ' / ' + items.length + '</span>'
+    + '</div></div>'
+    + '<main class="grid" id="grid">' + items.map(card).join('') + '<div class="empty" id="empty" hidden>没有匹配的条目</div></main>'
+    + '<footer>数据来源各平台公开接口 · 价格以商店页面为准 · <a href="https://github.com/YunDaiShu/game-price-radar">game-price-radar</a> · <a href="about/">关于</a></footer>'
+    + '</div>'
+    + '<div class="overlay" id="overlay" hidden><div class="modal" role="dialog" aria-modal="true">'
+    + '<div class="m-cover"><button class="m-x" id="mClose" type="button" aria-label="关闭">✕</button>'
+    + '<div class="ov"><h2 id="mTitle"></h2><div class="sub" id="mSub"></div></div></div>'
+    + '<div class="m-body"><div class="cards4" id="mCards"></div>'
+    + '<div class="m-meta" id="mMeta"></div>'
+    + '<div class="chart-wrap" id="mChartWrap"><svg id="mChart" viewBox="0 0 560 160" preserveAspectRatio="none"></svg></div>'
+    + '<div class="chart-empty" id="mChartEmpty" hidden>'
+    + '<svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="28"/><path d="M40 26v16l10 8"/><path d="M12 62l12-10 10 6 12-14 10 8" stroke-linecap="round"/></svg>'
+    + '<p>历史数据积累中，预计 2 天后自动生成价格曲线</p></div>'
+    + '<a class="cta" id="mCta" href="#" target="_blank" rel="noopener"></a>'
+    + '</div></div></div>'
+    + '<script>var DATA=' + JSON.stringify(data) + ';var SERIES=' + JSON.stringify(series) + ';</script>'
+    + '<script>' + read('client.js') + '</script>'
+    + '</body></html>';
 }
-
-// 卡片「详情页」直达链接（自包含增强脚本：不改原 SCRIPT/CSS，出问题也不影响主功能）
-const ENHANCE_SCRIPT = '<script>(function(){'
-  + 'var cs=document.querySelectorAll(".card");'
-  + 'for(var i=0;i<cs.length;i++){var c=cs[i];var k=c.getAttribute("data-key");if(!k)continue;'
-  + 'var host=c.querySelector(".ct");if(!host)continue;if(host.querySelector(".cgo"))continue;'
-  + 'var a=document.createElement("a");a.className="cgo";a.href="detail/?key="+encodeURIComponent(k);'
-  + 'a.textContent="详情页 ›";a.title="打开详情页";'
-  + 'a.style.cssText="flex:none;font-size:10.5px;color:#4d6bfe;text-decoration:none;white-space:nowrap;margin-left:6px";'
-  + 'a.addEventListener("click",function(e){e.stopPropagation();});'
-  + 'host.appendChild(a);}})();</script>';
-
-const SEARCH_CSS = ".search{position:relative}.sres{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 16px 40px rgba(26,35,64,.16);max-height:60vh;overflow:auto;z-index:60;padding:6px}.sres[hidden]{display:none}.sres-head{padding:6px 8px;color:var(--muted);font-size:11.5px;border-bottom:1px solid var(--line);margin-bottom:4px}.sres-empty{padding:14px 10px;color:var(--muted);font-size:12.5px;text-align:center}.srow{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:0;padding:7px 8px;border-radius:6px;cursor:pointer;font:inherit;color:var(--fg);text-align:left}.srow:hover{background:var(--brand-soft)}.sr-n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}.sr-m{flex:none;font-size:10.5px;color:var(--dim);background:#f0f2f7;border-radius:4px;padding:0 6px}.sr-p{flex:none;font-size:12px;color:var(--fg);font-variant-numeric:tabular-nums}.sr-cut{font-style:normal;color:var(--hot);margin-left:6px;font-weight:700}.sr-low{font-style:normal;color:var(--free);margin-left:6px;background:#e9f8f0;border-radius:4px;padding:0 5px;font-size:11px}";
-const SCRIPT = "(function(){\n  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));\n  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));\n  var sbtns = Array.prototype.slice.call(document.querySelectorAll('.sbtn'));\n  var grid = document.getElementById('grid');\n  var empty = document.getElementById('empty');\n  var showing = document.getElementById('showing');\n  var onlyFreeBtn = document.getElementById('onlyFree');\n  var qInput = document.getElementById('q');\n  var total = cards.length;\n  var state = { group:'all', onlyFree:false, sort:'cut', q:'' };\n  var pending = null;\n  var dlg = document.getElementById('dlg');\n  var dlgX = document.getElementById('dlgX');\n  var dlgTitle = document.getElementById('dlgTitle');\n  var dlgSrc = document.getElementById('dlgSrc');\n  var dlgKpis = document.getElementById('dlgKpis');\n  var dlgChart = document.getElementById('dlgChart');\n  var dlgNote = document.getElementById('dlgNote');\n  var dlgTbl = document.getElementById('dlgTbl');\n  var dlgLink = document.getElementById('dlgLink');\n  var dlgOpen = false, dlgKey = null;\n  var byKey = {};\n  (DATA||[]).forEach(function(d){ byKey[d.k] = d; });\n\n  function pad(n){ return (n<10?'0':'')+n; }\n  function fmtEnd(ms){ var d=new Date(ms); return pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds()); }\n  function fmtLeft(ms){\n    if (ms <= 0) return '已结束';\n    var s = Math.floor(ms/1000), d = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60), ss = s%60;\n    var t = pad(h)+':'+pad(m)+':'+pad(ss);\n    return d > 0 ? ('剩余 '+d+'天 '+t) : ('剩余 '+t);\n  }\n  function tick(){\n    var now = Date.now();\n    Array.prototype.forEach.call(document.querySelectorAll('.end[data-end]'), function(el){\n      var end = Date.parse(el.getAttribute('data-end'));\n      el.textContent = isNaN(end) ? '截止未公布' : ('截止 '+fmtEnd(end));\n    });\n    Array.prototype.forEach.call(document.querySelectorAll('.cd[data-end]'), function(el){\n      var end = Date.parse(el.getAttribute('data-end'));\n      if (isNaN(end)) { el.textContent=''; return; }\n      el.textContent = fmtLeft(end - now);\n    });\n    if (dlgOpen && dlgKey) {\n      var d = byKey[dlgKey];\n      if (d && d.end) {\n        var rows = dlgTbl.querySelectorAll('tr');\n        for (var i=0;i<rows.length;i++) {\n          var c0 = rows[i].children[0];\n          if (c0 && c0.textContent === '剩余') rows[i].children[1].textContent = fmtLeft(Date.parse(d.end) - Date.now());\n        }\n      }\n    }\n  }\n  setInterval(tick, 1000);\n\n  function matches(card){\n    var okG = state.group === 'all' || card.getAttribute('data-group') === state.group;\n    var okF = !state.onlyFree || card.getAttribute('data-free') === '1';\n    var okQ = !state.q || String(card.getAttribute('data-name')||'').indexOf(state.q) >= 0;\n    return okG && okF && okQ;\n  }\n  function sortCards(){\n    var key = state.sort;\n    var list = cards.slice().sort(function(a,b){\n      if (key === 'price') return Number(a.getAttribute('data-price')) - Number(b.getAttribute('data-price'));\n      if (key === 'players') return Number(b.getAttribute('data-players')) - Number(a.getAttribute('data-players'));\n      if (key === 'end') { var ea = Number(a.getAttribute('data-end')) || Infinity, eb = Number(b.getAttribute('data-end')) || Infinity; return ea - eb; }\n      return Number(b.getAttribute('data-cut')) - Number(a.getAttribute('data-cut'));\n    });\n    list.forEach(function(c){ grid.appendChild(c); });\n    if (empty) grid.appendChild(empty);\n  }\n  function apply(){\n    if (pending) { clearTimeout(pending); pending = null; }\n    var toHide = [], toShow = [], visible = 0;\n    cards.forEach(function(card){\n      var ok = matches(card);\n      if (ok) visible++;\n      if (!ok && !card.hidden) toHide.push(card);\n      else if (ok && card.hidden) toShow.push(card);\n    });\n    toHide.forEach(function(c){ c.classList.add('fade-out'); });\n    toShow.forEach(function(c, i){\n      c.hidden = false;\n      c.classList.add('fade-out');\n      c.style.transitionDelay = Math.min(i * 10, 90) + 'ms';\n      requestAnimationFrame(function(){ c.classList.remove('fade-out'); });\n    });\n    pending = setTimeout(function(){\n      toHide.forEach(function(c){ c.hidden = true; c.classList.remove('fade-out'); c.style.transitionDelay=''; });\n      toShow.forEach(function(c){ c.style.transitionDelay=''; });\n      pending = null;\n      sortCards();\n    }, toHide.length ? 150 : 0);\n    if (showing) showing.textContent = '显示 ' + visible + ' / ' + total;\n    if (empty) empty.hidden = visible > 0;\n  }\n\n  chips.forEach(function(chip){\n    chip.addEventListener('click', function(){\n      state.group = chip.getAttribute('data-group');\n      chips.forEach(function(c){ c.setAttribute('aria-pressed', c === chip ? 'true':'false'); });\n      apply();\n    });\n  });\n  sbtns.forEach(function(btn){\n    btn.addEventListener('click', function(){\n      state.sort = btn.getAttribute('data-sort');\n      sbtns.forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true':'false'); });\n      sortCards();\n    });\n  });\n  if (onlyFreeBtn) onlyFreeBtn.addEventListener('click', function(){\n    state.onlyFree = onlyFreeBtn.getAttribute('aria-pressed') !== 'true';\n    onlyFreeBtn.setAttribute('aria-pressed', state.onlyFree ? 'true':'false');\n    apply();\n  });\n  // —— 全量搜索：懒加载 search-index.json，面板动态创建（不改 HTML）——\n  var SEARCH = null, searchLoading = false, sresBox = null;\n  function ensurePanel(){\n    if (sresBox) return sresBox;\n    var host = qInput && qInput.closest('.search');\n    if (!host) return null;\n    sresBox = document.createElement('div');\n    sresBox.className = 'sres';\n    sresBox.id = 'sres';\n    sresBox.hidden = true;\n    host.appendChild(sresBox);\n    document.addEventListener('click', function(e){\n      if (!host.contains(e.target)) sresBox.hidden = true;\n    });\n    return sresBox;\n  }\n  function loadIndex(cb){\n    if (SEARCH) { cb(); return; }\n    if (searchLoading) return;\n    searchLoading = true;\n    fetch('search-index.json').then(function(r){ return r.ok ? r.json() : []; })\n      .then(function(arr){ SEARCH = Array.isArray(arr) ? arr : []; })\n      .catch(function(){ SEARCH = []; })\n      .then(function(){ searchLoading = false; cb(); });\n  }\n  function fallbackPool(){\n    return DATA.map(function(d){\n      return { s: d.s, i: d.k.split(':')[1], n: d.n, p: d.p, o: d.o, c: d.c, u: d.u, e: d.end, pl: d.pl, lo: d.lo, fk: d.fk, tg: d.tg };\n    });\n  }\n  function renderSearchResults(q){\n    var box = ensurePanel();\n    if (!box) return;\n    if (!q) { box.hidden = true; box.innerHTML = ''; return; }\n    var pool = (SEARCH && SEARCH.length) ? SEARCH : fallbackPool();\n    var hits = pool.filter(function(r){ return String(r.n).toLowerCase().indexOf(q) >= 0; }).slice(0, 40);\n    box.hidden = false;\n    if (!hits.length) { box.innerHTML = '<div class=\"sres-empty\">没有匹配「' + q + '」的条目</div>'; return; }\n    box.innerHTML = '<div class=\"sres-head\">搜索到 ' + hits.length + ' 条 · 覆盖已抓取的全部数据源</div>'\n      + hits.map(function(r){\n        var price = (r.p === null || r.p === undefined) ? '—' : (r.p === 0 ? '免费' : '¥' + r.p);\n        var cut = r.c > 0 ? '<i class=\"sr-cut\">-' + r.c + '%</i>' : '';\n        var low = (r.lo !== null && r.lo !== undefined && r.lo > 0) ? '<i class=\"sr-low\">史低 ¥' + r.lo + '</i>' : '';\n        return '<button class=\"srow\" type=\"button\" data-key=\"' + r.s + ':' + r.i + '\">'\n          + '<span class=\"sr-n\">' + r.n + '</span><span class=\"sr-m\">' + r.s + '</span>'\n          + '<span class=\"sr-p\">' + price + cut + low + '</span></button>';\n      }).join('');\n    Array.prototype.forEach.call(box.querySelectorAll('.srow'), function(b){\n      b.addEventListener('click', function(){\n        openDlg(b.getAttribute('data-key'));\n        box.hidden = true;\n      });\n    });\n  }\n  if (qInput) qInput.addEventListener('input', function(){\n    state.q = String(qInput.value||'').trim().toLowerCase();\n    apply();\n    if (state.q.length >= 2) loadIndex(function(){ renderSearchResults(state.q); });\n    else renderSearchResults('');\n  });\n\n  function money(d, v){ var sym = d.cur === 'USD' ? '$' : '¥'; return (v === null || v === undefined) ? '—' : (v === 0 ? '免费' : sym + v); }\n  function kpi(label, val){ return '<div class=\"kpi\"><b>'+val+'</b><span>'+label+'</span></div>'; }\n  function drawChart(points){\n    var W=620, H=170, padL=38, padR=14, padT=14, padB=26, ns='http://www.w3.org/2000/svg';\n    while (dlgChart.firstChild) dlgChart.removeChild(dlgChart.firstChild);\n    function el(name, attrs){ var e=document.createElementNS(ns,name); for(var k in attrs) e.setAttribute(k, attrs[k]); return e; }\n    if (!points || points.length < 2) return false;\n    var ys = points.map(function(p){ return p[1]; });\n    var minY = Math.min.apply(null, ys), maxY = Math.max.apply(null, ys);\n    if (minY === maxY) { maxY = minY + 1; }\n    function x(i){ return padL + (W-padL-padR) * (i/(points.length-1)); }\n    function y(v){ return padT + (H-padT-padB) * (1-(v-minY)/(maxY-minY)); }\n    [0,0.5,1].forEach(function(t){\n      var gy = padT + (H-padT-padB)*t;\n      dlgChart.appendChild(el('line',{x1:padL,y1:gy,x2:W-padR,y2:gy,stroke:'#2c3a48','stroke-width':1}));\n      var lb = el('text',{x:4,y:gy+4,fill:'#6b7c8c','font-size':'10'}); lb.textContent = (maxY-(maxY-minY)*t).toFixed(1); dlgChart.appendChild(lb);\n    });\n    dlgChart.appendChild(el('polyline',{points: points.map(function(p,i){return x(i)+','+y(p[1]);}).join(' '), fill:'none', stroke:'#3fd18b','stroke-width':2}));\n    points.forEach(function(p,i){ dlgChart.appendChild(el('circle',{cx:x(i),cy:y(p[1]),r:2.5,fill:'#3fd18b'})); });\n    var f = el('text',{x:padL,y:H-6,fill:'#6b7c8c','font-size':'10'}); f.textContent = points[0][0]; dlgChart.appendChild(f);\n    var l = el('text',{x:W-padR,y:H-6,fill:'#6b7c8c','font-size':'10','text-anchor':'end'}); l.textContent = points[points.length-1][0]; dlgChart.appendChild(l);\n    return true;\n  }\n  function openDlg(key){\n    var d = byKey[key]; if (!d) return;\n    dlgKey = key; dlgOpen = true;\n    dlgTitle.textContent = d.n;\n    dlgSrc.textContent = d.s + (d.zh === true ? ' · 中文' : '') + (d.fk === 'limited' ? ' · 限时免费' : '') + (d.fk === 'permanent' ? ' · 常驻' : '');\n    dlgKpis.innerHTML = kpi('现价', money(d,d.p)) + kpi('原价', money(d,d.o)) + kpi('折扣', d.c > 0 ? ('-'+d.c+'%') : '—') + kpi('史低', money(d,d.lo));\n    var pts = (typeof SERIES !== 'undefined' && SERIES[key]) ? SERIES[key] : [];\n    var ok = drawChart(pts);\n    dlgNote.textContent = ok ? ('价格历史：'+pts.length+' 个快照，自 '+pts[0][0]+' 起') : ('历史数据积累中：当前仅 '+pts.length+' 个快照，满 2 天后自动生成曲线');\n    var rows = [\n      ['平台', d.s],\n      ['当前价', money(d,d.p)],\n      ['原价', money(d,d.o)],\n      ['折扣', d.c > 0 ? ('-'+d.c+'%') : '—'],\n      ['史低', money(d,d.lo)],\n      ['在线人数', (typeof d.pl === 'number') ? d.pl.toLocaleString('en-US') : '—'],\n      ['支持中文', d.zh === true ? '是' : (d.zh === false ? '否' : '未取到')],\n      ['截止时间', d.end ? fmtEnd(Date.parse(d.end)) : '未公布'],\n      ['剩余', d.end ? fmtLeft(Date.parse(d.end)-Date.now()) : '—'],\n      ['标签', (d.tg||[]).join('、') || '—']\n    ];\n    var html = '<thead><tr><th>项目</th><th>数值</th></tr></thead><tbody>';\n    rows.forEach(function(r){ html += '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'; });\n    dlgTbl.innerHTML = html + '</tbody>';\n    if (d.u) { dlgLink.href = d.u; dlgLink.style.display = 'inline-block'; } else { dlgLink.style.display = 'none'; }\n    dlg.hidden = false;\n  }\n  function closeDlg(){ dlgOpen = false; dlgKey = null; dlg.hidden = true; }\n  if (dlgX) dlgX.addEventListener('click', closeDlg);\n  if (dlg) dlg.addEventListener('click', function(e){ if (e.target === dlg) closeDlg(); });\n  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && dlgOpen) closeDlg(); });\n  cards.forEach(function(c){\n    c.addEventListener('click', function(){ openDlg(c.getAttribute('data-key')); });\n    c.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDlg(c.getAttribute('data-key')); } });\n  });\n\n  cards.forEach(function(c, i){\n    c.style.animationDelay = Math.min(i*12, 180) + 'ms';\n    c.classList.add('enter');\n  });\n  setTimeout(function(){ cards.forEach(function(c){ c.classList.remove('enter'); c.style.animationDelay=''; }); }, 600);\n\n  sortCards();\n  apply();\n  tick();\n})();";
