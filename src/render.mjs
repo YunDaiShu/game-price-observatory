@@ -25,7 +25,7 @@ function coverOf(it) {
 }
 function proxyOf(it) {
   if (it.source !== 'gog' || !it.cover) return null;
-  return 'https://images.weserv.nl/?url=' + encodeURIComponent(it.cover);
+  return 'https://images.weserv.nl/?url=' + encodeURIComponent(it.cover) + '&w=460&h=215&fit=cover&output=jpg&q=80';
 }
 function card(it) {
   const g = GROUP(it);
