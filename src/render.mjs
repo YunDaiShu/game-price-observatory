@@ -33,7 +33,7 @@ function card(it) {
   const g = GROUP(it);
   const key = it.source + ':' + it.id;
   const curOf = (c) => (c === 'USD' ? '$' : c === 'JPY' ? '\uFFE5' : '\u00A5');
-  const money = (v) => curOf(it.currency) + (it.currency === 'CNY' ? v : Number(v).toLocaleString('en-US'));
+  const money = (v) => (it.currency === 'JPY' ? '\uFFE5' + Number(v).toLocaleString('en-US') + '\u5186' : curOf(it.currency) + (it.currency === 'CNY' ? v : Number(v).toLocaleString('en-US')));
 
   const endMs = it.promo_end ? Date.parse(it.promo_end) || 0 : 0;
   const endText = fmtEnd(it.promo_end);
