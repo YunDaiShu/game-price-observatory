@@ -50,7 +50,8 @@
     });
   }
 
-  function curOf(cur) { return cur === 'USD' ? ' { return (n < 10 ? '0' : '') + n; }
+  function curOf(cur) { return cur === 'USD' ? '$' : cur === 'JPY' ? '\uFFE5' : '\u00A5'; }
+  function fmtMoney(v, cur) { return cur === 'JPY' ? '\uFFE5' + Number(v).toLocaleString('en-US') + '\u5186' : curOf(cur) + (cur === 'CNY' ? v : Number(v).toLocaleString('en-US')); }
   function fmtEnd(ms) { var d = new Date(ms); return pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()); }
   function fmtLeft(ms) {
     if (ms <= 0) return '已结束';
@@ -439,9 +440,6 @@
   apply();
   tick();
 })();
- : cur === 'JPY' ? '\uFFE5' : '\u00A5'; }
-  function fmtMoney(v, cur) { return cur === 'JPY' ? '\uFFE5' + Number(v).toLocaleString('en-US') + '\u5186' : curOf(cur) + (cur === 'CNY' ? v : Number(v).toLocaleString('en-US')); }
-
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function fmtEnd(ms) { var d = new Date(ms); return pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()); }
   function fmtLeft(ms) {
