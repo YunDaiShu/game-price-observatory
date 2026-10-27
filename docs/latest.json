@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-27T08:40:32.756Z",
-  "generated_at_bj": "2026-10-27 16:40",
+  "generated_at": "2026-10-27T09:10:40.155Z",
+  "generated_at_bj": "2026-10-27 17:10",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
@@ -353,7 +353,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 14444,
+      "players_online": 15387,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -410,7 +410,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": null,
-      "players_online": 19285,
+      "players_online": 19443,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -443,7 +443,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": null,
-      "players_online": 8330,
+      "players_online": 8764,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -548,7 +548,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 84657,
+      "players_online": 86634,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -672,7 +672,7 @@
       "supports_zh": true,
       "lowest_price": 199,
       "is_new_low": null,
-      "players_online": 24721,
+      "players_online": 26455,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -743,7 +743,7 @@
       "supports_zh": true,
       "lowest_price": null,
       "is_new_low": null,
-      "players_online": 3302,
+      "players_online": 3485,
       "free_kind": "permanent",
       "currency": "CNY",
       "source": "steam",
@@ -776,7 +776,7 @@
       "supports_zh": true,
       "lowest_price": 48,
       "is_new_low": null,
-      "players_online": 40287,
+      "players_online": 41608,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -809,7 +809,7 @@
       "supports_zh": true,
       "lowest_price": 42,
       "is_new_low": null,
-      "players_online": 22118,
+      "players_online": 23130,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -984,7 +984,7 @@
       [
         "2026-10-27",
         298,
-        14444
+        15387
       ]
     ],
     "appstore:1544190466": [
@@ -998,14 +998,14 @@
       [
         "2026-10-27",
         268,
-        19128
+        19443
       ]
     ],
     "steam:2358720": [
       [
         "2026-10-27",
         268,
-        8330
+        8764
       ]
     ],
     "appstore:6446614518": [
@@ -1033,7 +1033,7 @@
       [
         "2026-10-27",
         298,
-        84657
+        86974
       ]
     ],
     "epic:4a88d0dc64114b20b67339c74543f859": [
@@ -1068,7 +1068,7 @@
       [
         "2026-10-27",
         199,
-        24721
+        26455
       ]
     ],
     "epic:c76046dddcdb43619c33ce0395941033": [
@@ -1089,14 +1089,14 @@
       [
         "2026-10-27",
         48,
-        40287
+        41608
       ]
     ],
     "steam:105600": [
       [
         "2026-10-27",
         42,
-        22118
+        23318
       ]
     ],
     "epic:af6b823b8698465f9aedc3bddf2e8686": [
