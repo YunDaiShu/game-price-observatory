@@ -1,0 +1,1016 @@
+{
+  "generated_at": "2026-10-27T08:20:02.292Z",
+  "generated_at_bj": "2026-10-27 16:20",
+  "timezone_display": "Asia/Shanghai (UTC+8)",
+  "region": "CN",
+  "counts": {
+    "total": 37,
+    "limited_free": 2,
+    "new_low": 0,
+    "failed": 1
+  },
+  "by_source": {
+    "epic": 12,
+    "steam-specials": 10,
+    "steam": 8,
+    "appstore": 7
+  },
+  "items": [
+    {
+      "promo_start": "2026-10-22T15:00:00.000Z",
+      "promo_end": "2026-10-29T15:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": "limited",
+      "currency": "CNY",
+      "source": "epic",
+      "id": "06190191cede42afb633fe89ef08c27e",
+      "name": "Home - A Unique Horror Adventure",
+      "price": 0,
+      "initial": 15,
+      "cut": 100,
+      "url": "https://store.epicgames.com/zh-CN/p/home-19212a"
+    },
+    {
+      "promo_start": "2026-10-22T15:00:00.000Z",
+      "promo_end": "2026-10-29T15:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": "limited",
+      "currency": "CNY",
+      "source": "epic",
+      "id": "6aab3ddef4f84fbc9dd81c60f9d8549c",
+      "name": "Sker Ritual",
+      "price": 0,
+      "initial": 78,
+      "cut": 100,
+      "url": "https://store.epicgames.com/zh-CN/p/sker-ritual-aac702"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-02T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 5.8,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "238320",
+      "name": "Outlast",
+      "free": false,
+      "price": 5.8,
+      "initial": 58,
+      "cut": 90,
+      "url": "https://store.steampowered.com/app/238320/"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-02T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 7.6,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "414700",
+      "name": "Outlast 2",
+      "free": false,
+      "price": 7.6,
+      "initial": 76,
+      "cut": 90,
+      "url": "https://store.steampowered.com/app/414700/"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-06T17:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 14.7,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "391220",
+      "name": "Rise of the Tomb Raider™",
+      "free": false,
+      "price": 14.7,
+      "initial": 147,
+      "cut": 90,
+      "url": "https://store.steampowered.com/app/391220/"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-06T17:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 19.6,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "750920",
+      "name": "Shadow of the Tomb Raider: Definitive Edition",
+      "free": false,
+      "price": 19.6,
+      "initial": 196,
+      "cut": 90,
+      "url": "https://store.steampowered.com/app/750920/"
+    },
+    {
+      "promo_start": "2026-10-19T15:00:00.000Z",
+      "promo_end": "2026-11-02T16:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 12.4,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "921e40c4c69f4d728914ca2a4f0aa407",
+      "name": "Eternal Threads",
+      "price": 12.4,
+      "initial": 62,
+      "cut": 80,
+      "url": "https://store.epicgames.com/zh-CN/p/eternal-threads-197169"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-03T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 49.5,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "2050650",
+      "name": "Resident Evil 4",
+      "free": false,
+      "price": 49.5,
+      "initial": 198,
+      "cut": 75,
+      "url": "https://store.steampowered.com/app/2050650/"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-02T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 37.25,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "264710",
+      "name": "Subnautica - 深海迷航",
+      "free": false,
+      "price": 37.25,
+      "initial": 149,
+      "cut": 75,
+      "url": "https://store.steampowered.com/app/264710/"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-02T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 30.24,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "1326470",
+      "name": "Sons Of The Forest",
+      "free": false,
+      "price": 30.24,
+      "initial": 108,
+      "cut": 72,
+      "url": "https://store.steampowered.com/app/1326470/"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-02T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 40.8,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "1304930",
+      "name": "The Outlast Trials",
+      "free": false,
+      "price": 40.8,
+      "initial": 136,
+      "cut": 70,
+      "url": "https://store.steampowered.com/app/1304930/"
+    },
+    {
+      "promo_start": "2026-10-19T15:00:00.000Z",
+      "promo_end": "2026-11-02T16:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 11.55,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "f967cff9761c4198b4e972cfd71e40d7",
+      "name": "纪念碑谷（Monument Valley）",
+      "price": 11.55,
+      "initial": 33,
+      "cut": 65,
+      "url": "https://store.epicgames.com/zh-CN/p/monument-valley-02"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-05T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 74.5,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "3240220",
+      "name": "Grand Theft Auto V 增强版",
+      "free": false,
+      "price": 74.5,
+      "initial": 149,
+      "cut": 50,
+      "url": "https://store.steampowered.com/app/3240220/"
+    },
+    {
+      "promo_start": "2026-10-19T15:00:00.000Z",
+      "promo_end": "2026-11-02T16:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 54.6,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "4e469c7d8bbf49bcabc2c07127d3d946",
+      "name": "《Sorry We’re Closed》",
+      "price": 54.6,
+      "initial": 78,
+      "cut": 30,
+      "url": "https://store.epicgames.com/zh-CN/p/sorry-were-closed-724c86"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-10-30T17:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 30.6,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "5335510",
+      "name": "Moon Sweepers",
+      "free": false,
+      "price": 30.6,
+      "initial": 36,
+      "cut": 15,
+      "url": "https://store.steampowered.com/app/5335510/"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 169,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "be5600439b434624802764f704755cde",
+      "name": "《幽灵行者 2》",
+      "price": 169,
+      "initial": 169,
+      "cut": 0,
+      "url": "https://store.epicgames.com/zh-CN/p/ghostrunner-2"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 108,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "944b5b5d646d46bc92bc33edfe983d26",
+      "name": "《LISA: Definitive Edition》",
+      "price": 108,
+      "initial": 108,
+      "cut": 0,
+      "url": "https://store.epicgames.com/zh-CN/p/lisa-the-definitive-edition"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "动作",
+        "角色扮演",
+        "单人",
+        "多人",
+        "玩家对战",
+        "线上玩家对战"
+      ],
+      "supports_zh": true,
+      "lowest_price": 298,
+      "is_new_low": null,
+      "players_online": 14329,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam",
+      "id": "1245620",
+      "name": "艾尔登法环",
+      "url": "https://store.steampowered.com/app/1245620/",
+      "always_show": false,
+      "free": false,
+      "price": 298,
+      "initial": 298,
+      "cut": 0
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Games"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": 6,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "appstore",
+      "id": "1544190466",
+      "name": "避难所：生存",
+      "free": false,
+      "price": 6,
+      "initial": 6,
+      "cut": 0,
+      "url": "https://apps.apple.com/cn/app/%E9%81%BF%E9%9A%BE%E6%89%80-%E7%94%9F%E5%AD%98/id1544190466?uo=4",
+      "seller": "East2west Network Tech. Co. Ltd.",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "冒险",
+        "角色扮演",
+        "策略",
+        "单人",
+        "多人",
+        "合作"
+      ],
+      "supports_zh": true,
+      "lowest_price": 268,
+      "is_new_low": null,
+      "players_online": 19056,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam",
+      "id": "1086940",
+      "name": "博德之门3",
+      "url": "https://store.steampowered.com/app/1086940/",
+      "always_show": false,
+      "free": false,
+      "price": 268,
+      "initial": 268,
+      "cut": 0
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "动作",
+        "冒险",
+        "角色扮演",
+        "单人",
+        "Steam 成就",
+        "完全支持控制器"
+      ],
+      "supports_zh": true,
+      "lowest_price": 268,
+      "is_new_low": null,
+      "players_online": 7934,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam",
+      "id": "2358720",
+      "name": "黑神话：悟空",
+      "url": "https://store.steampowered.com/app/2358720/",
+      "always_show": false,
+      "free": false,
+      "price": 268,
+      "initial": 268,
+      "cut": 0
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Games"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": 20,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "appstore",
+      "id": "6446614518",
+      "name": "画中世界",
+      "free": false,
+      "price": 20,
+      "initial": 20,
+      "cut": 0,
+      "url": "https://apps.apple.com/cn/app/%E7%94%BB%E4%B8%AD%E4%B8%96%E7%95%8C/id6446614518?uo=4",
+      "seller": "X.D. Network Inc.",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Games"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": 24,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "appstore",
+      "id": "1238778050",
+      "name": "纪念碑谷2",
+      "free": false,
+      "price": 24,
+      "initial": 24,
+      "cut": 0,
+      "url": "https://apps.apple.com/cn/app/%E7%BA%AA%E5%BF%B5%E7%A2%91%E8%B0%B72/id1238778050?uo=4",
+      "seller": "ustwo Games Ltd",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Games"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": 12,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "appstore",
+      "id": "6757729278",
+      "name": "劫后公司",
+      "free": false,
+      "price": 12,
+      "initial": 12,
+      "cut": 0,
+      "url": "https://apps.apple.com/cn/app/%E5%8A%AB%E5%90%8E%E5%85%AC%E5%8F%B8/id6757729278?uo=4",
+      "seller": "DIVASKY LIMITED",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "角色扮演",
+        "单人",
+        "Steam 成就",
+        "完全支持控制器",
+        "Steam 集换式卡牌",
+        "可调整文字大小"
+      ],
+      "supports_zh": true,
+      "lowest_price": 298,
+      "is_new_low": null,
+      "players_online": 83338,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam",
+      "id": "1091500",
+      "name": "赛博朋克 2077",
+      "url": "https://store.steampowered.com/app/1091500/",
+      "always_show": false,
+      "free": false,
+      "price": 298,
+      "initial": 298,
+      "cut": 0
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 12,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "4a88d0dc64114b20b67339c74543f859",
+      "name": "失落城堡: 遗迹守护者",
+      "price": 12,
+      "initial": 12,
+      "cut": 0,
+      "url": "https://store.epicgames.com/zh-CN/p/lost-castle-the-old-ones-awaken"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Games"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": 18,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "appstore",
+      "id": "1157863540",
+      "name": "泰拉瑞亚",
+      "free": false,
+      "price": 18,
+      "initial": 18,
+      "cut": 0,
+      "url": "https://apps.apple.com/cn/app/%E6%B3%B0%E6%8B%89%E7%91%9E%E4%BA%9A/id1157863540?uo=4",
+      "seller": "X.D. Network Inc.",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Games"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": 15,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "appstore",
+      "id": "6749045841",
+      "name": "王国保卫战5",
+      "free": false,
+      "price": 15,
+      "initial": 15,
+      "cut": 0,
+      "url": "https://apps.apple.com/cn/app/%E7%8E%8B%E5%9B%BD%E4%BF%9D%E5%8D%AB%E6%88%985/id6749045841?uo=4",
+      "seller": "East2west Network Tech. Co. Ltd.",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Reference"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": 6,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "appstore",
+      "id": "1452113719",
+      "name": "文明百科",
+      "free": false,
+      "price": 6,
+      "initial": 6,
+      "cut": 0,
+      "url": "https://apps.apple.com/cn/app/%E6%96%87%E6%98%8E%E7%99%BE%E7%A7%91/id1452113719?uo=4",
+      "seller": "嘉宁 詹",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "角色扮演",
+        "单人",
+        "Steam 成就",
+        "Steam 集换式卡牌",
+        "Steam 创意工坊",
+        "可调整文字大小"
+      ],
+      "supports_zh": true,
+      "lowest_price": 199,
+      "is_new_low": null,
+      "players_online": 23783,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam",
+      "id": "292030",
+      "name": "巫师3：狂猎 — 重制版",
+      "url": "https://store.steampowered.com/app/292030/",
+      "always_show": false,
+      "free": false,
+      "price": 199,
+      "initial": 199,
+      "cut": 0
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 31,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "c76046dddcdb43619c33ce0395941033",
+      "name": "Luftrausers",
+      "price": 31,
+      "initial": 31,
+      "cut": 0,
+      "url": "https://store.epicgames.com/zh-CN/p/luftrausers"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 70,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "d3e5b556640144bfa5de2d5d3b283d68",
+      "name": "Model Builder: Complete Edition",
+      "price": 70,
+      "initial": 70,
+      "cut": 0,
+      "url": "https://store.epicgames.com/zh-CN/p/model-builder-complete-edition-f9b456"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "冒险",
+        "休闲",
+        "独立",
+        "大型多人在线",
+        "角色扮演",
+        "免费开玩"
+      ],
+      "supports_zh": true,
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": 3366,
+      "free_kind": "permanent",
+      "currency": "CNY",
+      "source": "steam",
+      "id": "2325290",
+      "name": "Sky 光·遇",
+      "url": "https://store.steampowered.com/app/2325290/",
+      "always_show": true,
+      "free": true,
+      "price": 0,
+      "initial": 0,
+      "cut": 0
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "独立",
+        "角色扮演",
+        "模拟",
+        "单人",
+        "多人",
+        "合作"
+      ],
+      "supports_zh": true,
+      "lowest_price": 48,
+      "is_new_low": null,
+      "players_online": 39229,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam",
+      "id": "413150",
+      "name": "Stardew Valley",
+      "url": "https://store.steampowered.com/app/413150/",
+      "always_show": false,
+      "free": false,
+      "price": 48,
+      "initial": 48,
+      "cut": 0
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "动作",
+        "冒险",
+        "独立",
+        "角色扮演",
+        "单人",
+        "多人"
+      ],
+      "supports_zh": true,
+      "lowest_price": 42,
+      "is_new_low": null,
+      "players_online": 21668,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam",
+      "id": "105600",
+      "name": "Terraria",
+      "url": "https://store.steampowered.com/app/105600/",
+      "always_show": false,
+      "free": false,
+      "price": 42,
+      "initial": 42,
+      "cut": 0
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 53,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "af6b823b8698465f9aedc3bddf2e8686",
+      "name": "TerraScape",
+      "price": 53,
+      "initial": 53,
+      "cut": 0,
+      "url": "https://store.epicgames.com/zh-CN/p/terrascape-2b12b1"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 60,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "1f723b00df58467998c4984ca39915ad",
+      "name": "Them's Fightin' Herds",
+      "price": 60,
+      "initial": 60,
+      "cut": 0,
+      "url": "https://store.epicgames.com/zh-CN/p/thems-fightin-herds"
+    }
+  ],
+  "errors": [
+    {
+      "source": "gog",
+      "target": "gog",
+      "error": "catalog.gog.com 连接超时（该主机在当前网络不可达；GitHub Actions 环境通常正常）: TIMEOUT"
+    }
+  ],
+  "series": {
+    "steam-specials:238320": [
+      [
+        "2026-10-27",
+        5.8
+      ]
+    ],
+    "steam-specials:414700": [
+      [
+        "2026-10-27",
+        7.6
+      ]
+    ],
+    "steam-specials:391220": [
+      [
+        "2026-10-27",
+        14.7
+      ]
+    ],
+    "steam-specials:750920": [
+      [
+        "2026-10-27",
+        19.6
+      ]
+    ],
+    "epic:921e40c4c69f4d728914ca2a4f0aa407": [
+      [
+        "2026-10-27",
+        12.4
+      ]
+    ],
+    "steam-specials:2050650": [
+      [
+        "2026-10-27",
+        49.5
+      ]
+    ],
+    "steam-specials:264710": [
+      [
+        "2026-10-27",
+        37.25
+      ]
+    ],
+    "steam-specials:1326470": [
+      [
+        "2026-10-27",
+        30.24
+      ]
+    ],
+    "steam-specials:1304930": [
+      [
+        "2026-10-27",
+        40.8
+      ]
+    ],
+    "epic:f967cff9761c4198b4e972cfd71e40d7": [
+      [
+        "2026-10-27",
+        11.55
+      ]
+    ],
+    "steam-specials:3240220": [
+      [
+        "2026-10-27",
+        74.5
+      ]
+    ],
+    "epic:4e469c7d8bbf49bcabc2c07127d3d946": [
+      [
+        "2026-10-27",
+        54.6
+      ]
+    ],
+    "steam-specials:5335510": [
+      [
+        "2026-10-27",
+        30.6
+      ]
+    ],
+    "epic:be5600439b434624802764f704755cde": [
+      [
+        "2026-10-27",
+        169
+      ]
+    ],
+    "epic:944b5b5d646d46bc92bc33edfe983d26": [
+      [
+        "2026-10-27",
+        108
+      ]
+    ],
+    "steam:1245620": [
+      [
+        "2026-10-27",
+        298
+      ]
+    ],
+    "appstore:1544190466": [
+      [
+        "2026-10-27",
+        6
+      ]
+    ],
+    "steam:1086940": [
+      [
+        "2026-10-27",
+        268
+      ]
+    ],
+    "steam:2358720": [
+      [
+        "2026-10-27",
+        268
+      ]
+    ],
+    "appstore:6446614518": [
+      [
+        "2026-10-27",
+        20
+      ]
+    ],
+    "appstore:1238778050": [
+      [
+        "2026-10-27",
+        24
+      ]
+    ],
+    "appstore:6757729278": [
+      [
+        "2026-10-27",
+        12
+      ]
+    ],
+    "steam:1091500": [
+      [
+        "2026-10-27",
+        298
+      ]
+    ],
+    "epic:4a88d0dc64114b20b67339c74543f859": [
+      [
+        "2026-10-27",
+        12
+      ]
+    ],
+    "appstore:1157863540": [
+      [
+        "2026-10-27",
+        18
+      ]
+    ],
+    "appstore:6749045841": [
+      [
+        "2026-10-27",
+        15
+      ]
+    ],
+    "appstore:1452113719": [
+      [
+        "2026-10-27",
+        6
+      ]
+    ],
+    "steam:292030": [
+      [
+        "2026-10-27",
+        199
+      ]
+    ],
+    "epic:c76046dddcdb43619c33ce0395941033": [
+      [
+        "2026-10-27",
+        31
+      ]
+    ],
+    "epic:d3e5b556640144bfa5de2d5d3b283d68": [
+      [
+        "2026-10-27",
+        70
+      ]
+    ],
+    "steam:413150": [
+      [
+        "2026-10-27",
+        48
+      ]
+    ],
+    "steam:105600": [
+      [
+        "2026-10-27",
+        42
+      ]
+    ],
+    "epic:af6b823b8698465f9aedc3bddf2e8686": [
+      [
+        "2026-10-27",
+        53
+      ]
+    ],
+    "epic:1f723b00df58467998c4984ca39915ad": [
+      [
+        "2026-10-27",
+        60
+      ]
+    ]
+  }
+}
