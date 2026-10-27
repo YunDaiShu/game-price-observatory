@@ -425,7 +425,7 @@
 
   cards.forEach(function (c) {
     c.addEventListener('click', function (e) {
-      if (e.target && e.target.closest && e.target.closest('.cover-go')) return;
+      if (e.target && e.target.closest && (e.target.closest('.cover-go') || e.target.closest('.card-shop'))) return;
       openModal(c.getAttribute('data-key'));
     });
     c.addEventListener('keydown', function (e) { if (e.key === 'Enter') openModal(c.getAttribute('data-key')); });
