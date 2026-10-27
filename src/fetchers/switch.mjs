@@ -12,7 +12,7 @@ function saleEnd(raw) {
 }
 
 // 排除 DLC / 升级包 / 追加内容（不是独立游戏，价格对比无意义）
-const EXCLUDE_RE = /(アップグレード|追加コンテンツ|追加ストーリー|追加の仲間|シーズンパス|ダウンロードコンテンツ|拡張パス|アップデートパス|\bDLC\b)/i;
+const DLC_RE = /(アップグレード|追加コンテンツ|追加ストーリー|追加の仲間|シーズンパス|ダウンロードコンテンツ|拡張パス|アップデートパス|\bDLC\b)/i;
 
 function drateOf(it) {
   const d = Array.isArray(it.drate) ? it.drate[0] : it.drate;
@@ -31,7 +31,6 @@ export async function fetchSwitch({ pages = 8, limit = 100, max = 40 } = {}) {
       for (const it of items) {
         if (out.length >= max) break;
         if (String(it.sale_flg) !== '1') continue;
-        if (EXCLUDE_RE.test(String(it.title || ''))) continue;
         if ((typeof it.price === 'number' ? it.price : 0) < 100) continue;   // 低于 100 円视为异常
         const price = typeof it.price === 'number' ? it.price : null;
         const drate = drateOf(it);
@@ -53,6 +52,7 @@ export async function fetchSwitch({ pages = 8, limit = 100, max = 40 } = {}) {
           cover: it.iurl ? 'https://img-eshop.cdn.nintendo.net/i/' + it.iurl + '.jpg' : null,
           promo_start: null,
           promo_end: saleEnd(it.sedate),
+          needs_base: DLC_RE.test(String(it.title || '')) || null,
           free_kind: null,
           tags: Array.isArray(it.genre) ? it.genre.filter(Boolean).slice(0, 3) : [],
           supports_zh: null,
