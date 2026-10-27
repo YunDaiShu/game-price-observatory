@@ -1,63 +1,166 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>游戏价格雷达 · 每日价格表</title>
+<title>免费游戏雷达 · 限免 / 折扣 / 史低</title>
 <style>
-:root{--ink:#0b0d10;--paper:#f5f2ea;--gold:#c9a13f;--line:#e2dccd}
+:root{--bg:#f5f6f5;--panel:#fff;--line:#e4e7e4;--fg:#1b1f23;--dim:#6b7280;--muted:#9aa3ac;--hot:#e0393e;--free:#0f9d58;--chip:#eef1ee}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.7 "Noto Serif SC",Georgia,serif}
-header{padding:40px 24px 8px;max-width:900px;margin:0 auto}
-h1{margin:0;font-size:28px;letter-spacing:.06em}
-.sub{color:#6b6459;font-size:13px;margin-top:6px}
-main{max-width:900px;margin:0 auto;padding:16px 24px 60px}
-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}
-th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
-th{font-weight:600;color:#6b6459;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-td.p{white-space:nowrap;font-variant-numeric:tabular-nums}
-.was{color:#9a9384;text-decoration:line-through;margin-left:6px;font-size:12px}
-.cut{color:#8a1f1f;font-weight:600}
-a{color:inherit;text-decoration:none;border-bottom:1px solid var(--gold)}
-a:hover{background:#fff2cc}
-.err{margin-top:28px;padding:14px 16px;border-left:3px solid #8a1f1f;background:#fbeeee;font-size:13px}
-.err h2{font-size:14px;margin:0 0 6px}
-footer{max-width:900px;margin:0 auto;padding:0 24px 48px;color:#6b6459;font-size:12px}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:1160px;margin:0 auto;padding:0 18px 56px}
+header{padding:30px 0 6px}
+h1{margin:0;font-size:24px;letter-spacing:.02em}
+.sub{color:var(--dim);font-size:12.5px;margin-top:6px}
+.stats{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 0;font-size:12.5px;color:var(--dim)}
+.stats b{color:var(--fg);font-size:15px;margin-right:3px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 14px;align-items:center}
+.chip{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:inherit;transition:background .12s,border-color .12s}
+.chip{transition:background .14s ease,border-color .14s ease,transform .1s ease,color .14s ease}
+.chip:hover{border-color:#c8cfc8}
+.chip:active{transform:scale(.97)}
+.chip .n{color:var(--muted);margin-left:5px;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:#1b1f23;border-color:#1b1f23;color:#fff}
+.chip[aria-pressed="true"] .n{color:#b9c2bb}
+.showing{margin-left:auto;color:var(--dim);font-size:12.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 15px 13px;display:flex;flex-direction:column;gap:9px}
+.card[hidden]{display:none}
+.card{transition:opacity .16s ease,transform .16s ease,box-shadow .16s ease}
+.card:hover{box-shadow:0 4px 14px rgba(16,24,16,.09);transform:translateY(-2px)}
+.card.fade-out{opacity:0;transform:translateY(6px) scale(.985)}
+.card.is-free{border-color:#bfe3cd;box-shadow:inset 3px 0 0 var(--free)}
+.card-top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.card h3{margin:0;font-size:14.5px;font-weight:600;line-height:1.42}
+.card h3 a{color:inherit;text-decoration:none}
+.card h3 a:hover{color:#0b6b3a;text-decoration:underline}
+.price{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums;flex:none}
+.price b{font-size:16px}
+.price b.free{color:var(--free)}
+.price s{color:var(--muted);font-size:11.5px;margin-left:5px}
+.price .cut{color:var(--hot);font-size:12px;font-weight:700;margin-left:5px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badges span{font-size:11px;line-height:1.7;border-radius:4px;padding:0 6px;border:1px solid transparent}
+.b-src{background:var(--chip);color:#4b5563}
+.b-src.s-epic{background:#f0eefc;color:#5b46c4}
+.b-src.s-gog{background:#f7eef1;color:#a3415f}
+.b-src.s-steam{background:#eaf1fb;color:#2c5d9b}
+.b-src.s-steampy{background:#fdf0e6;color:#a05a1f}
+.b-free{background:#e6f6ec;color:#0f7a44;border-color:#bfe3cd}
+.b-zh{background:#eef4ff;color:#2c5d9b}
+.b-low{background:#fff5e0;color:#8a6100;border-color:#f2dca8}
+.meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--dim);font-size:12px}
+.meta .cd{color:#8a6100;font-variant-numeric:tabular-nums}
+.tags{display:flex;gap:5px;flex-wrap:wrap}
+.tags span{font-size:11px;color:var(--dim);background:#f6f7f6;border-radius:4px;padding:1px 6px}
+.na{color:var(--muted)}
+.notice{margin-top:22px;background:#fffaf0;border:1px solid #f0e0bf;border-left:3px solid #d9a300;border-radius:0 8px 8px 0;padding:12px 16px;font-size:12.5px}
+.notice h2{margin:0 0 6px;font-size:13px;color:#7a5b00}
+.notice ul{margin:0;padding-left:18px;color:#5f5745}
+footer{margin-top:28px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:11.5px;line-height:1.9}
+footer a{color:#6b7280}
 </style></head>
-<body>
+<body><div class="wrap">
 <header>
-  <h1>游戏价格雷达</h1>
-  <div class="sub">数据来源：Steam 官方商店接口、Apple App Store 公开接口 · 抓取时间 2026-10-27T05:49:26.007Z · 区服 CN · 共 22 条</div>
+  <h1>免费游戏雷达</h1>
+  <div class="sub">限免 · 折扣 · 史低 ｜ 抓取 2026-10-27T06:49:17.356Z（北京 2026-10-27 14:49）· 区服 CN</div>
+  <div class="stats">
+    <span><b>29</b>在榜</span>
+    <span><b>2</b>限免</span>
+    <span><b>0</b>新史低</span>
+    <span><b>1</b>来源异常</span>
+  </div>
 </header>
-<main>
-<table>
-<thead><tr><th>游戏</th><th>平台</th><th>价格</th><th>折扣</th></tr></thead>
-<tbody>
-<tr><td class="n"><a href="https://store.steampowered.com/app/238320/" target="_blank" rel="noopener">Outlast</a></td><td>steam-specials</td><td class="p">¥5.8<span class="was">¥58</span></td><td><span class="cut">-90%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/414700/" target="_blank" rel="noopener">Outlast 2</a></td><td>steam-specials</td><td class="p">¥7.6<span class="was">¥76</span></td><td><span class="cut">-90%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/391220/" target="_blank" rel="noopener">Rise of the Tomb Raider™</a></td><td>steam-specials</td><td class="p">¥14.7<span class="was">¥147</span></td><td><span class="cut">-90%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/750920/" target="_blank" rel="noopener">Shadow of the Tomb Raider: Definitive Edition</a></td><td>steam-specials</td><td class="p">¥19.6<span class="was">¥196</span></td><td><span class="cut">-90%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/2050650/" target="_blank" rel="noopener">Resident Evil 4</a></td><td>steam-specials</td><td class="p">¥49.5<span class="was">¥198</span></td><td><span class="cut">-75%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/264710/" target="_blank" rel="noopener">Subnautica - 深海迷航</a></td><td>steam-specials</td><td class="p">¥37.25<span class="was">¥149</span></td><td><span class="cut">-75%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/1326470/" target="_blank" rel="noopener">Sons Of The Forest</a></td><td>steam-specials</td><td class="p">¥30.24<span class="was">¥108</span></td><td><span class="cut">-72%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/1304930/" target="_blank" rel="noopener">The Outlast Trials</a></td><td>steam-specials</td><td class="p">¥40.8<span class="was">¥136</span></td><td><span class="cut">-70%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/3240220/" target="_blank" rel="noopener">Grand Theft Auto V 增强版</a></td><td>steam-specials</td><td class="p">¥74.5<span class="was">¥149</span></td><td><span class="cut">-50%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/5335510/" target="_blank" rel="noopener">Moon Sweepers</a></td><td>steam-specials</td><td class="p">¥30.6<span class="was">¥36</span></td><td><span class="cut">-15%</span></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/1245620/" target="_blank" rel="noopener">艾尔登法环</a></td><td>steam</td><td class="p">¥298</td><td></td></tr>
-<tr><td class="n"><a href="https://apps.apple.com/cn/app/%E5%B4%A9%E5%9D%8F-%E6%98%9F%E7%A9%B9%E9%93%81%E9%81%93/id1523037824?uo=4" target="_blank" rel="noopener">崩坏：星穹铁道</a></td><td>appstore</td><td class="p">免费</td><td></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/1086940/" target="_blank" rel="noopener">博德之门3</a></td><td>steam</td><td class="p">¥268</td><td></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/2358720/" target="_blank" rel="noopener">黑神话：悟空</a></td><td>steam</td><td class="p">¥268</td><td></td></tr>
-<tr><td class="n"><a href="https://apps.apple.com/cn/app/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F/id1454663939?uo=4" target="_blank" rel="noopener">明日方舟</a></td><td>appstore</td><td class="p">免费</td><td></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/1091500/" target="_blank" rel="noopener">赛博朋克 2077</a></td><td>steam</td><td class="p">¥298</td><td></td></tr>
-<tr><td class="n"><a href="https://apps.apple.com/cn/app/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C-%E7%A7%BB%E5%8A%A8%E7%89%88/id1243986797?uo=4" target="_blank" rel="noopener">我的世界：移动版</a></td><td>appstore</td><td class="p">免费</td><td></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/292030/" target="_blank" rel="noopener">巫师3：狂猎 — 重制版</a></td><td>steam</td><td class="p">¥199</td><td></td></tr>
-<tr><td class="n"><a href="https://apps.apple.com/cn/app/%E5%8E%9F%E7%A5%9E-6%E5%91%A8%E5%B9%B4/id1467190251?uo=4" target="_blank" rel="noopener">原神-6周年</a></td><td>appstore</td><td class="p">免费</td><td></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/730/" target="_blank" rel="noopener">Counter-Strike 2</a></td><td>steam</td><td class="p">免费</td><td></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/413150/" target="_blank" rel="noopener">Stardew Valley</a></td><td>steam</td><td class="p">¥48</td><td></td></tr>
-<tr><td class="n"><a href="https://store.steampowered.com/app/105600/" target="_blank" rel="noopener">Terraria</a></td><td>steam</td><td class="p">¥42</td><td></td></tr>
-</tbody></table>
 
+<div class="filters" role="group" aria-label="按来源筛选">
+  <button class="chip" type="button" data-group="all" aria-pressed="true">全部<span class="n">29</span></button><button class="chip" type="button" data-group="steam" aria-pressed="false">Steam<span class="n">17</span></button><button class="chip" type="button" data-group="epic" aria-pressed="false">Epic<span class="n">12</span></button>
+  <span class="showing" id="showing">显示 29 / 29</span>
+</div>
+
+<main class="grid" id="grid">
+<article class="card is-free" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/home-19212a" target="_blank" rel="noopener">Home - A Unique Horror Adventure</a></h3><div class="price"><b class="free">免费</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span><span class="b-free">限免</span></div><div class="meta"><span class="cd" data-end="2026-10-29T15:00:00.000Z">截止时间计算中</span></div></article><article class="card is-free" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/sker-ritual-aac702" target="_blank" rel="noopener">Sker Ritual</a></h3><div class="price"><b class="free">免费</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span><span class="b-free">限免</span></div><div class="meta"><span class="cd" data-end="2026-10-29T15:00:00.000Z">截止时间计算中</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/238320/" target="_blank" rel="noopener">Outlast</a></h3><div class="price"><b>¥5.8</b><s>¥58</s><span class="cut">-90%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥5.8</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/414700/" target="_blank" rel="noopener">Outlast 2</a></h3><div class="price"><b>¥7.6</b><s>¥76</s><span class="cut">-90%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥7.6</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/391220/" target="_blank" rel="noopener">Rise of the Tomb Raider™</a></h3><div class="price"><b>¥14.7</b><s>¥147</s><span class="cut">-90%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-06T17:00:00.000Z">截止时间计算中</span><span>史低 ¥14.7</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/eternal-threads-197169" target="_blank" rel="noopener">Eternal Threads</a></h3><div class="price"><b>¥12.4</b><s>¥62</s><span class="cut">-80%</span></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span class="cd" data-end="2026-11-02T16:00:00.000Z">截止时间计算中</span><span>史低 ¥12.4</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/242760/" target="_blank" rel="noopener">The Forest</a></h3><div class="price"><b>¥14</b><s>¥70</s><span class="cut">-80%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥14</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/2050650/" target="_blank" rel="noopener">Resident Evil 4</a></h3><div class="price"><b>¥49.5</b><s>¥198</s><span class="cut">-75%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-03T18:00:00.000Z">截止时间计算中</span><span>史低 ¥49.5</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/264710/" target="_blank" rel="noopener">Subnautica - 深海迷航</a></h3><div class="price"><b>¥37.25</b><s>¥149</s><span class="cut">-75%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥37.25</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1326470/" target="_blank" rel="noopener">Sons Of The Forest</a></h3><div class="price"><b>¥30.24</b><s>¥108</s><span class="cut">-72%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥30.24</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1304930/" target="_blank" rel="noopener">The Outlast Trials</a></h3><div class="price"><b>¥40.8</b><s>¥136</s><span class="cut">-70%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥40.8</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/monument-valley-02" target="_blank" rel="noopener">纪念碑谷（Monument Valley）</a></h3><div class="price"><b>¥11.55</b><s>¥33</s><span class="cut">-65%</span></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span class="cd" data-end="2026-11-02T16:00:00.000Z">截止时间计算中</span><span>史低 ¥11.55</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/3240220/" target="_blank" rel="noopener">Grand Theft Auto V 增强版</a></h3><div class="price"><b>¥74.5</b><s>¥149</s><span class="cut">-50%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-05T18:00:00.000Z">截止时间计算中</span><span>史低 ¥74.5</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/sorry-were-closed-724c86" target="_blank" rel="noopener">《Sorry We’re Closed》</a></h3><div class="price"><b>¥54.6</b><s>¥78</s><span class="cut">-30%</span></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span class="cd" data-end="2026-11-02T16:00:00.000Z">截止时间计算中</span><span>史低 ¥54.6</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/5335510/" target="_blank" rel="noopener">Moon Sweepers</a></h3><div class="price"><b>¥30.6</b><s>¥36</s><span class="cut">-15%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-10-30T17:00:00.000Z">截止时间计算中</span><span>史低 ¥30.6</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/ghostrunner-2" target="_blank" rel="noopener">《幽灵行者 2》</a></h3><div class="price"><b>¥169</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥169</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/lisa-the-definitive-edition" target="_blank" rel="noopener">《LISA: Definitive Edition》</a></h3><div class="price"><b>¥108</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥108</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1245620/" target="_blank" rel="noopener">艾尔登法环</a></h3><div class="price"><b>¥298</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 13,812</span><span>史低 ¥298</span></div><div class="tags"><span>动作</span><span>角色扮演</span><span>单人</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1086940/" target="_blank" rel="noopener">博德之门3</a></h3><div class="price"><b>¥268</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 19,690</span><span>史低 ¥268</span></div><div class="tags"><span>冒险</span><span>角色扮演</span><span>策略</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/2358720/" target="_blank" rel="noopener">黑神话：悟空</a></h3><div class="price"><b>¥268</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 6,756</span><span>史低 ¥268</span></div><div class="tags"><span>动作</span><span>冒险</span><span>角色扮演</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1091500/" target="_blank" rel="noopener">赛博朋克 2077</a></h3><div class="price"><b>¥298</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 83,162</span><span>史低 ¥298</span></div><div class="tags"><span>角色扮演</span><span>单人</span><span>Steam 成就</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/lost-castle-the-old-ones-awaken" target="_blank" rel="noopener">失落城堡: 遗迹守护者</a></h3><div class="price"><b>¥12</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥12</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/292030/" target="_blank" rel="noopener">巫师3：狂猎 — 重制版</a></h3><div class="price"><b>¥199</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 19,868</span><span>史低 ¥199</span></div><div class="tags"><span>角色扮演</span><span>单人</span><span>Steam 成就</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/luftrausers" target="_blank" rel="noopener">Luftrausers</a></h3><div class="price"><b>¥31</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥31</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/model-builder-complete-edition-f9b456" target="_blank" rel="noopener">Model Builder: Complete Edition</a></h3><div class="price"><b>¥70</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥70</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/413150/" target="_blank" rel="noopener">Stardew Valley</a></h3><div class="price"><b>¥48</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 35,564</span><span>史低 ¥48</span></div><div class="tags"><span>独立</span><span>角色扮演</span><span>模拟</span></div></article><article class="card" data-group="steam"><div class="card-top"><h3><a href="https://store.steampowered.com/app/105600/" target="_blank" rel="noopener">Terraria</a></h3><div class="price"><b>¥42</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 19,702</span><span>史低 ¥42</span></div><div class="tags"><span>动作</span><span>冒险</span><span>独立</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/terrascape-2b12b1" target="_blank" rel="noopener">TerraScape</a></h3><div class="price"><b>¥53</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥53</span></div></article><article class="card" data-group="epic"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/thems-fightin-herds" target="_blank" rel="noopener">Them's Fightin' Herds</a></h3><div class="price"><b>¥60</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥60</span></div></article>
 </main>
+
+<section class="notice"><h2>本次未取到数据的来源（其余照常）</h2><ul><li><b>gog</b>：已熔断跳过（连续 3 次失败，2026-10-29 后重试）</li></ul></section>
+
 <footer>
-本页由开源项目 game-price-radar 生成。价格会变，请以商店页面为准；本页只记录抓取时刻的数据。<br>
-仅收录可公开获取的价格与名称，不含游戏简介、图片等版权内容。
+数据来自各平台公开接口，仅记录抓取时刻的状态；缺失字段显示「—」，不做估算。<br>
+杉果 / SteamDB / Humble Bundle 无公开可用接口，未收录。<br>
+价格与活动以商店页面为准；游戏名称与商标归其各自权利人所有 · <a href="https://github.com/YunDaiShu/game-price-radar">game-price-radar</a>
 </footer>
+</div>
+<script>
+(function () {
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var showing = document.getElementById('showing');
+  var total = cards.length;
+
+  var counts = { all: total };
+  cards.forEach(function (card) {
+    var g = card.getAttribute('data-group');
+    counts[g] = (counts[g] || 0) + 1;
+  });
+
+  var pending = null;
+  function apply(group) {
+    if (pending) { clearTimeout(pending); pending = null; }
+
+    var toHide = [], toShow = [];
+    cards.forEach(function (card) {
+      var ok = group === 'all' || card.getAttribute('data-group') === group;
+      if (!ok && !card.hidden) toHide.push(card);
+      else if (ok && card.hidden) toShow.push(card);
+    });
+
+    // 1) 要隐藏的：先淡出，再置 hidden
+    toHide.forEach(function (card) { card.classList.add('fade-out'); });
+
+    // 2) 要显示的：解除 hidden 后淡入，按顺序错峰 12ms（封顶 120ms）
+    toShow.forEach(function (card, i) {
+      card.hidden = false;
+      card.classList.add('fade-out');
+      card.style.transitionDelay = Math.min(i * 12, 120) + 'ms';
+      requestAnimationFrame(function () { card.classList.remove('fade-out'); });
+    });
+
+    pending = setTimeout(function () {
+      toHide.forEach(function (card) {
+        card.hidden = true;
+        card.classList.remove('fade-out');
+        card.style.transitionDelay = '';
+      });
+      toShow.forEach(function (card) { card.style.transitionDelay = ''; });
+      pending = null;
+    }, toHide.length ? 170 : 0);
+
+    if (showing) showing.textContent = '显示 ' + (counts[group] || 0) + ' / ' + total;
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var group = chip.getAttribute('data-group');
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+      apply(group);
+    });
+  });
+
+  function fmt(ms) {
+    if (ms <= 0) return '已结束';
+    var s = Math.floor(ms / 1000), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+    if (d >= 1) return d + ' 天' + (d <= 7 ? ' ' + h + ' 小时' : '');
+    if (h >= 1) return h + ' 小时 ' + m + ' 分';
+    return m + ' 分';
+  }
+  function tick() {
+    var now = Date.now();
+    Array.prototype.forEach.call(document.querySelectorAll('.cd[data-end]'), function (el) {
+      var end = Date.parse(el.getAttribute('data-end'));
+      if (isNaN(end)) { el.textContent = '截止时间未公布'; return; }
+      var left = end - now;
+      el.textContent = left <= 0 ? '活动已结束' : ('截止还剩 ' + fmt(left));
+    });
+  }
+  tick();
+  setInterval(tick, 60000);
+})();
+</script>
 </body></html>
