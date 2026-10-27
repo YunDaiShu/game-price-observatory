@@ -320,7 +320,24 @@ export default function App() {
   const rec = resolved && resolved.rec;
   const series = rec ? state.series[rec.source + ':' + rec.id] || [] : [];
 
-  if (state.loading) return <div className="p-10 text-center text-sm text-[#8f98a0]">加载中…</div>;
+  if (state.loading) return (
+    <div className="min-h-screen">
+      <TopNav name="加载中…" onSearch={() => {}} />
+      <div className="mx-auto max-w-6xl px-4 pt-4">
+        <div className="h-[180px] animate-pulse rounded-lg bg-[#1b2838]" />
+        <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="h-[72px] animate-pulse rounded border border-[#2a475e] bg-[#1b2838]" />
+          ))}
+        </div>
+        <div className="mt-4 space-y-2">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="h-4 animate-pulse rounded bg-[#1b2838]" style={{ width: (90 - i * 20) + '%' }} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
   if (!rec) return (
     <div className="p-10 text-center text-sm text-[#8f98a0]">
       没找到条目（key={state.key || '空'}）<br /><a className="mt-3 inline-block text-[#66c0f4]" href="../">返回列表 ›</a>
