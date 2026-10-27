@@ -15,6 +15,7 @@ export function buildSearchIndex(root, items) {
       // 展示名与英文别名合并，使中文名与英文名都能命中搜索
       n: o.name + (o.name_en && o.name_en !== o.name ? ' · ' + o.name_en : ''),
       ne: o.name_en || null,
+      cv: o.cover || null,
       p: o.price ?? null,
       o: o.initial ?? null,
       c: o.cut ?? 0,
