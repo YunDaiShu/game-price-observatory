@@ -12,14 +12,12 @@
   var total = cards.length;
 
   var state = { tab: 'all', freeOnly: false, newLow: false, hasEnd: false, sort: 'cut', q: '' };
-  var pending = null;
+  var EASE = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
+  var MOVE_MS = 260;
 
-  /* ---------- 时间格式化（到秒） ---------- */
+  /* ---------- 时间 ---------- */
   function pad(n) { return (n < 10 ? '0' : '') + n; }
-  function fmtEnd(ms) {
-    var d = new Date(ms);
-    return pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
-  }
+  function fmtEnd(ms) { var d = new Date(ms); return pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()); }
   function fmtLeft(ms) {
     if (ms <= 0) return '已结束';
     var s = Math.floor(ms / 1000), d = Math.floor(s / 86400);
@@ -34,12 +32,44 @@
       if (el.classList.contains('cd')) el.textContent = fmtLeft(end - now);
       else el.textContent = '截止 ' + fmtEnd(end);
     });
-    if (modalOpen && current) {
+    if (modalOpen && current && current.end) {
       var rem = document.getElementById('mRemain');
-      if (rem && current.end) rem.textContent = fmtLeft(current.end - now);
+      if (rem) rem.textContent = fmtLeft(current.end - now);
     }
   }
   setInterval(tick, 1000);
+
+  /* ---------- FLIP：让"补位"动起来 ---------- */
+  function flip(update) {
+    var first = new Map();
+    cards.forEach(function (c) { if (!c.hidden) first.set(c, c.getBoundingClientRect()); });
+
+    update();                                   // 一次性改状态 + 重排，只读一次写一次
+
+    var last = new Map();
+    cards.forEach(function (c) { if (!c.hidden) last.set(c, c.getBoundingClientRect()); });
+
+    cards.forEach(function (c) {
+      var f = first.get(c), l = last.get(c);
+      if (!f || !l) return;
+      var dx = f.left - l.left, dy = f.top - l.top;
+      if (!dx && !dy) return;
+      c.style.transition = 'none';
+      c.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+    });
+
+    requestAnimationFrame(function () {
+      cards.forEach(function (c) {
+        if (!c.style.transform) return;
+        c.style.willChange = 'transform';
+        c.style.transition = 'transform ' + MOVE_MS + 'ms ' + EASE;
+        c.style.transform = '';
+        c.addEventListener('transitionend', function () {
+          c.style.transition = ''; c.style.transform = ''; c.style.willChange = '';
+        }, { once: true });
+      });
+    });
+  }
 
   /* ---------- 筛选 ---------- */
   function matches(card) {
@@ -50,40 +80,38 @@
     var okQ = !state.q || String(card.getAttribute('data-name') || '').indexOf(state.q) >= 0;
     return okTab && okFree && okLow && okEnd && okQ;
   }
-  function sortCards() {
-    if (!grid) return;
+  function orderBy() {
     var key = state.sort;
-    var list = cards.slice().sort(function (a, b) {
+    return cards.slice().sort(function (a, b) {
       if (key === 'price') return Number(a.getAttribute('data-price')) - Number(b.getAttribute('data-price'));
       if (key === 'players') return Number(b.getAttribute('data-players')) - Number(a.getAttribute('data-players'));
-      if (key === 'end') { return (Number(a.getAttribute('data-end')) || Infinity) - (Number(b.getAttribute('data-end')) || Infinity); }
+      if (key === 'end') return (Number(a.getAttribute('data-end')) || Infinity) - (Number(b.getAttribute('data-end')) || Infinity);
       return Number(b.getAttribute('data-cut')) - Number(a.getAttribute('data-cut'));
     });
-    list.forEach(function (c) { grid.appendChild(c); });
-    if (empty) grid.appendChild(empty);
   }
   function apply() {
-    if (pending) { clearTimeout(pending); pending = null; }
-    var hide = [], show = [], visible = 0;
-    cards.forEach(function (card) {
-      var ok = matches(card);
-      if (ok) visible++;
-      if (!ok && !card.hidden) hide.push(card);
-      else if (ok && card.hidden) show.push(card);
+    var want = new Map();
+    cards.forEach(function (c) { want.set(c, matches(c)); });
+    var entering = [];
+    cards.forEach(function (c) {
+      if (want.get(c) && c.hidden) entering.push(c);
     });
-    hide.forEach(function (c) { c.classList.add('fade-out'); });
-    show.forEach(function (c, i) {
-      c.hidden = false;
-      c.classList.add('fade-out');
-      c.style.transitionDelay = Math.min(i * 10, 90) + 'ms';
-      requestAnimationFrame(function () { c.classList.remove('fade-out'); });
+    var visible = 0;
+    want.forEach(function (ok) { if (ok) visible++; });
+
+    flip(function () {
+      cards.forEach(function (c) { c.hidden = !want.get(c); });
+      var seq = orderBy();
+      seq.forEach(function (c) { grid.appendChild(c); });
+      if (empty) grid.appendChild(empty);
     });
-    pending = setTimeout(function () {
-      hide.forEach(function (c) { c.hidden = true; c.classList.remove('fade-out'); c.style.transitionDelay = ''; });
-      show.forEach(function (c) { c.style.transitionDelay = ''; });
-      pending = null;
-      sortCards();
-    }, hide.length ? 150 : 0);
+
+    entering.forEach(function (c, i) {
+      c.classList.add('card--enter');
+      c.style.animationDelay = Math.min(i * 14, 120) + 'ms';
+      setTimeout(function () { c.classList.remove('card--enter'); c.style.animationDelay = ''; }, 520);
+    });
+
     if (grid) grid.classList.toggle('single', visible === 1);
     if (showing) showing.textContent = '显示 ' + visible + ' / ' + total;
     if (empty) empty.hidden = visible > 0;
@@ -91,6 +119,7 @@
 
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
+      if (tab.getAttribute('aria-selected') === 'true') return;
       state.tab = tab.getAttribute('data-group');
       tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
       apply();
@@ -99,8 +128,8 @@
   pills.forEach(function (p) {
     p.addEventListener('click', function () {
       var f = p.getAttribute('data-filter');
-      if (f === 'newlow') state.newLow = !state.newLow, p.setAttribute('aria-pressed', state.newLow ? 'true' : 'false');
-      if (f === 'hasend') state.hasEnd = !state.hasEnd, p.setAttribute('aria-pressed', state.hasEnd ? 'true' : 'false');
+      if (f === 'newlow') { state.newLow = !state.newLow; p.setAttribute('aria-pressed', state.newLow ? 'true' : 'false'); }
+      if (f === 'hasend') { state.hasEnd = !state.hasEnd; p.setAttribute('aria-pressed', state.hasEnd ? 'true' : 'false'); }
       apply();
     });
   });
@@ -108,7 +137,7 @@
     s.addEventListener('click', function () {
       state.sort = s.getAttribute('data-sort');
       sorts.forEach(function (x) { x.setAttribute('aria-pressed', x === s ? 'true' : 'false'); });
-      sortCards();
+      flip(function () { orderBy().forEach(function (c) { grid.appendChild(c); }); });
     });
   });
   if (toggleFree) toggleFree.addEventListener('click', function () {
@@ -117,27 +146,22 @@
     apply();
   });
 
-  /* ---------- Sticky 阴影 ---------- */
+  /* ---------- Sticky / Toast ---------- */
   if (stickyBar) {
     var onScroll = function () { stickyBar.classList.toggle('stuck', window.scrollY > 40); };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
-
-  /* ---------- Toast ---------- */
   var toast = document.getElementById('toast');
   if (toast) {
     var dismissed = false;
     try { dismissed = sessionStorage.getItem('gpr.toast') === '1'; } catch (e) {}
     if (dismissed) toast.hidden = true;
     var x = toast.querySelector('.x');
-    if (x) x.addEventListener('click', function () {
-      toast.hidden = true;
-      try { sessionStorage.setItem('gpr.toast', '1'); } catch (e) {}
-    });
+    if (x) x.addEventListener('click', function () { toast.hidden = true; try { sessionStorage.setItem('gpr.toast', '1'); } catch (e) {} });
   }
 
-  /* ---------- 搜索（全量索引） ---------- */
+  /* ---------- 搜索 ---------- */
   var SEARCH = null, loading = false, sres = null;
   function panel() {
     if (sres) return sres;
@@ -154,8 +178,7 @@
     if (SEARCH) { cb(); return; }
     if (loading) return;
     loading = true;
-    fetch('search-index.json')
-      .then(function (r) { return r.ok ? r.json() : []; })
+    fetch('search-index.json').then(function (r) { return r.ok ? r.json() : []; })
       .then(function (a) { SEARCH = Array.isArray(a) ? a : []; })
       .catch(function () { SEARCH = []; })
       .then(function () { loading = false; cb(); });
@@ -164,20 +187,15 @@
     var box = panel();
     if (!box) return;
     if (!q) { box.hidden = true; box.innerHTML = ''; return; }
-    var pool = (SEARCH && SEARCH.length) ? SEARCH : DATA.map(function (d) {
-      return { s: d.source, i: d.id, n: d.name, p: d.price, o: d.initial, c: d.cut, lo: d.lowest, u: d.url };
-    });
+    var pool = (SEARCH && SEARCH.length) ? SEARCH : DATA.map(function (d) { return { s: d.source, i: d.id, n: d.name, p: d.price, o: d.initial, c: d.cut, lo: d.lowest, u: d.url }; });
     var hits = pool.filter(function (r) { return String(r.n).toLowerCase().indexOf(q) >= 0; }).slice(0, 40);
     box.hidden = false;
     if (!hits.length) { box.innerHTML = '<div class="sres-head">没有匹配结果</div>'; return; }
-    box.innerHTML = '<div class="sres-head">找到 <b>' + hits.length + '</b> 个结果</div>'
-      + '<div class="' + (hits.length <= 1 ? 'single-res' : '') + '">'
+    box.innerHTML = '<div class="sres-head">找到 <b>' + hits.length + '</b> 个结果</div><div class="' + (hits.length <= 1 ? 'single-res' : '') + '">'
       + hits.map(function (r) {
         var price = (r.p === null || r.p === undefined) ? '—' : (r.p === 0 ? '免费' : '¥' + r.p);
         var low = (r.lo !== null && r.lo !== undefined && r.lo > 0) ? '<i class="sr-low">史低 ¥' + r.lo + '</i>' : '';
-        return '<button class="srow" type="button" data-key="' + r.s + ':' + r.i + '">'
-          + '<span class="sr-n">' + r.n + '</span><span class="sr-m">' + r.s + '</span>'
-          + '<span class="sr-p">' + price + low + '</span></button>';
+        return '<button class="srow" type="button" data-key="' + r.s + ':' + r.i + '"><span class="sr-n">' + r.n + '</span><span class="sr-m">' + r.s + '</span><span class="sr-p">' + price + low + '</span></button>';
       }).join('') + '</div>';
     [].forEach.call(box.querySelectorAll('.srow'), function (b) {
       b.addEventListener('click', function () { openModal(b.getAttribute('data-key')); box.hidden = true; });
@@ -194,19 +212,16 @@
   var overlay = document.getElementById('overlay');
   var modalOpen = false, current = null;
   var PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
+  var GRAD = 'linear-gradient(135deg,#667eea,#764ba2)';
   var byKey = {};
   DATA.forEach(function (d) { byKey[d.source + ':' + d.id] = d; });
 
-  function drawChart(points, cur) {
+  function drawChart(points) {
     var svg = document.getElementById('mChart');
     var wrap = document.getElementById('mChartWrap');
     var emptyBox = document.getElementById('mChartEmpty');
     var pts = (points || []).filter(function (p) { return typeof p[1] === 'number' && p[1] > 0; });
-    if (pts.length < 2) {
-      if (wrap) wrap.hidden = true;
-      if (emptyBox) emptyBox.hidden = false;
-      return;
-    }
+    if (pts.length < 2) { if (wrap) wrap.hidden = true; if (emptyBox) emptyBox.hidden = false; return; }
     if (wrap) wrap.hidden = false;
     if (emptyBox) emptyBox.hidden = true;
     var W = 560, H = 160, padL = 44, padR = 14, padT = 12, padB = 24, ns = 'http://www.w3.org/2000/svg';
@@ -216,9 +231,7 @@
     var min = Math.min.apply(null, ys), max = Math.max.apply(null, ys);
     function X(i) { return padL + (W - padL - padR) * (i / (pts.length - 1)); }
     function Y(v) { return padT + (H - padT - padB) * (1 - (v - min) / (max - min || 1)); }
-    [0, .5, 1].forEach(function (t) {
-      svg.appendChild(el('line', { x1: padL, y1: padT + (H - padT - padB) * t, x2: W - padR, y2: padT + (H - padT - padB) * t, stroke: '#E5E6EB' }));
-    });
+    [0, .5, 1].forEach(function (t) { svg.appendChild(el('line', { x1: padL, y1: padT + (H - padT - padB) * t, x2: W - padR, y2: padT + (H - padT - padB) * t, stroke: '#E5E6EB' })); });
     svg.appendChild(el('polyline', { points: pts.map(function (p, i) { return X(i) + ',' + Y(p[1]); }).join(' '), fill: 'none', stroke: '#FF6A00', 'stroke-width': 2 }));
     pts.forEach(function (p, i) { svg.appendChild(el('circle', { cx: X(i), cy: Y(p[1]), r: 2.5, fill: '#FF6A00' })); });
     var t1 = el('text', { x: 4, y: padT + 8, fill: '#86909C', 'font-size': 10 }); t1.textContent = max; svg.appendChild(t1);
@@ -227,13 +240,29 @@
     var t4 = el('text', { x: W - padR, y: H - 6, fill: '#86909C', 'font-size': 10, 'text-anchor': 'end' }); t4.textContent = pts[pts.length - 1][0]; svg.appendChild(t4);
   }
 
+  function setCover(url) {
+    var cover = document.querySelector('.m-cover');
+    if (!cover) return;
+    cover.style.backgroundImage = GRAD;          // 先回落渐变
+    if (!url) return;
+    var probe = new Image();                      // 只热链，不下载入库
+    probe.onload = function () { cover.style.backgroundImage = 'url("' + url + '")'; cover.style.backgroundSize = 'cover'; cover.style.backgroundPosition = 'center'; };
+    probe.onerror = function () { cover.style.backgroundImage = GRAD; };
+    probe.src = url;
+  }
+
   function openModal(key) {
     var d = byKey[key];
     if (!d) return;
-    current = { key: key, end: d.end, price: d.price, cut: d.cut, lowest: d.lowest };
+    var endMs = d.end ? (Date.parse(d.end) || 0) : 0;
+    current = { key: key, end: endMs };
     var plat = d.source.indexOf('steam') === 0 ? 'steam' : d.source;
     document.getElementById('mTitle').textContent = d.name;
     document.getElementById('mSub').textContent = PLAT[plat] || d.source;
+    var coverUrl = (String(d.source).indexOf('steam') === 0 && /^[0-9]+$/.test(String(d.id)))
+      ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + d.id + '/header.jpg'
+      : null;
+    setCover(coverUrl);
     var cardsHtml = [
       ['现价', d.price === 0 ? '免费' : '¥' + d.price],
       ['原价', d.initial ? '¥' + d.initial : '—'],
@@ -243,16 +272,14 @@
     if (d.lowest !== null && d.lowest !== undefined) cardsHtml.push(['史低', '¥' + d.lowest]);
     var info = document.getElementById('mCards');
     info.className = 'cards4' + (cardsHtml.length === 3 ? ' n3' : '');
-    info.innerHTML = cardsHtml.map(function (c) {
-      return '<div class="info-card"><div class="lb">' + c[0] + '</div><div class="vl">' + c[1] + '</div></div>';
-    }).join('');
+    info.innerHTML = cardsHtml.map(function (c) { return '<div class="info-card"><div class="lb">' + c[0] + '</div><div class="vl">' + c[1] + '</div></div>'; }).join('');
     var meta = [];
-    meta.push(d.end ? ('截止 ' + fmtEnd(d.end)) : '截止未公布');
-    if (d.end) meta.push('<span id="mRemain">' + fmtLeft(d.end - Date.now()) + '</span>');
+    meta.push(endMs ? ('截止 ' + fmtEnd(endMs)) : '截止未公布');
+    if (endMs) meta.push('<span id="mRemain">' + fmtLeft(endMs - Date.now()) + '</span>');
     meta.push(d.zh === true ? '支持中文' : (d.zh === false ? '无中文' : '中文未知'));
     (d.tags || []).slice(0, 3).forEach(function (t) { meta.push(t); });
     document.getElementById('mMeta').innerHTML = meta.join('<span class="sep">|</span>');
-    drawChart(SERIES[key] || [], d);
+    drawChart(SERIES[key] || []);
     var cta = document.getElementById('mCta');
     cta.setAttribute('data-plat', plat);
     cta.textContent = '打开 ' + (PLAT[plat] || d.source) + ' 商店页 →';
@@ -279,7 +306,6 @@
   var mx = document.getElementById('mClose');
   if (mx) mx.addEventListener('click', closeModal);
 
-  sortCards();
   apply();
   tick();
 })();
