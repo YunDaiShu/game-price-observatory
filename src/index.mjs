@@ -7,11 +7,12 @@ import { fetchEpic } from './fetchers/epic.mjs';
 import { fetchGog } from './fetchers/gog.mjs';
 import { fetchSteampy } from './fetchers/steampy.mjs';
 import { normalizeItem } from './lib/fields.mjs';
-import { loadHistory, annotateLows } from './lib/history.mjs';
+import { loadHistory, annotateLows, loadSeries } from './lib/history.mjs';
 import { applyFreeRules } from './lib/free.mjs';
 import { renderPage } from './render.mjs';
 import { isValidHttpUrl } from './lib/url.mjs';
 import { loadHealth, saveHealth, pausedReason, recordResult } from './lib/health.mjs';
+import { buildSearchIndex } from './lib/search-index.mjs';
 import { fetchAppStoreTopPaid } from './fetchers/appstore-top.mjs';
 import { fetchAppStoreByIds } from './fetchers/appstore.mjs';
 import { loadPool, savePool, updatePool, freeCandidates } from './lib/appstore-pool.mjs';
@@ -119,7 +120,8 @@ const payload = {
   },
   by_source: items.reduce((acc, it) => { acc[it.source] = (acc[it.source] || 0) + 1; return acc; }, {}),
   items,
-  errors
+  errors,
+  series: loadSeries(path.join(ROOT, 'data', 'history'), 60)
 };
 
 saveHealth(ROOT, health);
@@ -128,6 +130,9 @@ writeJson(path.join(ROOT, 'data', 'history', today + '.json'), payload);
 fs.mkdirSync(path.join(ROOT, 'docs'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'docs', 'index.html'), renderPage(payload), 'utf8');
 fs.writeFileSync(path.join(ROOT, 'docs', '.nojekyll'), '', 'utf8');
+// 全量搜索索引（页面首次输入时懒加载）
+const searchIndex = buildSearchIndex(ROOT, items);
+writeJson(path.join(ROOT, 'docs', 'search-index.json'), searchIndex);
 
 console.log('OK 在榜 ' + items.length + ' 条（限免 ' + payload.counts.limited_free + ' / 新史低 ' + payload.counts.new_low + '） 失败 ' + errors.length);
 console.log('   分来源: ' + JSON.stringify(payload.by_source));
