@@ -231,3 +231,24 @@ STEAMPY_API_URL=https://your-proxy.example.com/steampy.json node src/index.mjs
 
 > 说明：搜索匹配的是**展示名**（国区为中文名），暂无英文别名索引。
 
+
+## 数据来源性质与合规
+
+| 来源 | 接口 | 性质 |
+| --- | --- | --- |
+| Steam | `api/appdetails`、`ISteamUserStats` | 官方文档化 API |
+| Steam 特惠 | `featuredcategories` | 站内公开接口（无文档） |
+| App Store | `itunes.apple.com/lookup / search / rss` | 官方文档化 API |
+| Epic | `store-site-backend-static .../freeGamesPromotions` | 站内公开接口（无文档） |
+| GOG | `catalog.gog.com/v1/catalog` | 站内公开接口（无文档） |
+| Switch（日服） | `search.nintendo.jp` | 站内公开接口（无文档） |
+
+本站**不存储任何图片**：封面一律热链（GOG 经 `images.weserv.nl` 代理），仓库内只有代码与 JSON。
+
+### 收到权利方通知时的下架流程
+
+1. 立即停用对应源（无需改代码）：在 workflow 的环境变量里设置 `DISABLE_SOURCES=switch`（多个源用逗号分隔），重跑一次扫描即可；
+2. 删除该源历史数据：`data/history/switch-*.json` 与 `docs/**` 中相关条目，重新生成；
+3. 移除品牌要素：把展示名从「Switch 日服」改为中性表述，并去掉平台配色；
+4. 保留通信记录与处理时间线，不公开争论；
+5. 如需恢复，只能改用授权数据源或人工维护的价格表。
