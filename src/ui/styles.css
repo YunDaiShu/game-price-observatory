@@ -48,7 +48,7 @@ body{margin:0;background:var(--bg-primary);color:var(--text-secondary);font:14px
 .tab:hover{color:var(--text-primary)}
 .tab[aria-selected="true"]{color:var(--accent-primary);font-weight:500}
 .tab[aria-selected="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent-primary)}
-.tab .n{font-size:11px;color:var(--text-tertiary);font-weight:400}
+.tab .n{font-size:12px;color:var(--text-tertiary);font-weight:400;margin-left:6px;line-height:1}
 
 /* ===== Pills 36px ===== */
 .pills{display:flex;align-items:center;gap:var(--space-sm);height:36px;margin-top:var(--space-sm)}
@@ -157,3 +157,27 @@ footer a{color:var(--text-link);text-decoration:none}
 @keyframes cardEnter{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
 .card--enter{animation:cardEnter 240ms cubic-bezier(.22,.61,.36,1) both;pointer-events:none}
 .m-cover{transition:background-image 200ms ease;background-size:cover;background-position:center}
+
+/* ===== P0-1 Modal 原价删除线 ===== */
+.info-card .vl.strike{color:var(--text-tertiary);text-decoration:line-through;font-size:16px}
+
+/* ===== P1-6 平台渐变（Modal 封面兜底） ===== */
+.m-cover{background-image:linear-gradient(135deg,#667eea,#764ba2)}
+.m-cover[data-plat="steam"]{background-image:linear-gradient(135deg,#1b2838,#0b1219)}
+.m-cover[data-plat="epic"]{background-image:linear-gradient(135deg,#2b2b2b,#0a0a0a)}
+.m-cover[data-plat="appstore"]{background-image:linear-gradient(135deg,#4dabf7,#5f3dc4)}
+.m-cover[data-plat="gog"]{background-image:linear-gradient(135deg,#4a1030,#2a0a1a)}
+
+/* ===== P1-6 列表卡片真实封面 ===== */
+.cover{position:relative}
+.cover img.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px}
+
+/* ===== P0-2/P0-3 搜索结果：与列表页同一套卡片 ===== */
+.sres{width:min(1040px, calc(100vw - 32px));left:auto;right:0;padding:12px}
+.sres-grid{display:grid;grid-template-columns:repeat(auto-fill,327px);gap:16px;justify-content:center}
+.sres-grid.single{grid-template-columns:327px;justify-content:center}
+.sres .card{height:auto;min-height:var(--ch)}
+
+/* ===== Tab 切换：离场淡出（先淡出再补位） ===== */
+@keyframes cardLeave{from{opacity:1;transform:none}to{opacity:0;transform:scale(.96)}}
+.card--leave{animation:cardLeave 140ms ease-in both;pointer-events:none}
