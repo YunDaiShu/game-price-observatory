@@ -1,19 +1,18 @@
 {
-  "generated_at": "2026-10-27T13:40:35.586Z",
-  "generated_at_bj": "2026-10-27 21:40",
+  "generated_at": "2026-10-27T13:58:40.520Z",
+  "generated_at_bj": "2026-10-27 21:58",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
-    "total": 77,
+    "total": 69,
     "limited_free": 2,
     "new_low": 0,
-    "failed": 1
+    "failed": 10
   },
   "by_source": {
     "epic": 12,
     "switch": 40,
     "steam-specials": 10,
-    "steam": 8,
     "appstore": 7
   },
   "items": [
@@ -1311,40 +1310,6 @@
       "promo_start": null,
       "promo_end": null,
       "tags": [
-        "动作",
-        "角色扮演",
-        "单人",
-        "多人",
-        "玩家对战",
-        "线上玩家对战"
-      ],
-      "supports_zh": true,
-      "lowest_price": 298,
-      "is_new_low": null,
-      "players_online": 27363,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "1245620",
-      "name": "艾尔登法环",
-      "url": "https://store.steampowered.com/app/1245620/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
-      "developer": "FromSoftware, Inc.",
-      "publishers": "FromSoftware, Inc.、Bandai Namco Entertainment",
-      "release_date": "2022 年 2 月 24 日",
-      "short_desc": "艾尔登法环是以正统黑暗奇幻世界为舞台的动作RPG游戏。 走进辽阔的场景与地下迷宫探索未知，挑战困难重重的险境，享受克服困境时的成就感吧。 不仅如此，登场角色之间的利害关系谱成的群像剧，更是不容错过。",
-      "metacritic": 94,
-      "always_show": false,
-      "free": false,
-      "price": 298,
-      "initial": 298,
-      "cut": 0,
-      "name_en": "ELDEN RING"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
         "Games"
       ],
       "supports_zh": "unknown",
@@ -1365,74 +1330,6 @@
       "seller": "East2west Network Tech. Co. Ltd.",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "避难所：生存"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "冒险",
-        "角色扮演",
-        "策略",
-        "单人",
-        "多人",
-        "合作"
-      ],
-      "supports_zh": true,
-      "lowest_price": 268,
-      "is_new_low": null,
-      "players_online": 33653,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "1086940",
-      "name": "博德之门3",
-      "url": "https://store.steampowered.com/app/1086940/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
-      "developer": "Larian Studios",
-      "publishers": "Larian Studios",
-      "release_date": "2023 年 8 月 3 日",
-      "short_desc": "《博德之门3》是一款以“龙与地下城”世界为背景的、强调故事与队伍冒险体验的角色扮演游戏。你的每一个选择，都会编织出一段关于同伴与背叛、生存与牺牲，以及至上力量诱惑的故事。",
-      "metacritic": 96,
-      "always_show": false,
-      "free": false,
-      "price": 268,
-      "initial": 268,
-      "cut": 0,
-      "name_en": "Baldur's Gate 3"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "动作",
-        "冒险",
-        "角色扮演",
-        "单人",
-        "Steam 成就",
-        "完全支持控制器"
-      ],
-      "supports_zh": true,
-      "lowest_price": 268,
-      "is_new_low": null,
-      "players_online": 16214,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "2358720",
-      "name": "黑神话：悟空",
-      "url": "https://store.steampowered.com/app/2358720/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
-      "developer": "Game Science",
-      "publishers": "Game Science",
-      "release_date": "2024 年 8 月 19 日",
-      "short_desc": "《黑神话：悟空》是一款以中国神话为背景的动作角色扮演游戏。你将扮演一位“天命人”，为了探寻昔日传说的真相，踏上一条充满危险与惊奇的西游之路。",
-      "metacritic": null,
-      "always_show": false,
-      "free": false,
-      "price": 268,
-      "initial": 268,
-      "cut": 0,
-      "name_en": "Black Myth: Wukong"
     },
     {
       "promo_start": null,
@@ -1508,40 +1405,6 @@
       "seller": "DIVASKY LIMITED",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "劫后公司"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "角色扮演",
-        "单人",
-        "Steam 成就",
-        "完全支持控制器",
-        "Steam 集换式卡牌",
-        "可调整文字大小"
-      ],
-      "supports_zh": true,
-      "lowest_price": 298,
-      "is_new_low": null,
-      "players_online": 137053,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "1091500",
-      "name": "赛博朋克 2077",
-      "url": "https://store.steampowered.com/app/1091500/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
-      "developer": "CD PROJEKT RED",
-      "publishers": "CD PROJEKT RED",
-      "release_date": "2020 年 12 月 9 日",
-      "short_desc": "《赛博朋克 2077》是一款开放世界动作冒险 RPG 游戏。故事发生在暗黑未来的夜之城，一座五光十色、危机四伏的超级大都会，权力更迭和无尽的身体改造是这里不变的主题。",
-      "metacritic": 86,
-      "always_show": false,
-      "free": false,
-      "price": 298,
-      "initial": 298,
-      "cut": 0,
-      "name_en": "Cyberpunk 2077"
     },
     {
       "promo_start": null,
@@ -1641,40 +1504,6 @@
     {
       "promo_start": null,
       "promo_end": null,
-      "tags": [
-        "角色扮演",
-        "单人",
-        "Steam 成就",
-        "Steam 集换式卡牌",
-        "Steam 创意工坊",
-        "可调整文字大小"
-      ],
-      "supports_zh": true,
-      "lowest_price": 199,
-      "is_new_low": null,
-      "players_online": 47787,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "292030",
-      "name": "巫师3：狂猎 — 重制版",
-      "url": "https://store.steampowered.com/app/292030/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg",
-      "developer": "CD PROJEKT RED",
-      "publishers": "CD PROJEKT RED",
-      "release_date": "2015 年 5 月 18 日",
-      "short_desc": "《巫师 3：狂猎 — 重制版》为这款广受好评的角色扮演游戏带来了全方位的升级和优化。扮演猎魔人利维亚的杰洛特，在黑暗的奇幻开放世界中踏上追寻养女希里的史诗之旅。",
-      "metacritic": 93,
-      "always_show": false,
-      "free": false,
-      "price": 199,
-      "initial": 199,
-      "cut": 0,
-      "name_en": "The Witcher 3: Wild Hunt — Remastered"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 31,
@@ -1711,108 +1540,6 @@
       "url": "https://store.epicgames.com/zh-CN/p/model-builder-complete-edition-f9b456",
       "cover": "https://cdn1.epicgames.com/spt-assets/7472ec268e344e77a85e95976c0ffc6d/model-builder-1vfgr.png",
       "name_en": "Model Builder: Complete Edition"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "冒险",
-        "休闲",
-        "独立",
-        "大型多人在线",
-        "角色扮演",
-        "免费开玩"
-      ],
-      "supports_zh": true,
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": 5862,
-      "free_kind": "permanent",
-      "currency": "CNY",
-      "source": "steam",
-      "id": "2325290",
-      "name": "Sky 光·遇",
-      "url": "https://store.steampowered.com/app/2325290/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/2325290/header.jpg",
-      "developer": "thatgamecompany",
-      "publishers": "thatgamecompany",
-      "release_date": "2024 年 4 月 10 日",
-      "short_desc": "一场令人心驰神往的开放世界冒险正等着你！探索神奇的领域，恢复失落之光。在光遇中，你将超越语言限制，与全球玩家建立羁绊。参与季节活动，完成任务、解开谜题，让我们一起拥抱善意、新发现与真挚的情谊。",
-      "metacritic": null,
-      "always_show": true,
-      "free": true,
-      "price": 0,
-      "initial": 0,
-      "cut": 0,
-      "name_en": "Sky: Children of the Light"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "独立",
-        "角色扮演",
-        "模拟",
-        "单人",
-        "多人",
-        "合作"
-      ],
-      "supports_zh": true,
-      "lowest_price": 48,
-      "is_new_low": null,
-      "players_online": 78194,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "413150",
-      "name": "Stardew Valley",
-      "url": "https://store.steampowered.com/app/413150/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg",
-      "developer": "ConcernedApe",
-      "publishers": "ConcernedApe",
-      "release_date": "2016 年 2 月 26 日",
-      "short_desc": "你继承了你爷爷在星露谷留下的老旧农场。带着爷爷留下的残旧工具和几枚硬币开始了你的新生活。你能适应这小镇上的生活并且将这个杂草丛生的老旧农场变成一个繁荣的家吗？",
-      "metacritic": 89,
-      "always_show": false,
-      "free": false,
-      "price": 48,
-      "initial": 48,
-      "cut": 0,
-      "name_en": "Stardew Valley"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "动作",
-        "冒险",
-        "独立",
-        "角色扮演",
-        "单人",
-        "多人"
-      ],
-      "supports_zh": true,
-      "lowest_price": 42,
-      "is_new_low": null,
-      "players_online": 40778,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "105600",
-      "name": "Terraria",
-      "url": "https://store.steampowered.com/app/105600/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg",
-      "developer": "Re-Logic",
-      "publishers": "Re-Logic",
-      "release_date": "2011 年 5 月 16 日",
-      "short_desc": "挖掘，战斗，探索，建造！在这个动感十足的冒险游戏里没有什么是不可能的。四人包依然可用！",
-      "metacritic": 83,
-      "always_show": false,
-      "free": false,
-      "price": 42,
-      "initial": 42,
-      "cut": 0,
-      "name_en": "Terraria"
     },
     {
       "promo_start": null,
@@ -1857,12 +1584,71 @@
   ],
   "errors": [
     {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
       "source": "gog",
       "target": "gog",
       "error": "已熔断跳过（连续 3 次失败，2026-10-29 后重试）"
     }
   ],
   "series": {
+    "switch:70070000041183": [
+      [
+        "2026-10-27",
+        5758,
+        null
+      ]
+    ],
+    "switch:70050000082474": [
+      [
+        "2026-10-27",
+        1239,
+        null
+      ]
+    ],
     "steam-specials:238320": [
       [
         "2026-10-27",
@@ -1881,6 +1667,20 @@
       [
         "2026-10-27",
         19.6,
+        null
+      ]
+    ],
+    "switch:70070000041202": [
+      [
+        "2026-10-27",
+        1198,
+        null
+      ]
+    ],
+    "switch:70070000041378": [
+      [
+        "2026-10-27",
+        1588,
         null
       ]
     ],
@@ -1926,10 +1726,59 @@
         null
       ]
     ],
+    "switch:70010000127180": [
+      [
+        "2026-10-27",
+        3990,
+        null
+      ]
+    ],
+    "switch:70010000127174": [
+      [
+        "2026-10-27",
+        3990,
+        null
+      ]
+    ],
+    "switch:70010000133940": [
+      [
+        "2026-10-27",
+        3990,
+        null
+      ]
+    ],
+    "switch:70070000041269": [
+      [
+        "2026-10-27",
+        2398,
+        null
+      ]
+    ],
     "steam-specials:3240220": [
       [
         "2026-10-27",
         74.5,
+        null
+      ]
+    ],
+    "switch:70010000128653": [
+      [
+        "2026-10-27",
+        7920,
+        null
+      ]
+    ],
+    "switch:70070000040759": [
+      [
+        "2026-10-27",
+        19800,
+        null
+      ]
+    ],
+    "switch:70070000040758": [
+      [
+        "2026-10-27",
+        12000,
         null
       ]
     ],
@@ -1947,10 +1796,213 @@
         null
       ]
     ],
+    "switch:70010000136605": [
+      [
+        "2026-10-27",
+        990,
+        null
+      ]
+    ],
+    "switch:70070000040920": [
+      [
+        "2026-10-27",
+        4080,
+        null
+      ]
+    ],
+    "switch:70050000082519": [
+      [
+        "2026-10-27",
+        630,
+        null
+      ]
+    ],
+    "switch:70050000082539": [
+      [
+        "2026-10-27",
+        470,
+        null
+      ]
+    ],
+    "switch:70050000082622": [
+      [
+        "2026-10-27",
+        630,
+        null
+      ]
+    ],
+    "switch:70050000082629": [
+      [
+        "2026-10-27",
+        470,
+        null
+      ]
+    ],
+    "switch:70010000131540": [
+      [
+        "2026-10-27",
+        6908,
+        null
+      ]
+    ],
+    "switch:70070000036536": [
+      [
+        "2026-10-27",
+        13900,
+        null
+      ]
+    ],
+    "switch:70010000102604": [
+      [
+        "2026-10-27",
+        4990,
+        null
+      ]
+    ],
+    "switch:70010000135983": [
+      [
+        "2026-10-27",
+        6480,
+        null
+      ]
+    ],
+    "switch:70010000136555": [
+      [
+        "2026-10-27",
+        680,
+        null
+      ]
+    ],
+    "switch:70010000136510": [
+      [
+        "2026-10-27",
+        3980,
+        null
+      ]
+    ],
+    "switch:70010000111042": [
+      [
+        "2026-10-27",
+        1380,
+        null
+      ]
+    ],
+    "switch:70010000126958": [
+      [
+        "2026-10-27",
+        1480,
+        null
+      ]
+    ],
+    "switch:70010000136766": [
+      [
+        "2026-10-27",
+        600,
+        null
+      ]
+    ],
     "steam-specials:5335510": [
       [
         "2026-10-27",
         30.6,
+        null
+      ]
+    ],
+    "switch:70010000129934": [
+      [
+        "2026-10-27",
+        2350,
+        null
+      ]
+    ],
+    "switch:70010000137520": [
+      [
+        "2026-10-27",
+        420,
+        null
+      ]
+    ],
+    "switch:70050000082160": [
+      [
+        "2026-10-27",
+        1500,
+        null
+      ]
+    ],
+    "switch:70010000139110": [
+      [
+        "2026-10-27",
+        2000,
+        null
+      ]
+    ],
+    "switch:70050000081722": [
+      [
+        "2026-10-27",
+        500,
+        null
+      ]
+    ],
+    "switch:70050000082527": [
+      [
+        "2026-10-27",
+        1000,
+        null
+      ]
+    ],
+    "switch:70010000139023": [
+      [
+        "2026-10-27",
+        420,
+        null
+      ]
+    ],
+    "switch:70010000133039": [
+      [
+        "2026-10-27",
+        2600,
+        null
+      ]
+    ],
+    "switch:70010000119219": [
+      [
+        "2026-10-27",
+        4700,
+        null
+      ]
+    ],
+    "switch:70010000138061": [
+      [
+        "2026-10-27",
+        420,
+        null
+      ]
+    ],
+    "switch:70010000125083": [
+      [
+        "2026-10-27",
+        3278,
+        null
+      ]
+    ],
+    "switch:70070000040446": [
+      [
+        "2026-10-27",
+        6578,
+        null
+      ]
+    ],
+    "switch:70010000138085": [
+      [
+        "2026-10-27",
+        420,
+        null
+      ]
+    ],
+    "switch:70010000131049": [
+      [
+        "2026-10-27",
+        2860,
         null
       ]
     ],
@@ -1968,32 +2020,32 @@
         null
       ]
     ],
-    "steam:1245620": [
+    "appstore:1544190466": [
       [
         "2026-10-27",
-        298,
-        27363
+        6,
+        null
       ]
     ],
-    "steam:1086940": [
+    "appstore:6446614518": [
       [
         "2026-10-27",
-        268,
-        33653
+        20,
+        null
       ]
     ],
-    "steam:2358720": [
+    "appstore:1238778050": [
       [
         "2026-10-27",
-        268,
-        16214
+        24,
+        null
       ]
     ],
-    "steam:1091500": [
+    "appstore:6757729278": [
       [
         "2026-10-27",
-        298,
-        137053
+        12,
+        null
       ]
     ],
     "epic:4a88d0dc64114b20b67339c74543f859": [
@@ -2003,11 +2055,25 @@
         null
       ]
     ],
-    "steam:292030": [
+    "appstore:1157863540": [
       [
         "2026-10-27",
-        199,
-        47787
+        18,
+        null
+      ]
+    ],
+    "appstore:6749045841": [
+      [
+        "2026-10-27",
+        15,
+        null
+      ]
+    ],
+    "appstore:1452113719": [
+      [
+        "2026-10-27",
+        6,
+        null
       ]
     ],
     "epic:c76046dddcdb43619c33ce0395941033": [
@@ -2022,20 +2088,6 @@
         "2026-10-27",
         70,
         null
-      ]
-    ],
-    "steam:413150": [
-      [
-        "2026-10-27",
-        48,
-        78194
-      ]
-    ],
-    "steam:105600": [
-      [
-        "2026-10-27",
-        42,
-        40778
       ]
     ],
     "epic:af6b823b8698465f9aedc3bddf2e8686": [
