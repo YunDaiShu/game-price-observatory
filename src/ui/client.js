@@ -27,6 +27,7 @@
     if (proxy && img.dataset.proxied !== '1') {
       img.dataset.proxied = '1';
       img.src = proxy;
+      setTimeout(function () { if (!img.complete || img.naturalWidth === 0) img.remove(); }, 12000);
       return;
     }
     img.remove();
@@ -39,9 +40,10 @@
       var done = false;
       img.addEventListener('load', function () { done = true; });
       img.addEventListener('error', function () { done = true; img.remove(); });
+      var wait = img.getAttribute('data-proxy') ? 12000 : 6000;
       setTimeout(function () {
         if (!done && (!img.complete || img.naturalWidth === 0)) img.remove();
-      }, 6000);
+      }, wait);
     });
   }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
@@ -224,7 +226,7 @@
     meta += endMs
       ? '<span data-end-abs="' + endMs + '">截止 ' + fmtEnd(endMs) + '</span><span class="cd" data-end-abs="' + endMs + '">' + fmtLeft(endMs - Date.now()) + '</span>'
       : '<span>截止未公布</span>';
-    var proxyUrl = (r.s === 'gog' && coverUrl) ? 'https://images.weserv.nl/?url=' + encodeURIComponent(coverUrl) : null;
+    var proxyUrl = (r.s === 'gog' && coverUrl) ? 'https://images.weserv.nl/?url=' + encodeURIComponent(coverUrl) + '&w=460&h=215&fit=cover&output=jpg&q=80' : null;
     var tags = (r.tg || []).slice(0, 3).map(function (t) { return '<span>' + t + '</span>'; }).join('');
     return '<article class="card" data-group="' + g + '" data-key="' + key + '" tabindex="0">'
       + '<div class="cover"><span class="cover-tag">' + (LABEL[r.s] || r.s) + '</span>'
@@ -309,7 +311,7 @@
     var url = rec.cover || (plat === 'steam' && /^[0-9]+$/.test(String(rec.id))
       ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + rec.id + '/header.jpg' : null);
     if (!url) return;
-    var proxy = (plat === 'gog' && url) ? 'https://images.weserv.nl/?url=' + encodeURIComponent(url) : null;
+    var proxy = (plat === 'gog' && url) ? 'https://images.weserv.nl/?url=' + encodeURIComponent(url) + '&w=460&h=215&fit=cover&output=jpg&q=80' : null;
     var probe = new Image();
     probe.onload = function () { cover.style.backgroundImage = 'url("' + url + '")'; };
     probe.onerror = function () {
