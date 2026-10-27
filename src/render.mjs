@@ -37,9 +37,8 @@ function card(it) {
 
   const priceRow = it.price === 0
     ? '<span class="price free">免费</span>'
-    : '<span class="badge">-' + (it.cut || 0) + '%</span>'.replace('--', '-')
-      + '<span class="price">' + sym + it.price + '</span>'
-      + (it.initial && it.initial > it.price ? '<span class="origin">' + sym + it.initial + '</span>' : '');
+    : ((it.cut > 0 && it.initial && it.initial > it.price ? '<span class="badge">-' + it.cut + '%</span><span class="origin">' + sym + it.initial + '</span>' : '')
+      + '<span class="price">' + sym + it.price + '</span>');
 
   const meta = [];
   if (it.lowest_price !== null && it.lowest_price !== undefined && it.price > 0) {
