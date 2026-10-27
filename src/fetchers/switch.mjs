@@ -11,6 +11,9 @@ function saleEnd(raw) {
   return m[1] + '-' + m[2] + '-' + m[3] + 'T' + m[4] + ':' + m[5] + ':' + m[6] + '+09:00'; // JST
 }
 
+// 排除 DLC / 升级包 / 追加内容（不是独立游戏，价格对比无意义）
+const EXCLUDE_RE = /(アップグレード|追加コンテンツ|追加ストーリー|追加の仲間|シーズンパス|ダウンロードコンテンツ|拡張パス|アップデートパス|\bDLC\b)/i;
+
 function drateOf(it) {
   const d = Array.isArray(it.drate) ? it.drate[0] : it.drate;
   const n = Number(d);
@@ -28,9 +31,12 @@ export async function fetchSwitch({ pages = 8, limit = 100, max = 40 } = {}) {
       for (const it of items) {
         if (out.length >= max) break;
         if (String(it.sale_flg) !== '1') continue;
+        if (EXCLUDE_RE.test(String(it.title || ''))) continue;
+        if ((typeof it.price === 'number' ? it.price : 0) < 100) continue;   // 低于 100 円视为异常
         const price = typeof it.price === 'number' ? it.price : null;
         const drate = drateOf(it);
         if (!price || !drate) continue;
+        if (drate > 95) continue;   // 折扣率异常（多为套装/数据错误）
         const initial = Math.round(price / (1 - drate / 100));
         if (!(initial > price)) continue;
         const nsuid = String(it.nsuid || it.id || '');
