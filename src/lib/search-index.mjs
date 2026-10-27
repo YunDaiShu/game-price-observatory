@@ -12,7 +12,9 @@ export function buildSearchIndex(root, items) {
     const rec = {
       s: o.source || 'unknown',
       i: String(o.id ?? ''),
-      n: o.name,
+      // 展示名与英文别名合并，使中文名与英文名都能命中搜索
+      n: o.name + (o.name_en && o.name_en !== o.name ? ' · ' + o.name_en : ''),
+      ne: o.name_en || null,
       p: o.price ?? null,
       o: o.initial ?? null,
       c: o.cut ?? 0,
