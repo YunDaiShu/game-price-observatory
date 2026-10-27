@@ -33,6 +33,7 @@ export async function fetchSteam(entry, cc = 'cn') {
   const base = {
     source: 'steam', id: String(appid), name: d.name,
     currency: 'CNY', url: link,
+    cover: 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + appid + '/header.jpg',
     // —— 以下为详情页所需的真实元数据（取不到即 null，不猜）——
     developer: Array.isArray(d.developers) && d.developers.length ? d.developers.join('、') : null,
     publishers: Array.isArray(d.publishers) && d.publishers.length ? d.publishers.join('、') : null,
