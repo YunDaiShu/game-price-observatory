@@ -27,8 +27,6 @@ jobs:
 
       - name: Run price scan
         id: scan
-        env:
-          IGNORE_BREAKER: '1'
         run: node src/index.mjs
 
       - name: Commit data snapshot
