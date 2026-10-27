@@ -1,469 +1,351 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { GAME, SERIES, CATALOG, makeComments } from './data/mock.js';
+import React, { useEffect, useMemo, useState } from 'react';
 
-const swatch = (hue) =>
-  'data:image/svg+xml;utf8,' +
-  encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="338">' +
-      '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
-      '<stop offset="0%" stop-color="hsl(' + hue + ',38%,22%)"/>' +
-      '<stop offset="100%" stop-color="hsl(' + ((hue + 48) % 360) + ',30%,10%)"/>' +
-      '</linearGradient></defs><rect width="600" height="338" fill="url(#g)"/></svg>'
-  );
-
-const money = (v) => (v === null || v === undefined ? '—' : v === 0 ? '免费' : '¥' + v);
+const money = (v, cur) => (v === null || v === undefined ? null : v === 0 ? '免费' : (cur === 'USD' ? '$' : '¥') + v);
+const dash = (v) => (v === null || v === undefined || v === '' ? '—' : v);
 
 function useCountdown(iso) {
   const [now, setNow] = useState(Date.now());
-  useEffect(() => {
-    const t = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(t);
-  }, []);
-  if (!iso) return '未公布';
+  useEffect(() => { const t = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(t); }, []);
+  if (!iso) return null;
   const left = Date.parse(iso) - now;
-  if (Number.isNaN(left)) return '未公布';
+  if (Number.isNaN(left)) return null;
   if (left <= 0) return '已结束';
-  const s = Math.floor(left / 1000);
+  const s = Math.floor(left / 1000), pad = (n) => (n < 10 ? '0' + n : '' + n);
   const d = Math.floor(s / 86400);
-  const pad = (n) => (n < 10 ? '0' + n : '' + n);
   const hms = pad(Math.floor((s % 86400) / 3600)) + ':' + pad(Math.floor((s % 3600) / 60)) + ':' + pad(s % 60);
   return d > 0 ? '剩余 ' + d + '天 ' + hms : '剩余 ' + hms;
 }
 
-function Icon({ d, className = 'w-5 h-5' }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
-      <path d={d} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
+function useData() {
+  const [state, setState] = useState({ loading: true, items: [], index: [], series: {}, error: null, key: null });
+  useEffect(() => {
+    const key = new URLSearchParams(location.search).get('key');
+    Promise.all([
+      fetch('../latest.json').then((r) => (r.ok ? r.json() : null)).catch(() => null),
+      fetch('../search-index.json').then((r) => (r.ok ? r.json() : null)).catch(() => null)
+    ]).then(([latest, idx]) => {
+      const items = (latest && latest.items) || [];
+      setState({
+        loading: false,
+        items,
+        index: Array.isArray(idx) ? idx : [],
+        series: (latest && latest.series) || {},
+        error: latest ? null : '没能读取 ../latest.json',
+        key,
+        generatedAt: latest && latest.generated_at_bj
+      });
+    });
+  }, []);
+  return state;
 }
 
-function TopNav({ onSearch }) {
+function resolveItem(state) {
+  const { items, index, key } = state;
+  const k = key || (items[0] && items[0].source + ':' + items[0].id);
+  if (!k) return null;
+  const [src, id] = k.split(':');
+  const full = items.find((i) => i.source === src && String(i.id) === id);
+  if (full) return { rec: full, partial: false, key: k };
+  const slim = index.find((r) => r.s === src && String(r.i) === id);
+  if (slim) return { rec: { source: slim.s, id: slim.i, name: slim.n, price: slim.p, initial: slim.o, cut: slim.c, url: slim.u, promo_end: slim.e, players_online: slim.pl, lowest_price: slim.lo, free_kind: slim.fk, tags: slim.tg || [], supports_zh: slim.zh, developer: slim.dv, publishers: slim.pb, release_date: slim.rd, metacritic: slim.mc, short_desc: slim.sd }, partial: true, key: k };
+  return null;
+}
+
+function Icon({ d, className = 'w-5 h-5' }) {
+  return (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}><path d={d} strokeLinecap="round" strokeLinejoin="round" /></svg>);
+}
+
+function TopNav({ name, onSearch }) {
   return (
     <header className="sticky top-0 z-40 border-b border-[#2a475e] bg-[#171a21]/95 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center gap-4 px-4">
-        <button className="flex items-center gap-2 text-[#c7d5e0] hover:text-white">
-          <Icon d="M15 19l-7-7 7-7" className="h-4 w-4" />
-          <span className="text-sm">返回</span>
-        </button>
-        <div className="min-w-0 flex-1 truncate text-center text-[15px] font-semibold text-white">影之刃零</div>
+        <a href="../" className="flex items-center gap-2 text-[#c7d5e0] hover:text-white"><Icon d="M15 19l-7-7 7-7" className="h-4 w-4" /><span className="text-sm">返回</span></a>
+        <div className="min-w-0 flex-1 truncate text-center text-[15px] font-semibold text-white">{name || '加载中…'}</div>
         <div className="flex items-center gap-3 text-[#8f98a0]">
           <button onClick={onSearch} className="hover:text-white" aria-label="搜索"><Icon d="M21 21l-4.3-4.3M11 18a7 7 0 100-14 7 7 0 000 14z" /></button>
-          <button className="hover:text-white" aria-label="分享"><Icon d="M4 12v7a2 2 0 002 2h12a2 2 0 002-2v-7M12 3v12M8 7l4-4 4 4" /></button>
-          <button className="hover:text-white" aria-label="消息"><Icon d="M4 5h16v11H8l-4 4V5z" /></button>
+          <a href="../" className="hover:text-white" aria-label="站点"><Icon d="M4 12h16M12 4v16" /></a>
         </div>
       </div>
     </header>
   );
 }
 
-function Gallery() {
-  const [idx, setIdx] = useState(0);
-  const g = GAME.gallery[idx];
-  return (
-    <section className="mx-auto max-w-6xl px-4 pt-4">
-      <div className="relative overflow-hidden rounded-lg border border-[#2a475e] bg-[#0e141b]">
-        <img src={swatch(g.hue)} alt={g.label} loading="lazy" className="h-[300px] w-full object-cover md:h-[420px]" />
-        <div className="absolute right-3 top-3 rounded bg-black/60 px-2 py-0.5 text-xs text-white">{idx + 1}/{GAME.gallery.length}</div>
-        <button onClick={() => setIdx((i) => (i - 1 + GAME.gallery.length) % GAME.gallery.length)} className="absolute left-2 top-1/2 -translate-y-1/2 rounded bg-black/50 px-2 py-1 text-white hover:bg-black/70">‹</button>
-        <button onClick={() => setIdx((i) => (i + 1) % GAME.gallery.length)} className="absolute right-2 top-1/2 -translate-y-1/2 rounded bg-black/50 px-2 py-1 text-white hover:bg-black/70">›</button>
-      </div>
-      <div className="hide-scroll mt-2 flex gap-2 overflow-x-auto pb-1">
-        {GAME.gallery.map((t, i) => (
-          <button key={t.id} onClick={() => setIdx(i)} className={'shrink-0 overflow-hidden rounded border ' + (i === idx ? 'border-[#66c0f4]' : 'border-transparent') + ' hover:border-[#66c0f4]'}>
-            <img src={swatch(t.hue)} alt={t.label} loading="lazy" className="h-14 w-24 object-cover" />
-          </button>
-        ))}
-      </div>
-    </section>
-  );
+function Notice({ children, tone = 'warn' }) {
+  const cls = tone === 'warn' ? 'border-[#4a3a22] bg-[#2a2118] text-[#d8c9a8]' : 'border-[#2f6b46] bg-[#14251c] text-[#8fd7a8]';
+  return <div className={'mx-auto max-w-6xl px-4 pt-3'}><div className={'rounded border px-3 py-2 text-[11.5px] ' + cls}>{children}</div></div>;
 }
 
-function PriceBlock() {
-  const left = useCountdown(GAME.promoEnd);
+function Hero({ rec, series }) {
+  const left = useCountdown(rec.promo_end);
+  const pts = (series || []).slice(-8).reverse();
   return (
     <section className="mx-auto max-w-6xl px-4 pt-4">
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-[#2a475e] bg-gradient-to-r from-[#1b2838] to-[#16202d] p-4">
-        <div className="flex items-end gap-3">
-          <span className="text-4xl font-bold text-white">{money(GAME.price)}</span>
-          {GAME.initial > GAME.price && <s className="text-sm text-[#738895]">{money(GAME.initial)}</s>}
-          {GAME.cut > 0 && <span className="rounded bg-[#4c6b22] px-2 py-0.5 text-sm font-bold text-[#a4d007]">-{GAME.cut}%</span>}
-          {GAME.lowest !== null && GAME.price <= GAME.lowest && (
-            <span className="rounded bg-[#1d3b28] px-2 py-0.5 text-xs font-semibold text-[#5ee08a] ring-1 ring-[#2f6b46]">史低 {money(GAME.lowest)}</span>
+      <div className="rounded-lg border border-[#2a475e] bg-gradient-to-br from-[#1b2838] to-[#12202c] p-5">
+        <div className="flex flex-wrap items-end gap-4">
+          <div className="text-5xl font-bold text-white">{money(rec.price, rec.currency) ?? '—'}</div>
+          {rec.initial > rec.price && <s className="pb-1 text-sm text-[#738895]">{money(rec.initial, rec.currency)}</s>}
+          {rec.cut > 0 && <span className="mb-1 rounded bg-[#4c6b22] px-2 py-0.5 text-sm font-bold text-[#a4d007]">-{rec.cut}%</span>}
+          {rec.lowest_price !== null && rec.price !== null && rec.price <= rec.lowest_price && (
+            <span className="mb-1 rounded bg-[#1d3b28] px-2 py-0.5 text-xs font-semibold text-[#5ee08a] ring-1 ring-[#2f6b46]">史低 {money(rec.lowest_price, rec.currency)}</span>
           )}
-          <span className="text-xs text-[#8f98a0]">促销{left}</span>
+          {rec.free_kind === 'limited' && <span className="mb-1 rounded bg-[#12351f] px-2 py-0.5 text-xs text-[#5ee08a]">限时免费</span>}
         </div>
-        <div className="flex items-center gap-3">
-          <div className="rounded bg-[#a83b3b] px-3 py-1.5 text-right">
-            <div className="text-sm font-bold text-white">97.0万 好评</div>
-            <div className="text-[10px] text-white/80">♥ 心愿单</div>
+        <div className="mt-2 flex flex-wrap items-center gap-3 text-[12px] text-[#8f98a0]">
+          <span className="rounded bg-[#2a475e] px-2 py-0.5 text-[#c7d5e0]">{rec.source}</span>
+          {left && <span className="text-[#f5c451]">促销{left}</span>}
+          {rec.promo_end && <span>截止 {new Date(rec.promo_end).toLocaleString('zh-CN', { hour12: false })}</span>}
+          {typeof rec.players_online === 'number' && <span>在线 {rec.players_online.toLocaleString('en-US')}</span>}
+          {rec.url && <a className="text-[#66c0f4] hover:underline" href={rec.url} target="_blank" rel="noopener">打开商店页 ›</a>}
+        </div>
+        {pts.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-[#5b6b78]">
+            <span>价格快照：</span>
+            {pts.map((p) => <span key={p[0]} className="rounded bg-[#1b2838] px-1.5 py-0.5">{p[0]} {money(p[1], rec.currency)}</span>)}
           </div>
-          <button className="rounded bg-[#4c6b22] px-4 py-2 text-sm font-semibold text-[#a4d007] hover:bg-[#5a7f28]">加入愿望单</button>
-        </div>
+        )}
       </div>
     </section>
   );
 }
 
-function BasicInfo({ activeTag, onTag }) {
+function BasicInfo({ rec }) {
   return (
     <section className="mx-auto max-w-6xl px-4 pt-4">
-      <h1 className="text-2xl font-bold text-white">
-        {GAME.nameCn} <span className="ml-2 text-base font-normal text-[#8f98a0]">{GAME.nameEn}</span>
-      </h1>
-      <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
-        {GAME.platforms.map((p) => (
-          <span key={p} className="rounded bg-[#2a475e] px-2 py-0.5 text-[#c7d5e0]">{p}</span>
-        ))}
-        <span className="rounded bg-[#2a475e] px-2 py-0.5 text-[#c7d5e0]">{GAME.languages.join(' · ')}</span>
-        <span className="rounded bg-[#2a475e] px-2 py-0.5 text-[#c7d5e0]">{GAME.players.single ? '单人' : ''}{GAME.players.multi ? ' · 多人' : ''}</span>
-        {GAME.rankBadges.map((b) => (
-          <span key={b} className="rounded bg-[#1b3a4b] px-2 py-0.5 text-[#66c0f4]">{b}</span>
-        ))}
+      <h1 className="text-2xl font-bold text-white">{rec.name || '—'}</h1>
+      <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
+        <span className="rounded bg-[#2a475e] px-2 py-0.5 text-[#c7d5e0]">{rec.source}</span>
+        {rec.supports_zh === true && <span className="rounded bg-[#13351f] px-2 py-0.5 text-[#5ee08a]">中文</span>}
+        {rec.supports_zh === false && <span className="rounded bg-[#2a475e] px-2 py-0.5 text-[#8f98a0]">无中文</span>}
+        {typeof rec.players_online === 'number' && <span className="rounded bg-[#2a475e] px-2 py-0.5 text-[#c7d5e0]">在线 {rec.players_online.toLocaleString('en-US')}</span>}
+        {rec.is_new_low === true && <span className="rounded bg-[#3a2e1d] px-2 py-0.5 text-[#f0ce9a]">新史低</span>}
       </div>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {GAME.tags.map((t) => (
-          <button
-            key={t}
-            onClick={() => onTag(activeTag === t ? null : t)}
-            className={'rounded px-2.5 py-1 text-xs transition ' + (activeTag === t ? 'bg-[#66c0f4] text-[#0e141b]' : 'bg-[#2a475e] text-[#c7d5e0] hover:bg-[#35617f]')}
-          >
-            {t}
-          </button>
-        ))}
-      </div>
+      {(rec.tags || []).length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {rec.tags.map((t) => <span key={t} className="rounded bg-[#2a475e] px-2.5 py-1 text-xs text-[#c7d5e0]">{t}</span>)}
+        </div>
+      )}
     </section>
   );
 }
 
-function Stats() {
+function Stats({ rec, series }) {
+  const cells = [
+    ['现价', money(rec.price, rec.currency)],
+    ['原价', money(rec.initial, rec.currency)],
+    ['折扣', rec.cut > 0 ? '-' + rec.cut + '%' : '—'],
+    ['史低', money(rec.lowest_price, rec.currency)],
+    ['当前在线', typeof rec.players_online === 'number' ? rec.players_online.toLocaleString('en-US') : '—'],
+    ['价格快照', (series || []).length ? (series || []).length + ' 个' : '0 个'],
+    ['媒体评分', dash(rec.metacritic)],
+    ['支持中文', rec.supports_zh === true ? '是' : rec.supports_zh === false ? '否' : '—']
+  ];
   return (
     <section className="mx-auto max-w-6xl px-4 pt-5">
       <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-        {GAME.stats.map((s) => (
-          <div key={s.label} className="rounded border border-[#2a475e] bg-[#1b2838] px-3 py-3 transition hover:-translate-y-0.5 hover:border-[#66c0f4] hover:shadow-lg hover:shadow-black/40">
-            <div className="text-lg font-semibold text-white">{s.value}</div>
-            <div className="mt-0.5 flex items-center gap-1 text-[11px] text-[#8f98a0]">{s.label}{s.hint && <span className="text-[#5b6b78]">{s.hint}</span>}</div>
+        {cells.map(([k, v]) => (
+          <div key={k} className="rounded border border-[#2a475e] bg-[#1b2838] px-3 py-3 transition hover:-translate-y-0.5 hover:border-[#66c0f4] hover:shadow-lg hover:shadow-black/40">
+            <div className="text-lg font-semibold text-white">{v === null || v === undefined ? '—' : v}</div>
+            <div className="mt-0.5 text-[11px] text-[#8f98a0]">{k}</div>
           </div>
         ))}
       </div>
-      <p className="mt-2 text-center text-[11px] text-[#5b6b78]">{GAME.statsNote}</p>
+      <p className="mt-2 text-center text-[11px] text-[#5b6b78]">数据来自各平台公开接口 · 「—」表示该来源没有此字段</p>
     </section>
   );
 }
 
-function Overview() {
+function Overview({ rec }) {
   const [open, setOpen] = useState(false);
+  const has = !!rec.short_desc;
   return (
     <section className="mx-auto max-w-6xl px-4 pt-6">
       <div className="flex items-center justify-between">
         <h2 className="text-base font-semibold text-white">游戏简介</h2>
-        <button onClick={() => setOpen((v) => !v)} className="text-xs text-[#66c0f4] hover:underline">{open ? '收起 ' : '全部 >'}</button>
+        {has && <button onClick={() => setOpen((v) => !v)} className="text-xs text-[#66c0f4] hover:underline">{open ? '收起 ' : '全部 >'}</button>}
       </div>
-      <p className={'mt-2 text-[13px] leading-7 text-[#acb7c2] ' + (open ? '' : 'line-clamp-3')}>{GAME.overview}</p>
+      <p className={'mt-2 text-[13px] leading-7 text-[#acb7c2] ' + (open ? '' : 'line-clamp-3')}>{has ? rec.short_desc : '该来源未提供简介字段（—）。'}</p>
       <dl className="mt-3 grid grid-cols-1 gap-1 text-[12.5px] text-[#8f98a0] md:grid-cols-2">
-        <div className="flex gap-2"><dt>发布时间：</dt><dd className="text-[#c7d5e0]">{GAME.releaseDate}</dd></div>
-        <div className="flex gap-2"><dt>开发商：</dt><dd className="text-[#c7d5e0]">{GAME.developer}</dd></div>
-        <div className="flex gap-2"><dt>发行商：</dt><dd className="text-[#c7d5e0]">{GAME.publisher}</dd></div>
-        <div className="flex gap-2"><dt>媒体评分：</dt><dd className="text-[#c7d5e0]"><span className="rounded bg-[#4c6b22] px-1.5 text-[#a4d007]">{GAME.mediaScore}</span> {GAME.mediaCount} 家综评</dd></div>
+        <div className="flex gap-2"><dt>发行日期：</dt><dd className="text-[#c7d5e0]">{dash(rec.release_date)}</dd></div>
+        <div className="flex gap-2"><dt>开发商：</dt><dd className="text-[#c7d5e0]">{dash(rec.developer)}</dd></div>
+        <div className="flex gap-2"><dt>发行商：</dt><dd className="text-[#c7d5e0]">{dash(rec.publishers)}</dd></div>
+        <div className="flex gap-2"><dt>媒体评分：</dt><dd className="text-[#c7d5e0]">{rec.metacritic !== null && rec.metacritic !== undefined ? <span className="rounded bg-[#4c6b22] px-1.5 text-[#a4d007]">{rec.metacritic}</span> : '—'}</dd></div>
       </dl>
     </section>
   );
 }
 
-function ExtraRows() {
-  const [openKey, setOpenKey] = useState(null);
-  return (
-    <section className="mx-auto max-w-6xl px-4 pt-5">
-      <div className="divide-y divide-[#2a475e] overflow-hidden rounded border border-[#2a475e] bg-[#1b2838]">
-        {GAME.extra.map((r) => (
-          <div key={r.title}>
-            <button onClick={() => setOpenKey(openKey === r.title ? null : r.title)} className="flex w-full items-center gap-3 px-3 py-3 text-left hover:bg-[#223447]">
-              <span>{r.icon}</span>
-              <span className="text-[13px] text-[#c7d5e0]">{r.title}</span>
-              <span className={'ml-auto text-[12.5px] ' + (r.tone === 'bad' ? 'text-[#e07b7b]' : r.tone === 'good' ? 'text-[#5ee08a]' : 'text-[#8f98a0]')}>{r.value}</span>
-              <span className="text-[#5b6b78]">{openKey === r.title ? '▴' : '▾'}</span>
-            </button>
-            {openKey === r.title && (
-              <div className="fade-up px-3 pb-3 text-[12.5px] text-[#8f98a0]">
-                这里是「{r.title}」的展开内容（mock）。真实数据接入后展示官方公告 / 配置检测明细 / 各区域延迟。
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Similar({ activeTag, onTag }) {
-  const list = activeTag ? GAME.similar.filter((s) => GAME.tags.includes(activeTag)) : GAME.similar;
-  return (
-    <section className="mx-auto max-w-6xl px-4 pt-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-base font-semibold text-white">相似游戏</h2>
-        {activeTag && <button onClick={() => onTag(null)} className="text-xs text-[#66c0f4]">清除标签筛选：{activeTag} ×</button>}
-      </div>
-      <div className="hide-scroll mt-3 flex gap-3 overflow-x-auto pb-2">
-        {(list.length ? list : GAME.similar).map((s) => (
-          <div key={s.name} className="w-44 shrink-0 cursor-pointer overflow-hidden rounded border border-[#2a475e] bg-[#1b2838] transition hover:-translate-y-1 hover:border-[#66c0f4] hover:shadow-xl hover:shadow-black/50">
-            <div className="relative">
-              <img src={swatch(s.hue)} alt={s.name} loading="lazy" className="h-24 w-full object-cover" />
-              {s.cut > 0 && <span className="absolute left-1 top-1 rounded bg-[#4c6b22] px-1 text-[10px] font-bold text-[#a4d007]">-{s.cut}%</span>}
-            </div>
-            <div className="p-2">
-              <div className="truncate text-[12.5px] text-[#c7d5e0]">{s.name}</div>
-              <div className="mt-1 flex items-center gap-1.5">
-                <span className="text-[12.5px] font-semibold text-white">{money(s.price)}</span>
-                {s.initial > s.price && <s className="text-[10px] text-[#738895]">{money(s.initial)}</s>}
-                {s.low && <span className="rounded bg-[#1d3b28] px-1 text-[10px] text-[#5ee08a]">史低</span>}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Reviews() {
-  const [sort, setSort] = useState('推荐');
-  const [pages, setPages] = useState(2);
-  const [minHours, setMinHours] = useState(0);
-  const sentinel = useRef(null);
-  const comments = useMemo(() => makeComments(0, pages * 6).filter((c) => c.hours >= minHours), [pages, minHours]);
-
-  useEffect(() => {
-    const el = sentinel.current;
-    if (!el) return;
-    const io = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) setPages((p) => Math.min(p + 1, 12));
-    }, { rootMargin: '200px' });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  const total = GAME.rating.total;
-  const dist = [[5, 0], [4, 0], [3, 0], [2, 0], [1, 0]];
-
-  return (
-    <section className="mx-auto max-w-6xl px-4 pt-8 pb-16">
-      <div className="flex items-center justify-between">
-        <h2 className="text-base font-semibold text-white">游戏评价</h2>
-        <div className="flex gap-1 text-xs">
-          {['推荐', '最新', '有用', '欢乐'].map((t) => (
-            <button key={t} onClick={() => setSort(t)} className={'rounded px-2.5 py-1 ' + (sort === t ? 'bg-[#66c0f4] text-[#0e141b]' : 'bg-[#2a475e] text-[#c7d5e0] hover:bg-[#35617f]')}>{t}</button>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-[280px_1fr]">
-        <div className="rounded border border-[#2a475e] bg-[#1b2838] p-3">
-          <div className="text-sm text-[#8f98a0]">暂无评分</div>
-          <div className="mt-1 text-xs text-[#5b6b78]">{total.toLocaleString('en-US')} 人想玩</div>
-          <div className="mt-3 space-y-1">
-            {dist.map(([star]) => (
-              <div key={star} className="flex items-center gap-2">
-                <span className="w-3 text-[11px] text-[#8f98a0]">{star}</span>
-                <div className="h-1.5 flex-1 rounded bg-[#2a475e]"><div className="h-1.5 rounded bg-[#66c0f4]" style={{ width: '0%' }} /></div>
-                <span className="w-8 text-right text-[11px] text-[#5b6b78]">0%</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded border border-[#2a475e] bg-[#1b2838] p-3">
-          <button className="w-full rounded bg-[#2a475e] py-2 text-sm text-[#c7d5e0] hover:bg-[#35617f]">想玩</button>
-          <div className="mt-2 rounded border border-[#2a475e] px-3 py-2 text-[12.5px] text-[#5b6b78]">说点什么吧…</div>
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-[11.5px] text-[#8f98a0]">
-            <span>游玩时长</span>
-            {[0, 50, 100].map((h) => (
-              <button key={h} onClick={() => setMinHours(h)} className={'rounded px-2 py-0.5 ' + (minHours === h ? 'bg-[#66c0f4] text-[#0e141b]' : 'bg-[#2a475e]')}>{h === 0 ? '全部' : h + 'h+'}</button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-4 space-y-3">
-        {comments.map((c) => (
-          <article key={c.id} className="rounded border border-[#2a475e] bg-[#1b2838] p-3 transition hover:border-[#35617f]">
-            <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded" style={{ background: 'hsl(' + c.avatarHue + ',40%,35%)' }} />
-              <div>
-                <div className="text-[13px] text-[#c7d5e0]">{c.user}</div>
-                <div className="text-[11px] text-[#5b6b78]">{c.hours}h · {c.date} {c.rating && <span className="text-[#e07b7b]">· {c.rating}</span>}</div>
-              </div>
-            </div>
-            <p className="mt-2 text-[13px] leading-6 text-[#acb7c2]">{c.text}</p>
-            <div className="mt-2 flex flex-wrap gap-3 text-[11.5px] text-[#8f98a0]">
-              <span>👍 有用 {c.useful}</span><span>👎 没用 {c.useless}</span><span>😄 欢乐 {c.funny}</span><span>💬 讨论 {c.replies}</span>
-            </div>
-          </article>
-        ))}
-        <div ref={sentinel} className="py-6 text-center text-[12px] text-[#5b6b78]">加载更多评论…</div>
-      </div>
-    </section>
-  );
-}
-
-function ResultChart({ item }) {
-  const pts = SERIES;
-  const W = 620, H = 150, padL = 36, padR = 10, padT = 10, padB = 22;
-  const ys = pts.map((p) => p.players);
+function PriceChart({ series }) {
+  const pts = (series || []).filter((p) => typeof p[1] === 'number' && p[1] > 0);
+  const W = 620, H = 170, padL = 42, padR = 14, padT = 14, padB = 26;
+  if (pts.length < 2) {
+    return <div className="rounded border border-[#2a475e] bg-[#1b2838] p-4 text-[12px] text-[#5b6b78]">价格历史积累中：当前 {pts.length} 个快照，满 2 天后自动生成曲线。</div>;
+  }
+  const ys = pts.map((p) => p[1]);
   const min = Math.min(...ys), max = Math.max(...ys);
   const x = (i) => padL + (W - padL - padR) * (i / (pts.length - 1));
   const y = (v) => padT + (H - padT - padB) * (1 - (v - min) / (max - min || 1));
-  const poly = pts.map((p, i) => x(i) + ',' + y(p.players)).join(' ');
   return (
-    <svg viewBox={'0 0 ' + W + ' ' + H} className="h-40 w-full">
-      {[0, 0.5, 1].map((t) => (
-        <line key={t} x1={padL} y1={padT + (H - padT - padB) * t} x2={W - padR} y2={padT + (H - padT - padB) * t} stroke="#2a475e" />
-      ))}
-      <polyline points={poly} fill="none" stroke="#66c0f4" strokeWidth="2" />
-      <text x={padL} y={H - 6} fill="#5b6b78" fontSize="10">{pts[0].date}</text>
-      <text x={W - padR} y={H - 6} fill="#5b6b78" fontSize="10" textAnchor="end">{pts[pts.length - 1].date}</text>
-      <text x={4} y={padT + 8} fill="#5b6b78" fontSize="10">{Math.round(max / 1000)}k</text>
-      <text x={4} y={H - padB} fill="#5b6b78" fontSize="10">{Math.round(min / 1000)}k</text>
-    </svg>
+    <div className="rounded border border-[#2a475e] bg-[#1b2838] p-2">
+      <svg viewBox={'0 0 ' + W + ' ' + H} className="h-44 w-full">
+        {[0, 0.5, 1].map((t) => <line key={t} x1={padL} y1={padT + (H - padT - padB) * t} x2={W - padR} y2={padT + (H - padT - padB) * t} stroke="#2a475e" />)}
+        <polyline points={pts.map((p, i) => x(i) + ',' + y(p[1])).join(' ')} fill="none" stroke="#66c0f4" strokeWidth="2" />
+        {pts.map((p, i) => <circle key={p[0]} cx={x(i)} cy={y(p[1])} r="2.5" fill="#66c0f4" />)}
+        <text x="4" y={padT + 8} fill="#5b6b78" fontSize="10">{max}</text>
+        <text x="4" y={H - padB} fill="#5b6b78" fontSize="10">{min}</text>
+        <text x={padL} y={H - 6} fill="#5b6b78" fontSize="10">{pts[0][0]}</text>
+        <text x={W - padR} y={H - 6} fill="#5b6b78" fontSize="10" textAnchor="end">{pts[pts.length - 1][0]}</text>
+      </svg>
+    </div>
   );
 }
 
-function SearchOverlay({ open, onClose }) {
+function HistorySection({ rec, series }) {
+  const rows = (series || []).slice().reverse();
+  return (
+    <section className="mx-auto max-w-6xl px-4 pt-6">
+      <h2 className="text-base font-semibold text-white">价格历史 <span className="ml-2 text-[11px] font-normal text-[#5b6b78]">来自每日快照（真实数据）</span></h2>
+      <div className="mt-3 grid gap-3 md:grid-cols-[1fr_320px]">
+        <PriceChart series={series} />
+        <div className="overflow-hidden rounded border border-[#2a475e] bg-[#1b2838]">
+          <table className="w-full text-[12px]">
+            <thead><tr className="text-[#8f98a0]"><th className="px-3 py-2 text-left font-normal">日期</th><th className="px-3 py-2 text-left font-normal">价格</th><th className="px-3 py-2 text-left font-normal">在线</th></tr></thead>
+            <tbody>
+              {rows.length ? rows.map((r) => (
+                <tr key={r[0]} className="border-t border-[#223447]">
+                  <td className="px-3 py-1.5 text-[#c7d5e0]">{r[0]}</td>
+                  <td className="px-3 py-1.5">{money(r[1], rec.currency)}</td>
+                  <td className="px-3 py-1.5 text-[#8f98a0]">{r[2] === null || r[2] === undefined ? '—' : r[2].toLocaleString('en-US')}</td>
+                </tr>
+              )) : <tr><td colSpan="3" className="px-3 py-6 text-center text-[#5b6b78]">暂无快照</td></tr>}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Similar({ rec, items }) {
+  const list = useMemo(() => {
+    if (!rec) return [];
+    const tags = new Set(rec.tags || []);
+    return items
+      .filter((i) => !(i.source === rec.source && String(i.id) === String(rec.id)))
+      .filter((i) => (i.tags || []).some((t) => tags.has(t)) || i.source === rec.source)
+      .sort((a, b) => (b.cut || 0) - (a.cut || 0))
+      .slice(0, 10);
+  }, [rec, items]);
+  if (!list.length) return null;
+  return (
+    <section className="mx-auto max-w-6xl px-4 pt-6">
+      <h2 className="text-base font-semibold text-white">相似游戏 <span className="ml-2 text-[11px] font-normal text-[#5b6b78]">按真实标签/同来源匹配</span></h2>
+      <div className="hide-scroll mt-3 flex gap-3 overflow-x-auto pb-2">
+        {list.map((s) => (
+          <a key={s.source + ':' + s.id} href={'?key=' + encodeURIComponent(s.source + ':' + s.id)}
+             className="w-44 shrink-0 overflow-hidden rounded border border-[#2a475e] bg-[#1b2838] transition hover:-translate-y-1 hover:border-[#66c0f4] hover:shadow-xl hover:shadow-black/50">
+            <div className="flex h-20 items-center justify-center bg-gradient-to-br from-[#20303f] to-[#141d26] text-lg font-bold text-[#3f5566]">{String(s.name).slice(0, 1)}</div>
+            <div className="p-2">
+              <div className="truncate text-[12.5px] text-[#c7d5e0]">{s.name}</div>
+              <div className="mt-1 flex items-center gap-1.5">
+                <span className="text-[12.5px] font-semibold text-white">{money(s.price, s.currency)}</span>
+                {s.initial > s.price && <s className="text-[10px] text-[#738895]">{money(s.initial, s.currency)}</s>}
+                {s.cut > 0 && <span className="rounded bg-[#4c6b22] px-1 text-[10px] text-[#a4d007]">-{s.cut}%</span>}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function SearchOverlay({ open, onClose, index }) {
   const [q, setQ] = useState('');
-  const [sel, setSel] = useState(CATALOG[0]);
+  const [sel, setSel] = useState(null);
+  const hits = useMemo(() => {
+    const pool = index || [];
+    if (!q) return pool.slice(0, 40);
+    return pool.filter((r) => String(r.n).toLowerCase().includes(q.toLowerCase())).slice(0, 40);
+  }, [q, index]);
   if (!open) return null;
-  const hits = q ? CATALOG.filter((c) => c.n.toLowerCase().includes(q.toLowerCase())) : CATALOG;
+  const cur = sel || hits[0];
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 p-4 md:p-10" onClick={onClose}>
       <div className="w-full max-w-5xl overflow-hidden rounded-lg border border-[#2a475e] bg-[#16202d]" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 border-b border-[#2a475e] p-3">
           <Icon d="M21 21l-4.3-4.3M11 18a7 7 0 100-14 7 7 0 000 14z" className="h-4 w-4 text-[#8f98a0]" />
-          <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="搜索全部数据源（Steam / Epic / GOG / App Store）" className="w-full bg-transparent text-sm text-[#c7d5e0] outline-none placeholder:text-[#5b6b78]" />
+          <input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="搜索全部数据源（索引来自 search-index.json）" className="w-full bg-transparent text-sm text-[#c7d5e0] outline-none placeholder:text-[#5b6b78]" />
           <button onClick={onClose} className="text-[#8f98a0] hover:text-white">关闭 ×</button>
         </div>
-        <div className="grid max-h-[70vh] grid-cols-1 md:grid-cols-[300px_1fr]">
+        <div className="grid max-h-[70vh] grid-cols-1 md:grid-cols-[320px_1fr]">
           <div className="hide-scroll max-h-[70vh] overflow-auto border-b border-[#2a475e] md:border-b-0 md:border-r">
-            <div className="px-3 py-2 text-[11px] text-[#5b6b78]">命中 {hits.length} 条</div>
+            <div className="px-3 py-2 text-[11px] text-[#5b6b78]">索引 {index.length} 条 · 命中 {hits.length}</div>
             {hits.map((c) => (
-              <button key={c.s + c.i} onClick={() => setSel(c)} className={'flex w-full items-center gap-2 px-3 py-2 text-left text-[12.5px] ' + (sel && sel.i === c.i ? 'bg-[#2a475e] text-white' : 'text-[#c7d5e0] hover:bg-[#223447]')}>
+              <button key={c.s + c.i} onClick={() => setSel(c)} className={'flex w-full items-center gap-2 px-3 py-2 text-left text-[12.5px] ' + (cur && cur.i === c.i ? 'bg-[#2a475e] text-white' : 'text-[#c7d5e0] hover:bg-[#223447]')}>
                 <span className="flex-1 truncate">{c.n}</span>
                 <span className="shrink-0 rounded bg-[#1b2838] px-1.5 text-[10px] text-[#8f98a0]">{c.s}</span>
-                <span className="shrink-0 text-[11px] text-[#8f98a0]">{money(c.p)}</span>
+                <span className="shrink-0 text-[11px] text-[#8f98a0]">{money(c.p) ?? '—'}</span>
               </button>
             ))}
             {!hits.length && <div className="px-3 py-6 text-center text-[12px] text-[#5b6b78]">没有匹配结果</div>}
           </div>
           <div className="max-h-[70vh] overflow-auto p-4">
-            {sel ? (
+            {cur ? (
               <>
-                <div className="flex items-baseline gap-2">
-                  <h3 className="text-lg font-semibold text-white">{sel.n}</h3>
-                  <span className="rounded bg-[#2a475e] px-1.5 text-[10px] text-[#8f98a0]">{sel.s}</span>
-                </div>
+                <div className="flex items-baseline gap-2"><h3 className="text-lg font-semibold text-white">{cur.n}</h3><span className="rounded bg-[#2a475e] px-1.5 text-[10px] text-[#8f98a0]">{cur.s}</span></div>
                 <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-4">
-                  {[
-                    ['当前价', money(sel.p)],
-                    ['原价', money(sel.o)],
-                    ['折扣', sel.c > 0 ? '-' + sel.c + '%' : '—'],
-                    ['史低', sel.lo ? money(sel.lo) : '—']
-                  ].map(([k, v]) => (
-                    <div key={k} className="rounded border border-[#2a475e] bg-[#1b2838] px-3 py-2">
-                      <div className="text-base font-semibold text-white">{v}</div>
-                      <div className="text-[10.5px] text-[#8f98a0]">{k}</div>
-                    </div>
+                  {[['当前价', money(cur.p)], ['原价', money(cur.o)], ['折扣', cur.c > 0 ? '-' + cur.c + '%' : '—'], ['史低', money(cur.lo)]].map(([k, v]) => (
+                    <div key={k} className="rounded border border-[#2a475e] bg-[#1b2838] px-3 py-2"><div className="text-base font-semibold text-white">{v === null || v === undefined ? '—' : v}</div><div className="text-[10.5px] text-[#8f98a0]">{k}</div></div>
                   ))}
                 </div>
-                <div className="mt-3 rounded border border-[#2a475e] bg-[#1b2838] p-2">
-                  <div className="mb-1 flex items-center justify-between text-[11px] text-[#5b6b78]">
-                    <span>在线人数趋势（近 30 天 · mock）</span>
-                    <span>Steam charts 风格</span>
-                  </div>
-                  <ResultChart item={sel} />
-                </div>
-                <table className="mt-3 w-full text-[12px]">
-                  <tbody>
-                    {[
-                      ['平台', sel.s],
-                      ['当前价', money(sel.p)],
-                      ['原价', money(sel.o)],
-                      ['折扣', sel.c > 0 ? '-' + sel.c + '%' : '—'],
-                      ['史低', sel.lo ? money(sel.lo) : '—'],
-                      ['在线人数', sel.pl ? sel.pl.toLocaleString('en-US') : '—'],
-                      ['标签', (sel.tg || []).join('、') || '—']
-                    ].map(([k, v]) => (
-                      <tr key={k} className="border-b border-[#223447]">
-                        <th className="w-28 py-1.5 text-left font-normal text-[#8f98a0]">{k}</th>
-                        <td className="py-1.5 text-[#c7d5e0]">{v}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <table className="mt-3 w-full text-[12px]"><tbody>
+                  {[['开发商', dash(cur.dv)], ['发行商', dash(cur.pb)], ['发行日期', dash(cur.rd)], ['媒体评分', dash(cur.mc)], ['在线人数', cur.pl ? cur.pl.toLocaleString('en-US') : '—'], ['标签', (cur.tg || []).join('、') || '—']].map(([k, v]) => (
+                    <tr key={k} className="border-b border-[#223447]"><th className="w-28 py-1.5 text-left font-normal text-[#8f98a0]">{k}</th><td className="py-1.5 text-[#c7d5e0]">{v}</td></tr>
+                  ))}
+                </tbody></table>
+                <a className="mt-3 inline-block text-[12.5px] text-[#66c0f4] hover:underline" href={'?key=' + encodeURIComponent(cur.s + ':' + cur.i)}>在详情页打开 ›</a>
               </>
-            ) : <div className="text-[12px] text-[#5b6b78]">选择左侧条目查看详情</div>}
+            ) : <div className="text-[12px] text-[#5b6b78]">无结果</div>}
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-function LiveBar() {
-  const [live, setLive] = useState(null);
-  const [err, setErr] = useState(false);
-  useEffect(() => {
-    const key = new URLSearchParams(location.search).get('key');
-    fetch('../latest.json')
-      .then((r) => (r.ok ? r.json() : null))
-      .then((doc) => {
-        if (!doc || !Array.isArray(doc.items)) { setErr(true); return; }
-        const all = doc.items.map((i) => ({ key: i.source + ':' + i.id, ...i }));
-        const hit = key ? all.find((x) => x.key === key) : all[0];
-        setLive(hit || null);
-        if (!hit) setErr(true);
-      })
-      .catch(() => setErr(true));
-  }, []);
-  if (!live) {
-    return (
-      <div className="mx-auto max-w-6xl px-4 pt-3">
-        <div className="rounded border border-[#4a3a22] bg-[#2a2118] px-3 py-2 text-[11.5px] text-[#d8c9a8]">
-          {err ? '未取到实时数据，当前展示示例数据（mock）' : '正在读取实时数据…'}
-        </div>
-      </div>
-    );
-  }
-  return (
-    <div className="mx-auto max-w-6xl px-4 pt-3">
-      <div className="flex flex-wrap items-center gap-2 rounded border border-[#2f6b46] bg-[#14251c] px-3 py-2 text-[11.5px] text-[#8fd7a8]">
-        <span className="rounded bg-[#1d3b28] px-1.5 text-[#5ee08a]">实时</span>
-        <span className="text-[#c7d5e0]">{live.name}</span>
-        <span>·</span><span>{live.source}</span>
-        <span>·</span><span>现价 {live.price === 0 ? '免费' : '¥' + live.price}</span>
-        {live.cut > 0 && <span className="text-[#ff8a80]">-{live.cut}%</span>}
-        {live.promo_end && <span>· 截止 {new Date(live.promo_end).toLocaleString('zh-CN', { hour12: false })}</span>}
-        {typeof live.players_online === 'number' && <span>· 在线 {live.players_online.toLocaleString('en-US')}</span>}
-        <span className="ml-auto text-[#5b6b78]">数据来自 game-price-radar/latest.json（详情页其余卡片为 mock）</span>
       </div>
     </div>
   );
 }
 
 export default function App() {
-  const [tag, setTag] = useState(null);
+  const state = useData();
   const [searchOpen, setSearchOpen] = useState(false);
+  const resolved = useMemo(() => resolveItem(state), [state]);
+  const rec = resolved && resolved.rec;
+  const series = rec ? state.series[rec.source + ':' + rec.id] || [] : [];
+
+  if (state.loading) return <div className="p-10 text-center text-sm text-[#8f98a0]">加载中…</div>;
+  if (!rec) return (
+    <div className="p-10 text-center text-sm text-[#8f98a0]">
+      没找到条目（key={state.key || '空'}）<br /><a className="mt-3 inline-block text-[#66c0f4]" href="../">返回列表 ›</a>
+    </div>
+  );
+
   return (
-    <div className="min-h-screen">
-      <TopNav onSearch={() => setSearchOpen(true)} />
-      <LiveBar />
-      <Gallery />
-      <PriceBlock />
-      <BasicInfo activeTag={tag} onTag={setTag} />
-      <Stats />
-      <Overview />
-      <ExtraRows />
-      <Similar activeTag={tag} onTag={setTag} />
-      <Reviews />
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+    <div className="min-h-screen pb-16">
+      <TopNav name={rec.name} onSearch={() => setSearchOpen(true)} />
+      {resolved.partial && <Notice>该条目只在搜索索引中（今日未在榜），部分字段可能缺失。</Notice>}
+      {state.error && <Notice>{state.error}</Notice>}
+      <Notice tone="ok">真实数据 · 抓取时间 {state.generatedAt || '—'}（北京） · 来源 {rec.source} · 索引 {state.index.length} 条</Notice>
+      <Hero rec={rec} series={series} />
+      <BasicInfo rec={rec} />
+      <Stats rec={rec} series={series} />
+      <Overview rec={rec} />
+      <HistorySection rec={rec} series={series} />
+      <Similar rec={rec} items={state.items} />
+      <section className="mx-auto max-w-6xl px-4 pt-8">
+        <h2 className="text-base font-semibold text-white">玩家评价</h2>
+        <div className="mt-2 rounded border border-[#2a475e] bg-[#1b2838] p-4 text-[12.5px] text-[#8f98a0]">
+          该字段**无可用的公开接口**（各平台均不提供评论 API），因此本页不再展示示例评论。价格与在线数据均为真实抓取结果。
+        </div>
+      </section>
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} index={state.index} />
     </div>
   );
 }
