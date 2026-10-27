@@ -373,7 +373,9 @@
       ['折扣', d.cut > 0 ? '-' + d.cut + '%' : '—', ''],
       ['平台', PLAT[plat] || d.source, '']
     ];
-    if (d.lowest !== null && d.lowest !== undefined) infoCards.push(['史低', '¥' + d.lowest, '']);
+    var hasCut = d.cut > 0 && d.initial && d.initial > d.price;
+    var lowMatters = d.lowest !== null && d.lowest !== undefined && (hasCut || d.lowest < d.price);
+    if (lowMatters) infoCards.push(['史低', '¥' + d.lowest, '']);
     var info = document.getElementById('mCards');
     info.className = 'cards4' + (infoCards.length === 3 ? ' n3' : '');
     info.innerHTML = infoCards.map(function (c) {
