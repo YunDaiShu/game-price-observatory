@@ -41,7 +41,10 @@ function card(it) {
       + '<span class="price">' + sym + it.price + '</span>');
 
   const meta = [];
-  if (it.lowest_price !== null && it.lowest_price !== undefined && it.price > 0) {
+  const discounted = it.cut > 0 && it.initial && it.initial > it.price;
+  const lowMeaningful = it.lowest_price !== null && it.lowest_price !== undefined && it.price > 0
+    && (discounted || it.lowest_price < it.price);   // 无折扣且史低=现价时是废话，不显示
+  if (lowMeaningful) {
     meta.push('<span>史低 ' + sym + it.lowest_price + '</span>');
   }
   if (endText) {
