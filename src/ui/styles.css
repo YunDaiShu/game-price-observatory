@@ -151,3 +151,9 @@ footer a{color:var(--text-link);text-decoration:none}
 @media (max-width:1023px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.skeleton{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:767px){:root{--ch:220px}.wrap{padding:0 12px 40px}.grid{grid-template-columns:1fr}.skeleton{grid-template-columns:1fr}.search{width:100%;margin-left:0;order:3}.brand h1{font-size:20px}.tabs{gap:var(--space-md);overflow-x:auto}.cards4,.cards4.n3{grid-template-columns:repeat(2,1fr)}.showings{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+
+/* ===== Tab 切换：进场动画（FLIP 位移由 JS 处理） ===== */
+@keyframes cardEnter{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
+.card--enter{animation:cardEnter 240ms cubic-bezier(.22,.61,.36,1) both;pointer-events:none}
+.m-cover{transition:background-image 200ms ease;background-size:cover;background-position:center}
