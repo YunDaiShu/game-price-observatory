@@ -1,274 +1,327 @@
-<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>免费游戏雷达 · 限免 / 折扣 / 史低</title>
-<style>
-:root{--bg:#f5f6f5;--panel:#fff;--line:#e4e7e4;--fg:#1b1f23;--dim:#6b7280;--muted:#9aa3ac;--hot:#e0393e;--free:#0f9d58;--chip:#eef1ee}
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>免费游戏雷达 · 限免 / 折扣 / 史低</title><style>:root{--bg:#f7f8fa;--bg2:#ffffff;--panel:#ffffff;--panel2:#eef1f8;--line:#e5e8ef;--fg:#1a1a1a;--dim:#5b6472;--muted:#8b94a3;--brand:#4d6bfe;--brand-soft:#eaeefe;--hot:#e5484d;--free:#12a150;--gold:#b7791f;--ch:178px}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.wrap{max-width:1160px;margin:0 auto;padding:0 18px 56px}
-header{padding:30px 0 6px}
-h1{margin:0;font-size:24px;letter-spacing:.02em}
-.sub{color:var(--dim);font-size:12.5px;margin-top:6px}
-.stats{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 0;font-size:12.5px;color:var(--dim)}
-.stats b{color:var(--fg);font-size:15px;margin-right:3px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 14px;align-items:center}
-.chip{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:inherit;transition:background .12s,border-color .12s}
-.chip{transition:background .14s ease,border-color .14s ease,transform .1s ease,color .14s ease}
-.chip:hover{border-color:#c8cfc8}
-.chip:active{transform:scale(.97)}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.55 "PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px 56px}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--line)}
+.topbar .in{max-width:1200px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+h1{margin:0;font-size:17px;font-weight:700;color:var(--fg)}
+h1 span{color:var(--muted);font-weight:400;font-size:12px;margin-left:8px}
+.search{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 11px;min-width:230px;transition:border-color .15s,box-shadow .15s}
+.search:focus-within{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.search input{background:transparent;border:0;outline:0;color:var(--fg);font:inherit;width:100%;font-size:13px}
+.search input::placeholder{color:var(--muted)}
+.search svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;flex:none}
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0 0;font-size:12.5px;color:var(--dim)}
+.stats b{color:var(--fg);font-size:14px;margin-right:3px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 10px}
+.chip{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--dim);border-radius:999px;padding:6px 13px;font-size:12.5px;cursor:pointer;font-family:inherit;transition:all .14s ease}
+.chip:hover{border-color:#c3cbe0;color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600;box-shadow:0 2px 8px rgba(77,107,254,.28)}
 .chip .n{color:var(--muted);margin-left:5px;font-variant-numeric:tabular-nums}
-.chip[aria-pressed="true"]{background:#1b1f23;border-color:#1b1f23;color:#fff}
-.chip[aria-pressed="true"] .n{color:#b9c2bb}
-.showing{margin-left:auto;color:var(--dim);font-size:12.5px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(242px,1fr));gap:10px}
-@keyframes enter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.card.enter{animation:enter .26s ease both}
-.empty{grid-column:1/-1;background:var(--panel);border:1px dashed var(--line);border-radius:10px;padding:34px 16px;text-align:center;color:var(--muted);font-size:13px}
-.filters{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,var(--bg) 78%,rgba(245,246,245,0))}
-@media (max-width:640px){
-  .wrap{padding:0 12px 40px}
-  h1{font-size:20px}
-  .stats{gap:12px;font-size:12px}
-  .filters{gap:6px;padding:8px 0}
-  .chip{padding:6px 11px;font-size:12.5px}
-  .showing{width:100%;margin:2px 0 0;text-align:left}
-  .grid{grid-template-columns:1fr;gap:8px}
-  .card{padding:12px 13px 11px}
-  .card h3{font-size:14px}
-  .price b{font-size:15.5px}
-}
-@media (prefers-reduced-motion: reduce){
-  .card,.chip{transition:none!important;animation:none!important}
-}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 15px 13px;display:flex;flex-direction:column;gap:9px}
-.card[hidden]{display:none}
-.card{border-left:3px solid var(--line)}
-.card.s-steam{border-left-color:#6f9bd6}
-.card.s-epic{border-left-color:#8a76e0}
-.card.s-gog{border-left-color:#c9789a}
-.card.s-appstore{border-left-color:#e0a95f}
-.card.is-free{border-left-color:var(--free)}
+.chip[aria-pressed="true"] .n{color:rgba(255,255,255,.82)}
 .toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
 .seg{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.sbtn{appearance:none;border:0;background:transparent;padding:7px 12px;font-size:12.5px;color:var(--dim);cursor:pointer;font-family:inherit;transition:background .12s,color .12s}
+.sbtn{appearance:none;border:0;background:transparent;padding:6px 12px;font-size:12.5px;color:var(--dim);cursor:pointer;font-family:inherit;transition:background .12s,color .12s}
 .sbtn+.sbtn{border-left:1px solid var(--line)}
 .sbtn:hover{color:var(--fg)}
-.sbtn[aria-pressed="true"]{background:#1b1f23;color:#fff}
-.toggle{appearance:none;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:7px 12px;font-size:12.5px;color:var(--dim);cursor:pointer;font-family:inherit;transition:all .12s}
-.toggle:hover{border-color:#bfe3cd;color:#0f7a44}
-.toggle[aria-pressed="true"]{background:#e6f6ec;border-color:#bfe3cd;color:#0f7a44;font-weight:600}
-.card:focus-within{outline:2px solid #b7cdb9;outline-offset:2px}
-.card h3 a:focus-visible{outline:2px solid #6b8f6f;outline-offset:2px;border-radius:3px}
-@media (max-width:1024px){.grid{grid-template-columns:repeat(auto-fill,minmax(228px,1fr))}}
-@media (min-width:641px) and (max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
-.card{transition:opacity .16s ease,transform .16s ease,box-shadow .16s ease}
-.card:hover{box-shadow:0 4px 14px rgba(16,24,16,.09);transform:translateY(-2px)}
-.card.fade-out{opacity:0;transform:translateY(6px) scale(.985)}
-.card.is-free{border-color:#bfe3cd;box-shadow:inset 3px 0 0 var(--free)}
-.card-top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
-.card h3{margin:0;font-size:14.5px;font-weight:600;line-height:1.42}
-.card h3 a{color:inherit;text-decoration:none}
-.card h3 a:hover{color:#0b6b3a;text-decoration:underline}
-.price{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums;flex:none}
-.price b{font-size:16px}
-.price b.free{color:var(--free)}
-.price s{color:var(--muted);font-size:11.5px;margin-left:5px}
-.price .cut{color:var(--hot);font-size:12px;font-weight:700;margin-left:5px}
-.badges{display:flex;gap:6px;flex-wrap:wrap}
-.badges span{font-size:11px;line-height:1.7;border-radius:4px;padding:0 6px;border:1px solid transparent}
-.b-src{background:var(--chip);color:#4b5563}
-.b-src.s-epic{background:#f0eefc;color:#5b46c4}
-.b-src.s-gog{background:#f7eef1;color:#a3415f}
-.b-src.s-steam{background:#eaf1fb;color:#2c5d9b}
-.b-src.s-steampy{background:#fdf0e6;color:#a05a1f}
-.b-free{background:#e6f6ec;color:#0f7a44;border-color:#bfe3cd}
-.b-zh{background:#eef4ff;color:#2c5d9b}
-.b-low{background:#fff5e0;color:#8a6100;border-color:#f2dca8}
-.meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--dim);font-size:12px}
-.meta .cd{color:#8a6100;font-variant-numeric:tabular-nums}
-.tags{display:flex;gap:5px;flex-wrap:wrap}
-.tags span{font-size:11px;color:var(--dim);background:#f6f7f6;border-radius:4px;padding:1px 6px}
-.na{color:var(--muted)}
-.notice{margin-top:22px;background:#fffaf0;border:1px solid #f0e0bf;border-left:3px solid #d9a300;border-radius:0 8px 8px 0;padding:12px 16px;font-size:12.5px}
-.notice h2{margin:0 0 6px;font-size:13px;color:#7a5b00}
-.notice ul{margin:0;padding-left:18px;color:#5f5745}
-footer{margin-top:28px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:11.5px;line-height:1.9}
-footer a{color:#6b7280}
-</style></head>
-<body><div class="wrap">
-<header>
-  <h1>免费游戏雷达</h1>
-  <div class="sub">限免 · 折扣 · 史低 ｜ 抓取 2026-10-27T07:16:41.615Z（北京 2026-10-27 15:16）· 区服 CN</div>
-  <div class="stats">
-    <span><b>52</b>在榜</span>
-    <span><b>2</b>限免</span>
-    <span><b>0</b>新史低</span>
-    <span><b>0</b>来源异常</span>
-  </div>
-</header>
-
-<div class="filters" role="group" aria-label="按来源筛选">
-  <button class="chip" type="button" data-group="all" aria-pressed="true">全部<span class="n">52</span></button><button class="chip" type="button" data-group="steam" aria-pressed="false">Steam<span class="n">18</span></button><button class="chip" type="button" data-group="epic" aria-pressed="false">Epic<span class="n">12</span></button><button class="chip" type="button" data-group="gog" aria-pressed="false">GOG<span class="n">15</span></button><button class="chip" type="button" data-group="appstore" aria-pressed="false">App Store<span class="n">7</span></button>
-</div>
-<div class="toolbar">
-  <div class="seg" role="group" aria-label="排序">
-    <button class="sbtn" type="button" data-sort="cut" aria-pressed="true">折扣</button>
-    <button class="sbtn" type="button" data-sort="price" aria-pressed="false">价格</button>
-    <button class="sbtn" type="button" data-sort="players" aria-pressed="false">在线</button>
-    <button class="sbtn" type="button" data-sort="end" aria-pressed="false">截止</button>
-  </div>
-  <button class="toggle" type="button" id="onlyFree" aria-pressed="false">只看限免</button>
-  <span class="showing" id="showing">显示 52 / 52</span>
-</div>
-
-<main class="grid" id="grid">
-<article class="card s-epic is-free" data-group="epic" data-cut="100" data-price="0" data-players="-1" data-end="1793286000000" data-free="1"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/home-19212a" target="_blank" rel="noopener">Home - A Unique Horror Adventure</a></h3><div class="price"><b class="free">免费</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span><span class="b-free">限免</span></div><div class="meta"><span class="cd" data-end="2026-10-29T15:00:00.000Z">截止时间计算中</span></div></article><article class="card s-epic is-free" data-group="epic" data-cut="100" data-price="0" data-players="-1" data-end="1793286000000" data-free="1"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/sker-ritual-aac702" target="_blank" rel="noopener">Sker Ritual</a></h3><div class="price"><b class="free">免费</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span><span class="b-free">限免</span></div><div class="meta"><span class="cd" data-end="2026-10-29T15:00:00.000Z">截止时间计算中</span></div></article><article class="card s-gog" data-group="gog" data-cut="96" data-price="2" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/the_black_within" target="_blank" rel="noopener">The Black Within</a></h3><div class="price"><b>¥2</b><s>¥49</s><span class="cut">-96%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥2</span></div><div class="tags"><span>Adventure</span><span>Simulation</span><span>Horror</span></div></article><article class="card s-gog" data-group="gog" data-cut="96" data-price="2" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/the_green_light" target="_blank" rel="noopener">The Green Light</a></h3><div class="price"><b>¥2</b><s>¥49</s><span class="cut">-96%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥2</span></div><div class="tags"><span>Indie</span><span>Story Rich</span><span>Atmospheric</span></div></article><article class="card s-gog" data-group="gog" data-cut="96" data-price="2" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/the_way" target="_blank" rel="noopener">The Way</a></h3><div class="price"><b>¥2</b><s>¥48</s><span class="cut">-96%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥2</span></div><div class="tags"><span>Adventure</span><span>Indie</span><span>Story Rich</span></div></article><article class="card s-gog" data-group="gog" data-cut="95" data-price="1" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/atlantis_3_the_new_world" target="_blank" rel="noopener">Atlantis 3: The New World</a></h3><div class="price"><b>¥1</b><s>¥20</s><span class="cut">-95%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥1</span></div><div class="tags"><span>Adventure</span><span>Puzzle</span><span>Classic</span></div></article><article class="card s-gog" data-group="gog" data-cut="95" data-price="3" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/euphoria_supreme_mechanics" target="_blank" rel="noopener">Euphoria: Supreme Mechanics</a></h3><div class="price"><b>¥3</b><s>¥59</s><span class="cut">-95%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥3</span></div><div class="tags"><span>Adventure</span><span>Indie</span><span>Atmospheric</span></div></article><article class="card s-gog" data-group="gog" data-cut="95" data-price="2" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/flashback" target="_blank" rel="noopener">Flashback™</a></h3><div class="price"><b>¥2</b><s>¥37</s><span class="cut">-95%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥2</span></div><div class="tags"><span>Adventure</span><span>Action</span><span>Atmospheric</span></div></article><article class="card s-gog" data-group="gog" data-cut="95" data-price="5" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/war_hospital" target="_blank" rel="noopener">War Hospital</a></h3><div class="price"><b>¥5</b><s>¥108</s><span class="cut">-95%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥5</span></div><div class="tags"><span>Strategy</span><span>Dark</span><span>Choices Matter</span></div></article><article class="card s-gog" data-group="gog" data-cut="95" data-price="8" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/warhammer_chaosbane" target="_blank" rel="noopener">Warhammer: Chaosbane</a></h3><div class="price"><b>¥8</b><s>¥176</s><span class="cut">-95%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥8</span></div><div class="tags"><span>Action</span><span>Fantasy</span><span>Role-playing</span></div></article><article class="card s-gog" data-group="gog" data-cut="93" data-price="3" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/alice_vr" target="_blank" rel="noopener">Alice VR</a></h3><div class="price"><b>¥3</b><s>¥42</s><span class="cut">-93%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥3</span></div><div class="tags"><span>Adventure</span><span>Indie</span><span>Story Rich</span></div></article><article class="card s-gog" data-group="gog" data-cut="93" data-price="5" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/cyberpunk_sfx" target="_blank" rel="noopener">Cyberpunk SFX</a></h3><div class="price"><b>¥5</b><s>¥67</s><span class="cut">-93%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥5</span></div><div class="tags"><span>Adventure</span><span>Action</span><span>Indie</span></div></article><article class="card s-gog" data-group="gog" data-cut="93" data-price="5" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/dex" target="_blank" rel="noopener">Dex</a></h3><div class="price"><b>¥5</b><s>¥68</s><span class="cut">-93%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥5</span></div><div class="tags"><span>Action</span><span>Indie</span><span>Story Rich</span></div></article><article class="card s-gog" data-group="gog" data-cut="93" data-price="7" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/jet_kave_adventure" target="_blank" rel="noopener">Jet Kave Adventure</a></h3><div class="price"><b>¥7</b><s>¥99</s><span class="cut">-93%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥7</span></div><div class="tags"><span>Adventure</span><span>Action</span><span>2D</span></div></article><article class="card s-gog" data-group="gog" data-cut="93" data-price="6" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/tower_of_time" target="_blank" rel="noopener">Tower of Time</a></h3><div class="price"><b>¥6</b><s>¥80</s><span class="cut">-93%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥6</span></div><div class="tags"><span>Indie</span><span>Fantasy</span><span>Story Rich</span></div></article><article class="card s-gog" data-group="gog" data-cut="93" data-price="2" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/urban_trial_playground" target="_blank" rel="noopener">Urban Trial Playground</a></h3><div class="price"><b>¥2</b><s>¥28</s><span class="cut">-93%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥2</span></div><div class="tags"><span>Action</span><span>Indie</span><span>Racing</span></div></article><article class="card s-gog" data-group="gog" data-cut="93" data-price="3" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://www.gog.com/en/game/we_are_the_dwarves" target="_blank" rel="noopener">We are the Dwarves</a></h3><div class="price"><b>¥3</b><s>¥44</s><span class="cut">-93%</span></div></div><div class="badges"><span class="b-src s-gog">GOG</span></div><div class="meta"><span>史低 ¥3</span></div><div class="tags"><span>Adventure</span><span>Action</span><span>Fantasy</span></div></article><article class="card s-steam" data-group="steam" data-cut="90" data-price="5.8" data-players="-1" data-end="1793642400000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/238320/" target="_blank" rel="noopener">Outlast</a></h3><div class="price"><b>¥5.8</b><s>¥58</s><span class="cut">-90%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥5.8</span></div></article><article class="card s-steam" data-group="steam" data-cut="90" data-price="7.6" data-players="-1" data-end="1793642400000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/414700/" target="_blank" rel="noopener">Outlast 2</a></h3><div class="price"><b>¥7.6</b><s>¥76</s><span class="cut">-90%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥7.6</span></div></article><article class="card s-steam" data-group="steam" data-cut="90" data-price="14.7" data-players="-1" data-end="1793984400000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/391220/" target="_blank" rel="noopener">Rise of the Tomb Raider™</a></h3><div class="price"><b>¥14.7</b><s>¥147</s><span class="cut">-90%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-06T17:00:00.000Z">截止时间计算中</span><span>史低 ¥14.7</span></div></article><article class="card s-epic" data-group="epic" data-cut="80" data-price="12.4" data-players="-1" data-end="1793635200000" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/eternal-threads-197169" target="_blank" rel="noopener">Eternal Threads</a></h3><div class="price"><b>¥12.4</b><s>¥62</s><span class="cut">-80%</span></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span class="cd" data-end="2026-11-02T16:00:00.000Z">截止时间计算中</span><span>史低 ¥12.4</span></div></article><article class="card s-steam" data-group="steam" data-cut="80" data-price="14" data-players="-1" data-end="1793642400000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/242760/" target="_blank" rel="noopener">The Forest</a></h3><div class="price"><b>¥14</b><s>¥70</s><span class="cut">-80%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥14</span></div></article><article class="card s-steam" data-group="steam" data-cut="75" data-price="49.5" data-players="-1" data-end="1793728800000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/2050650/" target="_blank" rel="noopener">Resident Evil 4</a></h3><div class="price"><b>¥49.5</b><s>¥198</s><span class="cut">-75%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-03T18:00:00.000Z">截止时间计算中</span><span>史低 ¥49.5</span></div></article><article class="card s-steam" data-group="steam" data-cut="75" data-price="37.25" data-players="-1" data-end="1793642400000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/264710/" target="_blank" rel="noopener">Subnautica - 深海迷航</a></h3><div class="price"><b>¥37.25</b><s>¥149</s><span class="cut">-75%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥37.25</span></div></article><article class="card s-steam" data-group="steam" data-cut="72" data-price="30.24" data-players="-1" data-end="1793642400000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1326470/" target="_blank" rel="noopener">Sons Of The Forest</a></h3><div class="price"><b>¥30.24</b><s>¥108</s><span class="cut">-72%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥30.24</span></div></article><article class="card s-steam" data-group="steam" data-cut="70" data-price="40.8" data-players="-1" data-end="1793642400000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1304930/" target="_blank" rel="noopener">The Outlast Trials</a></h3><div class="price"><b>¥40.8</b><s>¥136</s><span class="cut">-70%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-02T18:00:00.000Z">截止时间计算中</span><span>史低 ¥40.8</span></div></article><article class="card s-epic" data-group="epic" data-cut="65" data-price="11.55" data-players="-1" data-end="1793635200000" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/monument-valley-02" target="_blank" rel="noopener">纪念碑谷（Monument Valley）</a></h3><div class="price"><b>¥11.55</b><s>¥33</s><span class="cut">-65%</span></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span class="cd" data-end="2026-11-02T16:00:00.000Z">截止时间计算中</span><span>史低 ¥11.55</span></div></article><article class="card s-steam" data-group="steam" data-cut="50" data-price="74.5" data-players="-1" data-end="1793901600000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/3240220/" target="_blank" rel="noopener">Grand Theft Auto V 增强版</a></h3><div class="price"><b>¥74.5</b><s>¥149</s><span class="cut">-50%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-11-05T18:00:00.000Z">截止时间计算中</span><span>史低 ¥74.5</span></div></article><article class="card s-epic" data-group="epic" data-cut="30" data-price="54.6" data-players="-1" data-end="1793635200000" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/sorry-were-closed-724c86" target="_blank" rel="noopener">《Sorry We’re Closed》</a></h3><div class="price"><b>¥54.6</b><s>¥78</s><span class="cut">-30%</span></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span class="cd" data-end="2026-11-02T16:00:00.000Z">截止时间计算中</span><span>史低 ¥54.6</span></div></article><article class="card s-steam" data-group="steam" data-cut="15" data-price="30.6" data-players="-1" data-end="1793379600000" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/5335510/" target="_blank" rel="noopener">Moon Sweepers</a></h3><div class="price"><b>¥30.6</b><s>¥36</s><span class="cut">-15%</span></div></div><div class="badges"><span class="b-src s-steam">Steam 特惠</span></div><div class="meta"><span class="cd" data-end="2026-10-30T17:00:00.000Z">截止时间计算中</span><span>史低 ¥30.6</span></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="169" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/ghostrunner-2" target="_blank" rel="noopener">《幽灵行者 2》</a></h3><div class="price"><b>¥169</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥169</span></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="108" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/lisa-the-definitive-edition" target="_blank" rel="noopener">《LISA: Definitive Edition》</a></h3><div class="price"><b>¥108</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥108</span></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="298" data-players="13593" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1245620/" target="_blank" rel="noopener">艾尔登法环</a></h3><div class="price"><b>¥298</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 13,593</span><span>史低 ¥298</span></div><div class="tags"><span>动作</span><span>角色扮演</span><span>单人</span></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="6" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://apps.apple.com/cn/app/%E9%81%BF%E9%9A%BE%E6%89%80-%E7%94%9F%E5%AD%98/id1544190466?uo=4" target="_blank" rel="noopener">避难所：生存</a></h3><div class="price"><b>¥6</b></div></div><div class="badges"><span class="b-src s-appstore">App Store</span></div><div class="meta"><span>史低 ¥6</span></div><div class="tags"><span>Games</span></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="268" data-players="19014" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1086940/" target="_blank" rel="noopener">博德之门3</a></h3><div class="price"><b>¥268</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 19,014</span><span>史低 ¥268</span></div><div class="tags"><span>冒险</span><span>角色扮演</span><span>策略</span></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="268" data-players="6844" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/2358720/" target="_blank" rel="noopener">黑神话：悟空</a></h3><div class="price"><b>¥268</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 6,844</span><span>史低 ¥268</span></div><div class="tags"><span>动作</span><span>冒险</span><span>角色扮演</span></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="20" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://apps.apple.com/cn/app/%E7%94%BB%E4%B8%AD%E4%B8%96%E7%95%8C/id6446614518?uo=4" target="_blank" rel="noopener">画中世界</a></h3><div class="price"><b>¥20</b></div></div><div class="badges"><span class="b-src s-appstore">App Store</span></div><div class="meta"><span>史低 ¥20</span></div><div class="tags"><span>Games</span></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="24" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://apps.apple.com/cn/app/%E7%BA%AA%E5%BF%B5%E7%A2%91%E8%B0%B72/id1238778050?uo=4" target="_blank" rel="noopener">纪念碑谷2</a></h3><div class="price"><b>¥24</b></div></div><div class="badges"><span class="b-src s-appstore">App Store</span></div><div class="meta"><span>史低 ¥24</span></div><div class="tags"><span>Games</span></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="12" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://apps.apple.com/cn/app/%E5%8A%AB%E5%90%8E%E5%85%AC%E5%8F%B8/id6757729278?uo=4" target="_blank" rel="noopener">劫后公司</a></h3><div class="price"><b>¥12</b></div></div><div class="badges"><span class="b-src s-appstore">App Store</span></div><div class="meta"><span>史低 ¥12</span></div><div class="tags"><span>Games</span></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="298" data-players="81863" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/1091500/" target="_blank" rel="noopener">赛博朋克 2077</a></h3><div class="price"><b>¥298</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 81,863</span><span>史低 ¥298</span></div><div class="tags"><span>角色扮演</span><span>单人</span><span>Steam 成就</span></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="12" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/lost-castle-the-old-ones-awaken" target="_blank" rel="noopener">失落城堡: 遗迹守护者</a></h3><div class="price"><b>¥12</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥12</span></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="18" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://apps.apple.com/cn/app/%E6%B3%B0%E6%8B%89%E7%91%9E%E4%BA%9A/id1157863540?uo=4" target="_blank" rel="noopener">泰拉瑞亚</a></h3><div class="price"><b>¥18</b></div></div><div class="badges"><span class="b-src s-appstore">App Store</span></div><div class="meta"><span>史低 ¥18</span></div><div class="tags"><span>Games</span></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="15" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://apps.apple.com/cn/app/%E7%8E%8B%E5%9B%BD%E4%BF%9D%E5%8D%AB%E6%88%985/id6749045841?uo=4" target="_blank" rel="noopener">王国保卫战5</a></h3><div class="price"><b>¥15</b></div></div><div class="badges"><span class="b-src s-appstore">App Store</span></div><div class="meta"><span>史低 ¥15</span></div><div class="tags"><span>Games</span></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="6" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://apps.apple.com/cn/app/%E6%96%87%E6%98%8E%E7%99%BE%E7%A7%91/id1452113719?uo=4" target="_blank" rel="noopener">文明百科</a></h3><div class="price"><b>¥6</b></div></div><div class="badges"><span class="b-src s-appstore">App Store</span></div><div class="meta"><span>史低 ¥6</span></div><div class="tags"><span>Reference</span></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="199" data-players="20754" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/292030/" target="_blank" rel="noopener">巫师3：狂猎 — 重制版</a></h3><div class="price"><b>¥199</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 20,754</span><span>史低 ¥199</span></div><div class="tags"><span>角色扮演</span><span>单人</span><span>Steam 成就</span></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="31" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/luftrausers" target="_blank" rel="noopener">Luftrausers</a></h3><div class="price"><b>¥31</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥31</span></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="70" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/model-builder-complete-edition-f9b456" target="_blank" rel="noopener">Model Builder: Complete Edition</a></h3><div class="price"><b>¥70</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥70</span></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="0" data-players="2874" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/2325290/" target="_blank" rel="noopener">Sky 光·遇</a></h3><div class="price"><b class="free">免费</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 2,874</span></div><div class="tags"><span>冒险</span><span>休闲</span><span>独立</span></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="48" data-players="36199" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/413150/" target="_blank" rel="noopener">Stardew Valley</a></h3><div class="price"><b>¥48</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 36,199</span><span>史低 ¥48</span></div><div class="tags"><span>独立</span><span>角色扮演</span><span>模拟</span></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="42" data-players="19667" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.steampowered.com/app/105600/" target="_blank" rel="noopener">Terraria</a></h3><div class="price"><b>¥42</b></div></div><div class="badges"><span class="b-src s-steam">Steam</span><span class="b-zh">中文</span></div><div class="meta"><span>在线 19,667</span><span>史低 ¥42</span></div><div class="tags"><span>动作</span><span>冒险</span><span>独立</span></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="53" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/terrascape-2b12b1" target="_blank" rel="noopener">TerraScape</a></h3><div class="price"><b>¥53</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥53</span></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="60" data-players="-1" data-end="0" data-free="0"><div class="card-top"><h3><a href="https://store.epicgames.com/zh-CN/p/thems-fightin-herds" target="_blank" rel="noopener">Them's Fightin' Herds</a></h3><div class="price"><b>¥60</b></div></div><div class="badges"><span class="b-src s-epic">Epic</span></div><div class="meta"><span>史低 ¥60</span></div></article>
-<div class="empty" id="empty" hidden>该来源今日暂无数据</div>
-</main>
-
-
-
-<footer>
-数据来自各平台公开接口，仅记录抓取时刻的状态；缺失字段显示「—」，不做估算。<br>
-杉果 / SteamDB / Humble Bundle 无公开可用接口，未收录。<br>
-价格与活动以商店页面为准；游戏名称与商标归其各自权利人所有 · <a href="https://github.com/YunDaiShu/game-price-radar">game-price-radar</a>
-</footer>
-</div>
-<script>
-(function () {
-  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+.sbtn[aria-pressed="true"]{background:var(--brand-soft);color:var(--brand);font-weight:600}
+.toggle{appearance:none;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:6px 12px;font-size:12.5px;color:var(--dim);cursor:pointer;font-family:inherit;transition:all .14s}
+.toggle:hover{border-color:#bfe3cd;color:var(--free)}
+.toggle[aria-pressed="true"]{background:#e9f8f0;border-color:#b7e4cb;color:var(--free);font-weight:600}
+.showing{margin-left:auto;color:var(--muted);font-size:12.5px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:10px;padding:12px 13px;height:var(--ch);display:flex;flex-direction:column;justify-content:space-between;gap:3px;overflow:hidden;cursor:pointer;transition:border-color .16s,box-shadow .16s,transform .16s}
+.card:hover{border-color:#c9d3ea;box-shadow:0 6px 18px rgba(26,35,64,.09);transform:translateY(-2px)}
+.card[hidden]{display:none}
+.card.fade-out{opacity:0;transform:translateY(4px)}
+.card.s-steam{border-left-color:#4d6bfe}.card.s-epic{border-left-color:#8a76e0}.card.s-gog{border-left-color:#c9789a}.card.s-appstore{border-left-color:#e0a95f}
+.card.is-free{border-left-color:var(--free)}
+.ct{display:flex;align-items:center;gap:6px;height:22px;overflow:hidden}
+.src{flex:none;font-size:10.5px;line-height:1.7;padding:0 6px;border-radius:4px;background:#f0f2f7;color:#5b6472;white-space:nowrap}
+.src.s-epic{background:#f0eefc;color:#5b46c4}.src.s-gog{background:#f9eef2;color:#a3415f}.src.s-steam{background:var(--brand-soft);color:var(--brand)}.src.s-appstore{background:#fdf1e3;color:#a2691f}
+.ct h3{margin:0;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;color:var(--fg)}
+.cp{display:flex;align-items:baseline;gap:6px;height:38px;overflow:hidden}
+.cp b{font-size:22px;line-height:1.25;font-variant-numeric:tabular-nums;color:var(--fg)}
+.cp b.free{color:var(--free);font-size:19px}
+.cp s{color:var(--muted);font-size:11.5px}
+.cp em{color:var(--hot);font-style:normal;font-weight:700;font-size:12.5px;background:#fdeced;padding:0 5px;border-radius:4px;white-space:nowrap}
+.cm{display:flex;align-items:center;gap:10px;height:18px;color:var(--dim);font-size:11.5px;overflow:hidden;white-space:nowrap}
+.cw,.cx{height:17px;line-height:17px;font-size:11.5px;overflow:hidden;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cw{color:var(--muted)}.cx{color:var(--gold)}
+.cg{display:flex;align-items:flex-end;gap:5px;height:20px;overflow:hidden}
+.cg i{font-style:normal;font-size:10.5px;line-height:1.9;color:var(--dim);background:#f2f4f9;border-radius:4px;padding:0 6px;white-space:nowrap}
+.empty{grid-column:1/-1;background:var(--panel);border:1px dashed var(--line);border-radius:10px;padding:40px 16px;text-align:center;color:var(--muted);font-size:13px}
+.notice{margin-top:20px;background:#fff8ec;border:1px solid #f0e0bf;border-left:3px solid #d9a300;border-radius:0 8px 8px 0;padding:11px 14px;font-size:12.5px;color:#7a5b00}
+footer{margin-top:26px;border-top:1px solid var(--line);padding-top:12px;color:var(--muted);font-size:11.5px;line-height:1.9}
+footer a{color:var(--brand)}
+.dlg{position:fixed;inset:0;background:rgba(20,26,38,.42);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;overflow:auto}
+.dlg[hidden]{display:none}
+.dlg-box{background:#fff;border:1px solid var(--line);border-radius:12px;max-width:700px;width:100%;padding:20px 22px 22px;position:relative;box-shadow:0 24px 60px rgba(20,26,38,.22)}
+.dlg-x{position:absolute;right:12px;top:10px;background:transparent;border:0;color:var(--muted);font-size:22px;cursor:pointer;line-height:1}
+.dlg h2{margin:0 0 4px;font-size:18px;color:var(--fg)}
+.dlg-src{color:var(--muted);font-size:12px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.kpi{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.kpi b{display:block;font-size:16px;font-variant-numeric:tabular-nums;color:var(--fg)}
+.kpi span{color:var(--muted);font-size:11px}
+.chart{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px;margin-bottom:10px}
+.chart svg{display:block;width:100%;height:170px}
+.dlg-note{color:var(--muted);font-size:11.5px;margin-bottom:12px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th,.tbl td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+.tbl th{color:var(--muted);font-weight:600}
+.dlg a.store{display:inline-block;margin-top:12px;color:var(--brand);font-size:12.5px;text-decoration:none;border-bottom:1px solid var(--brand)}
+@keyframes enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.card.enter{animation:enter .24s ease both}
+@media (max-width:1199px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:899px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){:root{--ch:170px}.wrap{padding:0 12px 40px}.grid{grid-template-columns:1fr;gap:9px}.search{min-width:100%;margin-left:0;order:3}.stats{gap:12px}.showing{width:100%;margin:2px 0 0}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media (prefers-reduced-motion:reduce){.card,.chip{transition:none!important;animation:none!important}}.search{position:relative}.sres{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 16px 40px rgba(26,35,64,.16);max-height:60vh;overflow:auto;z-index:60;padding:6px}.sres[hidden]{display:none}.sres-head{padding:6px 8px;color:var(--muted);font-size:11.5px;border-bottom:1px solid var(--line);margin-bottom:4px}.sres-empty{padding:14px 10px;color:var(--muted);font-size:12.5px;text-align:center}.srow{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:0;padding:7px 8px;border-radius:6px;cursor:pointer;font:inherit;color:var(--fg);text-align:left}.srow:hover{background:var(--brand-soft)}.sr-n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}.sr-m{flex:none;font-size:10.5px;color:var(--dim);background:#f0f2f7;border-radius:4px;padding:0 6px}.sr-p{flex:none;font-size:12px;color:var(--fg);font-variant-numeric:tabular-nums}.sr-cut{font-style:normal;color:var(--hot);margin-left:6px;font-weight:700}.sr-low{font-style:normal;color:var(--free);margin-left:6px;background:#e9f8f0;border-radius:4px;padding:0 5px;font-size:11px}</style></head><body><div class="topbar"><div class="in"><h1>免费游戏雷达<span>限免 · 折扣 · 史低</span></h1><label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input id="q" type="search" placeholder="搜索全部数据源（游戏名，如 elden / sky）" aria-label="搜索游戏" autocomplete="off"></label></div></div><div class="wrap"><div class="stats"><span><b>37</b>在榜</span><span><b>2</b>限免</span><span><b>0</b>新史低</span><span><b>1</b>来源异常</span><span>抓取 2026-10-27 16:12（北京）</span></div><div class="filters" role="group" aria-label="按来源筛选"><button class="chip" type="button" data-group="all" aria-pressed="true">全部<span class="n">37</span></button><button class="chip" type="button" data-group="steam" aria-pressed="false">Steam<span class="n">18</span></button><button class="chip" type="button" data-group="epic" aria-pressed="false">Epic<span class="n">12</span></button><button class="chip" type="button" data-group="appstore" aria-pressed="false">App Store<span class="n">7</span></button></div><div class="toolbar"><div class="seg" role="group" aria-label="排序"><button class="sbtn" type="button" data-sort="cut" aria-pressed="true">折扣</button><button class="sbtn" type="button" data-sort="price" aria-pressed="false">价格</button><button class="sbtn" type="button" data-sort="players" aria-pressed="false">在线</button><button class="sbtn" type="button" data-sort="end" aria-pressed="false">截止</button></div><button class="toggle" type="button" id="onlyFree" aria-pressed="false">只看限免</button><span class="showing" id="showing">显示 37 / 37</span></div><main class="grid" id="grid"><article class="card s-epic is-free" data-group="epic" data-cut="100" data-price="0" data-players="-1" data-end="1793286000000" data-free="1" data-key="epic:06190191cede42afb633fe89ef08c27e" data-name="home - a unique horror adventure" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="Home - A Unique Horror Adventure">Home - A Unique Horror Adventure</h3></div><div class="cp"><b class="free">免费</b></div><div class="cm"></div><div class="cw"><span class="end" data-end="2026-10-29T15:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-10-29T15:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-epic is-free" data-group="epic" data-cut="100" data-price="0" data-players="-1" data-end="1793286000000" data-free="1" data-key="epic:6aab3ddef4f84fbc9dd81c60f9d8549c" data-name="sker ritual" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="Sker Ritual">Sker Ritual</h3></div><div class="cp"><b class="free">免费</b></div><div class="cm"></div><div class="cw"><span class="end" data-end="2026-10-29T15:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-10-29T15:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="90" data-price="5.8" data-players="-1" data-end="1793642400000" data-free="0" data-key="steam-specials:238320" data-name="outlast" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="Outlast">Outlast</h3></div><div class="cp"><b>¥5.8</b><s>¥58</s><em>-90%</em></div><div class="cm"><span>史低 ¥5.8</span></div><div class="cw"><span class="end" data-end="2026-11-02T18:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-02T18:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="90" data-price="7.6" data-players="-1" data-end="1793642400000" data-free="0" data-key="steam-specials:414700" data-name="outlast 2" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="Outlast 2">Outlast 2</h3></div><div class="cp"><b>¥7.6</b><s>¥76</s><em>-90%</em></div><div class="cm"><span>史低 ¥7.6</span></div><div class="cw"><span class="end" data-end="2026-11-02T18:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-02T18:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="90" data-price="14.7" data-players="-1" data-end="1793984400000" data-free="0" data-key="steam-specials:391220" data-name="rise of the tomb raider™" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="Rise of the Tomb Raider™">Rise of the Tomb Raider™</h3></div><div class="cp"><b>¥14.7</b><s>¥147</s><em>-90%</em></div><div class="cm"><span>史低 ¥14.7</span></div><div class="cw"><span class="end" data-end="2026-11-06T17:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-06T17:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="90" data-price="19.6" data-players="-1" data-end="1793984400000" data-free="0" data-key="steam-specials:750920" data-name="shadow of the tomb raider: definitive edition" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="Shadow of the Tomb Raider: Definitive Edition">Shadow of the Tomb Raider: Definitive Edition</h3></div><div class="cp"><b>¥19.6</b><s>¥196</s><em>-90%</em></div><div class="cm"><span>史低 ¥19.6</span></div><div class="cw"><span class="end" data-end="2026-11-06T17:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-06T17:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-epic" data-group="epic" data-cut="80" data-price="12.4" data-players="-1" data-end="1793635200000" data-free="0" data-key="epic:921e40c4c69f4d728914ca2a4f0aa407" data-name="eternal threads" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="Eternal Threads">Eternal Threads</h3></div><div class="cp"><b>¥12.4</b><s>¥62</s><em>-80%</em></div><div class="cm"><span>史低 ¥12.4</span></div><div class="cw"><span class="end" data-end="2026-11-02T16:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-02T16:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="75" data-price="49.5" data-players="-1" data-end="1793728800000" data-free="0" data-key="steam-specials:2050650" data-name="resident evil 4" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="Resident Evil 4">Resident Evil 4</h3></div><div class="cp"><b>¥49.5</b><s>¥198</s><em>-75%</em></div><div class="cm"><span>史低 ¥49.5</span></div><div class="cw"><span class="end" data-end="2026-11-03T18:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-03T18:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="75" data-price="37.25" data-players="-1" data-end="1793642400000" data-free="0" data-key="steam-specials:264710" data-name="subnautica - 深海迷航" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="Subnautica - 深海迷航">Subnautica - 深海迷航</h3></div><div class="cp"><b>¥37.25</b><s>¥149</s><em>-75%</em></div><div class="cm"><span>史低 ¥37.25</span></div><div class="cw"><span class="end" data-end="2026-11-02T18:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-02T18:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="72" data-price="30.24" data-players="-1" data-end="1793642400000" data-free="0" data-key="steam-specials:1326470" data-name="sons of the forest" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="Sons Of The Forest">Sons Of The Forest</h3></div><div class="cp"><b>¥30.24</b><s>¥108</s><em>-72%</em></div><div class="cm"><span>史低 ¥30.24</span></div><div class="cw"><span class="end" data-end="2026-11-02T18:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-02T18:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="70" data-price="40.8" data-players="-1" data-end="1793642400000" data-free="0" data-key="steam-specials:1304930" data-name="the outlast trials" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="The Outlast Trials">The Outlast Trials</h3></div><div class="cp"><b>¥40.8</b><s>¥136</s><em>-70%</em></div><div class="cm"><span>史低 ¥40.8</span></div><div class="cw"><span class="end" data-end="2026-11-02T18:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-02T18:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-epic" data-group="epic" data-cut="65" data-price="11.55" data-players="-1" data-end="1793635200000" data-free="0" data-key="epic:f967cff9761c4198b4e972cfd71e40d7" data-name="纪念碑谷（monument valley）" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="纪念碑谷（Monument Valley）">纪念碑谷（Monument Valley）</h3></div><div class="cp"><b>¥11.55</b><s>¥33</s><em>-65%</em></div><div class="cm"><span>史低 ¥11.55</span></div><div class="cw"><span class="end" data-end="2026-11-02T16:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-02T16:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="50" data-price="74.5" data-players="-1" data-end="1793901600000" data-free="0" data-key="steam-specials:3240220" data-name="grand theft auto v 增强版" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="Grand Theft Auto V 增强版">Grand Theft Auto V 增强版</h3></div><div class="cp"><b>¥74.5</b><s>¥149</s><em>-50%</em></div><div class="cm"><span>史低 ¥74.5</span></div><div class="cw"><span class="end" data-end="2026-11-05T18:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-05T18:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-epic" data-group="epic" data-cut="30" data-price="54.6" data-players="-1" data-end="1793635200000" data-free="0" data-key="epic:4e469c7d8bbf49bcabc2c07127d3d946" data-name="《sorry we’re closed》" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="《Sorry We’re Closed》">《Sorry We’re Closed》</h3></div><div class="cp"><b>¥54.6</b><s>¥78</s><em>-30%</em></div><div class="cm"><span>史低 ¥54.6</span></div><div class="cw"><span class="end" data-end="2026-11-02T16:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-11-02T16:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="15" data-price="30.6" data-players="-1" data-end="1793379600000" data-free="0" data-key="steam-specials:5335510" data-name="moon sweepers" tabindex="0"><div class="ct"><span class="src s-steam">Steam 特惠</span><h3 title="Moon Sweepers">Moon Sweepers</h3></div><div class="cp"><b>¥30.6</b><s>¥36</s><em>-15%</em></div><div class="cm"><span>史低 ¥30.6</span></div><div class="cw"><span class="end" data-end="2026-10-30T17:00:00.000Z">截止 --</span></div><div class="cx"><span class="cd" data-end="2026-10-30T17:00:00.000Z">剩余 --</span></div><div class="cg"></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="169" data-players="-1" data-end="0" data-free="0" data-key="epic:be5600439b434624802764f704755cde" data-name="《幽灵行者 2》" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="《幽灵行者 2》">《幽灵行者 2》</h3></div><div class="cp"><b>¥169</b></div><div class="cm"><span>史低 ¥169</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="108" data-players="-1" data-end="0" data-free="0" data-key="epic:944b5b5d646d46bc92bc33edfe983d26" data-name="《lisa: definitive edition》" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="《LISA: Definitive Edition》">《LISA: Definitive Edition》</h3></div><div class="cp"><b>¥108</b></div><div class="cm"><span>史低 ¥108</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="298" data-players="14072" data-end="0" data-free="0" data-key="steam:1245620" data-name="艾尔登法环" tabindex="0"><div class="ct"><span class="src s-steam">Steam</span><h3 title="艾尔登法环">艾尔登法环</h3></div><div class="cp"><b>¥298</b></div><div class="cm"><span>在线 14,072</span><span>中文</span><span>史低 ¥298</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>动作</i><i>角色扮演</i><i>单人</i></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="6" data-players="-1" data-end="0" data-free="0" data-key="appstore:1544190466" data-name="避难所：生存" tabindex="0"><div class="ct"><span class="src s-appstore">App Store</span><h3 title="避难所：生存">避难所：生存</h3></div><div class="cp"><b>¥6</b></div><div class="cm"><span>史低 ¥6</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>Games</i></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="268" data-players="18856" data-end="0" data-free="0" data-key="steam:1086940" data-name="博德之门3" tabindex="0"><div class="ct"><span class="src s-steam">Steam</span><h3 title="博德之门3">博德之门3</h3></div><div class="cp"><b>¥268</b></div><div class="cm"><span>在线 18,856</span><span>中文</span><span>史低 ¥268</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>冒险</i><i>角色扮演</i><i>策略</i></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="268" data-players="7736" data-end="0" data-free="0" data-key="steam:2358720" data-name="黑神话：悟空" tabindex="0"><div class="ct"><span class="src s-steam">Steam</span><h3 title="黑神话：悟空">黑神话：悟空</h3></div><div class="cp"><b>¥268</b></div><div class="cm"><span>在线 7,736</span><span>中文</span><span>史低 ¥268</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>动作</i><i>冒险</i><i>角色扮演</i></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="20" data-players="-1" data-end="0" data-free="0" data-key="appstore:6446614518" data-name="画中世界" tabindex="0"><div class="ct"><span class="src s-appstore">App Store</span><h3 title="画中世界">画中世界</h3></div><div class="cp"><b>¥20</b></div><div class="cm"><span>史低 ¥20</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>Games</i></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="24" data-players="-1" data-end="0" data-free="0" data-key="appstore:1238778050" data-name="纪念碑谷2" tabindex="0"><div class="ct"><span class="src s-appstore">App Store</span><h3 title="纪念碑谷2">纪念碑谷2</h3></div><div class="cp"><b>¥24</b></div><div class="cm"><span>史低 ¥24</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>Games</i></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="12" data-players="-1" data-end="0" data-free="0" data-key="appstore:6757729278" data-name="劫后公司" tabindex="0"><div class="ct"><span class="src s-appstore">App Store</span><h3 title="劫后公司">劫后公司</h3></div><div class="cp"><b>¥12</b></div><div class="cm"><span>史低 ¥12</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>Games</i></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="298" data-players="82458" data-end="0" data-free="0" data-key="steam:1091500" data-name="赛博朋克 2077" tabindex="0"><div class="ct"><span class="src s-steam">Steam</span><h3 title="赛博朋克 2077">赛博朋克 2077</h3></div><div class="cp"><b>¥298</b></div><div class="cm"><span>在线 82,458</span><span>中文</span><span>史低 ¥298</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>角色扮演</i><i>单人</i><i>Steam 成就</i></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="12" data-players="-1" data-end="0" data-free="0" data-key="epic:4a88d0dc64114b20b67339c74543f859" data-name="失落城堡: 遗迹守护者" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="失落城堡: 遗迹守护者">失落城堡: 遗迹守护者</h3></div><div class="cp"><b>¥12</b></div><div class="cm"><span>史低 ¥12</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="18" data-players="-1" data-end="0" data-free="0" data-key="appstore:1157863540" data-name="泰拉瑞亚" tabindex="0"><div class="ct"><span class="src s-appstore">App Store</span><h3 title="泰拉瑞亚">泰拉瑞亚</h3></div><div class="cp"><b>¥18</b></div><div class="cm"><span>史低 ¥18</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>Games</i></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="15" data-players="-1" data-end="0" data-free="0" data-key="appstore:6749045841" data-name="王国保卫战5" tabindex="0"><div class="ct"><span class="src s-appstore">App Store</span><h3 title="王国保卫战5">王国保卫战5</h3></div><div class="cp"><b>¥15</b></div><div class="cm"><span>史低 ¥15</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>Games</i></div></article><article class="card s-appstore" data-group="appstore" data-cut="0" data-price="6" data-players="-1" data-end="0" data-free="0" data-key="appstore:1452113719" data-name="文明百科" tabindex="0"><div class="ct"><span class="src s-appstore">App Store</span><h3 title="文明百科">文明百科</h3></div><div class="cp"><b>¥6</b></div><div class="cm"><span>史低 ¥6</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>Reference</i></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="199" data-players="23267" data-end="0" data-free="0" data-key="steam:292030" data-name="巫师3：狂猎 — 重制版" tabindex="0"><div class="ct"><span class="src s-steam">Steam</span><h3 title="巫师3：狂猎 — 重制版">巫师3：狂猎 — 重制版</h3></div><div class="cp"><b>¥199</b></div><div class="cm"><span>在线 23,267</span><span>中文</span><span>史低 ¥199</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>角色扮演</i><i>单人</i><i>Steam 成就</i></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="31" data-players="-1" data-end="0" data-free="0" data-key="epic:c76046dddcdb43619c33ce0395941033" data-name="luftrausers" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="Luftrausers">Luftrausers</h3></div><div class="cp"><b>¥31</b></div><div class="cm"><span>史低 ¥31</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="70" data-players="-1" data-end="0" data-free="0" data-key="epic:d3e5b556640144bfa5de2d5d3b283d68" data-name="model builder: complete edition" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="Model Builder: Complete Edition">Model Builder: Complete Edition</h3></div><div class="cp"><b>¥70</b></div><div class="cm"><span>史低 ¥70</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="0" data-players="3412" data-end="0" data-free="0" data-key="steam:2325290" data-name="sky 光·遇" tabindex="0"><div class="ct"><span class="src s-steam">Steam</span><h3 title="Sky 光·遇">Sky 光·遇</h3></div><div class="cp"><b class="free">免费</b></div><div class="cm"><span>在线 3,412</span><span>中文</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>冒险</i><i>休闲</i><i>独立</i></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="48" data-players="38053" data-end="0" data-free="0" data-key="steam:413150" data-name="stardew valley" tabindex="0"><div class="ct"><span class="src s-steam">Steam</span><h3 title="Stardew Valley">Stardew Valley</h3></div><div class="cp"><b>¥48</b></div><div class="cm"><span>在线 38,053</span><span>中文</span><span>史低 ¥48</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>独立</i><i>角色扮演</i><i>模拟</i></div></article><article class="card s-steam" data-group="steam" data-cut="0" data-price="42" data-players="20610" data-end="0" data-free="0" data-key="steam:105600" data-name="terraria" tabindex="0"><div class="ct"><span class="src s-steam">Steam</span><h3 title="Terraria">Terraria</h3></div><div class="cp"><b>¥42</b></div><div class="cm"><span>在线 20,610</span><span>中文</span><span>史低 ¥42</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"><i>动作</i><i>冒险</i><i>独立</i></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="53" data-players="-1" data-end="0" data-free="0" data-key="epic:af6b823b8698465f9aedc3bddf2e8686" data-name="terrascape" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="TerraScape">TerraScape</h3></div><div class="cp"><b>¥53</b></div><div class="cm"><span>史低 ¥53</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"></div></article><article class="card s-epic" data-group="epic" data-cut="0" data-price="60" data-players="-1" data-end="0" data-free="0" data-key="epic:1f723b00df58467998c4984ca39915ad" data-name="them's fightin' herds" tabindex="0"><div class="ct"><span class="src s-epic">Epic</span><h3 title="Them's Fightin' Herds">Them's Fightin' Herds</h3></div><div class="cp"><b>¥60</b></div><div class="cm"><span>史低 ¥60</span></div><div class="cw">截止未公布</div><div class="cx"></div><div class="cg"></div></article><div class="empty" id="empty" hidden>没有匹配的条目</div></main><section class="notice"><b>本次未取到数据的来源</b><ul style="margin:6px 0 0;padding-left:18px"><li>gog：catalog.gog.com 连接超时（该主机在当前网络不可达；GitHub Actions 环境通常正常）: TIMEOUT</li></ul></section><footer><a href="detail/">Steam 风格详情页演示（React + Tailwind）›</a><br>数据来自各平台公开接口，仅记录抓取时刻的状态；缺失字段显示「—」，不做估算。<br>价格与活动以商店页面为准；游戏名称与商标归其各自权利人所有 · <a href="https://github.com/YunDaiShu/game-price-radar">game-price-radar</a></footer></div><div class="dlg" id="dlg" hidden><div class="dlg-box" role="dialog" aria-modal="true" aria-labelledby="dlgTitle"><button class="dlg-x" id="dlgX" aria-label="关闭">×</button><h2 id="dlgTitle"></h2><div class="dlg-src" id="dlgSrc"></div><div class="kpis" id="dlgKpis"></div><div class="chart"><svg id="dlgChart" viewBox="0 0 620 170" preserveAspectRatio="none"></svg></div><div class="dlg-note" id="dlgNote"></div><table class="tbl" id="dlgTbl"></table><a class="store" id="dlgLink" href="#" target="_blank" rel="noopener">打开商店页</a></div></div><script>var DATA=[{"k":"epic:06190191cede42afb633fe89ef08c27e","n":"Home - A Unique Horror Adventure","s":"epic","p":0,"o":15,"c":100,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/home-19212a","end":"2026-10-29T15:00:00.000Z","pl":null,"zh":"unknown","lo":null,"fk":"limited","tg":[]},{"k":"epic:6aab3ddef4f84fbc9dd81c60f9d8549c","n":"Sker Ritual","s":"epic","p":0,"o":78,"c":100,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/sker-ritual-aac702","end":"2026-10-29T15:00:00.000Z","pl":null,"zh":"unknown","lo":null,"fk":"limited","tg":[]},{"k":"steam-specials:238320","n":"Outlast","s":"steam-specials","p":5.8,"o":58,"c":90,"cur":"CNY","u":"https://store.steampowered.com/app/238320/","end":"2026-11-02T18:00:00.000Z","pl":null,"zh":"unknown","lo":5.8,"fk":null,"tg":[]},{"k":"steam-specials:414700","n":"Outlast 2","s":"steam-specials","p":7.6,"o":76,"c":90,"cur":"CNY","u":"https://store.steampowered.com/app/414700/","end":"2026-11-02T18:00:00.000Z","pl":null,"zh":"unknown","lo":7.6,"fk":null,"tg":[]},{"k":"steam-specials:391220","n":"Rise of the Tomb Raider™","s":"steam-specials","p":14.7,"o":147,"c":90,"cur":"CNY","u":"https://store.steampowered.com/app/391220/","end":"2026-11-06T17:00:00.000Z","pl":null,"zh":"unknown","lo":14.7,"fk":null,"tg":[]},{"k":"steam-specials:750920","n":"Shadow of the Tomb Raider: Definitive Edition","s":"steam-specials","p":19.6,"o":196,"c":90,"cur":"CNY","u":"https://store.steampowered.com/app/750920/","end":"2026-11-06T17:00:00.000Z","pl":null,"zh":"unknown","lo":19.6,"fk":null,"tg":[]},{"k":"epic:921e40c4c69f4d728914ca2a4f0aa407","n":"Eternal Threads","s":"epic","p":12.4,"o":62,"c":80,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/eternal-threads-197169","end":"2026-11-02T16:00:00.000Z","pl":null,"zh":"unknown","lo":12.4,"fk":null,"tg":[]},{"k":"steam-specials:2050650","n":"Resident Evil 4","s":"steam-specials","p":49.5,"o":198,"c":75,"cur":"CNY","u":"https://store.steampowered.com/app/2050650/","end":"2026-11-03T18:00:00.000Z","pl":null,"zh":"unknown","lo":49.5,"fk":null,"tg":[]},{"k":"steam-specials:264710","n":"Subnautica - 深海迷航","s":"steam-specials","p":37.25,"o":149,"c":75,"cur":"CNY","u":"https://store.steampowered.com/app/264710/","end":"2026-11-02T18:00:00.000Z","pl":null,"zh":"unknown","lo":37.25,"fk":null,"tg":[]},{"k":"steam-specials:1326470","n":"Sons Of The Forest","s":"steam-specials","p":30.24,"o":108,"c":72,"cur":"CNY","u":"https://store.steampowered.com/app/1326470/","end":"2026-11-02T18:00:00.000Z","pl":null,"zh":"unknown","lo":30.24,"fk":null,"tg":[]},{"k":"steam-specials:1304930","n":"The Outlast Trials","s":"steam-specials","p":40.8,"o":136,"c":70,"cur":"CNY","u":"https://store.steampowered.com/app/1304930/","end":"2026-11-02T18:00:00.000Z","pl":null,"zh":"unknown","lo":40.8,"fk":null,"tg":[]},{"k":"epic:f967cff9761c4198b4e972cfd71e40d7","n":"纪念碑谷（Monument Valley）","s":"epic","p":11.55,"o":33,"c":65,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/monument-valley-02","end":"2026-11-02T16:00:00.000Z","pl":null,"zh":"unknown","lo":11.55,"fk":null,"tg":[]},{"k":"steam-specials:3240220","n":"Grand Theft Auto V 增强版","s":"steam-specials","p":74.5,"o":149,"c":50,"cur":"CNY","u":"https://store.steampowered.com/app/3240220/","end":"2026-11-05T18:00:00.000Z","pl":null,"zh":"unknown","lo":74.5,"fk":null,"tg":[]},{"k":"epic:4e469c7d8bbf49bcabc2c07127d3d946","n":"《Sorry We’re Closed》","s":"epic","p":54.6,"o":78,"c":30,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/sorry-were-closed-724c86","end":"2026-11-02T16:00:00.000Z","pl":null,"zh":"unknown","lo":54.6,"fk":null,"tg":[]},{"k":"steam-specials:5335510","n":"Moon Sweepers","s":"steam-specials","p":30.6,"o":36,"c":15,"cur":"CNY","u":"https://store.steampowered.com/app/5335510/","end":"2026-10-30T17:00:00.000Z","pl":null,"zh":"unknown","lo":30.6,"fk":null,"tg":[]},{"k":"epic:be5600439b434624802764f704755cde","n":"《幽灵行者 2》","s":"epic","p":169,"o":169,"c":0,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/ghostrunner-2","end":null,"pl":null,"zh":"unknown","lo":169,"fk":null,"tg":[]},{"k":"epic:944b5b5d646d46bc92bc33edfe983d26","n":"《LISA: Definitive Edition》","s":"epic","p":108,"o":108,"c":0,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/lisa-the-definitive-edition","end":null,"pl":null,"zh":"unknown","lo":108,"fk":null,"tg":[]},{"k":"steam:1245620","n":"艾尔登法环","s":"steam","p":298,"o":298,"c":0,"cur":"CNY","u":"https://store.steampowered.com/app/1245620/","end":null,"pl":14072,"zh":true,"lo":298,"fk":null,"tg":["动作","角色扮演","单人","多人","玩家对战","线上玩家对战"]},{"k":"appstore:1544190466","n":"避难所：生存","s":"appstore","p":6,"o":6,"c":0,"cur":"CNY","u":"https://apps.apple.com/cn/app/%E9%81%BF%E9%9A%BE%E6%89%80-%E7%94%9F%E5%AD%98/id1544190466?uo=4","end":null,"pl":null,"zh":"unknown","lo":6,"fk":null,"tg":["Games"]},{"k":"steam:1086940","n":"博德之门3","s":"steam","p":268,"o":268,"c":0,"cur":"CNY","u":"https://store.steampowered.com/app/1086940/","end":null,"pl":18856,"zh":true,"lo":268,"fk":null,"tg":["冒险","角色扮演","策略","单人","多人","合作"]},{"k":"steam:2358720","n":"黑神话：悟空","s":"steam","p":268,"o":268,"c":0,"cur":"CNY","u":"https://store.steampowered.com/app/2358720/","end":null,"pl":7736,"zh":true,"lo":268,"fk":null,"tg":["动作","冒险","角色扮演","单人","Steam 成就","完全支持控制器"]},{"k":"appstore:6446614518","n":"画中世界","s":"appstore","p":20,"o":20,"c":0,"cur":"CNY","u":"https://apps.apple.com/cn/app/%E7%94%BB%E4%B8%AD%E4%B8%96%E7%95%8C/id6446614518?uo=4","end":null,"pl":null,"zh":"unknown","lo":20,"fk":null,"tg":["Games"]},{"k":"appstore:1238778050","n":"纪念碑谷2","s":"appstore","p":24,"o":24,"c":0,"cur":"CNY","u":"https://apps.apple.com/cn/app/%E7%BA%AA%E5%BF%B5%E7%A2%91%E8%B0%B72/id1238778050?uo=4","end":null,"pl":null,"zh":"unknown","lo":24,"fk":null,"tg":["Games"]},{"k":"appstore:6757729278","n":"劫后公司","s":"appstore","p":12,"o":12,"c":0,"cur":"CNY","u":"https://apps.apple.com/cn/app/%E5%8A%AB%E5%90%8E%E5%85%AC%E5%8F%B8/id6757729278?uo=4","end":null,"pl":null,"zh":"unknown","lo":12,"fk":null,"tg":["Games"]},{"k":"steam:1091500","n":"赛博朋克 2077","s":"steam","p":298,"o":298,"c":0,"cur":"CNY","u":"https://store.steampowered.com/app/1091500/","end":null,"pl":82458,"zh":true,"lo":298,"fk":null,"tg":["角色扮演","单人","Steam 成就","完全支持控制器","Steam 集换式卡牌","可调整文字大小"]},{"k":"epic:4a88d0dc64114b20b67339c74543f859","n":"失落城堡: 遗迹守护者","s":"epic","p":12,"o":12,"c":0,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/lost-castle-the-old-ones-awaken","end":null,"pl":null,"zh":"unknown","lo":12,"fk":null,"tg":[]},{"k":"appstore:1157863540","n":"泰拉瑞亚","s":"appstore","p":18,"o":18,"c":0,"cur":"CNY","u":"https://apps.apple.com/cn/app/%E6%B3%B0%E6%8B%89%E7%91%9E%E4%BA%9A/id1157863540?uo=4","end":null,"pl":null,"zh":"unknown","lo":18,"fk":null,"tg":["Games"]},{"k":"appstore:6749045841","n":"王国保卫战5","s":"appstore","p":15,"o":15,"c":0,"cur":"CNY","u":"https://apps.apple.com/cn/app/%E7%8E%8B%E5%9B%BD%E4%BF%9D%E5%8D%AB%E6%88%985/id6749045841?uo=4","end":null,"pl":null,"zh":"unknown","lo":15,"fk":null,"tg":["Games"]},{"k":"appstore:1452113719","n":"文明百科","s":"appstore","p":6,"o":6,"c":0,"cur":"CNY","u":"https://apps.apple.com/cn/app/%E6%96%87%E6%98%8E%E7%99%BE%E7%A7%91/id1452113719?uo=4","end":null,"pl":null,"zh":"unknown","lo":6,"fk":null,"tg":["Reference"]},{"k":"steam:292030","n":"巫师3：狂猎 — 重制版","s":"steam","p":199,"o":199,"c":0,"cur":"CNY","u":"https://store.steampowered.com/app/292030/","end":null,"pl":23267,"zh":true,"lo":199,"fk":null,"tg":["角色扮演","单人","Steam 成就","Steam 集换式卡牌","Steam 创意工坊","可调整文字大小"]},{"k":"epic:c76046dddcdb43619c33ce0395941033","n":"Luftrausers","s":"epic","p":31,"o":31,"c":0,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/luftrausers","end":null,"pl":null,"zh":"unknown","lo":31,"fk":null,"tg":[]},{"k":"epic:d3e5b556640144bfa5de2d5d3b283d68","n":"Model Builder: Complete Edition","s":"epic","p":70,"o":70,"c":0,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/model-builder-complete-edition-f9b456","end":null,"pl":null,"zh":"unknown","lo":70,"fk":null,"tg":[]},{"k":"steam:2325290","n":"Sky 光·遇","s":"steam","p":0,"o":0,"c":0,"cur":"CNY","u":"https://store.steampowered.com/app/2325290/","end":null,"pl":3412,"zh":true,"lo":null,"fk":"permanent","tg":["冒险","休闲","独立","大型多人在线","角色扮演","免费开玩"]},{"k":"steam:413150","n":"Stardew Valley","s":"steam","p":48,"o":48,"c":0,"cur":"CNY","u":"https://store.steampowered.com/app/413150/","end":null,"pl":38053,"zh":true,"lo":48,"fk":null,"tg":["独立","角色扮演","模拟","单人","多人","合作"]},{"k":"steam:105600","n":"Terraria","s":"steam","p":42,"o":42,"c":0,"cur":"CNY","u":"https://store.steampowered.com/app/105600/","end":null,"pl":20610,"zh":true,"lo":42,"fk":null,"tg":["动作","冒险","独立","角色扮演","单人","多人"]},{"k":"epic:af6b823b8698465f9aedc3bddf2e8686","n":"TerraScape","s":"epic","p":53,"o":53,"c":0,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/terrascape-2b12b1","end":null,"pl":null,"zh":"unknown","lo":53,"fk":null,"tg":[]},{"k":"epic:1f723b00df58467998c4984ca39915ad","n":"Them's Fightin' Herds","s":"epic","p":60,"o":60,"c":0,"cur":"CNY","u":"https://store.epicgames.com/zh-CN/p/thems-fightin-herds","end":null,"pl":null,"zh":"unknown","lo":60,"fk":null,"tg":[]}];var SERIES={"steam-specials:238320":[["2026-10-27",5.8]],"steam-specials:414700":[["2026-10-27",7.6]],"steam-specials:391220":[["2026-10-27",14.7]],"steam-specials:750920":[["2026-10-27",19.6]],"epic:921e40c4c69f4d728914ca2a4f0aa407":[["2026-10-27",12.4]],"steam-specials:2050650":[["2026-10-27",49.5]],"steam-specials:264710":[["2026-10-27",37.25]],"steam-specials:1326470":[["2026-10-27",30.24]],"steam-specials:1304930":[["2026-10-27",40.8]],"epic:f967cff9761c4198b4e972cfd71e40d7":[["2026-10-27",11.55]],"steam-specials:3240220":[["2026-10-27",74.5]],"epic:4e469c7d8bbf49bcabc2c07127d3d946":[["2026-10-27",54.6]],"steam-specials:5335510":[["2026-10-27",30.6]],"epic:be5600439b434624802764f704755cde":[["2026-10-27",169]],"epic:944b5b5d646d46bc92bc33edfe983d26":[["2026-10-27",108]],"steam:1245620":[["2026-10-27",298]],"appstore:1544190466":[["2026-10-27",6]],"steam:1086940":[["2026-10-27",268]],"steam:2358720":[["2026-10-27",268]],"appstore:6446614518":[["2026-10-27",20]],"appstore:1238778050":[["2026-10-27",24]],"appstore:6757729278":[["2026-10-27",12]],"steam:1091500":[["2026-10-27",298]],"epic:4a88d0dc64114b20b67339c74543f859":[["2026-10-27",12]],"appstore:1157863540":[["2026-10-27",18]],"appstore:6749045841":[["2026-10-27",15]],"appstore:1452113719":[["2026-10-27",6]],"steam:292030":[["2026-10-27",199]],"epic:c76046dddcdb43619c33ce0395941033":[["2026-10-27",31]],"epic:d3e5b556640144bfa5de2d5d3b283d68":[["2026-10-27",70]],"steam:413150":[["2026-10-27",48]],"steam:105600":[["2026-10-27",42]],"epic:af6b823b8698465f9aedc3bddf2e8686":[["2026-10-27",53]],"epic:1f723b00df58467998c4984ca39915ad":[["2026-10-27",60]]};(function(){
   var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
-  var showing = document.getElementById('showing');
-  var total = cards.length;
-
-  var counts = { all: total };
-  cards.forEach(function (card) {
-    var g = card.getAttribute('data-group');
-    counts[g] = (counts[g] || 0) + 1;
-  });
-
-  var state = { group: 'all', onlyFree: false, sort: 'cut' };
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var sbtns = Array.prototype.slice.call(document.querySelectorAll('.sbtn'));
   var grid = document.getElementById('grid');
-  var emptyBox = document.getElementById('empty');
+  var empty = document.getElementById('empty');
+  var showing = document.getElementById('showing');
+  var onlyFreeBtn = document.getElementById('onlyFree');
+  var qInput = document.getElementById('q');
+  var total = cards.length;
+  var state = { group:'all', onlyFree:false, sort:'cut', q:'' };
   var pending = null;
+  var dlg = document.getElementById('dlg');
+  var dlgX = document.getElementById('dlgX');
+  var dlgTitle = document.getElementById('dlgTitle');
+  var dlgSrc = document.getElementById('dlgSrc');
+  var dlgKpis = document.getElementById('dlgKpis');
+  var dlgChart = document.getElementById('dlgChart');
+  var dlgNote = document.getElementById('dlgNote');
+  var dlgTbl = document.getElementById('dlgTbl');
+  var dlgLink = document.getElementById('dlgLink');
+  var dlgOpen = false, dlgKey = null;
+  var byKey = {};
+  (DATA||[]).forEach(function(d){ byKey[d.k] = d; });
 
-  function matches(card) {
-    var okGroup = state.group === 'all' || card.getAttribute('data-group') === state.group;
-    var okFree = !state.onlyFree || card.getAttribute('data-free') === '1';
-    return okGroup && okFree;
+  function pad(n){ return (n<10?'0':'')+n; }
+  function fmtEnd(ms){ var d=new Date(ms); return pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds()); }
+  function fmtLeft(ms){
+    if (ms <= 0) return '已结束';
+    var s = Math.floor(ms/1000), d = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60), ss = s%60;
+    var t = pad(h)+':'+pad(m)+':'+pad(ss);
+    return d > 0 ? ('剩余 '+d+'天 '+t) : ('剩余 '+t);
   }
+  function tick(){
+    var now = Date.now();
+    Array.prototype.forEach.call(document.querySelectorAll('.end[data-end]'), function(el){
+      var end = Date.parse(el.getAttribute('data-end'));
+      el.textContent = isNaN(end) ? '截止未公布' : ('截止 '+fmtEnd(end));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.cd[data-end]'), function(el){
+      var end = Date.parse(el.getAttribute('data-end'));
+      if (isNaN(end)) { el.textContent=''; return; }
+      el.textContent = fmtLeft(end - now);
+    });
+    if (dlgOpen && dlgKey) {
+      var d = byKey[dlgKey];
+      if (d && d.end) {
+        var rows = dlgTbl.querySelectorAll('tr');
+        for (var i=0;i<rows.length;i++) {
+          var c0 = rows[i].children[0];
+          if (c0 && c0.textContent === '剩余') rows[i].children[1].textContent = fmtLeft(Date.parse(d.end) - Date.now());
+        }
+      }
+    }
+  }
+  setInterval(tick, 1000);
 
-  function sortCards() {
-    if (!grid) return;
+  function matches(card){
+    var okG = state.group === 'all' || card.getAttribute('data-group') === state.group;
+    var okF = !state.onlyFree || card.getAttribute('data-free') === '1';
+    var okQ = !state.q || String(card.getAttribute('data-name')||'').indexOf(state.q) >= 0;
+    return okG && okF && okQ;
+  }
+  function sortCards(){
     var key = state.sort;
-    var list = cards.slice().sort(function (a, b) {
+    var list = cards.slice().sort(function(a,b){
       if (key === 'price') return Number(a.getAttribute('data-price')) - Number(b.getAttribute('data-price'));
       if (key === 'players') return Number(b.getAttribute('data-players')) - Number(a.getAttribute('data-players'));
-      if (key === 'end') {
-        var ea = Number(a.getAttribute('data-end')) || Infinity;
-        var eb = Number(b.getAttribute('data-end')) || Infinity;
-        return ea - eb;
-      }
+      if (key === 'end') { var ea = Number(a.getAttribute('data-end')) || Infinity, eb = Number(b.getAttribute('data-end')) || Infinity; return ea - eb; }
       return Number(b.getAttribute('data-cut')) - Number(a.getAttribute('data-cut'));
     });
-    list.forEach(function (c) { grid.appendChild(c); });
-    if (emptyBox) grid.appendChild(emptyBox);
+    list.forEach(function(c){ grid.appendChild(c); });
+    if (empty) grid.appendChild(empty);
   }
-
-  function apply() {
+  function apply(){
     if (pending) { clearTimeout(pending); pending = null; }
-
     var toHide = [], toShow = [], visible = 0;
-    cards.forEach(function (card) {
+    cards.forEach(function(card){
       var ok = matches(card);
       if (ok) visible++;
       if (!ok && !card.hidden) toHide.push(card);
       else if (ok && card.hidden) toShow.push(card);
     });
-
-    // 1) 要隐藏的：先淡出，再置 hidden
-    toHide.forEach(function (card) { card.classList.add('fade-out'); });
-
-    // 2) 要显示的：解除 hidden 后淡入，按顺序错峰 12ms（封顶 120ms）
-    toShow.forEach(function (card, i) {
-      card.hidden = false;
-      card.classList.add('fade-out');
-      card.style.transitionDelay = Math.min(i * 12, 120) + 'ms';
-      requestAnimationFrame(function () { card.classList.remove('fade-out'); });
+    toHide.forEach(function(c){ c.classList.add('fade-out'); });
+    toShow.forEach(function(c, i){
+      c.hidden = false;
+      c.classList.add('fade-out');
+      c.style.transitionDelay = Math.min(i * 10, 90) + 'ms';
+      requestAnimationFrame(function(){ c.classList.remove('fade-out'); });
     });
-
-    pending = setTimeout(function () {
-      toHide.forEach(function (card) {
-        card.hidden = true;
-        card.classList.remove('fade-out');
-        card.style.transitionDelay = '';
-      });
-      toShow.forEach(function (card) { card.style.transitionDelay = ''; });
+    pending = setTimeout(function(){
+      toHide.forEach(function(c){ c.hidden = true; c.classList.remove('fade-out'); c.style.transitionDelay=''; });
+      toShow.forEach(function(c){ c.style.transitionDelay=''; });
       pending = null;
       sortCards();
-    }, toHide.length ? 170 : 0);
-
+    }, toHide.length ? 150 : 0);
     if (showing) showing.textContent = '显示 ' + visible + ' / ' + total;
-    if (emptyBox) emptyBox.hidden = visible > 0;
+    if (empty) empty.hidden = visible > 0;
   }
 
-  // 首屏：按顺序错峰入场（封顶 240ms）
-  cards.forEach(function (card, i) {
-    card.style.animationDelay = Math.min(i * 18, 240) + 'ms';
-    card.classList.add('enter');
-  });
-  setTimeout(function () {
-    cards.forEach(function (c) { c.classList.remove('enter'); c.style.animationDelay = ''; });
-  }, 700);
-
-  chips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
       state.group = chip.getAttribute('data-group');
-      chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+      chips.forEach(function(c){ c.setAttribute('aria-pressed', c === chip ? 'true':'false'); });
       apply();
     });
   });
-
-  var sortBtns = Array.prototype.slice.call(document.querySelectorAll('.sbtn'));
-  sortBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
+  sbtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
       state.sort = btn.getAttribute('data-sort');
-      sortBtns.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      sbtns.forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true':'false'); });
       sortCards();
     });
   });
-
-  var onlyFreeBtn = document.getElementById('onlyFree');
-  if (onlyFreeBtn) {
-    onlyFreeBtn.addEventListener('click', function () {
-      state.onlyFree = onlyFreeBtn.getAttribute('aria-pressed') !== 'true';
-      onlyFreeBtn.setAttribute('aria-pressed', state.onlyFree ? 'true' : 'false');
-      apply();
+  if (onlyFreeBtn) onlyFreeBtn.addEventListener('click', function(){
+    state.onlyFree = onlyFreeBtn.getAttribute('aria-pressed') !== 'true';
+    onlyFreeBtn.setAttribute('aria-pressed', state.onlyFree ? 'true':'false');
+    apply();
+  });
+  // —— 全量搜索：懒加载 search-index.json，面板动态创建（不改 HTML）——
+  var SEARCH = null, searchLoading = false, sresBox = null;
+  function ensurePanel(){
+    if (sresBox) return sresBox;
+    var host = qInput && qInput.closest('.search');
+    if (!host) return null;
+    sresBox = document.createElement('div');
+    sresBox.className = 'sres';
+    sresBox.id = 'sres';
+    sresBox.hidden = true;
+    host.appendChild(sresBox);
+    document.addEventListener('click', function(e){
+      if (!host.contains(e.target)) sresBox.hidden = true;
+    });
+    return sresBox;
+  }
+  function loadIndex(cb){
+    if (SEARCH) { cb(); return; }
+    if (searchLoading) return;
+    searchLoading = true;
+    fetch('search-index.json').then(function(r){ return r.ok ? r.json() : []; })
+      .then(function(arr){ SEARCH = Array.isArray(arr) ? arr : []; })
+      .catch(function(){ SEARCH = []; })
+      .then(function(){ searchLoading = false; cb(); });
+  }
+  function fallbackPool(){
+    return DATA.map(function(d){
+      return { s: d.s, i: d.k.split(':')[1], n: d.n, p: d.p, o: d.o, c: d.c, u: d.u, e: d.end, pl: d.pl, lo: d.lo, fk: d.fk, tg: d.tg };
     });
   }
+  function renderSearchResults(q){
+    var box = ensurePanel();
+    if (!box) return;
+    if (!q) { box.hidden = true; box.innerHTML = ''; return; }
+    var pool = (SEARCH && SEARCH.length) ? SEARCH : fallbackPool();
+    var hits = pool.filter(function(r){ return String(r.n).toLowerCase().indexOf(q) >= 0; }).slice(0, 40);
+    box.hidden = false;
+    if (!hits.length) { box.innerHTML = '<div class="sres-empty">没有匹配「' + q + '」的条目</div>'; return; }
+    box.innerHTML = '<div class="sres-head">搜索到 ' + hits.length + ' 条 · 覆盖已抓取的全部数据源</div>'
+      + hits.map(function(r){
+        var price = (r.p === null || r.p === undefined) ? '—' : (r.p === 0 ? '免费' : '¥' + r.p);
+        var cut = r.c > 0 ? '<i class="sr-cut">-' + r.c + '%</i>' : '';
+        var low = (r.lo !== null && r.lo !== undefined && r.lo > 0) ? '<i class="sr-low">史低 ¥' + r.lo + '</i>' : '';
+        return '<button class="srow" type="button" data-key="' + r.s + ':' + r.i + '">'
+          + '<span class="sr-n">' + r.n + '</span><span class="sr-m">' + r.s + '</span>'
+          + '<span class="sr-p">' + price + cut + low + '</span></button>';
+      }).join('');
+    Array.prototype.forEach.call(box.querySelectorAll('.srow'), function(b){
+      b.addEventListener('click', function(){
+        openDlg(b.getAttribute('data-key'));
+        box.hidden = true;
+      });
+    });
+  }
+  if (qInput) qInput.addEventListener('input', function(){
+    state.q = String(qInput.value||'').trim().toLowerCase();
+    apply();
+    if (state.q.length >= 2) loadIndex(function(){ renderSearchResults(state.q); });
+    else renderSearchResults('');
+  });
+
+  function money(d, v){ var sym = d.cur === 'USD' ? '$' : '¥'; return (v === null || v === undefined) ? '—' : (v === 0 ? '免费' : sym + v); }
+  function kpi(label, val){ return '<div class="kpi"><b>'+val+'</b><span>'+label+'</span></div>'; }
+  function drawChart(points){
+    var W=620, H=170, padL=38, padR=14, padT=14, padB=26, ns='http://www.w3.org/2000/svg';
+    while (dlgChart.firstChild) dlgChart.removeChild(dlgChart.firstChild);
+    function el(name, attrs){ var e=document.createElementNS(ns,name); for(var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+    if (!points || points.length < 2) return false;
+    var ys = points.map(function(p){ return p[1]; });
+    var minY = Math.min.apply(null, ys), maxY = Math.max.apply(null, ys);
+    if (minY === maxY) { maxY = minY + 1; }
+    function x(i){ return padL + (W-padL-padR) * (i/(points.length-1)); }
+    function y(v){ return padT + (H-padT-padB) * (1-(v-minY)/(maxY-minY)); }
+    [0,0.5,1].forEach(function(t){
+      var gy = padT + (H-padT-padB)*t;
+      dlgChart.appendChild(el('line',{x1:padL,y1:gy,x2:W-padR,y2:gy,stroke:'#2c3a48','stroke-width':1}));
+      var lb = el('text',{x:4,y:gy+4,fill:'#6b7c8c','font-size':'10'}); lb.textContent = (maxY-(maxY-minY)*t).toFixed(1); dlgChart.appendChild(lb);
+    });
+    dlgChart.appendChild(el('polyline',{points: points.map(function(p,i){return x(i)+','+y(p[1]);}).join(' '), fill:'none', stroke:'#3fd18b','stroke-width':2}));
+    points.forEach(function(p,i){ dlgChart.appendChild(el('circle',{cx:x(i),cy:y(p[1]),r:2.5,fill:'#3fd18b'})); });
+    var f = el('text',{x:padL,y:H-6,fill:'#6b7c8c','font-size':'10'}); f.textContent = points[0][0]; dlgChart.appendChild(f);
+    var l = el('text',{x:W-padR,y:H-6,fill:'#6b7c8c','font-size':'10','text-anchor':'end'}); l.textContent = points[points.length-1][0]; dlgChart.appendChild(l);
+    return true;
+  }
+  function openDlg(key){
+    var d = byKey[key]; if (!d) return;
+    dlgKey = key; dlgOpen = true;
+    dlgTitle.textContent = d.n;
+    dlgSrc.textContent = d.s + (d.zh === true ? ' · 中文' : '') + (d.fk === 'limited' ? ' · 限时免费' : '') + (d.fk === 'permanent' ? ' · 常驻' : '');
+    dlgKpis.innerHTML = kpi('现价', money(d,d.p)) + kpi('原价', money(d,d.o)) + kpi('折扣', d.c > 0 ? ('-'+d.c+'%') : '—') + kpi('史低', money(d,d.lo));
+    var pts = (typeof SERIES !== 'undefined' && SERIES[key]) ? SERIES[key] : [];
+    var ok = drawChart(pts);
+    dlgNote.textContent = ok ? ('价格历史：'+pts.length+' 个快照，自 '+pts[0][0]+' 起') : ('历史数据积累中：当前仅 '+pts.length+' 个快照，满 2 天后自动生成曲线');
+    var rows = [
+      ['平台', d.s],
+      ['当前价', money(d,d.p)],
+      ['原价', money(d,d.o)],
+      ['折扣', d.c > 0 ? ('-'+d.c+'%') : '—'],
+      ['史低', money(d,d.lo)],
+      ['在线人数', (typeof d.pl === 'number') ? d.pl.toLocaleString('en-US') : '—'],
+      ['支持中文', d.zh === true ? '是' : (d.zh === false ? '否' : '未取到')],
+      ['截止时间', d.end ? fmtEnd(Date.parse(d.end)) : '未公布'],
+      ['剩余', d.end ? fmtLeft(Date.parse(d.end)-Date.now()) : '—'],
+      ['标签', (d.tg||[]).join('、') || '—']
+    ];
+    var html = '<thead><tr><th>项目</th><th>数值</th></tr></thead><tbody>';
+    rows.forEach(function(r){ html += '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'; });
+    dlgTbl.innerHTML = html + '</tbody>';
+    if (d.u) { dlgLink.href = d.u; dlgLink.style.display = 'inline-block'; } else { dlgLink.style.display = 'none'; }
+    dlg.hidden = false;
+  }
+  function closeDlg(){ dlgOpen = false; dlgKey = null; dlg.hidden = true; }
+  if (dlgX) dlgX.addEventListener('click', closeDlg);
+  if (dlg) dlg.addEventListener('click', function(e){ if (e.target === dlg) closeDlg(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && dlgOpen) closeDlg(); });
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){ openDlg(c.getAttribute('data-key')); });
+    c.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDlg(c.getAttribute('data-key')); } });
+  });
+
+  cards.forEach(function(c, i){
+    c.style.animationDelay = Math.min(i*12, 180) + 'ms';
+    c.classList.add('enter');
+  });
+  setTimeout(function(){ cards.forEach(function(c){ c.classList.remove('enter'); c.style.animationDelay=''; }); }, 600);
 
   sortCards();
   apply();
-
-  function fmt(ms) {
-    if (ms <= 0) return '已结束';
-    var s = Math.floor(ms / 1000), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
-    if (d >= 1) return d + ' 天' + (d <= 7 ? ' ' + h + ' 小时' : '');
-    if (h >= 1) return h + ' 小时 ' + m + ' 分';
-    return m + ' 分';
-  }
-  function tick() {
-    var now = Date.now();
-    Array.prototype.forEach.call(document.querySelectorAll('.cd[data-end]'), function (el) {
-      var end = Date.parse(el.getAttribute('data-end'));
-      if (isNaN(end)) { el.textContent = '截止时间未公布'; return; }
-      var left = end - now;
-      el.textContent = left <= 0 ? '活动已结束' : ('截止还剩 ' + fmt(left));
-    });
-  }
   tick();
-  setInterval(tick, 60000);
-})();
-</script>
-</body></html>
+})();</script></body></html>
