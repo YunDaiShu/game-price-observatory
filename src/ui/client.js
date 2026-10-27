@@ -271,10 +271,11 @@
       + '</span>';
   }
   function rowOf(r) {
+    var cut = Number(r.c) || 0;
+    var hasCut = cut > 0 && r.o && r.p !== null && r.p !== undefined && r.o > r.p;
     var priceRow = r.p === 0
       ? '<span class="price free">免费</span>'
-      : '<span class="badge">-' + (r.c || 0) + '%</span>'
-        + '<span class="origin">' + (r.o ? '¥' + r.o : '—') + '</span>'
+      : (hasCut ? '<span class="badge">-' + cut + '%</span>' + '<span class="origin">¥' + r.o + '</span>' : '')
         + '<span class="price">' + (r.p === null || r.p === undefined ? '—' : '¥' + r.p) + '</span>';
     return '<button class="sres-row" type="button" data-key="' + r.s + ':' + r.i + '">'
       + thumbOf(r)
