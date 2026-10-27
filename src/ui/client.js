@@ -18,6 +18,20 @@
   var EASE = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
   var MOVE_MS = 260;
 
+  /* ---------- 封面兜底：6s 未加载成功则移除 img，露出平台渐变 ---------- */
+  function coverFallback() {
+    var imgs = [].slice.call(document.querySelectorAll('.cover-img'));
+    imgs.forEach(function (img) {
+      if (img.dataset.guarded) return;
+      img.dataset.guarded = '1';
+      var done = false;
+      img.addEventListener('load', function () { done = true; });
+      img.addEventListener('error', function () { done = true; img.remove(); });
+      setTimeout(function () {
+        if (!done && (!img.complete || img.naturalWidth === 0)) img.remove();
+      }, 6000);
+    });
+  }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function fmtEnd(ms) { var d = new Date(ms); return pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()); }
   function fmtLeft(ms) {
@@ -362,6 +376,7 @@
   var mx = document.getElementById('mClose');
   if (mx) mx.addEventListener('click', closeModal);
 
+  coverFallback();
   apply();
   tick();
 })();
