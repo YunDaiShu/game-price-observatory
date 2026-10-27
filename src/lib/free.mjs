@@ -10,7 +10,9 @@ export function classifyFree(item, hist) {
   if (item.source === 'epic') return item.free_kind || 'permanent';
 
   // App Store：曾付费 → 现免费 = 限免
+  // 证据可能来自两处：① 本地历史快照 ② 付费榜探测池（fetcher 已给出 free_kind）
   if (item.source === 'appstore') {
+    if (item.free_kind === 'limited') return 'limited';
     const h = hist.get(item.source + ':' + item.id);
     return h && h.min > 0 ? 'limited' : 'permanent';
   }
@@ -23,6 +25,6 @@ export function classifyFree(item, hist) {
 
 export function applyFreeRules(items, hist) {
   for (const it of items) it.free_kind = classifyFree(it, hist);
-  // 只保留：付费条目 + 限时免费条目；永久免费一律剔除（用户明确要求）
-  return items.filter((it) => it.free_kind !== 'permanent');
+  // 只保留：付费条目 + 限时免费条目 + 显式钉住的常驻条目（如 F2P 的《Sky 光·遇》）
+  return items.filter((it) => it.free_kind !== 'permanent' || it.always_show === true);
 }
