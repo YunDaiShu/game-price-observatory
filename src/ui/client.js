@@ -439,7 +439,7 @@
   apply();
   tick();
 })();
- : cur === 'JPY' ? 'JPY ' : '\u00A5'; }
+ : cur === 'JPY' ? '\uFFE5' : '\u00A5'; }
   function fmtMoney(v, cur) { return curOf(cur) + (cur === 'CNY' ? v : Number(v).toLocaleString('en-US')); }
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
