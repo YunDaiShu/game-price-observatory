@@ -187,7 +187,7 @@
     var g = String(r.s).indexOf('steam') === 0 ? 'steam' : r.s;
     var key = r.s + ':' + r.i;
     var endMs = r.e ? (Date.parse(r.e) || 0) : 0;
-    var hasCover = String(r.s).indexOf('steam') === 0 && /^[0-9]+$/.test(String(r.i));
+    var coverUrl = r.cv || (String(r.s).indexOf('steam') === 0 && /^[0-9]+$/.test(String(r.i)) ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + r.i + '/header.jpg' : null);
     var price = (r.p === null || r.p === undefined) ? '—' : (r.p === 0 ? '免费' : '¥' + r.p);
     var priceRow = r.p === 0
       ? '<span class="price free">免费</span>'
@@ -203,7 +203,7 @@
       + '<div class="cover"><span class="cover-tag">' + (LABEL[r.s] || r.s) + '</span>'
       + '<a class="cover-go" href="detail/?key=' + encodeURIComponent(key) + '" title="打开详情页">↗</a>'
       + (INITIAL[g] || '?')
-      + (hasCover ? '<img class="cover-img" loading="lazy" alt="" src="https://cdn.cloudflare.steamstatic.com/steam/apps/' + r.i + '/header.jpg" onerror="this.remove()">' : '')
+      + (coverUrl ? '<img class="cover-img" loading="lazy" alt="" src="' + coverUrl + '" onerror="this.remove()">' : '')
       + '</div><h3 class="name">' + r.n + '</h3><div class="price-row">' + priceRow + '</div>'
       + '<div class="card-meta">' + meta + '</div><div class="tags">' + tags + '</div></article>';
   }
@@ -266,11 +266,11 @@
   function recordOf(key) {
     if (byKey[key]) {
       var d = byKey[key];
-      return { source: d.source, id: d.id, name: d.name, price: d.price, initial: d.initial, cut: d.cut, url: d.url, end: d.end, zh: d.zh, lowest: d.lowest, tags: d.tags };
+      return { source: d.source, id: d.id, name: d.name, price: d.price, initial: d.initial, cut: d.cut, url: d.url, end: d.end, zh: d.zh, lowest: d.lowest, tags: d.tags, cover: d.cover || null };
     }
     var hit = (SEARCH || []).find(function (r) { return r.s + ':' + r.i === key; });
     if (!hit) return null;
-    return { source: hit.s, id: hit.i, name: hit.n, price: hit.p, initial: hit.o, cut: hit.c, url: hit.u, end: hit.e, zh: hit.zh, lowest: hit.lo, tags: hit.tg };
+    return { source: hit.s, id: hit.i, name: hit.n, price: hit.p, initial: hit.o, cut: hit.c, url: hit.u, end: hit.e, zh: hit.zh, lowest: hit.lo, tags: hit.tg, cover: hit.cv || null };
   }
 
   function setCover(rec) {
@@ -279,8 +279,8 @@
     var plat = String(rec.source).indexOf('steam') === 0 ? 'steam' : rec.source;
     cover.setAttribute('data-plat', plat);
     cover.style.backgroundImage = '';
-    var url = plat === 'steam' && /^[0-9]+$/.test(String(rec.id))
-      ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + rec.id + '/header.jpg' : null;
+    var url = rec.cover || (plat === 'steam' && /^[0-9]+$/.test(String(rec.id))
+      ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + rec.id + '/header.jpg' : null);
     if (!url) return;
     var probe = new Image();
     probe.onload = function () { cover.style.backgroundImage = 'url("' + url + '")'; };
