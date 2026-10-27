@@ -13,6 +13,7 @@ import { renderPage } from './render.mjs';
 import { isValidHttpUrl } from './lib/url.mjs';
 import { loadHealth, saveHealth, pausedReason, recordResult } from './lib/health.mjs';
 import { buildSearchIndex } from './lib/search-index.mjs';
+import { enrichEnglishNames } from './lib/names.mjs';
 import { fetchAppStoreTopPaid } from './fetchers/appstore-top.mjs';
 import { fetchAppStoreByIds } from './fetchers/appstore.mjs';
 import { loadPool, savePool, updatePool, freeCandidates } from './lib/appstore-pool.mjs';
@@ -97,6 +98,14 @@ for (const it of normalized) {
   if (!prev || infoScore(it) > infoScore(prev)) byKey.set(k, it);
 }
 let items = [...byKey.values()];
+
+// 补英文别名（带缓存，仅用于搜索，不改展示名）
+try {
+  const nm = await enrichEnglishNames(ROOT, items);
+  if (nm.added) console.log('英文别名：新增 ' + nm.added + ' 条（缓存 ' + nm.cacheSize + ' 条）');
+} catch (e) {
+  errors.push({ source: 'names', target: '英文别名', error: String((e && e.message) || e).slice(0, 100) });
+}
 
 annotateLows(items, hist);
 items = applyFreeRules(items, hist);
