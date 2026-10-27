@@ -40,7 +40,7 @@
       var done = false;
       img.addEventListener('load', function () { done = true; });
       img.addEventListener('error', function () { done = true; img.remove(); });
-      var wait = img.getAttribute('data-proxy') ? 12000 : 6000;
+      var wait = (img.src.indexOf('weserv') >= 0) ? 20000 : 6000;
       setTimeout(function () {
         if (!done && (!img.complete || img.naturalWidth === 0)) img.remove();
       }, wait);
@@ -227,6 +227,7 @@
       ? '<span data-end-abs="' + endMs + '">截止 ' + fmtEnd(endMs) + '</span><span class="cd" data-end-abs="' + endMs + '">' + fmtLeft(endMs - Date.now()) + '</span>'
       : '<span>截止未公布</span>';
     var proxyUrl = (r.s === 'gog' && coverUrl) ? 'https://images.weserv.nl/?url=' + encodeURIComponent(coverUrl) + '&w=460&h=215&fit=cover&output=jpg&q=80' : null;
+    if (proxyUrl) coverUrl = proxyUrl;
     var tags = (r.tg || []).slice(0, 3).map(function (t) { return '<span>' + t + '</span>'; }).join('');
     return '<article class="card" data-group="' + g + '" data-key="' + key + '" tabindex="0">'
       + '<div class="cover"><span class="cover-tag">' + (LABEL[r.s] || r.s) + '</span>'
