@@ -1,0 +1,16 @@
+switch  已按 DISABLE_SOURCES 跳过
+DISABLE_SOURCES=switch,appstore → 移除 7 条
+英文别名：新增 12 条（缓存 40 条）
+OK 在榜 30 条（限免 2 / 新史低 0） 失败 1
+   分来源: {"epic":12,"steam-specials":10,"steam":8}
+   epic          免费       -100%  Home - A Unique Horror Adventure | 至10-29
+   epic          免费       -100%  Sker Ritual | 至10-29
+   steam-specials¥5.8     -90%   Outlast | 至11-02
+   steam-specials¥7.6     -90%   Outlast 2 | 至11-02
+   steam-specials¥19.6    -90%   Shadow of the Tomb Raider: Defin | 至11-06
+   epic          ¥12.4    -80%   Eternal Threads | 至11-02
+   steam-specials¥14      -80%   The Forest | 至11-02
+   steam-specials¥37.25   -75%   Subnautica - 深海迷航 | 至11-02
+   steam-specials¥30.24   -72%   Sons Of The Forest | 至11-02
+   steam-specials¥40.8    -70%   The Outlast Trials | 至11-02
+   ! gog -> 已熔断跳过（连续 3 次失败，2026-10-29 后重试）
