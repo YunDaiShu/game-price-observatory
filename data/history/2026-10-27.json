@@ -1,0 +1,262 @@
+{
+  "generated_at": "2026-10-27T05:42:06.293Z",
+  "timezone": "UTC",
+  "region": "CN",
+  "counts": {
+    "ok": 22,
+    "failed": 0
+  },
+  "items": [
+    {
+      "source": "steam-specials",
+      "id": "238320",
+      "name": "Outlast",
+      "free": false,
+      "price": 5.8,
+      "initial": 58,
+      "cut": 90,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/238320/"
+    },
+    {
+      "source": "steam-specials",
+      "id": "414700",
+      "name": "Outlast 2",
+      "free": false,
+      "price": 7.6,
+      "initial": 76,
+      "cut": 90,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/414700/"
+    },
+    {
+      "source": "steam-specials",
+      "id": "391220",
+      "name": "Rise of the Tomb Raider™",
+      "free": false,
+      "price": 14.7,
+      "initial": 147,
+      "cut": 90,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/391220/"
+    },
+    {
+      "source": "steam-specials",
+      "id": "750920",
+      "name": "Shadow of the Tomb Raider: Definitive Edition",
+      "free": false,
+      "price": 19.6,
+      "initial": 196,
+      "cut": 90,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/750920/"
+    },
+    {
+      "source": "steam-specials",
+      "id": "2050650",
+      "name": "Resident Evil 4",
+      "free": false,
+      "price": 49.5,
+      "initial": 198,
+      "cut": 75,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/2050650/"
+    },
+    {
+      "source": "steam-specials",
+      "id": "264710",
+      "name": "Subnautica - 深海迷航",
+      "free": false,
+      "price": 37.25,
+      "initial": 149,
+      "cut": 75,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/264710/"
+    },
+    {
+      "source": "steam-specials",
+      "id": "1326470",
+      "name": "Sons Of The Forest",
+      "free": false,
+      "price": 30.24,
+      "initial": 108,
+      "cut": 72,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/1326470/"
+    },
+    {
+      "source": "steam-specials",
+      "id": "1304930",
+      "name": "The Outlast Trials",
+      "free": false,
+      "price": 40.8,
+      "initial": 136,
+      "cut": 70,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/1304930/"
+    },
+    {
+      "source": "steam-specials",
+      "id": "3240220",
+      "name": "Grand Theft Auto V 增强版",
+      "free": false,
+      "price": 74.5,
+      "initial": 149,
+      "cut": 50,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/3240220/"
+    },
+    {
+      "source": "steam-specials",
+      "id": "5335510",
+      "name": "Moon Sweepers",
+      "free": false,
+      "price": 30.6,
+      "initial": 36,
+      "cut": 15,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/5335510/"
+    },
+    {
+      "source": "steam",
+      "id": "1245620",
+      "name": "艾尔登法环",
+      "free": false,
+      "price": 298,
+      "initial": 298,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/1245620/"
+    },
+    {
+      "source": "appstore",
+      "id": "1523037824",
+      "name": "崩坏：星穹铁道",
+      "free": true,
+      "price": 0,
+      "initial": 0,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://apps.apple.com/cn/app/%E5%B4%A9%E5%9D%8F-%E6%98%9F%E7%A9%B9%E9%93%81%E9%81%93/id1523037824?uo=4",
+      "seller": "Shanghai miHoYo YingTie Technology Co., Ltd.",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "source": "steam",
+      "id": "1086940",
+      "name": "博德之门3",
+      "free": false,
+      "price": 268,
+      "initial": 268,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/1086940/"
+    },
+    {
+      "source": "steam",
+      "id": "2358720",
+      "name": "黑神话：悟空",
+      "free": false,
+      "price": 268,
+      "initial": 268,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/2358720/"
+    },
+    {
+      "source": "appstore",
+      "id": "1454663939",
+      "name": "明日方舟",
+      "free": true,
+      "price": 0,
+      "initial": 0,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://apps.apple.com/cn/app/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F/id1454663939?uo=4",
+      "seller": "Shanghai Hypergryph Network Technology Co., Ltd.",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "source": "steam",
+      "id": "1091500",
+      "name": "赛博朋克 2077",
+      "free": false,
+      "price": 298,
+      "initial": 298,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/1091500/"
+    },
+    {
+      "source": "appstore",
+      "id": "1243986797",
+      "name": "我的世界：移动版",
+      "free": true,
+      "price": 0,
+      "initial": 0,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://apps.apple.com/cn/app/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C-%E7%A7%BB%E5%8A%A8%E7%89%88/id1243986797?uo=4",
+      "seller": "Shanghai NetEase MineWorld Network Technology Co.,Ltd.",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "source": "steam",
+      "id": "292030",
+      "name": "巫师3：狂猎 — 重制版",
+      "free": false,
+      "price": 199,
+      "initial": 199,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/292030/"
+    },
+    {
+      "source": "appstore",
+      "id": "1467190251",
+      "name": "原神-6周年",
+      "free": true,
+      "price": 0,
+      "initial": 0,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://apps.apple.com/cn/app/%E5%8E%9F%E7%A5%9E-6%E5%91%A8%E5%B9%B4/id1467190251?uo=4",
+      "seller": "Shanghai miHoYo YingTie Technology Co., Ltd.",
+      "note": "App Store 无折扣字段，此为当前售价"
+    },
+    {
+      "source": "steam",
+      "id": "730",
+      "name": "Counter-Strike 2",
+      "free": true,
+      "price": 0,
+      "initial": 0,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/730/"
+    },
+    {
+      "source": "steam",
+      "id": "413150",
+      "name": "Stardew Valley",
+      "free": false,
+      "price": 48,
+      "initial": 48,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/413150/"
+    },
+    {
+      "source": "steam",
+      "id": "105600",
+      "name": "Terraria",
+      "free": false,
+      "price": 42,
+      "initial": 42,
+      "cut": 0,
+      "currency": "CNY",
+      "url": "https://store.steampowered.com/app/105600/"
+    }
+  ],
+  "errors": []
+}
