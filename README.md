@@ -20,9 +20,9 @@
 
 | 能力 | 说明 |
 |---|---|
-| **来源筛选** | 顶部筛选条：全部 / Steam / Epic / GOG / SteamPY，一键只看某一来源，再点「全部」还原；实时显示「显示 n / 总数」 |
+| **来源筛选** | 顶部筛选条：全部 / Steam / Epic / GOG / App Store，一键只看某一来源，再点「全部」还原；实时显示「显示 n / 总数」；切换带淡出/错峰淡入 |
 | **卡片式布局** | 参考 ipkk.com/app-store-free 的信息层级：一屏多卡的网格 + 卡面直接挂「来源 / 限免 / 中文 / 新史低」徽章 |
-| **限时免费专列** | 只列**限时免费**（带领取截止倒计时）；**永久免费一律不收录、不展示** |
+| **限时免费标记** | 限免条目在榜单里用**绿色左边框 +「限免」徽章 + 领取截止倒计时**标出；**永久免费一律不收录**（例外：看板里显式钉住的常驻条目，如 F2P 的《Sky 光·遇》） |
 | **促销倒计时** | 有结束时间的源显示「还剩 x 天 / x 小时」；无起止字段的源显示「未公布」 |
 | **新史低标记** | 与本地全部历史快照对比，刷新纪录的条目打「新史低」金色角标 |
 | **中文支持标识** | 可判定的源显示「中文 / 无中文」，判定不了的不显示徽章 |
@@ -40,7 +40,7 @@
 | **Steam** | `appdetails` / `featuredcategories` / `GetNumberOfCurrentPlayers` | 价格、折扣、特惠榜 | 促销**截止**、中文支持、**在线人数**、分类 | ✅ 可用 |
 | **Epic** | 官方 CDN `store-site-backend-static.ak.epicgames.com/freeGamesPromotions` | 折价、周免 | 促销**起止**、限免判定 | ✅ 可用 |
 | **GOG** | 官方 `catalog.gog.com/v1/catalog` | 折价、标签 | 价格、折扣、**标签** | ⚠️ 接口可用，但 `catalog.gog.com` 在**部分网络**（如本机）TCP 不可达；GitHub Actions 环境正常 |
-| **Apple App Store** | 官方 `iTunes Search` | 付费手游当前价 | 价格（含限免判定） | ✅ 可用（免费游戏无折扣概念） |
+| **Apple App Store** | 官方 `iTunes Search` / `Lookup` | 付费手游当前价 | 价格（含限免判定） | ✅ 可用（**只能用付费应用做监控词**；免费应用按规则不收录，故 `watchlist` 里放的是付费游戏） |
 | **SteamPY（匹歪）** | 站点为纯 SPA：`/`、`/robots.txt`、`/api/game/list` 均返回同一份 120,631 字节 HTML（实测 2026-10-27），HTML 内无 inline state、无 `/api/` 路径、无公开文档 | — | — | ❌ **不可用**（无公开接口；需自建代理并设 `STEAMPY_API_URL`） |
 | **杉果 Sonkwo** | `www.sonkwo.com/api/v2/products` → **410 Gone** | — | — | ❌ **不可用**（端点已下线，需商务授权） |
 | **SteamDB** | `steamdb.info/api/…` → **403** | — | — | ❌ **不可用/需授权**（ToS 禁止抓取，API 仅赞助者可用） |
@@ -146,7 +146,7 @@ game-price-radar/
 
 单源连续失败会触发**短期熔断**，避免每天白等超时：
 
-- 状态文件：`data/health.json`（随快照一起提交）
+- 状态文件**按环境隔离**：CI 写 `data/health.ci.json`，本机写 `data/health.local.json`（避免"本机病态"被提交后让 CI 误熔断）
 - 规则：连续失败 **3 次** → 暂停该源 **2 天**（`pausedUntil`），到期自动重试
 - 熔断期间该源不出现在抓取流程里，页面提示「已熔断跳过（连续 N 次失败，YYYY-MM-DD 后重试）」
 - 任意一次成功即重置 `failStreak`
@@ -174,7 +174,7 @@ node src/index.mjs
 }
 ```
 
-- `steam`：Steam appid；
+- `steam`：Steam appid，或 `{ "id": 2325290, "always": true }` 形式——`always` 表示"钉住常驻"，即使该游戏是永久免费（F2P）也会展示（例：《Sky 光·遇》）；
 - `appstore`：搜索关键词，取第一条结果；
 - Epic / GOG / Steam 特惠榜：**自动抓取，无需配置**；
 - SteamPY：默认不抓（无公开接口）。如你已获授权或有自建代理端点，设置环境变量 `STEAMPY_API_URL` 即可启用，条目会自动并入同一套字段与校验流程。
