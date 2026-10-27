@@ -5,7 +5,8 @@ import path from 'node:path';
 const PAUSE_AFTER = 3;   // 连续失败 3 次
 const PAUSE_DAYS = 2;    // 暂停 2 天
 
-const FILE = (root) => path.join(root, 'data', 'health.json');
+// 环境隔离：CI 与本机各自一份，避免"本机病态"被提交后让 CI 误熔断
+const FILE = (root) => path.join(root, 'data', process.env.CI ? 'health.ci.json' : 'health.local.json');
 const todayStr = (d = new Date()) => d.toISOString().slice(0, 10);
 const addDays = (dateStr, n) => {
   const d = new Date(dateStr + 'T00:00:00Z');
