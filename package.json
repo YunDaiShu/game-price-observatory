@@ -1,0 +1,11 @@
+{
+  "name": "game-price-radar",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "多平台游戏价格雷达：抓取官方公开接口，生成史低表与静态页",
+  "license": "MIT",
+  "scripts": {
+    "run": "node src/index.mjs"
+  }
+}
