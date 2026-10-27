@@ -115,6 +115,14 @@ for (const it of normalized) {
 }
 let items = [...byKey.values()];
 
+// 应急下架：DISABLE_SOURCES 命中的源从榜单/序列/搜索索引中彻底移除
+const blockedSource = (s) => DISABLED.includes(s) || (s === 'steam-specials' && DISABLED.includes('steam'));
+if (DISABLED.length) {
+  const before = items.length;
+  items = items.filter((it) => !blockedSource(it.source));
+  console.log('DISABLE_SOURCES=' + DISABLED.join(',') + ' → 移除 ' + (before - items.length) + ' 条');
+}
+
 // 补英文别名（带缓存，仅用于搜索，不改展示名）
 try {
   const nm = await enrichEnglishNames(ROOT, items);
@@ -146,7 +154,7 @@ const payload = {
   by_source: items.reduce((acc, it) => { acc[it.source] = (acc[it.source] || 0) + 1; return acc; }, {}),
   items,
   errors,
-  series: loadSeries(path.join(ROOT, 'data', 'history'), 60)
+  series: Object.fromEntries(Object.entries(loadSeries(path.join(ROOT, 'data', 'history'), 60)).filter(([k]) => !blockedSource(k.split(':')[0])))
 };
 
 saveHealth(ROOT, health);
@@ -161,7 +169,7 @@ fs.copyFileSync(path.join(ROOT, 'src', 'ui', 'about.html'), path.join(ROOT, 'doc
 // 供详情页（docs/detail）读取实时数据：Pages 只发布 docs/
 writeJson(path.join(ROOT, 'docs', 'latest.json'), payload);
 // 全量搜索索引（页面首次输入时懒加载）
-const searchIndex = buildSearchIndex(ROOT, items);
+const searchIndex = buildSearchIndex(ROOT, items, { exclude: DISABLED });
 writeJson(path.join(ROOT, 'docs', 'search-index.json'), searchIndex);
 
 console.log('OK 在榜 ' + items.length + ' 条（限免 ' + payload.counts.limited_free + ' / 新史低 ' + payload.counts.new_low + '） 失败 ' + errors.length);
