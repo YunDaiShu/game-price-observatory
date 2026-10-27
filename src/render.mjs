@@ -23,6 +23,10 @@ function coverOf(it) {
   }
   return null;
 }
+function proxyOf(it) {
+  if (it.source !== 'gog' || !it.cover) return null;
+  return 'https://images.weserv.nl/?url=' + encodeURIComponent(it.cover);
+}
 function card(it) {
   const g = GROUP(it);
   const key = it.source + ':' + it.id;
@@ -56,7 +60,7 @@ function card(it) {
     + ' data-end="' + endMs + '" data-free="' + (it.free_kind === 'limited' ? 1 : 0) + '"'
     + ' data-newlow="' + (it.is_new_low === true ? 1 : 0) + '" tabindex="0">'
     + '<div class="cover"><span class="cover-tag">' + (LABEL[it.source] || it.source) + '</span>'
-    + (coverOf(it) ? '<img class="cover-img" loading="lazy" alt="" src="' + coverOf(it) + '" onerror="this.remove()">' : '')
+    + (coverOf(it) ? '<img class="cover-img" loading="lazy" alt="" src="' + coverOf(it) + '"' + (proxyOf(it) ? ' data-proxy="' + proxyOf(it) + '"' : ' onerror="this.remove()"') + '>' : '')
     + '<a class="cover-go" href="detail/?key=' + encodeURIComponent(key) + '" title="打开详情页">↗</a>'
     + (INITIAL[g] || '?') + '</div>'
     + '<h3 class="name" title="' + escapeHtml(it.name) + '">' + escapeHtml(it.name) + '</h3>'
@@ -96,7 +100,7 @@ export function renderPage(payload) {
   const data = items.map((it) => ({
     source: it.source, id: it.id, name: it.name, price: it.price, initial: it.initial, cut: it.cut,
     currency: it.currency, url: it.url, end: it.promo_end, players: it.players_online,
-    zh: it.supports_zh, lowest: it.lowest_price, freeKind: it.free_kind, tags: it.tags || [], newLow: it.is_new_low, cover: coverOf(it)
+    zh: it.supports_zh, lowest: it.lowest_price, freeKind: it.free_kind, tags: it.tags || [], newLow: it.is_new_low, cover: coverOf(it), proxy: proxyOf(it)
   }));
 
   return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
