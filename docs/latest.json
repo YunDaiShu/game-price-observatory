@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-27T10:48:35.642Z",
-  "generated_at_bj": "2026-10-27 18:48",
+  "generated_at": "2026-10-27T10:56:00.268Z",
+  "generated_at_bj": "2026-10-27 18:56",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
@@ -33,6 +33,7 @@
       "initial": 15,
       "cut": 100,
       "url": "https://store.epicgames.com/zh-CN/p/home-19212a",
+      "cover": "https://cdn1.epicgames.com/spt-assets/46fc0cdb9f164a848e916249a8f68fc7/home-1f6qi.png",
       "name_en": "Home - A Unique Horror Adventure"
     },
     {
@@ -52,6 +53,7 @@
       "initial": 78,
       "cut": 100,
       "url": "https://store.epicgames.com/zh-CN/p/sker-ritual-aac702",
+      "cover": "https://cdn1.epicgames.com/spt-assets/43d96f4437e34c87b7eff08831d1b1de/sker-ritual-1tuka.png",
       "name_en": "Sker Ritual"
     },
     {
@@ -112,6 +114,25 @@
       "url": "https://store.steampowered.com/app/391220/"
     },
     {
+      "promo_start": null,
+      "promo_end": "2026-11-06T17:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 19.6,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "750920",
+      "name": "Shadow of the Tomb Raider: Definitive Edition",
+      "free": false,
+      "price": 19.6,
+      "initial": 196,
+      "cut": 90,
+      "url": "https://store.steampowered.com/app/750920/"
+    },
+    {
       "promo_start": "2026-10-19T15:00:00.000Z",
       "promo_end": "2026-11-02T16:00:00.000Z",
       "tags": [],
@@ -128,26 +149,8 @@
       "initial": 62,
       "cut": 80,
       "url": "https://store.epicgames.com/zh-CN/p/eternal-threads-197169",
+      "cover": "https://cdn1.epicgames.com/spt-assets/08813e055af64315b8a55b2e521f4e04/eternal-threads-1vm6i.jpg",
       "name_en": "Eternal Threads"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-02T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 14,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "242760",
-      "name": "The Forest",
-      "free": false,
-      "price": 14,
-      "initial": 70,
-      "cut": 80,
-      "url": "https://store.steampowered.com/app/242760/"
     },
     {
       "promo_start": null,
@@ -242,6 +245,7 @@
       "initial": 33,
       "cut": 65,
       "url": "https://store.epicgames.com/zh-CN/p/monument-valley-02",
+      "cover": "https://cdn1.epicgames.com/spt-assets/e56a7411805046d3b5b7253a6e4e0faa/monument-valley-1gys5.jpg",
       "name_en": "Monument Valley"
     },
     {
@@ -280,6 +284,7 @@
       "initial": 78,
       "cut": 30,
       "url": "https://store.epicgames.com/zh-CN/p/sorry-were-closed-724c86",
+      "cover": "https://cdn1.epicgames.com/spt-assets/9ab7eaaeb2f041969b350955b789f0f7/sorry-were-closed-1orqh.png",
       "name_en": "Sorry We're Closed"
     },
     {
@@ -318,6 +323,7 @@
       "initial": 169,
       "cut": 0,
       "url": "https://store.epicgames.com/zh-CN/p/ghostrunner-2",
+      "cover": "https://cdn1.epicgames.com/offer/708f57aaa04b42ef885be16c8288f0ac/EGS_Ghostrunner2_OneMoreLevel_S1_2560x1440-15845148fae1d0cfd7f3e98c9b3ba6ba",
       "name_en": "Ghostrunner 2"
     },
     {
@@ -337,6 +343,7 @@
       "initial": 108,
       "cut": 0,
       "url": "https://store.epicgames.com/zh-CN/p/lisa-the-definitive-edition",
+      "cover": "https://cdn2.unrealengine.com/egs-lisathedefinitiveedition-dingalingproductions-bundles-s1-2560x1440-5be18c558828.jpg",
       "name_en": "LISA: The Definitive Edition"
     },
     {
@@ -353,13 +360,14 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 17340,
+      "players_online": 17968,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
       "id": "1245620",
       "name": "艾尔登法环",
       "url": "https://store.steampowered.com/app/1245620/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
       "developer": "FromSoftware, Inc.",
       "publishers": "FromSoftware, Inc.、Bandai Namco Entertainment",
       "release_date": "2022 年 2 月 24 日",
@@ -392,6 +400,7 @@
       "initial": 6,
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E9%81%BF%E9%9A%BE%E6%89%80-%E7%94%9F%E5%AD%98/id1544190466?uo=4",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/71/65/a9/7165a9f2-16a8-303e-d92f-bbc9ba7e1c42/AppIcon-1x_U007emarketing-0-10-0-85-220-0.png/512x512bb.jpg",
       "seller": "East2west Network Tech. Co. Ltd.",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "避难所：生存"
@@ -417,6 +426,7 @@
       "id": "1086940",
       "name": "博德之门3",
       "url": "https://store.steampowered.com/app/1086940/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
       "developer": "Larian Studios",
       "publishers": "Larian Studios",
       "release_date": "2023 年 8 月 3 日",
@@ -450,6 +460,7 @@
       "id": "2358720",
       "name": "黑神话：悟空",
       "url": "https://store.steampowered.com/app/2358720/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
       "developer": "Game Science",
       "publishers": "Game Science",
       "release_date": "2024 年 8 月 19 日",
@@ -482,6 +493,7 @@
       "initial": 20,
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E7%94%BB%E4%B8%AD%E4%B8%96%E7%95%8C/id6446614518?uo=4",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/67/e4/eb/67e4eb6d-b72c-84dd-a301-3e7c71185679/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg",
       "seller": "X.D. Network Inc.",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "画中世界"
@@ -506,6 +518,7 @@
       "initial": 24,
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E7%BA%AA%E5%BF%B5%E7%A2%91%E8%B0%B72/id1238778050?uo=4",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/d3/ff/c3/d3ffc3c3-6aa8-d97b-005b-9170d1429238/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg",
       "seller": "ustwo Games Ltd",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "纪念碑谷2"
@@ -530,6 +543,7 @@
       "initial": 12,
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E5%8A%AB%E5%90%8E%E5%85%AC%E5%8F%B8/id6757729278?uo=4",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c1/c5/c9/c1c5c9eb-9195-d3d5-a09a-872d95c7d18c/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
       "seller": "DIVASKY LIMITED",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "劫后公司"
@@ -548,13 +562,14 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 97286,
+      "players_online": 99577,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
       "id": "1091500",
       "name": "赛博朋克 2077",
       "url": "https://store.steampowered.com/app/1091500/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
       "developer": "CD PROJEKT RED",
       "publishers": "CD PROJEKT RED",
       "release_date": "2020 年 12 月 9 日",
@@ -584,6 +599,7 @@
       "initial": 12,
       "cut": 0,
       "url": "https://store.epicgames.com/zh-CN/p/lost-castle-the-old-ones-awaken",
+      "cover": "https://cdn1.epicgames.com/spt-assets/a6d76157ad884f2c9aa470b30da9e2ff/lost-castle-r390n.png",
       "name_en": "Lost Castle: The Old Ones Awaken"
     },
     {
@@ -606,6 +622,7 @@
       "initial": 18,
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E6%B3%B0%E6%8B%89%E7%91%9E%E4%BA%9A/id1157863540?uo=4",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ff/04/5e/ff045efc-1d70-891e-ebbc-7c4b1674072e/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
       "seller": "X.D. Network Inc.",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "泰拉瑞亚"
@@ -630,6 +647,7 @@
       "initial": 15,
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E7%8E%8B%E5%9B%BD%E4%BF%9D%E5%8D%AB%E6%88%985/id6749045841?uo=4",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f5/69/12/f5691254-db0b-60c8-4b0c-6e4014b8e418/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
       "seller": "East2west Network Tech. Co. Ltd.",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "王国保卫战5"
@@ -654,6 +672,7 @@
       "initial": 6,
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E6%96%87%E6%98%8E%E7%99%BE%E7%A7%91/id1452113719?uo=4",
+      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/57/f9/52/57f952f1-79d4-a528-2c4b-d6751201c1ae/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
       "seller": "嘉宁 詹",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "文明百科"
@@ -672,13 +691,14 @@
       "supports_zh": true,
       "lowest_price": 199,
       "is_new_low": null,
-      "players_online": 31057,
+      "players_online": 32670,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
       "id": "292030",
       "name": "巫师3：狂猎 — 重制版",
       "url": "https://store.steampowered.com/app/292030/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg",
       "developer": "CD PROJEKT RED",
       "publishers": "CD PROJEKT RED",
       "release_date": "2015 年 5 月 18 日",
@@ -708,6 +728,7 @@
       "initial": 31,
       "cut": 0,
       "url": "https://store.epicgames.com/zh-CN/p/luftrausers",
+      "cover": "https://cdn1.epicgames.com/spt-assets/85ddeeec9d4243b3a2d78aab87bfae7f/luftrausers-1mxb1.png",
       "name_en": "Luftrausers"
     },
     {
@@ -727,6 +748,7 @@
       "initial": 70,
       "cut": 0,
       "url": "https://store.epicgames.com/zh-CN/p/model-builder-complete-edition-f9b456",
+      "cover": "https://cdn1.epicgames.com/spt-assets/7472ec268e344e77a85e95976c0ffc6d/model-builder-1vfgr.png",
       "name_en": "Model Builder: Complete Edition"
     },
     {
@@ -743,13 +765,14 @@
       "supports_zh": true,
       "lowest_price": null,
       "is_new_low": null,
-      "players_online": 3653,
+      "players_online": 3844,
       "free_kind": "permanent",
       "currency": "CNY",
       "source": "steam",
       "id": "2325290",
       "name": "Sky 光·遇",
       "url": "https://store.steampowered.com/app/2325290/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/2325290/header.jpg",
       "developer": "thatgamecompany",
       "publishers": "thatgamecompany",
       "release_date": "2024 年 4 月 10 日",
@@ -776,13 +799,14 @@
       "supports_zh": true,
       "lowest_price": 48,
       "is_new_low": null,
-      "players_online": 43233,
+      "players_online": 45621,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
       "id": "413150",
       "name": "Stardew Valley",
       "url": "https://store.steampowered.com/app/413150/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg",
       "developer": "ConcernedApe",
       "publishers": "ConcernedApe",
       "release_date": "2016 年 2 月 26 日",
@@ -816,6 +840,7 @@
       "id": "105600",
       "name": "Terraria",
       "url": "https://store.steampowered.com/app/105600/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg",
       "developer": "Re-Logic",
       "publishers": "Re-Logic",
       "release_date": "2011 年 5 月 16 日",
@@ -845,6 +870,7 @@
       "initial": 53,
       "cut": 0,
       "url": "https://store.epicgames.com/zh-CN/p/terrascape-2b12b1",
+      "cover": "https://cdn1.epicgames.com/spt-assets/a740a2eed807469f88b9dff17e7cd3a3/terrascape-j7p8d.png",
       "name_en": "TerraScape"
     },
     {
@@ -864,6 +890,7 @@
       "initial": 60,
       "cut": 0,
       "url": "https://store.epicgames.com/zh-CN/p/thems-fightin-herds",
+      "cover": "https://cdn1.epicgames.com/offer/a567c32599bf4d4fb609e424f3691b39/EGS_ThemsFightinHerds_Mane6Inc_S1_2560x1440-da3a940faafe30c602d3966d2c295825",
       "name_en": "Them's Fightin' Herds"
     }
   ],
@@ -984,7 +1011,7 @@
       [
         "2026-10-27",
         298,
-        16957
+        17340
       ]
     ],
     "appstore:1544190466": [
@@ -998,14 +1025,14 @@
       [
         "2026-10-27",
         268,
-        21689
+        22326
       ]
     ],
     "steam:2358720": [
       [
         "2026-10-27",
         268,
-        9775
+        9988
       ]
     ],
     "appstore:6446614518": [
@@ -1033,7 +1060,7 @@
       [
         "2026-10-27",
         298,
-        96478
+        97286
       ]
     ],
     "epic:4a88d0dc64114b20b67339c74543f859": [
@@ -1068,7 +1095,7 @@
       [
         "2026-10-27",
         199,
-        31057
+        32670
       ]
     ],
     "epic:c76046dddcdb43619c33ce0395941033": [
@@ -1089,14 +1116,14 @@
       [
         "2026-10-27",
         48,
-        43233
+        45621
       ]
     ],
     "steam:105600": [
       [
         "2026-10-27",
         42,
-        25513
+        25875
       ]
     ],
     "epic:af6b823b8698465f9aedc3bddf2e8686": [
