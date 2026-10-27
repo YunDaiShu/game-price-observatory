@@ -42,6 +42,7 @@ function card(it) {
       + '<span class="price">' + money(it.price) + '</span>');
 
   const meta = [];
+  if (it.needs_base) meta.push('<span class="warn-tag">需本体</span>');
   const discounted = it.cut > 0 && it.initial && it.initial > it.price;
   const lowMeaningful = it.lowest_price !== null && it.lowest_price !== undefined && it.price > 0
     && (discounted || it.lowest_price < it.price);   // 无折扣且史低=现价时是废话，不显示
@@ -104,7 +105,7 @@ export function renderPage(payload) {
   const data = items.map((it) => ({
     source: it.source, id: it.id, name: it.name, price: it.price, initial: it.initial, cut: it.cut,
     currency: it.currency, url: it.url, end: it.promo_end, players: it.players_online,
-    zh: it.supports_zh, lowest: it.lowest_price, freeKind: it.free_kind, tags: it.tags || [], newLow: it.is_new_low, cover: coverOf(it), proxy: proxyOf(it)
+    zh: it.supports_zh, lowest: it.lowest_price, freeKind: it.free_kind, tags: it.tags || [], newLow: it.is_new_low, cover: coverOf(it), needsBase: it.needs_base || null, proxy: proxyOf(it)
   }));
 
   return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
