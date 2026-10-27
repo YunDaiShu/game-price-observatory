@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fetchSteam } from './fetchers/steam.mjs';
 import { fetchAppStore } from './fetchers/appstore.mjs';
+import { fetchSwitch } from './fetchers/switch.mjs';
 import { fetchSteamSpecials } from './fetchers/steam-specials.mjs';
 import { fetchEpic } from './fetchers/epic.mjs';
 import { fetchGog } from './fetchers/gog.mjs';
@@ -78,6 +79,16 @@ try {
   savePool(ROOT, pool);
 } catch (e) {
   errors.push({ source: 'appstore-top', target: '付费榜/探测', error: String(e?.cause?.code || e?.message || e).slice(0, 120) });
+}
+
+// Switch（日服 / JPY）：白名单关键词 → 站内搜索接口
+try {
+  const sw = await fetchSwitch({ pages: 8, limit: 100, max: 40 });
+  raw.push(...sw.items);
+  if (sw.errors.length) errors.push({ source: 'switch', target: '部分关键词', error: sw.errors.length + ' 个未命中: ' + sw.errors[0].query });
+  console.log('switch  ' + sw.items.length + ' 条');
+} catch (e) {
+  errors.push({ source: 'switch', target: 'switch', error: String((e && e.message) || e).slice(0, 120) });
 }
 
 const normalized = raw.map(normalizeItem);
