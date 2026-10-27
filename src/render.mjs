@@ -1,6 +1,6 @@
 const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store', steampy: 'SteamPY' };
 const GROUP = (it) => (String(it.source).startsWith('steam') ? 'steam' : it.source);
-const GROUP_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', steampy: 'SteamPY', appstore: 'App Store' };
+const GROUP_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
 
 export function renderPage(payload) {
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -13,7 +13,8 @@ export function renderPage(payload) {
   }
 
   // 筛选：全部 + 每个平台分组；0 条的来源也保留，状态明确
-  const groups = ['steam', 'epic', 'gog', 'steampy'];
+  // 只列真实存在的来源分组（顺序即展示顺序）
+  const groups = ['steam', 'epic', 'gog', 'appstore'];
   // 只渲染「有数据」的分组入口：空来源不出现在筛选条里（如未配置端点的 SteamPY）
   const chips = [{ key: 'all', text: '全部', n: items.length }]
     .concat(groups.filter((g) => (groupCount[g] || 0) > 0).map((g) => ({ key: g, text: GROUP_LABEL[g] || g, n: groupCount[g] })));
@@ -48,7 +49,13 @@ export function renderPage(payload) {
       ? '<div class="tags">' + it.tags.slice(0, 3).map((t) => '<span>' + esc(t) + '</span>').join('') + '</div>'
       : '';
 
-    return '<article class="card' + (it.free_kind === 'limited' ? ' is-free' : '') + '" data-group="' + esc(GROUP(it)) + '">'
+    const dataAttrs = ' data-group="' + esc(GROUP(it)) + '"'
+      + ' data-cut="' + (it.cut || 0) + '"'
+      + ' data-price="' + (it.price === null || it.price === undefined ? 999999 : it.price) + '"'
+      + ' data-players="' + (typeof it.players_online === 'number' ? it.players_online : -1) + '"'
+      + ' data-end="' + (it.promo_end ? Date.parse(it.promo_end) || 0 : 0) + '"'
+      + ' data-free="' + (it.free_kind === 'limited' ? 1 : 0) + '"';
+    return '<article class="card s-' + esc(GROUP(it)) + (it.free_kind === 'limited' ? ' is-free' : '') + '"' + dataAttrs + '>'
       + '<div class="card-top"><h3>' + name + '</h3><div class="price">' + priceBlock(it) + '</div></div>'
       + '<div class="badges">' + badges.join('') + '</div>'
       + (meta.length ? '<div class="meta">' + meta.join('') + '</div>' : '')
@@ -90,9 +97,47 @@ h1{margin:0;font-size:24px;letter-spacing:.02em}
 .chip[aria-pressed="true"]{background:#1b1f23;border-color:#1b1f23;color:#fff}
 .chip[aria-pressed="true"] .n{color:#b9c2bb}
 .showing{margin-left:auto;color:var(--dim);font-size:12.5px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(242px,1fr));gap:10px}
+@keyframes enter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card.enter{animation:enter .26s ease both}
+.empty{grid-column:1/-1;background:var(--panel);border:1px dashed var(--line);border-radius:10px;padding:34px 16px;text-align:center;color:var(--muted);font-size:13px}
+.filters{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,var(--bg) 78%,rgba(245,246,245,0))}
+@media (max-width:640px){
+  .wrap{padding:0 12px 40px}
+  h1{font-size:20px}
+  .stats{gap:12px;font-size:12px}
+  .filters{gap:6px;padding:8px 0}
+  .chip{padding:6px 11px;font-size:12.5px}
+  .showing{width:100%;margin:2px 0 0;text-align:left}
+  .grid{grid-template-columns:1fr;gap:8px}
+  .card{padding:12px 13px 11px}
+  .card h3{font-size:14px}
+  .price b{font-size:15.5px}
+}
+@media (prefers-reduced-motion: reduce){
+  .card,.chip{transition:none!important;animation:none!important}
+}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 15px 13px;display:flex;flex-direction:column;gap:9px}
 .card[hidden]{display:none}
+.card{border-left:3px solid var(--line)}
+.card.s-steam{border-left-color:#6f9bd6}
+.card.s-epic{border-left-color:#8a76e0}
+.card.s-gog{border-left-color:#c9789a}
+.card.s-appstore{border-left-color:#e0a95f}
+.card.is-free{border-left-color:var(--free)}
+.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.seg{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.sbtn{appearance:none;border:0;background:transparent;padding:7px 12px;font-size:12.5px;color:var(--dim);cursor:pointer;font-family:inherit;transition:background .12s,color .12s}
+.sbtn+.sbtn{border-left:1px solid var(--line)}
+.sbtn:hover{color:var(--fg)}
+.sbtn[aria-pressed="true"]{background:#1b1f23;color:#fff}
+.toggle{appearance:none;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:7px 12px;font-size:12.5px;color:var(--dim);cursor:pointer;font-family:inherit;transition:all .12s}
+.toggle:hover{border-color:#bfe3cd;color:#0f7a44}
+.toggle[aria-pressed="true"]{background:#e6f6ec;border-color:#bfe3cd;color:#0f7a44;font-weight:600}
+.card:focus-within{outline:2px solid #b7cdb9;outline-offset:2px}
+.card h3 a:focus-visible{outline:2px solid #6b8f6f;outline-offset:2px;border-radius:3px}
+@media (max-width:1024px){.grid{grid-template-columns:repeat(auto-fill,minmax(228px,1fr))}}
+@media (min-width:641px) and (max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
 .card{transition:opacity .16s ease,transform .16s ease,box-shadow .16s ease}
 .card:hover{box-shadow:0 4px 14px rgba(16,24,16,.09);transform:translateY(-2px)}
 .card.fade-out{opacity:0;transform:translateY(6px) scale(.985)}
@@ -141,11 +186,21 @@ footer a{color:#6b7280}
 
 <div class="filters" role="group" aria-label="按来源筛选">
   ${chips.map((c) => '<button class="chip" type="button" data-group="' + esc(c.key) + '" aria-pressed="' + (c.key === 'all' ? 'true' : 'false') + '">' + esc(c.text) + '<span class="n">' + c.n + '</span></button>').join('')}
+</div>
+<div class="toolbar">
+  <div class="seg" role="group" aria-label="排序">
+    <button class="sbtn" type="button" data-sort="cut" aria-pressed="true">折扣</button>
+    <button class="sbtn" type="button" data-sort="price" aria-pressed="false">价格</button>
+    <button class="sbtn" type="button" data-sort="players" aria-pressed="false">在线</button>
+    <button class="sbtn" type="button" data-sort="end" aria-pressed="false">截止</button>
+  </div>
+  <button class="toggle" type="button" id="onlyFree" aria-pressed="false">只看限免</button>
   <span class="showing" id="showing">显示 ${items.length} / ${items.length}</span>
 </div>
 
 <main class="grid" id="grid">
-${items.length ? items.map(card).join('') : '<p class="na">本次没有任何数据</p>'}
+${items.map(card).join('')}
+<div class="empty" id="empty" hidden>该来源今日暂无数据</div>
 </main>
 
 ${errorList}
@@ -169,13 +224,41 @@ ${footerSources}<br>
     counts[g] = (counts[g] || 0) + 1;
   });
 
+  var state = { group: 'all', onlyFree: false, sort: 'cut' };
+  var grid = document.getElementById('grid');
+  var emptyBox = document.getElementById('empty');
   var pending = null;
-  function apply(group) {
+
+  function matches(card) {
+    var okGroup = state.group === 'all' || card.getAttribute('data-group') === state.group;
+    var okFree = !state.onlyFree || card.getAttribute('data-free') === '1';
+    return okGroup && okFree;
+  }
+
+  function sortCards() {
+    if (!grid) return;
+    var key = state.sort;
+    var list = cards.slice().sort(function (a, b) {
+      if (key === 'price') return Number(a.getAttribute('data-price')) - Number(b.getAttribute('data-price'));
+      if (key === 'players') return Number(b.getAttribute('data-players')) - Number(a.getAttribute('data-players'));
+      if (key === 'end') {
+        var ea = Number(a.getAttribute('data-end')) || Infinity;
+        var eb = Number(b.getAttribute('data-end')) || Infinity;
+        return ea - eb;
+      }
+      return Number(b.getAttribute('data-cut')) - Number(a.getAttribute('data-cut'));
+    });
+    list.forEach(function (c) { grid.appendChild(c); });
+    if (emptyBox) grid.appendChild(emptyBox);
+  }
+
+  function apply() {
     if (pending) { clearTimeout(pending); pending = null; }
 
-    var toHide = [], toShow = [];
+    var toHide = [], toShow = [], visible = 0;
     cards.forEach(function (card) {
-      var ok = group === 'all' || card.getAttribute('data-group') === group;
+      var ok = matches(card);
+      if (ok) visible++;
       if (!ok && !card.hidden) toHide.push(card);
       else if (ok && card.hidden) toShow.push(card);
     });
@@ -199,18 +282,50 @@ ${footerSources}<br>
       });
       toShow.forEach(function (card) { card.style.transitionDelay = ''; });
       pending = null;
+      sortCards();
     }, toHide.length ? 170 : 0);
 
-    if (showing) showing.textContent = '显示 ' + (counts[group] || 0) + ' / ' + total;
+    if (showing) showing.textContent = '显示 ' + visible + ' / ' + total;
+    if (emptyBox) emptyBox.hidden = visible > 0;
   }
+
+  // 首屏：按顺序错峰入场（封顶 240ms）
+  cards.forEach(function (card, i) {
+    card.style.animationDelay = Math.min(i * 18, 240) + 'ms';
+    card.classList.add('enter');
+  });
+  setTimeout(function () {
+    cards.forEach(function (c) { c.classList.remove('enter'); c.style.animationDelay = ''; });
+  }, 700);
 
   chips.forEach(function (chip) {
     chip.addEventListener('click', function () {
-      var group = chip.getAttribute('data-group');
+      state.group = chip.getAttribute('data-group');
       chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
-      apply(group);
+      apply();
     });
   });
+
+  var sortBtns = Array.prototype.slice.call(document.querySelectorAll('.sbtn'));
+  sortBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      state.sort = btn.getAttribute('data-sort');
+      sortBtns.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      sortCards();
+    });
+  });
+
+  var onlyFreeBtn = document.getElementById('onlyFree');
+  if (onlyFreeBtn) {
+    onlyFreeBtn.addEventListener('click', function () {
+      state.onlyFree = onlyFreeBtn.getAttribute('aria-pressed') !== 'true';
+      onlyFreeBtn.setAttribute('aria-pressed', state.onlyFree ? 'true' : 'false');
+      apply();
+    });
+  }
+
+  sortCards();
+  apply();
 
   function fmt(ms) {
     if (ms <= 0) return '已结束';
