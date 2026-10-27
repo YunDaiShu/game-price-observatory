@@ -21,7 +21,13 @@ export function buildSearchIndex(root, items) {
       pl: o.players_online ?? null,
       lo: o.lowest_price ?? null,
       fk: o.free_kind ?? null,
-      tg: Array.isArray(o.tags) ? o.tags.slice(0, 6) : []
+      tg: Array.isArray(o.tags) ? o.tags.slice(0, 6) : [],
+      zh: o.supports_zh ?? null,
+      dv: o.developer ?? null,
+      pb: o.publishers ?? null,
+      rd: o.release_date ?? null,
+      mc: o.metacritic ?? null,
+      sd: o.short_desc ?? null
     };
     if (!prev || (prev.p === null && rec.p !== null)) seen.set(key, rec);
   };
