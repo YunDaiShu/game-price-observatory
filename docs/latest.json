@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-27T08:29:42.577Z",
-  "generated_at_bj": "2026-10-27 16:29",
+  "generated_at": "2026-10-27T08:40:32.756Z",
+  "generated_at_bj": "2026-10-27 16:40",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
@@ -32,7 +32,8 @@
       "price": 0,
       "initial": 15,
       "cut": 100,
-      "url": "https://store.epicgames.com/zh-CN/p/home-19212a"
+      "url": "https://store.epicgames.com/zh-CN/p/home-19212a",
+      "name_en": "Home - A Unique Horror Adventure"
     },
     {
       "promo_start": "2026-10-22T15:00:00.000Z",
@@ -50,7 +51,8 @@
       "price": 0,
       "initial": 78,
       "cut": 100,
-      "url": "https://store.epicgames.com/zh-CN/p/sker-ritual-aac702"
+      "url": "https://store.epicgames.com/zh-CN/p/sker-ritual-aac702",
+      "name_en": "Sker Ritual"
     },
     {
       "promo_start": null,
@@ -144,7 +146,8 @@
       "price": 12.4,
       "initial": 62,
       "cut": 80,
-      "url": "https://store.epicgames.com/zh-CN/p/eternal-threads-197169"
+      "url": "https://store.epicgames.com/zh-CN/p/eternal-threads-197169",
+      "name_en": "Eternal Threads"
     },
     {
       "promo_start": null,
@@ -238,7 +241,8 @@
       "price": 11.55,
       "initial": 33,
       "cut": 65,
-      "url": "https://store.epicgames.com/zh-CN/p/monument-valley-02"
+      "url": "https://store.epicgames.com/zh-CN/p/monument-valley-02",
+      "name_en": "Monument Valley"
     },
     {
       "promo_start": null,
@@ -275,7 +279,8 @@
       "price": 54.6,
       "initial": 78,
       "cut": 30,
-      "url": "https://store.epicgames.com/zh-CN/p/sorry-were-closed-724c86"
+      "url": "https://store.epicgames.com/zh-CN/p/sorry-were-closed-724c86",
+      "name_en": "Sorry We're Closed"
     },
     {
       "promo_start": null,
@@ -312,7 +317,8 @@
       "price": 169,
       "initial": 169,
       "cut": 0,
-      "url": "https://store.epicgames.com/zh-CN/p/ghostrunner-2"
+      "url": "https://store.epicgames.com/zh-CN/p/ghostrunner-2",
+      "name_en": "Ghostrunner 2"
     },
     {
       "promo_start": null,
@@ -330,7 +336,8 @@
       "price": 108,
       "initial": 108,
       "cut": 0,
-      "url": "https://store.epicgames.com/zh-CN/p/lisa-the-definitive-edition"
+      "url": "https://store.epicgames.com/zh-CN/p/lisa-the-definitive-edition",
+      "name_en": "LISA: The Definitive Edition"
     },
     {
       "promo_start": null,
@@ -346,7 +353,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 14329,
+      "players_online": 14444,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -362,7 +369,8 @@
       "free": false,
       "price": 298,
       "initial": 298,
-      "cut": 0
+      "cut": 0,
+      "name_en": "ELDEN RING"
     },
     {
       "promo_start": null,
@@ -385,7 +393,8 @@
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E9%81%BF%E9%9A%BE%E6%89%80-%E7%94%9F%E5%AD%98/id1544190466?uo=4",
       "seller": "East2west Network Tech. Co. Ltd.",
-      "note": "App Store 无折扣字段，此为当前售价"
+      "note": "App Store 无折扣字段，此为当前售价",
+      "name_en": "避难所：生存"
     },
     {
       "promo_start": null,
@@ -401,7 +410,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": null,
-      "players_online": 19056,
+      "players_online": 19285,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -417,7 +426,8 @@
       "free": false,
       "price": 268,
       "initial": 268,
-      "cut": 0
+      "cut": 0,
+      "name_en": "Baldur's Gate 3"
     },
     {
       "promo_start": null,
@@ -433,7 +443,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": null,
-      "players_online": 7934,
+      "players_online": 8330,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -449,7 +459,8 @@
       "free": false,
       "price": 268,
       "initial": 268,
-      "cut": 0
+      "cut": 0,
+      "name_en": "Black Myth: Wukong"
     },
     {
       "promo_start": null,
@@ -472,7 +483,8 @@
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E7%94%BB%E4%B8%AD%E4%B8%96%E7%95%8C/id6446614518?uo=4",
       "seller": "X.D. Network Inc.",
-      "note": "App Store 无折扣字段，此为当前售价"
+      "note": "App Store 无折扣字段，此为当前售价",
+      "name_en": "画中世界"
     },
     {
       "promo_start": null,
@@ -495,7 +507,8 @@
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E7%BA%AA%E5%BF%B5%E7%A2%91%E8%B0%B72/id1238778050?uo=4",
       "seller": "ustwo Games Ltd",
-      "note": "App Store 无折扣字段，此为当前售价"
+      "note": "App Store 无折扣字段，此为当前售价",
+      "name_en": "纪念碑谷2"
     },
     {
       "promo_start": null,
@@ -518,7 +531,8 @@
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E5%8A%AB%E5%90%8E%E5%85%AC%E5%8F%B8/id6757729278?uo=4",
       "seller": "DIVASKY LIMITED",
-      "note": "App Store 无折扣字段，此为当前售价"
+      "note": "App Store 无折扣字段，此为当前售价",
+      "name_en": "劫后公司"
     },
     {
       "promo_start": null,
@@ -534,7 +548,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 83338,
+      "players_online": 84657,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -550,7 +564,8 @@
       "free": false,
       "price": 298,
       "initial": 298,
-      "cut": 0
+      "cut": 0,
+      "name_en": "Cyberpunk 2077"
     },
     {
       "promo_start": null,
@@ -568,7 +583,8 @@
       "price": 12,
       "initial": 12,
       "cut": 0,
-      "url": "https://store.epicgames.com/zh-CN/p/lost-castle-the-old-ones-awaken"
+      "url": "https://store.epicgames.com/zh-CN/p/lost-castle-the-old-ones-awaken",
+      "name_en": "Lost Castle: The Old Ones Awaken"
     },
     {
       "promo_start": null,
@@ -591,7 +607,8 @@
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E6%B3%B0%E6%8B%89%E7%91%9E%E4%BA%9A/id1157863540?uo=4",
       "seller": "X.D. Network Inc.",
-      "note": "App Store 无折扣字段，此为当前售价"
+      "note": "App Store 无折扣字段，此为当前售价",
+      "name_en": "泰拉瑞亚"
     },
     {
       "promo_start": null,
@@ -614,7 +631,8 @@
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E7%8E%8B%E5%9B%BD%E4%BF%9D%E5%8D%AB%E6%88%985/id6749045841?uo=4",
       "seller": "East2west Network Tech. Co. Ltd.",
-      "note": "App Store 无折扣字段，此为当前售价"
+      "note": "App Store 无折扣字段，此为当前售价",
+      "name_en": "王国保卫战5"
     },
     {
       "promo_start": null,
@@ -637,7 +655,8 @@
       "cut": 0,
       "url": "https://apps.apple.com/cn/app/%E6%96%87%E6%98%8E%E7%99%BE%E7%A7%91/id1452113719?uo=4",
       "seller": "嘉宁 詹",
-      "note": "App Store 无折扣字段，此为当前售价"
+      "note": "App Store 无折扣字段，此为当前售价",
+      "name_en": "文明百科"
     },
     {
       "promo_start": null,
@@ -653,7 +672,7 @@
       "supports_zh": true,
       "lowest_price": 199,
       "is_new_low": null,
-      "players_online": 23783,
+      "players_online": 24721,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -669,7 +688,8 @@
       "free": false,
       "price": 199,
       "initial": 199,
-      "cut": 0
+      "cut": 0,
+      "name_en": "The Witcher 3: Wild Hunt — Remastered"
     },
     {
       "promo_start": null,
@@ -687,7 +707,8 @@
       "price": 31,
       "initial": 31,
       "cut": 0,
-      "url": "https://store.epicgames.com/zh-CN/p/luftrausers"
+      "url": "https://store.epicgames.com/zh-CN/p/luftrausers",
+      "name_en": "Luftrausers"
     },
     {
       "promo_start": null,
@@ -705,7 +726,8 @@
       "price": 70,
       "initial": 70,
       "cut": 0,
-      "url": "https://store.epicgames.com/zh-CN/p/model-builder-complete-edition-f9b456"
+      "url": "https://store.epicgames.com/zh-CN/p/model-builder-complete-edition-f9b456",
+      "name_en": "Model Builder: Complete Edition"
     },
     {
       "promo_start": null,
@@ -721,7 +743,7 @@
       "supports_zh": true,
       "lowest_price": null,
       "is_new_low": null,
-      "players_online": 3366,
+      "players_online": 3302,
       "free_kind": "permanent",
       "currency": "CNY",
       "source": "steam",
@@ -737,7 +759,8 @@
       "free": true,
       "price": 0,
       "initial": 0,
-      "cut": 0
+      "cut": 0,
+      "name_en": "Sky: Children of the Light"
     },
     {
       "promo_start": null,
@@ -753,7 +776,7 @@
       "supports_zh": true,
       "lowest_price": 48,
       "is_new_low": null,
-      "players_online": 39229,
+      "players_online": 40287,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -769,7 +792,8 @@
       "free": false,
       "price": 48,
       "initial": 48,
-      "cut": 0
+      "cut": 0,
+      "name_en": "Stardew Valley"
     },
     {
       "promo_start": null,
@@ -785,7 +809,7 @@
       "supports_zh": true,
       "lowest_price": 42,
       "is_new_low": null,
-      "players_online": 21668,
+      "players_online": 22118,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -801,7 +825,8 @@
       "free": false,
       "price": 42,
       "initial": 42,
-      "cut": 0
+      "cut": 0,
+      "name_en": "Terraria"
     },
     {
       "promo_start": null,
@@ -819,7 +844,8 @@
       "price": 53,
       "initial": 53,
       "cut": 0,
-      "url": "https://store.epicgames.com/zh-CN/p/terrascape-2b12b1"
+      "url": "https://store.epicgames.com/zh-CN/p/terrascape-2b12b1",
+      "name_en": "TerraScape"
     },
     {
       "promo_start": null,
@@ -837,7 +863,8 @@
       "price": 60,
       "initial": 60,
       "cut": 0,
-      "url": "https://store.epicgames.com/zh-CN/p/thems-fightin-herds"
+      "url": "https://store.epicgames.com/zh-CN/p/thems-fightin-herds",
+      "name_en": "Them's Fightin' Herds"
     }
   ],
   "errors": [
@@ -957,7 +984,7 @@
       [
         "2026-10-27",
         298,
-        14329
+        14444
       ]
     ],
     "appstore:1544190466": [
@@ -971,14 +998,14 @@
       [
         "2026-10-27",
         268,
-        19056
+        19128
       ]
     ],
     "steam:2358720": [
       [
         "2026-10-27",
         268,
-        7934
+        8330
       ]
     ],
     "appstore:6446614518": [
@@ -1006,7 +1033,7 @@
       [
         "2026-10-27",
         298,
-        83338
+        84657
       ]
     ],
     "epic:4a88d0dc64114b20b67339c74543f859": [
@@ -1041,7 +1068,7 @@
       [
         "2026-10-27",
         199,
-        23783
+        24721
       ]
     ],
     "epic:c76046dddcdb43619c33ce0395941033": [
@@ -1062,14 +1089,14 @@
       [
         "2026-10-27",
         48,
-        39229
+        40287
       ]
     ],
     "steam:105600": [
       [
         "2026-10-27",
         42,
-        21668
+        22118
       ]
     ],
     "epic:af6b823b8698465f9aedc3bddf2e8686": [
