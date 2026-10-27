@@ -12,6 +12,9 @@ import { applyFreeRules } from './lib/free.mjs';
 import { renderPage } from './render.mjs';
 import { isValidHttpUrl } from './lib/url.mjs';
 import { loadHealth, saveHealth, pausedReason, recordResult } from './lib/health.mjs';
+import { fetchAppStoreTopPaid } from './fetchers/appstore-top.mjs';
+import { fetchAppStoreByIds } from './fetchers/appstore.mjs';
+import { loadPool, savePool, updatePool, freeCandidates } from './lib/appstore-pool.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
@@ -54,6 +57,26 @@ await Promise.all([
   // SteamPY 无公开接口：仅在显式配置端点时才抓，避免每次运行都产生「来源异常」
   ...(process.env.STEAMPY_API_URL ? [collect('steampy', () => fetchSteampy())] : [])
 ]);
+
+// ── App Store 限免探测：付费榜建池 → 批量查价 → 价格归零即判定限免 ──
+try {
+  const paid = await fetchAppStoreTopPaid({ limit: 100 });
+  const pool = loadPool(ROOT);
+  updatePool(pool, paid, today);
+  const paidIdsToday = new Set(paid.map((x) => x.id));
+  const cands = freeCandidates(pool, paidIdsToday, 100);
+  if (cands.length) {
+    const looked = await fetchAppStoreByIds(cands);
+    const freeOnes = looked.filter((x) => x.price === 0);
+    if (freeOnes.length) {
+      raw.push(...freeOnes);
+      console.log('App Store 限免探测：候选 ' + cands.length + ' 个 → 判定限免 ' + freeOnes.length + ' 个');
+    }
+  }
+  savePool(ROOT, pool);
+} catch (e) {
+  errors.push({ source: 'appstore-top', target: '付费榜/探测', error: String(e?.cause?.code || e?.message || e).slice(0, 120) });
+}
 
 const normalized = raw.map(normalizeItem);
 
