@@ -124,6 +124,7 @@ ${errBlock}
 
 fs.mkdirSync(path.join(ROOT, 'docs'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'docs', 'index.html'), html, 'utf8');
+fs.writeFileSync(path.join(ROOT, 'docs', '.nojekyll'), '', 'utf8');
 
 console.log('OK ' + items.length + ' 条 / 失败 ' + errors.length + ' 条');
 for (const it of items.slice(0, 6)) {
