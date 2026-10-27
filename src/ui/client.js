@@ -33,19 +33,23 @@
     img.remove();
   }, true);
   function coverFallback() {
+    // 只守护"静默挂起"的图（GOG 经代理）。其它平台失败会触发 onerror，无需定时器；
+    // 且列表用 loading=lazy，未进入视口的图根本没开始请求，定时器会误杀。
     var imgs = [].slice.call(document.querySelectorAll('.cover-img'));
     imgs.forEach(function (img) {
       if (img.dataset.guarded) return;
+      var isProxy = img.src.indexOf('weserv') >= 0 || !!img.getAttribute('data-proxy');
+      if (!isProxy) return;
       img.dataset.guarded = '1';
-      var done = false;
-      img.addEventListener('load', function () { done = true; });
-      img.addEventListener('error', function () { done = true; img.remove(); });
-      var wait = (img.src.indexOf('weserv') >= 0) ? 20000 : 6000;
+      var killed = false;
+      img.addEventListener('load', function () { killed = true; });
+      img.addEventListener('error', function () { killed = true; img.remove(); });
       setTimeout(function () {
-        if (!done && (!img.complete || img.naturalWidth === 0)) img.remove();
-      }, wait);
+        if (!killed && (!img.complete || img.naturalWidth === 0)) img.remove();
+      }, 20000);
     });
   }
+
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function fmtEnd(ms) { var d = new Date(ms); return pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()); }
   function fmtLeft(ms) {
