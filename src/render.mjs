@@ -49,6 +49,7 @@ function card(it) {
     + ' data-end="' + endMs + '" data-free="' + (it.free_kind === 'limited' ? 1 : 0) + '"'
     + ' data-newlow="' + (it.is_new_low === true ? 1 : 0) + '" tabindex="0">'
     + '<div class="cover"><span class="cover-tag">' + (LABEL[it.source] || it.source) + '</span>'
+    + (String(it.source).startsWith('steam') && /^[0-9]+$/.test(String(it.id)) ? '<img class="cover-img" loading="lazy" alt="" src="https://cdn.cloudflare.steamstatic.com/steam/apps/' + it.id + '/header.jpg" onerror="this.remove()">' : '')
     + '<a class="cover-go" href="detail/?key=' + encodeURIComponent(key) + '" title="打开详情页">↗</a>'
     + (INITIAL[g] || '?') + '</div>'
     + '<h3 class="name" title="' + escapeHtml(it.name) + '">' + escapeHtml(it.name) + '</h3>'
