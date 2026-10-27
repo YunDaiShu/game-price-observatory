@@ -215,3 +215,19 @@ STEAMPY_API_URL=https://your-proxy.example.com/steampy.json node src/index.mjs
 - [ ] 快照契约测试（站点改版时 CI 立刻报红）
 - [ ] 发帖文案生成器（今日史低｜这 5 款…）
 - [ ] 主机平台：仅聚合官方促销公告，不做逐款抓取
+
+
+## Steam 风格详情页（/detail/）
+
+一个用 React + Tailwind 构建的独立详情页，随主站同一次 GitHub Pages 部署（产物在 `docs/detail/`，源码在仓库 `web-detail-src/`）。
+
+- 入口：`/detail/?key=<source>:<id>`，例如 `/detail/?key=steam:1245620`（不带 key 时取榜单第一条）
+- 数据来源：`docs/latest.json`（实时榜单 + `series` 价格/在线序列）与 `docs/search-index.json`（全量索引，含历史与 App Store 池）
+- **字段缺失一律显示「—」**，不估算；该条目只在索引里时会提示「今日未在榜」
+- 真实展示：价格 / 原价 / 折扣 / 史低 / 在线人数 / 标签 / 中文支持 / 促销倒计时（逐秒）/ 价格历史表 / 相似游戏（按真实标签匹配）
+- Steam 额外字段：开发商、发行商、发行日期、简介、媒体评分（来自 `appdetails`）
+- **玩家评价不展示**：各平台均无公开评论接口，故本页明确说明而不使用示例数据
+- 搜索浮层使用同一份 `search-index.json`（当前索引约 130+ 条，随每日抓取增长）
+
+> 说明：搜索匹配的是**展示名**（国区为中文名），暂无英文别名索引。
+
