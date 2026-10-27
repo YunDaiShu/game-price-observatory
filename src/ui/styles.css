@@ -207,3 +207,8 @@ html,body{max-width:100%;overflow-x:clip}
 .sres-price .price{font-size:16px}
 .sres-more{display:block;width:100%;padding:12px;text-align:center;font-size:13px;color:var(--text-secondary);background:var(--bg-primary);border:0;border-top:1px solid var(--border-color);cursor:pointer;transition:color var(--dur-filters)}
 .sres-more:hover{color:var(--accent-primary)}
+
+.card[data-group="switch"] .cover{background:linear-gradient(135deg,#E60012,#8f0009)}
+.m-cover[data-plat="switch"]{background-image:linear-gradient(135deg,#E60012,#8f0009)}
+.cta[data-plat="switch"]{background:#E60012}
+.sres-thumb[data-group="switch"]{background:linear-gradient(135deg,#E60012,#8f0009)}
