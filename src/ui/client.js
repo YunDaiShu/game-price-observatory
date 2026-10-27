@@ -11,11 +11,13 @@
   var stickyBar = document.querySelector('.sticky-bar');
   var total = cards.length;
 
+  var PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
+  var INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A' };
+  var LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
   var state = { tab: 'all', freeOnly: false, newLow: false, hasEnd: false, sort: 'cut', q: '' };
   var EASE = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
   var MOVE_MS = 260;
 
-  /* ---------- 时间 ---------- */
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function fmtEnd(ms) { var d = new Date(ms); return pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()); }
   function fmtLeft(ms) {
@@ -39,16 +41,20 @@
   }
   setInterval(tick, 1000);
 
-  /* ---------- FLIP：让"补位"动起来 ---------- */
+  /* ---------- 文案：共 N 款游戏 / 共找到 N 款游戏 ---------- */
+  function updateShowing(visible) {
+    if (!showing) return;
+    var filtered = state.tab !== 'all' || state.freeOnly || state.newLow || state.hasEnd || state.q;
+    showing.textContent = filtered ? ('共找到 ' + visible + ' 款游戏') : ('共 ' + total + ' 款游戏');
+  }
+
+  /* ---------- FLIP ---------- */
   function flip(update) {
     var first = new Map();
     cards.forEach(function (c) { if (!c.hidden) first.set(c, c.getBoundingClientRect()); });
-
-    update();                                   // 一次性改状态 + 重排，只读一次写一次
-
+    update();
     var last = new Map();
     cards.forEach(function (c) { if (!c.hidden) last.set(c, c.getBoundingClientRect()); });
-
     cards.forEach(function (c) {
       var f = first.get(c), l = last.get(c);
       if (!f || !l) return;
@@ -57,7 +63,6 @@
       c.style.transition = 'none';
       c.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
     });
-
     requestAnimationFrame(function () {
       cards.forEach(function (c) {
         if (!c.style.transform) return;
@@ -71,7 +76,6 @@
     });
   }
 
-  /* ---------- 筛选 ---------- */
   function matches(card) {
     var okTab = state.tab === 'all' || card.getAttribute('data-group') === state.tab;
     var okFree = !state.freeOnly || card.getAttribute('data-free') === '1';
@@ -89,32 +93,45 @@
       return Number(b.getAttribute('data-cut')) - Number(a.getAttribute('data-cut'));
     });
   }
+  var applyTimer = null;
   function apply() {
+    if (applyTimer) { clearTimeout(applyTimer); applyTimer = null; }
     var want = new Map();
     cards.forEach(function (c) { want.set(c, matches(c)); });
-    var entering = [];
+    var leaving = [], entering = [], visible = 0;
     cards.forEach(function (c) {
-      if (want.get(c) && c.hidden) entering.push(c);
-    });
-    var visible = 0;
-    want.forEach(function (ok) { if (ok) visible++; });
-
-    flip(function () {
-      cards.forEach(function (c) { c.hidden = !want.get(c); });
-      var seq = orderBy();
-      seq.forEach(function (c) { grid.appendChild(c); });
-      if (empty) grid.appendChild(empty);
+      var ok = want.get(c);
+      if (ok) visible++;
+      if (ok && c.hidden) entering.push(c);
+      if (!ok && !c.hidden) leaving.push(c);
     });
 
-    entering.forEach(function (c, i) {
-      c.classList.add('card--enter');
-      c.style.animationDelay = Math.min(i * 14, 120) + 'ms';
-      setTimeout(function () { c.classList.remove('card--enter'); c.style.animationDelay = ''; }, 520);
-    });
+    function commit() {
+      flip(function () {
+        cards.forEach(function (c) { c.hidden = !want.get(c); });
+        orderBy().forEach(function (c) { grid.appendChild(c); });
+        if (empty) grid.appendChild(empty);
+      });
+      entering.forEach(function (c, i) {
+        c.classList.add('card--enter');
+        c.style.animationDelay = Math.min(i * 14, 120) + 'ms';
+        setTimeout(function () { c.classList.remove('card--enter'); c.style.animationDelay = ''; }, 520);
+      });
+      if (grid) grid.classList.toggle('single', visible === 1);
+      updateShowing(visible);
+      if (empty) empty.hidden = visible > 0;
+      applyTimer = null;
+    }
 
+    if (!leaving.length) { commit(); return; }
+    // 第一段：离场卡片淡出（保留占位）→ 第二段：补位 FLIP
+    leaving.forEach(function (c) { c.classList.add('card--leave'); });
+    updateShowing(visible);
     if (grid) grid.classList.toggle('single', visible === 1);
-    if (showing) showing.textContent = '显示 ' + visible + ' / ' + total;
-    if (empty) empty.hidden = visible > 0;
+    applyTimer = setTimeout(function () {
+      leaving.forEach(function (c) { c.classList.remove('card--leave'); });
+      commit();
+    }, 140);
   }
 
   tabs.forEach(function (tab) {
@@ -146,19 +163,49 @@
     apply();
   });
 
-  /* ---------- Sticky / Toast ---------- */
+  /* ---------- Sticky ---------- */
   if (stickyBar) {
     var onScroll = function () { stickyBar.classList.toggle('stuck', window.scrollY > 40); };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
+
+  /* ---------- Toast：sessionStorage + localStorage 双保险 ---------- */
   var toast = document.getElementById('toast');
   if (toast) {
-    var dismissed = false;
-    try { dismissed = sessionStorage.getItem('gpr.toast') === '1'; } catch (e) {}
-    if (dismissed) toast.hidden = true;
+    var store = {
+      get: function () { try { return sessionStorage.getItem('gpr.toast') || localStorage.getItem('gpr.toast'); } catch (e) { return null; } },
+      set: function () { try { sessionStorage.setItem('gpr.toast', '1'); } catch (e) {} try { localStorage.setItem('gpr.toast', '1'); } catch (e) {} }
+    };
+    if (store.get() === '1') { toast.hidden = true; toast.style.display = 'none'; }
     var x = toast.querySelector('.x');
-    if (x) x.addEventListener('click', function () { toast.hidden = true; try { sessionStorage.setItem('gpr.toast', '1'); } catch (e) {} });
+    if (x) x.addEventListener('click', function () { toast.hidden = true; toast.style.display = 'none'; store.set(); });
+  }
+
+  /* ---------- 卡片组件（搜索与列表同一套结构） ---------- */
+  function cardFromRecord(r) {
+    var g = String(r.s).indexOf('steam') === 0 ? 'steam' : r.s;
+    var key = r.s + ':' + r.i;
+    var endMs = r.e ? (Date.parse(r.e) || 0) : 0;
+    var hasCover = String(r.s).indexOf('steam') === 0 && /^[0-9]+$/.test(String(r.i));
+    var price = (r.p === null || r.p === undefined) ? '—' : (r.p === 0 ? '免费' : '¥' + r.p);
+    var priceRow = r.p === 0
+      ? '<span class="price free">免费</span>'
+      : (r.c > 0 ? '<span class="badge">-' + r.c + '%</span>' : '') + '<span class="price">' + price + '</span>'
+        + (r.o && r.o > r.p ? '<span class="origin">¥' + r.o + '</span>' : '');
+    var meta = '';
+    if (r.lo) meta += '<span>史低 ¥' + r.lo + '</span>';
+    meta += endMs
+      ? '<span data-end-abs="' + endMs + '">截止 ' + fmtEnd(endMs) + '</span><span class="cd" data-end-abs="' + endMs + '">' + fmtLeft(endMs - Date.now()) + '</span>'
+      : '<span>截止未公布</span>';
+    var tags = (r.tg || []).slice(0, 3).map(function (t) { return '<span>' + t + '</span>'; }).join('');
+    return '<article class="card" data-group="' + g + '" data-key="' + key + '" tabindex="0">'
+      + '<div class="cover"><span class="cover-tag">' + (LABEL[r.s] || r.s) + '</span>'
+      + '<a class="cover-go" href="detail/?key=' + encodeURIComponent(key) + '" title="打开详情页">↗</a>'
+      + (INITIAL[g] || '?')
+      + (hasCover ? '<img class="cover-img" loading="lazy" alt="" src="https://cdn.cloudflare.steamstatic.com/steam/apps/' + r.i + '/header.jpg" onerror="this.remove()">' : '')
+      + '</div><h3 class="name">' + r.n + '</h3><div class="price-row">' + priceRow + '</div>'
+      + '<div class="card-meta">' + meta + '</div><div class="tags">' + tags + '</div></article>';
   }
 
   /* ---------- 搜索 ---------- */
@@ -187,92 +234,81 @@
     var box = panel();
     if (!box) return;
     if (!q) { box.hidden = true; box.innerHTML = ''; return; }
-    var pool = (SEARCH && SEARCH.length) ? SEARCH : DATA.map(function (d) { return { s: d.source, i: d.id, n: d.name, p: d.price, o: d.initial, c: d.cut, lo: d.lowest, u: d.url }; });
-    var hits = pool.filter(function (r) { return String(r.n).toLowerCase().indexOf(q) >= 0; }).slice(0, 40);
+    var pool = (SEARCH && SEARCH.length) ? SEARCH : DATA.map(function (d) {
+      return { s: d.source, i: d.id, n: d.name, p: d.price, o: d.initial, c: d.cut, lo: d.lowest, u: d.url, e: d.end, pl: d.players, zh: d.zh, tg: d.tags };
+    });
+    var hits = pool.filter(function (r) { return String(r.n).toLowerCase().indexOf(q) >= 0; }).slice(0, 12);
     box.hidden = false;
     if (!hits.length) { box.innerHTML = '<div class="sres-head">没有匹配结果</div>'; return; }
-    box.innerHTML = '<div class="sres-head">找到 <b>' + hits.length + '</b> 个结果</div><div class="' + (hits.length <= 1 ? 'single-res' : '') + '">'
-      + hits.map(function (r) {
-        var price = (r.p === null || r.p === undefined) ? '—' : (r.p === 0 ? '免费' : '¥' + r.p);
-        var low = (r.lo !== null && r.lo !== undefined && r.lo > 0) ? '<i class="sr-low">史低 ¥' + r.lo + '</i>' : '';
-        return '<button class="srow" type="button" data-key="' + r.s + ':' + r.i + '"><span class="sr-n">' + r.n + '</span><span class="sr-m">' + r.s + '</span><span class="sr-p">' + price + low + '</span></button>';
-      }).join('') + '</div>';
-    [].forEach.call(box.querySelectorAll('.srow'), function (b) {
-      b.addEventListener('click', function () { openModal(b.getAttribute('data-key')); box.hidden = true; });
+    box.innerHTML = '<div class="sres-head">找到 <b>' + hits.length + '</b> 个结果</div>'
+      + '<div class="sres-grid' + (hits.length <= 1 ? ' single' : '') + '">' + hits.map(cardFromRecord).join('') + '</div>';
+    [].forEach.call(box.querySelectorAll('.card'), function (el) {
+      el.addEventListener('click', function (e) {
+        if (e.target && e.target.closest && e.target.closest('.cover-go')) return;
+        openModal(el.getAttribute('data-key'));
+        box.hidden = true;
+      });
     });
   }
   if (qInput) qInput.addEventListener('input', function () {
     state.q = String(qInput.value || '').trim().toLowerCase();
     apply();
-    if (state.q.length >= 2) loadIndex(function () { renderSearch(state.q); });
+    if (state.q.length >= 1) loadIndex(function () { renderSearch(state.q); });
     else renderSearch('');
   });
 
   /* ---------- Modal ---------- */
   var overlay = document.getElementById('overlay');
   var modalOpen = false, current = null;
-  var PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
-  var GRAD = 'linear-gradient(135deg,#667eea,#764ba2)';
   var byKey = {};
   DATA.forEach(function (d) { byKey[d.source + ':' + d.id] = d; });
 
-  function drawChart(points) {
-    var svg = document.getElementById('mChart');
-    var wrap = document.getElementById('mChartWrap');
-    var emptyBox = document.getElementById('mChartEmpty');
-    var pts = (points || []).filter(function (p) { return typeof p[1] === 'number' && p[1] > 0; });
-    if (pts.length < 2) { if (wrap) wrap.hidden = true; if (emptyBox) emptyBox.hidden = false; return; }
-    if (wrap) wrap.hidden = false;
-    if (emptyBox) emptyBox.hidden = true;
-    var W = 560, H = 160, padL = 44, padR = 14, padT = 12, padB = 24, ns = 'http://www.w3.org/2000/svg';
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
-    function el(n, a) { var e = document.createElementNS(ns, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
-    var ys = pts.map(function (p) { return p[1]; });
-    var min = Math.min.apply(null, ys), max = Math.max.apply(null, ys);
-    function X(i) { return padL + (W - padL - padR) * (i / (pts.length - 1)); }
-    function Y(v) { return padT + (H - padT - padB) * (1 - (v - min) / (max - min || 1)); }
-    [0, .5, 1].forEach(function (t) { svg.appendChild(el('line', { x1: padL, y1: padT + (H - padT - padB) * t, x2: W - padR, y2: padT + (H - padT - padB) * t, stroke: '#E5E6EB' })); });
-    svg.appendChild(el('polyline', { points: pts.map(function (p, i) { return X(i) + ',' + Y(p[1]); }).join(' '), fill: 'none', stroke: '#FF6A00', 'stroke-width': 2 }));
-    pts.forEach(function (p, i) { svg.appendChild(el('circle', { cx: X(i), cy: Y(p[1]), r: 2.5, fill: '#FF6A00' })); });
-    var t1 = el('text', { x: 4, y: padT + 8, fill: '#86909C', 'font-size': 10 }); t1.textContent = max; svg.appendChild(t1);
-    var t2 = el('text', { x: 4, y: H - padB, fill: '#86909C', 'font-size': 10 }); t2.textContent = min; svg.appendChild(t2);
-    var t3 = el('text', { x: padL, y: H - 6, fill: '#86909C', 'font-size': 10 }); t3.textContent = pts[0][0]; svg.appendChild(t3);
-    var t4 = el('text', { x: W - padR, y: H - 6, fill: '#86909C', 'font-size': 10, 'text-anchor': 'end' }); t4.textContent = pts[pts.length - 1][0]; svg.appendChild(t4);
+  function recordOf(key) {
+    if (byKey[key]) {
+      var d = byKey[key];
+      return { source: d.source, id: d.id, name: d.name, price: d.price, initial: d.initial, cut: d.cut, url: d.url, end: d.end, zh: d.zh, lowest: d.lowest, tags: d.tags };
+    }
+    var hit = (SEARCH || []).find(function (r) { return r.s + ':' + r.i === key; });
+    if (!hit) return null;
+    return { source: hit.s, id: hit.i, name: hit.n, price: hit.p, initial: hit.o, cut: hit.c, url: hit.u, end: hit.e, zh: hit.zh, lowest: hit.lo, tags: hit.tg };
   }
 
-  function setCover(url) {
+  function setCover(rec) {
     var cover = document.querySelector('.m-cover');
     if (!cover) return;
-    cover.style.backgroundImage = GRAD;          // 先回落渐变
+    var plat = String(rec.source).indexOf('steam') === 0 ? 'steam' : rec.source;
+    cover.setAttribute('data-plat', plat);
+    cover.style.backgroundImage = '';
+    var url = plat === 'steam' && /^[0-9]+$/.test(String(rec.id))
+      ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + rec.id + '/header.jpg' : null;
     if (!url) return;
-    var probe = new Image();                      // 只热链，不下载入库
-    probe.onload = function () { cover.style.backgroundImage = 'url("' + url + '")'; cover.style.backgroundSize = 'cover'; cover.style.backgroundPosition = 'center'; };
-    probe.onerror = function () { cover.style.backgroundImage = GRAD; };
+    var probe = new Image();
+    probe.onload = function () { cover.style.backgroundImage = 'url("' + url + '")'; };
+    probe.onerror = function () { cover.style.backgroundImage = ''; };
     probe.src = url;
   }
 
   function openModal(key) {
-    var d = byKey[key];
+    var d = recordOf(key);
     if (!d) return;
+    var plat = String(d.source).indexOf('steam') === 0 ? 'steam' : d.source;
     var endMs = d.end ? (Date.parse(d.end) || 0) : 0;
     current = { key: key, end: endMs };
-    var plat = d.source.indexOf('steam') === 0 ? 'steam' : d.source;
     document.getElementById('mTitle').textContent = d.name;
     document.getElementById('mSub').textContent = PLAT[plat] || d.source;
-    var coverUrl = (String(d.source).indexOf('steam') === 0 && /^[0-9]+$/.test(String(d.id)))
-      ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + d.id + '/header.jpg'
-      : null;
-    setCover(coverUrl);
-    var cardsHtml = [
-      ['现价', d.price === 0 ? '免费' : '¥' + d.price],
-      ['原价', d.initial ? '¥' + d.initial : '—'],
-      ['折扣', d.cut > 0 ? '-' + d.cut + '%' : '—'],
-      ['平台', PLAT[plat] || d.source]
+    setCover(d);
+    var infoCards = [
+      ['现价', d.price === 0 ? '免费' : '¥' + d.price, ''],
+      ['原价', d.initial ? '¥' + d.initial : '—', (d.initial && d.price !== null && d.initial > d.price) ? 'strike' : ''],
+      ['折扣', d.cut > 0 ? '-' + d.cut + '%' : '—', ''],
+      ['平台', PLAT[plat] || d.source, '']
     ];
-    if (d.lowest !== null && d.lowest !== undefined) cardsHtml.push(['史低', '¥' + d.lowest]);
+    if (d.lowest !== null && d.lowest !== undefined) infoCards.push(['史低', '¥' + d.lowest, '']);
     var info = document.getElementById('mCards');
-    info.className = 'cards4' + (cardsHtml.length === 3 ? ' n3' : '');
-    info.innerHTML = cardsHtml.map(function (c) { return '<div class="info-card"><div class="lb">' + c[0] + '</div><div class="vl">' + c[1] + '</div></div>'; }).join('');
+    info.className = 'cards4' + (infoCards.length === 3 ? ' n3' : '');
+    info.innerHTML = infoCards.map(function (c) {
+      return '<div class="info-card"><div class="lb">' + c[0] + '</div><div class="vl ' + c[2] + '">' + c[1] + '</div></div>';
+    }).join('');
     var meta = [];
     meta.push(endMs ? ('截止 ' + fmtEnd(endMs)) : '截止未公布');
     if (endMs) meta.push('<span id="mRemain">' + fmtLeft(endMs - Date.now()) + '</span>');
@@ -294,6 +330,26 @@
     modalOpen = false;
     setTimeout(function () { overlay.hidden = true; }, 200);
   }
+  function drawChart(points) {
+    var svg = document.getElementById('mChart');
+    var wrap = document.getElementById('mChartWrap');
+    var emptyBox = document.getElementById('mChartEmpty');
+    var pts = (points || []).filter(function (p) { return typeof p[1] === 'number' && p[1] > 0; });
+    if (pts.length < 2) { if (wrap) wrap.hidden = true; if (emptyBox) emptyBox.hidden = false; return; }
+    if (wrap) wrap.hidden = false;
+    if (emptyBox) emptyBox.hidden = true;
+    var W = 560, H = 160, padL = 44, padR = 14, padT = 12, padB = 24, ns = 'http://www.w3.org/2000/svg';
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    function el(n, a) { var e = document.createElementNS(ns, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
+    var ys = pts.map(function (p) { return p[1]; });
+    var min = Math.min.apply(null, ys), max = Math.max.apply(null, ys);
+    function X(i) { return padL + (W - padL - padR) * (i / (pts.length - 1)); }
+    function Y(v) { return padT + (H - padT - padB) * (1 - (v - min) / (max - min || 1)); }
+    [0, .5, 1].forEach(function (t) { svg.appendChild(el('line', { x1: padL, y1: padT + (H - padT - padB) * t, x2: W - padR, y2: padT + (H - padT - padB) * t, stroke: '#E5E6EB' })); });
+    svg.appendChild(el('polyline', { points: pts.map(function (p, i) { return X(i) + ',' + Y(p[1]); }).join(' '), fill: 'none', stroke: '#FF6A00', 'stroke-width': 2 }));
+    pts.forEach(function (p, i) { svg.appendChild(el('circle', { cx: X(i), cy: Y(p[1]), r: 2.5, fill: '#FF6A00' })); });
+  }
+
   cards.forEach(function (c) {
     c.addEventListener('click', function (e) {
       if (e.target && e.target.closest && e.target.closest('.cover-go')) return;
