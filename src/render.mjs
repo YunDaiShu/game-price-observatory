@@ -72,6 +72,7 @@ function card(it) {
     + '<div class="price-row">' + priceRow + '</div>'
     + '<div class="card-meta">' + meta.join('') + '</div>'
     + '<div class="tags">' + tags + '</div>'
+    + (isValidHttpUrl(it.url) ? '<a class="card-shop" href="' + it.url + '" target="_blank" rel="noopener noreferrer" title="打开商城页" aria-label="打开商城页">↗</a>' : '')
     + '</article>';
 }
 
