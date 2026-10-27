@@ -14,6 +14,7 @@ import { renderPage } from './render.mjs';
 import { isValidHttpUrl } from './lib/url.mjs';
 import { loadHealth, saveHealth, pausedReason, recordResult } from './lib/health.mjs';
 import { buildSearchIndex } from './lib/search-index.mjs';
+import { probeSteamCovers } from './lib/covers.mjs';
 import { enrichEnglishNames } from './lib/names.mjs';
 import { fetchAppStoreTopPaid } from './fetchers/appstore-top.mjs';
 import { fetchAppStoreByIds } from './fetchers/appstore.mjs';
@@ -94,6 +95,16 @@ if (DISABLED.includes('switch')) {
   console.log('switch  ' + sw.items.length + ' 条');
 } catch (e) {
   errors.push({ source: 'switch', target: 'switch', error: String((e && e.message) || e).slice(0, 120) });
+}
+
+// Steam 封面探测：header.jpg 404 的 appid 标记为缺失，前端走渐变（SKIP_COVER_PROBE=1 可跳过）
+if (process.env.SKIP_COVER_PROBE !== '1') {
+  try {
+    const cp = await probeSteamCovers(raw);
+    if (cp.total) console.log('封面探测：' + cp.total + ' 张，缺图 ' + cp.missing);
+  } catch (e) {
+    errors.push({ source: 'steam', target: '封面探测', error: String((e && e.message) || e).slice(0, 100) });
+  }
 }
 
 const normalized = raw.map(normalizeItem);
