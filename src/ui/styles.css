@@ -215,3 +215,34 @@ html,body{max-width:100%;overflow-x:clip}
 
 /* 需本体 等警示标签（沿用 warning 令牌，与异常提示同色系） */
 .warn-tag{display:inline-block;background:var(--warning-bg);border:1px solid var(--warning-border);color:#8a6100;border-radius:var(--radius-badge);padding:0 6px;font-size:11px;line-height:1.6;white-space:nowrap}
+
+/* ===== 卡片右下角「直达商城」按钮 ===== */
+.card{position:relative}
+.card-shop{
+  position:absolute;right:16px;bottom:16px;width:36px;height:36px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:16px;line-height:1;color:#fff;text-decoration:none;
+  background:#6B7280;                     /* 未知平台兜底：中性灰 */
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+  opacity:0;pointer-events:none;z-index:10;
+  transition:opacity 150ms ease-in-out,filter 150ms ease-in-out;
+}
+.card:hover .card-shop{opacity:1;pointer-events:auto}
+.card-shop:hover{filter:brightness(.9)}   /* 背景加深 10% */
+.card[data-group="steam"] .card-shop{background:#171A21}
+.card[data-group="epic"] .card-shop{background:#000000}
+.card[data-group="gog"] .card-shop{background:#8A4FFF}
+.card[data-group="appstore"] .card-shop{background:#007AFF}
+.card[data-group="switch"] .card-shop{background:#E60012}
+
+/* 防碰撞：标签行右侧留出按钮所占空间（按钮 36 + 右边距 16 - 内边距补偿 8） */
+.card .tags{padding-right:44px}
+
+/* 触屏 / 无 hover 能力：常驻显示 */
+@media (hover:none){.card-shop{opacity:1;pointer-events:auto}}
+
+/* 移动端：常驻 + 缩小 */
+@media (max-width:767px){
+  .card-shop{opacity:1;pointer-events:auto;width:32px;height:32px;right:12px;bottom:12px;font-size:14px}
+  .card .tags{padding-right:40px}
+}
