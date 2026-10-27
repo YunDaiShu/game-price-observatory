@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { isValidHttpUrl } from './lib/url.mjs';
 
 const UI = path.join(import.meta.dirname, 'ui');
 const read = (f) => fs.readFileSync(path.join(UI, f), 'utf8');
@@ -31,8 +32,9 @@ function proxyOf(it) {
 function card(it) {
   const g = GROUP(it);
   const key = it.source + ':' + it.id;
-  const sym = it.currency === 'USD' ? '$' : '¥';
-  const money = (v) => (it.currency === 'JPY' ? sym + Number(v).toLocaleString('en-US') : sym + v);
+  const curOf = (c) => (c === 'USD' ? '$' : c === 'JPY' ? 'JPY ' : '\u00A5');
+  const money = (v) => curOf(it.currency) + (it.currency === 'CNY' ? v : Number(v).toLocaleString('en-US'));
+
   const endMs = it.promo_end ? Date.parse(it.promo_end) || 0 : 0;
   const endText = fmtEnd(it.promo_end);
 
