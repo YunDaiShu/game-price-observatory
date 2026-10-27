@@ -139,6 +139,9 @@ writeJson(path.join(ROOT, 'data', 'history', today + '.json'), payload);
 fs.mkdirSync(path.join(ROOT, 'docs'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'docs', 'index.html'), renderPage(payload), 'utf8');
 fs.writeFileSync(path.join(ROOT, 'docs', '.nojekyll'), '', 'utf8');
+// /about 页面（PRD P2-5）
+fs.mkdirSync(path.join(ROOT, 'docs', 'about'), { recursive: true });
+fs.copyFileSync(path.join(ROOT, 'src', 'ui', 'about.html'), path.join(ROOT, 'docs', 'about', 'index.html'));
 // 供详情页（docs/detail）读取实时数据：Pages 只发布 docs/
 writeJson(path.join(ROOT, 'docs', 'latest.json'), payload);
 // 全量搜索索引（页面首次输入时懒加载）
