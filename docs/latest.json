@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-27T11:10:22.542Z",
-  "generated_at_bj": "2026-10-27 19:10",
+  "generated_at": "2026-10-27T11:17:31.696Z",
+  "generated_at_bj": "2026-10-27 19:17",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
@@ -154,22 +154,22 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-03T18:00:00.000Z",
+      "promo_end": "2026-11-02T18:00:00.000Z",
       "tags": [],
       "supports_zh": "unknown",
-      "lowest_price": 49.5,
+      "lowest_price": 14,
       "is_new_low": null,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam-specials",
-      "id": "2050650",
-      "name": "Resident Evil 4",
+      "id": "242760",
+      "name": "The Forest",
       "free": false,
-      "price": 49.5,
-      "initial": 198,
-      "cut": 75,
-      "url": "https://store.steampowered.com/app/2050650/"
+      "price": 14,
+      "initial": 70,
+      "cut": 80,
+      "url": "https://store.steampowered.com/app/242760/"
     },
     {
       "promo_start": null,
@@ -419,7 +419,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": null,
-      "players_online": 23066,
+      "players_online": 23751,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -562,7 +562,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 99577,
+      "players_online": 102656,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -691,7 +691,7 @@
       "supports_zh": true,
       "lowest_price": 199,
       "is_new_low": null,
-      "players_online": 32670,
+      "players_online": 33817,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -765,7 +765,7 @@
       "supports_zh": true,
       "lowest_price": null,
       "is_new_low": null,
-      "players_online": 3844,
+      "players_online": 4133,
       "free_kind": "permanent",
       "currency": "CNY",
       "source": "steam",
@@ -799,7 +799,7 @@
       "supports_zh": true,
       "lowest_price": 48,
       "is_new_low": null,
-      "players_online": 46958,
+      "players_online": 48500,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -833,7 +833,7 @@
       "supports_zh": true,
       "lowest_price": 42,
       "is_new_low": null,
-      "players_online": 26615,
+      "players_online": 27653,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -937,10 +937,10 @@
         null
       ]
     ],
-    "steam-specials:2050650": [
+    "steam-specials:242760": [
       [
         "2026-10-27",
-        49.5,
+        14,
         null
       ]
     ],
@@ -1011,7 +1011,7 @@
       [
         "2026-10-27",
         298,
-        17968
+        18715
       ]
     ],
     "appstore:1544190466": [
@@ -1025,14 +1025,14 @@
       [
         "2026-10-27",
         268,
-        22326
+        23751
       ]
     ],
     "steam:2358720": [
       [
         "2026-10-27",
         268,
-        9988
+        10691
       ]
     ],
     "appstore:6446614518": [
@@ -1060,7 +1060,7 @@
       [
         "2026-10-27",
         298,
-        99577
+        102656
       ]
     ],
     "epic:4a88d0dc64114b20b67339c74543f859": [
@@ -1095,7 +1095,7 @@
       [
         "2026-10-27",
         199,
-        32670
+        33817
       ]
     ],
     "epic:c76046dddcdb43619c33ce0395941033": [
@@ -1116,14 +1116,14 @@
       [
         "2026-10-27",
         48,
-        45621
+        46958
       ]
     ],
     "steam:105600": [
       [
         "2026-10-27",
         42,
-        25875
+        27653
       ]
     ],
     "epic:af6b823b8698465f9aedc3bddf2e8686": [
