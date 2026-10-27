@@ -61,6 +61,7 @@ export async function fetchGog(limit = 24) {
       currency,
       url: absoluteUrl(p.storeLink, 'https://www.gog.com')
         || absoluteUrl('/game/' + (p.slug || p.id), 'https://www.gog.com'),
+      cover: p.coverHorizontal ? (String(p.coverHorizontal).startsWith('//') ? 'https:' + p.coverHorizontal : String(p.coverHorizontal)) : (p.coverVertical ? (String(p.coverVertical).startsWith('//') ? 'https:' + p.coverVertical : String(p.coverVertical)) : null),
       promo_start: null,
       promo_end: null,
       free_kind: price === 0 ? 'permanent' : null,
