@@ -2,11 +2,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 /** 汇总"数据源里出现过的所有条目"，用于全量搜索 */
-export function buildSearchIndex(root, items) {
+export function buildSearchIndex(root, items, opts = {}) {
+  const skip = new Set(opts.exclude || []);
+  const blocked = (s) => skip.has(s) || (s === 'steam-specials' && skip.has('steam'));
   const seen = new Map();
 
   const push = (o) => {
     if (!o || !o.name) return;
+    if (blocked(o.source)) return;
     const key = (o.source || 'unknown') + ':' + (o.id || o.name);
     const prev = seen.get(key);
     const rec = {
