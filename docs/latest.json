@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-27T08:20:02.292Z",
-  "generated_at_bj": "2026-10-27 16:20",
+  "generated_at": "2026-10-27T08:29:42.577Z",
+  "generated_at_bj": "2026-10-27 16:29",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
@@ -353,6 +353,11 @@
       "id": "1245620",
       "name": "艾尔登法环",
       "url": "https://store.steampowered.com/app/1245620/",
+      "developer": "FromSoftware, Inc.",
+      "publishers": "FromSoftware, Inc.、Bandai Namco Entertainment",
+      "release_date": "2022 年 2 月 24 日",
+      "short_desc": "艾尔登法环是以正统黑暗奇幻世界为舞台的动作RPG游戏。 走进辽阔的场景与地下迷宫探索未知，挑战困难重重的险境，享受克服困境时的成就感吧。 不仅如此，登场角色之间的利害关系谱成的群像剧，更是不容错过。",
+      "metacritic": 94,
       "always_show": false,
       "free": false,
       "price": 298,
@@ -403,6 +408,11 @@
       "id": "1086940",
       "name": "博德之门3",
       "url": "https://store.steampowered.com/app/1086940/",
+      "developer": "Larian Studios",
+      "publishers": "Larian Studios",
+      "release_date": "2023 年 8 月 3 日",
+      "short_desc": "《博德之门3》是一款以“龙与地下城”世界为背景的、强调故事与队伍冒险体验的角色扮演游戏。你的每一个选择，都会编织出一段关于同伴与背叛、生存与牺牲，以及至上力量诱惑的故事。",
+      "metacritic": 96,
       "always_show": false,
       "free": false,
       "price": 268,
@@ -430,6 +440,11 @@
       "id": "2358720",
       "name": "黑神话：悟空",
       "url": "https://store.steampowered.com/app/2358720/",
+      "developer": "Game Science",
+      "publishers": "Game Science",
+      "release_date": "2024 年 8 月 19 日",
+      "short_desc": "《黑神话：悟空》是一款以中国神话为背景的动作角色扮演游戏。你将扮演一位“天命人”，为了探寻昔日传说的真相，踏上一条充满危险与惊奇的西游之路。",
+      "metacritic": null,
       "always_show": false,
       "free": false,
       "price": 268,
@@ -526,6 +541,11 @@
       "id": "1091500",
       "name": "赛博朋克 2077",
       "url": "https://store.steampowered.com/app/1091500/",
+      "developer": "CD PROJEKT RED",
+      "publishers": "CD PROJEKT RED",
+      "release_date": "2020 年 12 月 9 日",
+      "short_desc": "《赛博朋克 2077》是一款开放世界动作冒险 RPG 游戏。故事发生在暗黑未来的夜之城，一座五光十色、危机四伏的超级大都会，权力更迭和无尽的身体改造是这里不变的主题。",
+      "metacritic": 86,
       "always_show": false,
       "free": false,
       "price": 298,
@@ -640,6 +660,11 @@
       "id": "292030",
       "name": "巫师3：狂猎 — 重制版",
       "url": "https://store.steampowered.com/app/292030/",
+      "developer": "CD PROJEKT RED",
+      "publishers": "CD PROJEKT RED",
+      "release_date": "2015 年 5 月 18 日",
+      "short_desc": "《巫师 3：狂猎 — 重制版》为这款广受好评的角色扮演游戏带来了全方位的升级和优化。扮演猎魔人利维亚的杰洛特，在黑暗的奇幻开放世界中踏上追寻养女希里的史诗之旅。",
+      "metacritic": 93,
       "always_show": false,
       "free": false,
       "price": 199,
@@ -703,6 +728,11 @@
       "id": "2325290",
       "name": "Sky 光·遇",
       "url": "https://store.steampowered.com/app/2325290/",
+      "developer": "thatgamecompany",
+      "publishers": "thatgamecompany",
+      "release_date": "2024 年 4 月 10 日",
+      "short_desc": "一场令人心驰神往的开放世界冒险正等着你！探索神奇的领域，恢复失落之光。在光遇中，你将超越语言限制，与全球玩家建立羁绊。参与季节活动，完成任务、解开谜题，让我们一起拥抱善意、新发现与真挚的情谊。",
+      "metacritic": null,
       "always_show": true,
       "free": true,
       "price": 0,
@@ -730,6 +760,11 @@
       "id": "413150",
       "name": "Stardew Valley",
       "url": "https://store.steampowered.com/app/413150/",
+      "developer": "ConcernedApe",
+      "publishers": "ConcernedApe",
+      "release_date": "2016 年 2 月 26 日",
+      "short_desc": "你继承了你爷爷在星露谷留下的老旧农场。带着爷爷留下的残旧工具和几枚硬币开始了你的新生活。你能适应这小镇上的生活并且将这个杂草丛生的老旧农场变成一个繁荣的家吗？",
+      "metacritic": 89,
       "always_show": false,
       "free": false,
       "price": 48,
@@ -757,6 +792,11 @@
       "id": "105600",
       "name": "Terraria",
       "url": "https://store.steampowered.com/app/105600/",
+      "developer": "Re-Logic",
+      "publishers": "Re-Logic",
+      "release_date": "2011 年 5 月 16 日",
+      "short_desc": "挖掘，战斗，探索，建造！在这个动感十足的冒险游戏里没有什么是不可能的。四人包依然可用！",
+      "metacritic": 83,
       "always_show": false,
       "free": false,
       "price": 42,
@@ -804,212 +844,246 @@
     {
       "source": "gog",
       "target": "gog",
-      "error": "catalog.gog.com 连接超时（该主机在当前网络不可达；GitHub Actions 环境通常正常）: TIMEOUT"
+      "error": "已熔断跳过（连续 3 次失败，2026-10-29 后重试）"
     }
   ],
   "series": {
     "steam-specials:238320": [
       [
         "2026-10-27",
-        5.8
+        5.8,
+        null
       ]
     ],
     "steam-specials:414700": [
       [
         "2026-10-27",
-        7.6
+        7.6,
+        null
       ]
     ],
     "steam-specials:391220": [
       [
         "2026-10-27",
-        14.7
+        14.7,
+        null
       ]
     ],
     "steam-specials:750920": [
       [
         "2026-10-27",
-        19.6
+        19.6,
+        null
       ]
     ],
     "epic:921e40c4c69f4d728914ca2a4f0aa407": [
       [
         "2026-10-27",
-        12.4
+        12.4,
+        null
       ]
     ],
     "steam-specials:2050650": [
       [
         "2026-10-27",
-        49.5
+        49.5,
+        null
       ]
     ],
     "steam-specials:264710": [
       [
         "2026-10-27",
-        37.25
+        37.25,
+        null
       ]
     ],
     "steam-specials:1326470": [
       [
         "2026-10-27",
-        30.24
+        30.24,
+        null
       ]
     ],
     "steam-specials:1304930": [
       [
         "2026-10-27",
-        40.8
+        40.8,
+        null
       ]
     ],
     "epic:f967cff9761c4198b4e972cfd71e40d7": [
       [
         "2026-10-27",
-        11.55
+        11.55,
+        null
       ]
     ],
     "steam-specials:3240220": [
       [
         "2026-10-27",
-        74.5
+        74.5,
+        null
       ]
     ],
     "epic:4e469c7d8bbf49bcabc2c07127d3d946": [
       [
         "2026-10-27",
-        54.6
+        54.6,
+        null
       ]
     ],
     "steam-specials:5335510": [
       [
         "2026-10-27",
-        30.6
+        30.6,
+        null
       ]
     ],
     "epic:be5600439b434624802764f704755cde": [
       [
         "2026-10-27",
-        169
+        169,
+        null
       ]
     ],
     "epic:944b5b5d646d46bc92bc33edfe983d26": [
       [
         "2026-10-27",
-        108
+        108,
+        null
       ]
     ],
     "steam:1245620": [
       [
         "2026-10-27",
-        298
+        298,
+        14329
       ]
     ],
     "appstore:1544190466": [
       [
         "2026-10-27",
-        6
+        6,
+        null
       ]
     ],
     "steam:1086940": [
       [
         "2026-10-27",
-        268
+        268,
+        19056
       ]
     ],
     "steam:2358720": [
       [
         "2026-10-27",
-        268
+        268,
+        7934
       ]
     ],
     "appstore:6446614518": [
       [
         "2026-10-27",
-        20
+        20,
+        null
       ]
     ],
     "appstore:1238778050": [
       [
         "2026-10-27",
-        24
+        24,
+        null
       ]
     ],
     "appstore:6757729278": [
       [
         "2026-10-27",
-        12
+        12,
+        null
       ]
     ],
     "steam:1091500": [
       [
         "2026-10-27",
-        298
+        298,
+        83338
       ]
     ],
     "epic:4a88d0dc64114b20b67339c74543f859": [
       [
         "2026-10-27",
-        12
+        12,
+        null
       ]
     ],
     "appstore:1157863540": [
       [
         "2026-10-27",
-        18
+        18,
+        null
       ]
     ],
     "appstore:6749045841": [
       [
         "2026-10-27",
-        15
+        15,
+        null
       ]
     ],
     "appstore:1452113719": [
       [
         "2026-10-27",
-        6
+        6,
+        null
       ]
     ],
     "steam:292030": [
       [
         "2026-10-27",
-        199
+        199,
+        23783
       ]
     ],
     "epic:c76046dddcdb43619c33ce0395941033": [
       [
         "2026-10-27",
-        31
+        31,
+        null
       ]
     ],
     "epic:d3e5b556640144bfa5de2d5d3b283d68": [
       [
         "2026-10-27",
-        70
+        70,
+        null
       ]
     ],
     "steam:413150": [
       [
         "2026-10-27",
-        48
+        48,
+        39229
       ]
     ],
     "steam:105600": [
       [
         "2026-10-27",
-        42
+        42,
+        21668
       ]
     ],
     "epic:af6b823b8698465f9aedc3bddf2e8686": [
       [
         "2026-10-27",
-        53
+        53,
+        null
       ]
     ],
     "epic:1f723b00df58467998c4984ca39915ad": [
       [
         "2026-10-27",
-        60
+        60,
+        null
       ]
     ]
   }
