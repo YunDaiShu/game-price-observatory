@@ -33,6 +33,12 @@ export async function fetchSteam(entry, cc = 'cn') {
   const base = {
     source: 'steam', id: String(appid), name: d.name,
     currency: 'CNY', url: link,
+    // —— 以下为详情页所需的真实元数据（取不到即 null，不猜）——
+    developer: Array.isArray(d.developers) && d.developers.length ? d.developers.join('、') : null,
+    publishers: Array.isArray(d.publishers) && d.publishers.length ? d.publishers.join('、') : null,
+    release_date: d.release_date && d.release_date.date ? d.release_date.date : null,
+    short_desc: d.short_description || null,
+    metacritic: d.metacritic && typeof d.metacritic.score === 'number' ? d.metacritic.score : null,
     promo_start: null, promo_end: null,
     tags, supports_zh: hasZh(d.supported_languages), players_online: players,
     always_show: always
