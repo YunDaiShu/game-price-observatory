@@ -17,6 +17,14 @@ function pageSlugOf(el) {
 // 促销窗口：promotions.promotionalOffers[0].promotionalOffers[0].{startDate,endDate,discountSetting.discountPercentage}
 // 价格以美分计；币种取 totalPrice.currencyCode（CN 区仍为 USD）
 // 官方标签目录接口不可得（launcher GraphQL 403 / graphql.epicgames.com 404）→ tags 留空
+function coverOf(el) {
+  const imgs = el && el.keyImages ? el.keyImages : [];
+  const pick = imgs.find((i) => i.type === 'OfferImageWide')
+    || imgs.find((i) => i.type === 'OfferImageTall')
+    || imgs.find((i) => i.type === 'Thumbnail')
+    || imgs[0];
+  return pick && pick.url ? pick.url : null;
+}
 export async function fetchEpic(country = 'CN', locale = 'zh-CN') {
   const url = 'https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions?locale=' + locale + '&country=' + country;
   const r = await fetch(url, { headers: { 'User-Agent': UA } });
@@ -55,6 +63,7 @@ export async function fetchEpic(country = 'CN', locale = 'zh-CN') {
       cut: initial > 0 && price < initial ? Math.round((1 - price / initial) * 100) : 0,
       currency,
       url: slug ? 'https://store.epicgames.com/zh-CN/p/' + slug : null,
+      cover: coverOf(el),
       promo_start: promo?.startDate || null,
       promo_end: promo?.endDate || null,
       free_kind: freeKind,
