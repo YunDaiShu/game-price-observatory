@@ -11,7 +11,13 @@
     "pl": null,
     "lo": 169,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -25,7 +31,13 @@
     "pl": null,
     "lo": 108,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -39,7 +51,13 @@
     "pl": null,
     "lo": 54.6,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -53,7 +71,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam",
@@ -74,7 +98,13 @@
       "多人",
       "玩家对战",
       "线上玩家对战"
-    ]
+    ],
+    "zh": true,
+    "dv": "FromSoftware, Inc.",
+    "pb": "FromSoftware, Inc.、Bandai Namco Entertainment",
+    "rd": "2022 年 2 月 24 日",
+    "mc": 94,
+    "sd": "艾尔登法环是以正统黑暗奇幻世界为舞台的动作RPG游戏。 走进辽阔的场景与地下迷宫探索未知，挑战困难重重的险境，享受克服困境时的成就感吧。 不仅如此，登场角色之间的利害关系谱成的群像剧，更是不容错过。"
   },
   {
     "s": "appstore",
@@ -88,7 +118,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -102,7 +138,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -116,7 +158,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -130,7 +178,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -146,7 +200,13 @@
     "fk": null,
     "tg": [
       "Games"
-    ]
+    ],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -160,7 +220,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -174,7 +240,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam",
@@ -195,7 +267,13 @@
       "单人",
       "多人",
       "合作"
-    ]
+    ],
+    "zh": true,
+    "dv": "Larian Studios",
+    "pb": "Larian Studios",
+    "rd": "2023 年 8 月 3 日",
+    "mc": 96,
+    "sd": "《博德之门3》是一款以“龙与地下城”世界为背景的、强调故事与队伍冒险体验的角色扮演游戏。你的每一个选择，都会编织出一段关于同伴与背叛、生存与牺牲，以及至上力量诱惑的故事。"
   },
   {
     "s": "appstore",
@@ -209,7 +287,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -223,7 +307,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -237,7 +327,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -251,7 +347,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -265,7 +367,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -279,7 +387,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -293,7 +407,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -307,7 +427,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -321,7 +447,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -335,7 +467,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -349,7 +487,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -363,7 +507,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -377,7 +527,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -391,7 +547,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -405,7 +567,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -419,7 +587,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -433,7 +607,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -447,7 +627,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -461,7 +647,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam",
@@ -482,7 +674,13 @@
       "单人",
       "Steam 成就",
       "完全支持控制器"
-    ]
+    ],
+    "zh": true,
+    "dv": "Game Science",
+    "pb": "Game Science",
+    "rd": "2024 年 8 月 19 日",
+    "mc": null,
+    "sd": "《黑神话：悟空》是一款以中国神话为背景的动作角色扮演游戏。你将扮演一位“天命人”，为了探寻昔日传说的真相，踏上一条充满危险与惊奇的西游之路。"
   },
   {
     "s": "appstore",
@@ -498,7 +696,13 @@
     "fk": null,
     "tg": [
       "Games"
-    ]
+    ],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -512,7 +716,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -526,7 +736,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -540,7 +756,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -554,7 +776,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -568,7 +796,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -582,7 +816,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -596,7 +836,13 @@
     "pl": null,
     "lo": 11.55,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -612,7 +858,13 @@
     "fk": null,
     "tg": [
       "Games"
-    ]
+    ],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -626,7 +878,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -640,7 +898,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -654,7 +918,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -668,7 +938,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -684,7 +960,13 @@
     "fk": null,
     "tg": [
       "Games"
-    ]
+    ],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -698,7 +980,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -712,7 +1000,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -726,7 +1020,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -740,7 +1040,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -754,7 +1060,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -768,7 +1080,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -782,7 +1100,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -796,7 +1120,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -810,7 +1140,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -824,7 +1160,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -838,7 +1180,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -852,7 +1200,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -866,7 +1220,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -880,7 +1240,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -894,7 +1260,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -908,7 +1280,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -922,7 +1300,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -936,7 +1320,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -950,7 +1340,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -964,7 +1360,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -978,7 +1380,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -992,7 +1400,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1006,7 +1420,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1020,7 +1440,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1034,7 +1460,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1048,7 +1480,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1062,7 +1500,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1076,7 +1520,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1090,7 +1540,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1104,7 +1560,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam",
@@ -1125,7 +1587,13 @@
       "完全支持控制器",
       "Steam 集换式卡牌",
       "可调整文字大小"
-    ]
+    ],
+    "zh": true,
+    "dv": "CD PROJEKT RED",
+    "pb": "CD PROJEKT RED",
+    "rd": "2020 年 12 月 9 日",
+    "mc": 86,
+    "sd": "《赛博朋克 2077》是一款开放世界动作冒险 RPG 游戏。故事发生在暗黑未来的夜之城，一座五光十色、危机四伏的超级大都会，权力更迭和无尽的身体改造是这里不变的主题。"
   },
   {
     "s": "appstore",
@@ -1139,7 +1607,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1153,7 +1627,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1167,7 +1647,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1181,7 +1667,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -1195,7 +1687,13 @@
     "pl": null,
     "lo": 12,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1209,7 +1707,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1223,7 +1727,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1239,7 +1749,13 @@
     "fk": null,
     "tg": [
       "Games"
-    ]
+    ],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1253,7 +1769,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1267,7 +1789,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1281,7 +1809,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1295,7 +1829,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1309,7 +1849,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1325,7 +1871,13 @@
     "fk": null,
     "tg": [
       "Games"
-    ]
+    ],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1339,7 +1891,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1353,7 +1911,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1369,7 +1933,13 @@
     "fk": null,
     "tg": [
       "Reference"
-    ]
+    ],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1383,7 +1953,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam",
@@ -1404,7 +1980,13 @@
       "Steam 集换式卡牌",
       "Steam 创意工坊",
       "可调整文字大小"
-    ]
+    ],
+    "zh": true,
+    "dv": "CD PROJEKT RED",
+    "pb": "CD PROJEKT RED",
+    "rd": "2015 年 5 月 18 日",
+    "mc": 93,
+    "sd": "《巫师 3：狂猎 — 重制版》为这款广受好评的角色扮演游戏带来了全方位的升级和优化。扮演猎魔人利维亚的杰洛特，在黑暗的奇幻开放世界中踏上追寻养女希里的史诗之旅。"
   },
   {
     "s": "appstore",
@@ -1418,7 +2000,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1432,7 +2020,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1446,7 +2040,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1460,7 +2060,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1474,7 +2080,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1488,7 +2100,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1502,7 +2120,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1516,7 +2140,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1530,7 +2160,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1544,7 +2180,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1558,7 +2200,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1572,7 +2220,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1586,7 +2240,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1600,7 +2260,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1614,7 +2280,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1628,7 +2300,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -1642,7 +2320,13 @@
     "pl": null,
     "lo": 12.4,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam-specials",
@@ -1656,7 +2340,13 @@
     "pl": null,
     "lo": 74.5,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -1670,7 +2360,13 @@
     "pl": null,
     "lo": null,
     "fk": "limited",
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "appstore",
@@ -1684,7 +2380,13 @@
     "pl": null,
     "lo": null,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": null,
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -1698,7 +2400,13 @@
     "pl": null,
     "lo": 31,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -1712,7 +2420,13 @@
     "pl": null,
     "lo": 70,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam-specials",
@@ -1726,7 +2440,13 @@
     "pl": null,
     "lo": 30.6,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam-specials",
@@ -1740,7 +2460,13 @@
     "pl": null,
     "lo": 5.8,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam-specials",
@@ -1754,7 +2480,13 @@
     "pl": null,
     "lo": 7.6,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam-specials",
@@ -1768,7 +2500,13 @@
     "pl": null,
     "lo": 49.5,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam-specials",
@@ -1782,7 +2520,13 @@
     "pl": null,
     "lo": 14.7,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam-specials",
@@ -1796,7 +2540,13 @@
     "pl": null,
     "lo": 19.6,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -1810,7 +2560,13 @@
     "pl": null,
     "lo": null,
     "fk": "limited",
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam",
@@ -1831,7 +2587,13 @@
       "大型多人在线",
       "角色扮演",
       "免费开玩"
-    ]
+    ],
+    "zh": true,
+    "dv": "thatgamecompany",
+    "pb": "thatgamecompany",
+    "rd": "2024 年 4 月 10 日",
+    "mc": null,
+    "sd": "一场令人心驰神往的开放世界冒险正等着你！探索神奇的领域，恢复失落之光。在光遇中，你将超越语言限制，与全球玩家建立羁绊。参与季节活动，完成任务、解开谜题，让我们一起拥抱善意、新发现与真挚的情谊。"
   },
   {
     "s": "steam-specials",
@@ -1845,7 +2607,13 @@
     "pl": null,
     "lo": 30.24,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam",
@@ -1866,7 +2634,13 @@
       "单人",
       "多人",
       "合作"
-    ]
+    ],
+    "zh": true,
+    "dv": "ConcernedApe",
+    "pb": "ConcernedApe",
+    "rd": "2016 年 2 月 26 日",
+    "mc": 89,
+    "sd": "你继承了你爷爷在星露谷留下的老旧农场。带着爷爷留下的残旧工具和几枚硬币开始了你的新生活。你能适应这小镇上的生活并且将这个杂草丛生的老旧农场变成一个繁荣的家吗？"
   },
   {
     "s": "steam-specials",
@@ -1880,7 +2654,13 @@
     "pl": null,
     "lo": 37.25,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam",
@@ -1901,7 +2681,13 @@
       "角色扮演",
       "单人",
       "多人"
-    ]
+    ],
+    "zh": true,
+    "dv": "Re-Logic",
+    "pb": "Re-Logic",
+    "rd": "2011 年 5 月 16 日",
+    "mc": 83,
+    "sd": "挖掘，战斗，探索，建造！在这个动感十足的冒险游戏里没有什么是不可能的。四人包依然可用！"
   },
   {
     "s": "epic",
@@ -1915,7 +2701,13 @@
     "pl": null,
     "lo": 53,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "steam-specials",
@@ -1929,7 +2721,13 @@
     "pl": null,
     "lo": 40.8,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   },
   {
     "s": "epic",
@@ -1943,6 +2741,12 @@
     "pl": null,
     "lo": 60,
     "fk": null,
-    "tg": []
+    "tg": [],
+    "zh": "unknown",
+    "dv": null,
+    "pb": null,
+    "rd": null,
+    "mc": null,
+    "sd": null
   }
 ]
