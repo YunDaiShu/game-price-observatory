@@ -329,7 +329,7 @@
   function recordOf(key) {
     if (byKey[key]) {
       var d = byKey[key];
-      return { source: d.source, id: d.id, name: d.name, price: d.price, initial: d.initial, cut: d.cut, url: d.url, end: d.end, zh: d.zh, lowest: d.lowest, tags: d.tags, cover: d.cover || null };
+      return { source: d.source, id: d.id, name: d.name, price: d.price, initial: d.initial, cut: d.cut, url: d.url, end: d.end, zh: d.zh, lowest: d.lowest, tags: d.tags, cover: d.cover || null, needsBase: d.needsBase || null };
     }
     var hit = (SEARCH || []).find(function (r) { return r.s + ':' + r.i === key; });
     if (!hit) return null;
@@ -384,6 +384,7 @@
     var meta = [];
     meta.push(endMs ? ('截止 ' + fmtEnd(endMs)) : '截止未公布');
     if (endMs) meta.push('<span id="mRemain">' + fmtLeft(endMs - Date.now()) + '</span>');
+    if (d.needsBase) meta.push('<span class="warn-tag">需本体</span>');
     meta.push(d.zh === true ? '支持中文' : (d.zh === false ? '无中文' : '中文未知'));
     (d.tags || []).slice(0, 3).forEach(function (t) { meta.push(t); });
     document.getElementById('mMeta').innerHTML = meta.join('<span class="sep">|</span>');
