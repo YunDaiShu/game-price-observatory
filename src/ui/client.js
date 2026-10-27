@@ -11,9 +11,9 @@
   var stickyBar = document.querySelector('.sticky-bar');
   var total = cards.length;
 
-  var PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
-  var INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A' };
-  var LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
+  var PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
+  var INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N' };
+  var LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
   var state = { tab: 'all', freeOnly: false, newLow: false, hasEnd: false, sort: 'cut', q: '' };
   var EASE = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
   var MOVE_MS = 260;
