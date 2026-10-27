@@ -81,8 +81,13 @@ try {
   errors.push({ source: 'appstore-top', target: '付费榜/探测', error: String(e?.cause?.code || e?.message || e).slice(0, 120) });
 }
 
+/* 应急开关：DISABLE_SOURCES=switch 可一键下线该源（合规下架用） */
+const DISABLED = String(process.env.DISABLE_SOURCES || '').split(',').map((s) => s.trim()).filter(Boolean);
+
 // Switch（日服 / JPY）：白名单关键词 → 站内搜索接口
-try {
+if (DISABLED.includes('switch')) {
+  console.log('switch  已按 DISABLE_SOURCES 跳过');
+} else try {
   const sw = await fetchSwitch({ pages: 8, limit: 100, max: 40 });
   raw.push(...sw.items);
   if (sw.errors.length) errors.push({ source: 'switch', target: '部分关键词', error: sw.errors.length + ' 个未命中: ' + sw.errors[0].query });
