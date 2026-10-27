@@ -4,10 +4,10 @@ import path from 'node:path';
 const UI = path.join(import.meta.dirname, 'ui');
 const read = (f) => fs.readFileSync(path.join(UI, f), 'utf8');
 
-const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
+const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
 const GROUP = (it) => (String(it.source).startsWith('steam') ? 'steam' : it.source);
-const TAB_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store' };
-const INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A' };
+const TAB_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch' };
+const INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N' };
 const fmtEnd = (iso) => {
   if (!iso) return null;
   const d = new Date(iso);
@@ -32,20 +32,21 @@ function card(it) {
   const g = GROUP(it);
   const key = it.source + ':' + it.id;
   const sym = it.currency === 'USD' ? '$' : '¥';
+  const money = (v) => (it.currency === 'JPY' ? sym + Number(v).toLocaleString('en-US') : sym + v);
   const endMs = it.promo_end ? Date.parse(it.promo_end) || 0 : 0;
   const endText = fmtEnd(it.promo_end);
 
   const priceRow = it.price === 0
     ? '<span class="price free">免费</span>'
-    : ((it.cut > 0 && it.initial && it.initial > it.price ? '<span class="badge">-' + it.cut + '%</span><span class="origin">' + sym + it.initial + '</span>' : '')
-      + '<span class="price">' + sym + it.price + '</span>');
+    : ((it.cut > 0 && it.initial && it.initial > it.price ? '<span class="badge">-' + it.cut + '%</span><span class="origin">' + money(it.initial) + '</span>' : '')
+      + '<span class="price">' + money(it.price) + '</span>');
 
   const meta = [];
   const discounted = it.cut > 0 && it.initial && it.initial > it.price;
   const lowMeaningful = it.lowest_price !== null && it.lowest_price !== undefined && it.price > 0
     && (discounted || it.lowest_price < it.price);   // 无折扣且史低=现价时是废话，不显示
   if (lowMeaningful) {
-    meta.push('<span>史低 ' + sym + it.lowest_price + '</span>');
+    meta.push('<span>史低 ' + money(it.lowest_price) + '</span>');
   }
   if (endText) {
     meta.push('<span data-end-abs="' + endMs + '">截止 ' + endText + '</span>');
@@ -84,7 +85,7 @@ export function renderPage(payload) {
   for (const it of items) { const g = GROUP(it); groupCount[g] = (groupCount[g] || 0) + 1; }
 
   const tabs = [{ key: 'all', text: '全部', n: items.length }]
-    .concat(['steam', 'epic', 'gog', 'appstore']
+    .concat(['steam', 'epic', 'gog', 'appstore', 'switch']
       .filter((g) => groupCount[g])
       .map((g) => ({ key: g, text: TAB_LABEL[g], n: groupCount[g] })));
 
