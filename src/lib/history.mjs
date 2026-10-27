@@ -28,6 +28,28 @@ export function loadHistory(historyDir, todayDate) {
 
 function toNum(v) { const n = Number(v); return Number.isFinite(n) ? n : null; }
 
+/** 按 (source:id) 汇总成价格序列，供详情页画折线：[['2026-10-27', 5.8], ...] */
+export function loadSeries(historyDir, days = 60) {
+  const out = {};
+  if (!fs.existsSync(historyDir)) return out;
+  const files = fs.readdirSync(historyDir).filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f)).sort().slice(-days);
+  for (const f of files) {
+    const date = f.slice(0, 10);
+    let doc;
+    try { doc = JSON.parse(fs.readFileSync(path.join(historyDir, f), 'utf8')); } catch { continue; }
+    for (const it of doc.items || []) {
+      if (!it || it.price === null || it.price === undefined) continue;
+      const p = Number(it.price);
+      if (!Number.isFinite(p) || p <= 0) continue;
+      // 注意：这里不按币种过滤——同一个 key 只对应一个条目，币种天然一致；
+      // 跨币种比较只在史低判定里排除（见 annotateLows）
+      const k = it.source + ':' + it.id;
+      (out[k] = out[k] || []).push([date, p]);
+    }
+  }
+  return out;
+}
+
 // 为每条打上 lowest_price / is_new_low
 export function annotateLows(items, hist) {
   for (const it of items) {
