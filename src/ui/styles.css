@@ -184,3 +184,26 @@ footer a{color:var(--text-link);text-decoration:none}
 .card--leave{animation:cardLeave 140ms ease-in both;pointer-events:none}
 
 html,body{max-width:100%;overflow-x:clip}
+
+/* ===== 搜索结果：参考图行式布局（视觉按本站浅色主题） ===== */
+.sres{width:min(760px, calc(100vw - 32px));padding:0;max-height:70vh;overflow:auto}
+.sres-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;font-size:12px;color:var(--text-tertiary);border-bottom:1px solid var(--border-color);position:sticky;top:0;background:var(--bg-card);z-index:1}
+.sres-head b{color:var(--text-primary);font-weight:600}
+.sres-list{display:block}
+.sres-row{display:flex;align-items:center;gap:12px;width:100%;padding:10px 16px;border:0;background:transparent;cursor:pointer;text-align:left;font:inherit;transition:background var(--dur-filters)}
+.sres-row:hover{background:var(--bg-primary)}
+.sres-row + .sres-row{border-top:1px solid var(--border-color)}
+.sres-thumb{position:relative;width:120px;height:68px;border-radius:6px;overflow:hidden;flex:none;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;background:linear-gradient(135deg,#E8EAED,#DCE0E5)}
+.sres-thumb[data-group="steam"]{background:linear-gradient(135deg,#2a475e,#171A21)}
+.sres-thumb[data-group="epic"]{background:linear-gradient(135deg,#2b2b2b,#000)}
+.sres-thumb[data-group="gog"]{background:linear-gradient(135deg,#4a1030,#2a0a1a)}
+.sres-thumb[data-group="appstore"]{background:linear-gradient(135deg,#4da3ff,#007AFF)}
+.sres-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sres-main{min-width:0;flex:1}
+.sres-name{font-size:14px;font-weight:600;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sres-price{display:flex;align-items:baseline;gap:8px;margin-top:6px;flex-wrap:wrap}
+.sres-price .badge{font-size:12px}
+.sres-price .origin{font-size:12px}
+.sres-price .price{font-size:16px}
+.sres-more{display:block;width:100%;padding:12px;text-align:center;font-size:13px;color:var(--text-secondary);background:var(--bg-primary);border:0;border-top:1px solid var(--border-color);cursor:pointer;transition:color var(--dur-filters)}
+.sres-more:hover{color:var(--accent-primary)}
