@@ -89,7 +89,8 @@ body{margin:0;background:var(--bg-primary);color:var(--text-secondary);font:14px
 .empty{grid-column:1/-1;background:var(--bg-card);border:1px dashed var(--border-color);border-radius:var(--radius-card);padding:48px 16px;text-align:center;color:var(--text-tertiary)}
 
 /* ===== Single result centering (P2-3) ===== */
-.grid.single .card{max-width:326px;margin:0 auto;grid-column:1/-1}
+.grid.single{grid-template-columns:minmax(0,336px);justify-content:center}
+.grid.single .card{grid-column:auto;max-width:none;margin:0}
 
 /* ===== Skeleton (P2-2) ===== */
 .skeleton{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-md);margin-top:var(--space-md)}
@@ -174,8 +175,8 @@ footer a{color:var(--text-link);text-decoration:none}
 
 /* ===== P0-2/P0-3 搜索结果：与列表页同一套卡片 ===== */
 .sres{width:min(1040px, calc(100vw - 32px));left:auto;right:0;padding:12px}
-.sres-grid{display:grid;grid-template-columns:repeat(auto-fill,327px);gap:16px;justify-content:center}
-.sres-grid.single{grid-template-columns:327px;justify-content:center}
+.sres-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(0,1fr));gap:16px}
+.sres-grid.single{grid-template-columns:minmax(0,336px);justify-content:center}
 .sres .card{height:auto;min-height:var(--ch)}
 
 /* ===== Tab 切换：离场淡出（先淡出再补位） ===== */
