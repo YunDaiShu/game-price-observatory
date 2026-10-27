@@ -44,7 +44,8 @@ export function loadSeries(historyDir, days = 60) {
       // 注意：这里不按币种过滤——同一个 key 只对应一个条目，币种天然一致；
       // 跨币种比较只在史低判定里排除（见 annotateLows）
       const k = it.source + ':' + it.id;
-      (out[k] = out[k] || []).push([date, p]);
+      const pl = typeof it.players_online === 'number' ? it.players_online : null;
+      (out[k] = out[k] || []).push([date, p, pl]);
     }
   }
   return out;
