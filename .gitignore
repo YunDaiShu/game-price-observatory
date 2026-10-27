@@ -3,3 +3,5 @@ node_modules/
 *.log
 .env
 .gh-token
+data/health.local.json
+data/health.json
