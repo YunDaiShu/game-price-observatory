@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-27T10:40:29.730Z",
-  "generated_at_bj": "2026-10-27 18:40",
+  "generated_at": "2026-10-27T10:48:35.642Z",
+  "generated_at_bj": "2026-10-27 18:48",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
@@ -112,25 +112,6 @@
       "url": "https://store.steampowered.com/app/391220/"
     },
     {
-      "promo_start": null,
-      "promo_end": "2026-11-06T17:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 19.6,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "750920",
-      "name": "Shadow of the Tomb Raider: Definitive Edition",
-      "free": false,
-      "price": 19.6,
-      "initial": 196,
-      "cut": 90,
-      "url": "https://store.steampowered.com/app/750920/"
-    },
-    {
       "promo_start": "2026-10-19T15:00:00.000Z",
       "promo_end": "2026-11-02T16:00:00.000Z",
       "tags": [],
@@ -148,6 +129,25 @@
       "cut": 80,
       "url": "https://store.epicgames.com/zh-CN/p/eternal-threads-197169",
       "name_en": "Eternal Threads"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-02T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 14,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "242760",
+      "name": "The Forest",
+      "free": false,
+      "price": 14,
+      "initial": 70,
+      "cut": 80,
+      "url": "https://store.steampowered.com/app/242760/"
     },
     {
       "promo_start": null,
@@ -353,7 +353,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 16957,
+      "players_online": 17340,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -410,7 +410,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": null,
-      "players_online": 21689,
+      "players_online": 22326,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -443,7 +443,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": null,
-      "players_online": 9775,
+      "players_online": 9988,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -548,7 +548,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 96478,
+      "players_online": 97286,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -743,7 +743,7 @@
       "supports_zh": true,
       "lowest_price": null,
       "is_new_low": null,
-      "players_online": 3650,
+      "players_online": 3653,
       "free_kind": "permanent",
       "currency": "CNY",
       "source": "steam",
@@ -809,7 +809,7 @@
       "supports_zh": true,
       "lowest_price": 42,
       "is_new_low": null,
-      "players_online": 25513,
+      "players_online": 25875,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -903,6 +903,13 @@
         null
       ]
     ],
+    "epic:921e40c4c69f4d728914ca2a4f0aa407": [
+      [
+        "2026-10-27",
+        12.4,
+        null
+      ]
+    ],
     "steam-specials:2050650": [
       [
         "2026-10-27",
@@ -931,6 +938,13 @@
         null
       ]
     ],
+    "epic:f967cff9761c4198b4e972cfd71e40d7": [
+      [
+        "2026-10-27",
+        11.55,
+        null
+      ]
+    ],
     "steam-specials:3240220": [
       [
         "2026-10-27",
@@ -938,10 +952,31 @@
         null
       ]
     ],
+    "epic:4e469c7d8bbf49bcabc2c07127d3d946": [
+      [
+        "2026-10-27",
+        54.6,
+        null
+      ]
+    ],
     "steam-specials:5335510": [
       [
         "2026-10-27",
         30.6,
+        null
+      ]
+    ],
+    "epic:be5600439b434624802764f704755cde": [
+      [
+        "2026-10-27",
+        169,
+        null
+      ]
+    ],
+    "epic:944b5b5d646d46bc92bc33edfe983d26": [
+      [
+        "2026-10-27",
+        108,
         null
       ]
     ],
@@ -1001,6 +1036,13 @@
         96478
       ]
     ],
+    "epic:4a88d0dc64114b20b67339c74543f859": [
+      [
+        "2026-10-27",
+        12,
+        null
+      ]
+    ],
     "appstore:1157863540": [
       [
         "2026-10-27",
@@ -1029,11 +1071,25 @@
         31057
       ]
     ],
+    "epic:c76046dddcdb43619c33ce0395941033": [
+      [
+        "2026-10-27",
+        31,
+        null
+      ]
+    ],
+    "epic:d3e5b556640144bfa5de2d5d3b283d68": [
+      [
+        "2026-10-27",
+        70,
+        null
+      ]
+    ],
     "steam:413150": [
       [
         "2026-10-27",
         48,
-        44144
+        43233
       ]
     ],
     "steam:105600": [
@@ -1041,6 +1097,20 @@
         "2026-10-27",
         42,
         25513
+      ]
+    ],
+    "epic:af6b823b8698465f9aedc3bddf2e8686": [
+      [
+        "2026-10-27",
+        53,
+        null
+      ]
+    ],
+    "epic:1f723b00df58467998c4984ca39915ad": [
+      [
+        "2026-10-27",
+        60,
+        null
       ]
     ]
   }
