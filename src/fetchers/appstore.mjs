@@ -20,6 +20,8 @@ export async function fetchAppStoreByIds(ids, country = 'cn') {
       cut: 0,
       currency: a.currency || 'CNY',
       url: absoluteUrl(a.trackViewUrl, 'https://apps.apple.com'),
+    cover: a.artworkUrl512 || a.artworkUrl100 || null,
+      cover: a.artworkUrl512 || a.artworkUrl100 || null,
       promo_start: null,
       promo_end: null,
       // 来自付费榜探测池 + 现价 0 → 有证据判定为限时免费
@@ -58,6 +60,7 @@ export async function fetchAppStore(entry, country = 'cn') {
     cut: 0,
     currency: a.currency || 'CNY',
     url: absoluteUrl(a.trackViewUrl, 'https://apps.apple.com'),
+    cover: a.artworkUrl512 || a.artworkUrl100 || null,
     promo_start: null,
     promo_end: null,
     free_kind: null,
