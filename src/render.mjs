@@ -17,6 +17,7 @@ const fmtEnd = (iso) => {
 };
 
 function coverOf(it) {
+  if (it.source === 'gog' && it.cover) return 'https://images.weserv.nl/?url=' + encodeURIComponent(it.cover) + '&w=460&h=215&fit=cover&output=jpg&q=80';
   if (it.cover) return it.cover;
   if (String(it.source).startsWith('steam') && /^[0-9]+$/.test(String(it.id))) {
     return 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + it.id + '/header.jpg';
