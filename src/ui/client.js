@@ -260,26 +260,54 @@
       .catch(function () { SEARCH = []; })
       .then(function () { loading = false; cb(); });
   }
+  function thumbOf(r) {
+    var cover = r.cv || (String(r.s).indexOf('steam') === 0 && /^[0-9]+$/.test(String(r.i))
+      ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + r.i + '/header.jpg' : null);
+    if (r.s === 'gog' && cover) cover = 'https://images.weserv.nl/?url=' + encodeURIComponent(cover) + '&w=460&h=215&fit=cover&output=jpg&q=80';
+    var g = String(r.s).indexOf('steam') === 0 ? 'steam' : r.s;
+    var init = ({ steam: 'S', epic: 'E', gog: 'G', appstore: 'A' })[g] || '?';
+    return '<span class="sres-thumb" data-group="' + g + '">' + init
+      + (cover ? '<img class="cover-img" loading="lazy" alt="" src="' + cover + '" onerror="this.remove()">' : '')
+      + '</span>';
+  }
+  function rowOf(r) {
+    var priceRow = r.p === 0
+      ? '<span class="price free">免费</span>'
+      : '<span class="badge">-' + (r.c || 0) + '%</span>'
+        + '<span class="origin">' + (r.o ? '¥' + r.o : '—') + '</span>'
+        + '<span class="price">' + (r.p === null || r.p === undefined ? '—' : '¥' + r.p) + '</span>';
+    return '<button class="sres-row" type="button" data-key="' + r.s + ':' + r.i + '">'
+      + thumbOf(r)
+      + '<span class="sres-main"><span class="sres-name">' + r.n + '</span><span class="sres-price">' + priceRow + '</span></span>'
+      + '</button>';
+  }
   function renderSearch(q) {
     var box = panel();
     if (!box) return;
     if (!q) { box.hidden = true; box.innerHTML = ''; return; }
     var pool = (SEARCH && SEARCH.length) ? SEARCH : DATA.map(function (d) {
-      return { s: d.source, i: d.id, n: d.name, p: d.price, o: d.initial, c: d.cut, lo: d.lowest, u: d.url, e: d.end, pl: d.players, zh: d.zh, tg: d.tags };
+      return { s: d.source, i: d.id, n: d.name, p: d.price, o: d.initial, c: d.cut, lo: d.lowest, u: d.url, e: d.end, cv: d.cover, tg: d.tags };
     });
     var hits = pool.filter(function (r) { return String(r.n).toLowerCase().indexOf(q) >= 0; }).slice(0, 12);
     box.hidden = false;
-    if (!hits.length) { box.innerHTML = '<div class="sres-head">没有匹配结果</div>'; return; }
-    box.innerHTML = '<div class="sres-head">找到 <b>' + hits.length + '</b> 个结果</div>'
-      + '<div class="sres-grid' + (hits.length <= 1 ? ' single' : '') + '">' + hits.map(cardFromRecord).join('') + '</div>';
-    [].forEach.call(box.querySelectorAll('.card'), function (el) {
-      el.addEventListener('click', function (e) {
-        if (e.target && e.target.closest && e.target.closest('.cover-go')) return;
-        openModal(el.getAttribute('data-key'));
-        box.hidden = true;
-      });
+    if (!hits.length) {
+      box.innerHTML = '<div class="sres-head"><span>搜索结果</span><span>0 个</span></div><div class="sres-row" style="cursor:default;color:var(--text-tertiary);font-size:13px">没有匹配的条目</div>';
+      return;
+    }
+    box.innerHTML = '<div class="sres-head"><span>搜索结果</span><span><b>' + hits.length + '</b> 个</span></div>'
+      + '<div class="sres-list">' + hits.map(rowOf).join('') + '</div>'
+      + '<button class="sres-more" type="button">在列表中查看 ' + hits.length + ' 个结果 ›</button>';
+    [].forEach.call(box.querySelectorAll('.sres-row'), function (el) {
+      el.addEventListener('click', function () { openModal(el.getAttribute('data-key')); box.hidden = true; });
+    });
+    var more = box.querySelector('.sres-more');
+    if (more) more.addEventListener('click', function (e) {
+      e.stopPropagation();
+      box.hidden = true;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
   if (qInput) qInput.addEventListener('input', function () {
     state.q = String(qInput.value || '').trim().toLowerCase();
     apply();
