@@ -28,6 +28,7 @@ export function saveHealth(root, health) {
 }
 
 export function pausedReason(health, source, today = todayStr()) {
+  if (process.env.IGNORE_BREAKER === '1') return null; // 临时强制抓取（排障用）
   const h = health[source];
   if (!h || !h.pausedUntil) return null;
   if (h.pausedUntil < today) return null; // 已到期，恢复尝试
