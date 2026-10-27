@@ -16,7 +16,9 @@ async function currentPlayers(appid) {
   } catch { return null; }
 }
 
-export async function fetchSteam(appid, cc = 'cn') {
+export async function fetchSteam(entry, cc = 'cn') {
+  const appid = typeof entry === 'object' && entry !== null ? entry.id : entry;
+  const always = typeof entry === 'object' && entry !== null ? !!entry.always : false;
   const url = 'https://store.steampowered.com/api/appdetails?appids=' + appid + '&cc=' + cc + '&l=schinese';
   const r = await fetch(url, { headers: { 'User-Agent': UA } });
   if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -32,7 +34,8 @@ export async function fetchSteam(appid, cc = 'cn') {
     source: 'steam', id: String(appid), name: d.name,
     currency: 'CNY', url: link,
     promo_start: null, promo_end: null,
-    tags, supports_zh: hasZh(d.supported_languages), players_online: players
+    tags, supports_zh: hasZh(d.supported_languages), players_online: players,
+    always_show: always
   };
   if (d.is_free) {
     return { ...base, free: true, price: 0, initial: 0, cut: 0, free_kind: 'permanent' };
