@@ -19,6 +19,18 @@
   var MOVE_MS = 260;
 
   /* ---------- 封面兜底：6s 未加载成功则移除 img，露出平台渐变 ---------- */
+  /* ---------- GOG 封面三级降级：直连 → weserv 代理 → 移除(渐变) ---------- */
+  document.addEventListener('error', function (e) {
+    var img = e.target;
+    if (!img || img.tagName !== 'IMG' || !img.classList || !img.classList.contains('cover-img')) return;
+    var proxy = img.getAttribute('data-proxy');
+    if (proxy && img.dataset.proxied !== '1') {
+      img.dataset.proxied = '1';
+      img.src = proxy;
+      return;
+    }
+    img.remove();
+  }, true);
   function coverFallback() {
     var imgs = [].slice.call(document.querySelectorAll('.cover-img'));
     imgs.forEach(function (img) {
@@ -212,12 +224,13 @@
     meta += endMs
       ? '<span data-end-abs="' + endMs + '">截止 ' + fmtEnd(endMs) + '</span><span class="cd" data-end-abs="' + endMs + '">' + fmtLeft(endMs - Date.now()) + '</span>'
       : '<span>截止未公布</span>';
+    var proxyUrl = (r.s === 'gog' && coverUrl) ? 'https://images.weserv.nl/?url=' + encodeURIComponent(coverUrl) : null;
     var tags = (r.tg || []).slice(0, 3).map(function (t) { return '<span>' + t + '</span>'; }).join('');
     return '<article class="card" data-group="' + g + '" data-key="' + key + '" tabindex="0">'
       + '<div class="cover"><span class="cover-tag">' + (LABEL[r.s] || r.s) + '</span>'
       + '<a class="cover-go" href="detail/?key=' + encodeURIComponent(key) + '" title="打开详情页">↗</a>'
       + (INITIAL[g] || '?')
-      + (coverUrl ? '<img class="cover-img" loading="lazy" alt="" src="' + coverUrl + '" onerror="this.remove()">' : '')
+      + (coverUrl ? '<img class="cover-img" loading="lazy" alt="" src="' + coverUrl + '"' + (proxyUrl ? ' data-proxy="' + proxyUrl + '"' : ' onerror="this.remove()"') + '>' : '')
       + '</div><h3 class="name">' + r.n + '</h3><div class="price-row">' + priceRow + '</div>'
       + '<div class="card-meta">' + meta + '</div><div class="tags">' + tags + '</div></article>';
   }
@@ -296,9 +309,16 @@
     var url = rec.cover || (plat === 'steam' && /^[0-9]+$/.test(String(rec.id))
       ? 'https://cdn.cloudflare.steamstatic.com/steam/apps/' + rec.id + '/header.jpg' : null);
     if (!url) return;
+    var proxy = (plat === 'gog' && url) ? 'https://images.weserv.nl/?url=' + encodeURIComponent(url) : null;
     var probe = new Image();
     probe.onload = function () { cover.style.backgroundImage = 'url("' + url + '")'; };
-    probe.onerror = function () { cover.style.backgroundImage = ''; };
+    probe.onerror = function () {
+      if (!proxy) { cover.style.backgroundImage = ''; return; }
+      var p2 = new Image();
+      p2.onload = function () { cover.style.backgroundImage = 'url("' + proxy + '")'; };
+      p2.onerror = function () { cover.style.backgroundImage = ''; };
+      p2.src = proxy;
+    };
     probe.src = url;
   }
 
