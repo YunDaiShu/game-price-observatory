@@ -3,131 +3,113 @@ import path from 'node:path';
 import { fetchSteam } from './fetchers/steam.mjs';
 import { fetchAppStore } from './fetchers/appstore.mjs';
 import { fetchSteamSpecials } from './fetchers/steam-specials.mjs';
+import { fetchEpic } from './fetchers/epic.mjs';
+import { fetchGog } from './fetchers/gog.mjs';
+import { fetchSteampy } from './fetchers/steampy.mjs';
+import { normalizeItem } from './lib/fields.mjs';
+import { loadHistory, annotateLows } from './lib/history.mjs';
+import { applyFreeRules } from './lib/free.mjs';
+import { renderPage } from './render.mjs';
+import { isValidHttpUrl } from './lib/url.mjs';
+import { loadHealth, saveHealth, pausedReason, recordResult } from './lib/health.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
-
-function writeJson(file, data) {
+const writeJson = (file, data) => {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n', 'utf8');
-}
+};
 
 const watch = readJson(path.join(ROOT, 'data', 'watchlist.json'));
+const today = new Date().toISOString().slice(0, 10);
+const hist = loadHistory(path.join(ROOT, 'data', 'history'), today);
+
 const errors = [];
-const items = [];
+const raw = [];
+const health = loadHealth(ROOT);
 
-const tasks = [
-  ...watch.steam.map((id) => ({ kind: 'steam', run: () => fetchSteam(id) })),
-  ...watch.appstore.map((t) => ({ kind: 'appstore', run: () => fetchAppStore(t) }))
-];
-
-// 额外：当前特惠列表（数量不固定，单独抓，失败不影响主流程）
-try {
-  const specials = await fetchSteamSpecials();
-  for (const s of specials) items.push(s);
-} catch (e) {
-  errors.push({ source: 'steam-specials', target: 'featuredcategories', error: String(e.message ?? e) });
+async function collect(label, fn) {
+  const pausedUntil = pausedReason(health, label, today);
+  if (pausedUntil) {
+    errors.push({ source: label, target: label, error: '已熔断跳过（连续 ' + (health[label].failStreak || 0) + ' 次失败，' + pausedUntil + ' 后重试）' });
+    return;
+  }
+  try {
+    const r = await fn();
+    for (const it of (Array.isArray(r) ? r : [r])) if (it) raw.push(it);
+    recordResult(health, label, true, { today });
+  } catch (e) {
+    const msg = String(e?.cause?.code || e?.cause?.message || e?.message || e);
+    recordResult(health, label, false, { today, error: msg });
+    errors.push({ source: label, target: label, error: msg });
+  }
 }
 
-const results = await Promise.allSettled(tasks.map((t) => t.run()));
-results.forEach((res, i) => {
-  if (res.status === 'fulfilled') items.push(res.value);
-  else errors.push({ source: tasks[i].kind, target: String(watch.steam[i] ?? watch.appstore[i - watch.steam.length]), error: String(res.reason?.message ?? res.reason) });
-});
+await Promise.all([
+  ...(watch.steam || []).map((id) => collect('steam', () => fetchSteam(id))),
+  ...(watch.appstore || []).map((t) => collect('appstore', () => fetchAppStore(t))),
+  collect('steam-specials', () => fetchSteamSpecials()),
+  collect('epic', () => fetchEpic()),
+  collect('gog', () => fetchGog()),
+  // SteamPY 无公开接口：仅在显式配置端点时才抓，避免每次运行都产生「来源异常」
+  ...(process.env.STEAMPY_API_URL ? [collect('steampy', () => fetchSteampy())] : [])
+]);
 
-// 去重（同源同 id 只留一条），再按折扣排序
-const seen = new Set();
-const deduped = items.filter((it) => {
+const normalized = raw.map(normalizeItem);
+
+// 链接合法性校验：拼错的地址比没地址更糟
+for (const it of normalized) {
+  if (!isValidHttpUrl(it.url)) {
+    errors.push({ source: it.source, target: it.name || it.id, error: '非法链接已置空: ' + String(it.url).slice(0, 80) });
+    it.url = null;
+  }
+}
+const infoScore = (it) => ['promo_end', 'players_online', 'lowest_price'].filter((k) => it[k] !== null && it[k] !== undefined).length
+  + (it.tags || []).length + (it.supports_zh === true || it.supports_zh === false ? 1 : 0);
+const byKey = new Map();
+for (const it of normalized) {
   const k = it.source + ':' + it.id;
-  if (seen.has(k)) return false;
-  seen.add(k);
-  return true;
-});
-items.length = 0;
-items.push(...deduped);
-items.sort((a, b) => (b.cut - a.cut) || (a.name || '').localeCompare(b.name || '', 'zh'));
+  const prev = byKey.get(k);
+  if (!prev || infoScore(it) > infoScore(prev)) byKey.set(k, it);
+}
+let items = [...byKey.values()];
 
-const stamp = new Date();
-const iso = stamp.toISOString();
-const date = iso.slice(0, 10);
+annotateLows(items, hist);
+items = applyFreeRules(items, hist);
+
+const rank = (it) => (it.free_kind === 'limited' ? 0 : it.is_new_low === true ? 1 : 2);
+items.sort((a, b) => rank(a) - rank(b) || (b.cut || 0) - (a.cut || 0) || String(a.name).localeCompare(String(b.name), 'zh'));
+
+const iso = new Date().toISOString();
+const bj = new Date(Date.now() + 8 * 3600 * 1000).toISOString().replace('T', ' ').slice(0, 16);
 
 const payload = {
   generated_at: iso,
-  timezone: 'UTC',
+  generated_at_bj: bj,
+  timezone_display: 'Asia/Shanghai (UTC+8)',
   region: 'CN',
-  counts: { ok: items.length, failed: errors.length },
+  counts: {
+    total: items.length,
+    limited_free: items.filter((i) => i.free_kind === 'limited').length,
+    new_low: items.filter((i) => i.is_new_low === true).length,
+    failed: errors.length
+  },
+  by_source: items.reduce((acc, it) => { acc[it.source] = (acc[it.source] || 0) + 1; return acc; }, {}),
   items,
   errors
 };
 
+saveHealth(ROOT, health);
 writeJson(path.join(ROOT, 'data', 'latest.json'), payload);
-writeJson(path.join(ROOT, 'data', 'history', date + '.json'), payload);
-
-// —— 渲染自包含静态页（不依赖外部框架，十年后仍能打开）——
-const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const rows = items.map((it) => {
-  const price = it.free ? '免费' : '¥' + it.price;
-  const was = !it.free && it.initial > it.price ? '<span class="was">¥' + it.initial + '</span>' : '';
-  const cut = it.cut > 0 ? '<span class="cut">-' + it.cut + '%</span>' : '';
-  return '<tr><td class="n"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.name) + '</a></td>'
-    + '<td>' + esc(it.source) + '</td><td class="p">' + price + was + '</td><td>' + cut + '</td></tr>';
-}).join('\n');
-
-const errBlock = errors.length
-  ? '<section class="err"><h2>本次抓取失败（不影响其他条目）</h2><ul>'
-    + errors.map((e) => '<li>' + esc(e.source) + ' · ' + esc(e.target) + ' — ' + esc(e.error) + '</li>').join('')
-    + '</ul></section>'
-  : '';
-
-const html = `<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>游戏价格雷达 · 每日价格表</title>
-<style>
-:root{--ink:#0b0d10;--paper:#f5f2ea;--gold:#c9a13f;--line:#e2dccd}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.7 "Noto Serif SC",Georgia,serif}
-header{padding:40px 24px 8px;max-width:900px;margin:0 auto}
-h1{margin:0;font-size:28px;letter-spacing:.06em}
-.sub{color:#6b6459;font-size:13px;margin-top:6px}
-main{max-width:900px;margin:0 auto;padding:16px 24px 60px}
-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}
-th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
-th{font-weight:600;color:#6b6459;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-td.p{white-space:nowrap;font-variant-numeric:tabular-nums}
-.was{color:#9a9384;text-decoration:line-through;margin-left:6px;font-size:12px}
-.cut{color:#8a1f1f;font-weight:600}
-a{color:inherit;text-decoration:none;border-bottom:1px solid var(--gold)}
-a:hover{background:#fff2cc}
-.err{margin-top:28px;padding:14px 16px;border-left:3px solid #8a1f1f;background:#fbeeee;font-size:13px}
-.err h2{font-size:14px;margin:0 0 6px}
-footer{max-width:900px;margin:0 auto;padding:0 24px 48px;color:#6b6459;font-size:12px}
-</style></head>
-<body>
-<header>
-  <h1>游戏价格雷达</h1>
-  <div class="sub">数据来源：Steam 官方商店接口、Apple App Store 公开接口 · 抓取时间 ${esc(iso)} · 区服 CN · 共 ${items.length} 条</div>
-</header>
-<main>
-<table>
-<thead><tr><th>游戏</th><th>平台</th><th>价格</th><th>折扣</th></tr></thead>
-<tbody>
-${rows || '<tr><td colspan="4">本次没有任何数据</td></tr>'}
-</tbody></table>
-${errBlock}
-</main>
-<footer>
-本页由开源项目 game-price-radar 生成。价格会变，请以商店页面为准；本页只记录抓取时刻的数据。<br>
-仅收录可公开获取的价格与名称，不含游戏简介、图片等版权内容。
-</footer>
-</body></html>`;
-
+writeJson(path.join(ROOT, 'data', 'history', today + '.json'), payload);
 fs.mkdirSync(path.join(ROOT, 'docs'), { recursive: true });
-fs.writeFileSync(path.join(ROOT, 'docs', 'index.html'), html, 'utf8');
+fs.writeFileSync(path.join(ROOT, 'docs', 'index.html'), renderPage(payload), 'utf8');
 fs.writeFileSync(path.join(ROOT, 'docs', '.nojekyll'), '', 'utf8');
 
-console.log('OK ' + items.length + ' 条 / 失败 ' + errors.length + ' 条');
-for (const it of items.slice(0, 6)) {
-  console.log('  ' + it.source.padEnd(9) + (it.free ? '免费' : '¥' + it.price).padEnd(9) + (it.cut ? '-' + it.cut + '%' : '').padEnd(6) + ' ' + it.name);
+console.log('OK 在榜 ' + items.length + ' 条（限免 ' + payload.counts.limited_free + ' / 新史低 ' + payload.counts.new_low + '） 失败 ' + errors.length);
+console.log('   分来源: ' + JSON.stringify(payload.by_source));
+for (const it of items.slice(0, 10)) {
+  const price = it.price === 0 ? '免费' : (it.price === null ? '?' : '¥' + it.price);
+  console.log('   ' + String(it.source).padEnd(14) + String(price).padEnd(9) + String(it.cut ? '-' + it.cut + '%' : '').padEnd(6) + ' ' + String(it.name).slice(0, 32) + (it.promo_end ? ' | 至' + it.promo_end.slice(5, 10) : ''));
 }
-if (errors.length) for (const e of errors) console.log('  ! ' + e.source + ' ' + e.target + ' -> ' + e.error);
+for (const e of errors) console.log('   ! ' + e.source + ' -> ' + e.error);
