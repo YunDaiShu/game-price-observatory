@@ -5,7 +5,7 @@ import { isValidHttpUrl } from './lib/url.mjs';
 const UI = path.join(import.meta.dirname, 'ui');
 const read = (f) => fs.readFileSync(path.join(UI, f), 'utf8');
 
-const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
+const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特价', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
 const GROUP = (it) => (String(it.source).startsWith('steam') ? 'steam' : it.source);
 const TAB_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch' };
 const INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N' };
@@ -41,8 +41,9 @@ function card(it) {
 
   const priceRow = it.price === 0
     ? '<span class="price free">免费</span>'
-    : ((it.cut > 0 && it.initial && it.initial > it.price ? '<span class="badge">-' + it.cut + '%</span><span class="origin">' + money(it.initial) + '</span>' : '')
-      + '<span class="price">' + money(it.price) + '</span>');
+    : ((it.cut > 0 && it.initial && it.initial > it.price
+        ? '<span class="badge">-' + Math.abs(it.cut) + '%</span><span class="price">' + money(it.price) + '</span><span class="origin">' + money(it.initial) + '</span>'
+        : '<span class="price plain">' + money(it.price) + '</span><span class="meta-tag">原价售卖</span>'));
 
   const meta = [];
   if (it.needs_base) meta.push('<span class="warn-tag">需本体</span>');
@@ -53,10 +54,7 @@ function card(it) {
     meta.push('<span>史低 ' + money(it.lowest_price) + '</span>');
   }
   if (endText) {
-    meta.push('<span data-end-abs="' + endMs + '">截止 ' + endText + '</span>');
     meta.push('<span class="cd" data-end-abs="' + endMs + '">剩余 --</span>');
-  } else {
-    meta.push('<span>截止未公布</span>');
   }
   if (typeof it.players_online === 'number') meta.push('<span>在线 ' + it.players_online.toLocaleString('en-US') + '</span>');
 
@@ -114,17 +112,17 @@ export function renderPage(payload) {
 
   return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
     + '<meta name="viewport" content="width=device-width,initial-scale=1">'
-    + '<title>免费游戏雷达 · 限免 / 折扣 / 史低</title>'
+    + '<title>游戏价格观测站 · 限免 / 折扣 / 史低</title>'
     + '<style>' + read('styles.css') + '</style></head><body>'
     + '<header class="header"><div class="in">'
-    + '<div class="brand"><span class="brand-dot"></span><h1>免费游戏雷达</h1><small>限免 · 折扣 · 史低</small></div>'
+    + '<div class="brand"><span class="brand-dot"></span><h1>游戏价格观测站</h1><small>限免 · 折扣 · 史低</small></div>'
     + '<label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>'
     + '<input id="q" type="search" placeholder="搜索全部数据源（游戏名）" aria-label="搜索游戏" autocomplete="off"></label>'
     + '</div></header>'
     + '<div class="wrap">'
     + toastHtml
     + '<div class="meta-row"><span><b>' + items.length + '</b>在榜</span><span><b>' + (payload.counts ? payload.counts.limited_free : 0) + '</b>限免</span>'
-    + '<span><b>' + (payload.counts ? payload.counts.new_low : 0) + '</b>新史低</span><span>抓取 ' + escapeHtml(payload.generated_at_bj || '') + '（北京）</span></div>'
+    + '<span><b>' + (payload.counts ? payload.counts.new_low : 0) + '</b>新史低</span><span>抓取 ' + escapeHtml(payload.generated_at_bj || '') + '</span></div>'
     + '<div class="sticky-bar"><div class="tabs" role="tablist">' + tabsHtml + '</div>'
     + '<div class="pills">'
     + '<button class="pill" type="button" data-filter="newlow" aria-pressed="false">只看新史低</button>'
