@@ -371,8 +371,9 @@
     modal.style.transition = 'none';
     modal.style.transform = 'translate(' + (r.left - mr.left) + 'px,' + (r.top - mr.top) + 'px) scale(' + (r.width / mr.width) + ',' + (r.height / mr.height) + ')';
     modal.style.borderRadius = '12px';
+    void modal.offsetWidth;   // 强制回流，锁定起始帧
     requestAnimationFrame(function () {
-      modal.style.transition = '';
+      modal.style.transition = 'transform 400ms cubic-bezier(.4,0,.2,1),border-radius 400ms cubic-bezier(.4,0,.2,1)';
       modal.style.transform = 'none';
       modal.style.borderRadius = '16px';
       modal.classList.add('hero-in');
