@@ -246,3 +246,24 @@ html,body{max-width:100%;overflow-x:clip}
   .card-shop{opacity:1;pointer-events:auto;width:32px;height:32px;right:12px;bottom:12px;font-size:14px}
   .card .tags{padding-right:40px}
 }
+
+/* ===== P0-1 商城按钮：常态轻量灰、hover 平台品牌色 ===== */
+.card-shop{background:#F0F1F2;color:#86909C;border:1px solid var(--border-color);border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card:hover .card-shop{color:#fff;border-color:transparent;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.card[data-group="steam"]:hover .card-shop{background:#1B77B0}
+.card[data-group="epic"]:hover .card-shop{background:#000000}
+.card[data-group="gog"]:hover .card-shop{background:#8A4FFF}
+.card[data-group="appstore"]:hover .card-shop{background:#007AFF}
+.card[data-group="switch"]:hover .card-shop{background:#E60012}
+
+/* ===== P0-2 价格层级：现价主导、原价弱化 ===== */
+.price{font-size:24px;font-weight:700;color:var(--text-primary)}
+.price.plain{font-size:20px;font-weight:700}
+.origin{font-size:12px;color:var(--text-tertiary);text-decoration:line-through}
+.meta-tag{display:inline-block;background:#F2F3F5;color:var(--text-tertiary);border-radius:var(--radius-badge);padding:0 6px;font-size:11px;line-height:1.7;white-space:nowrap}
+
+/* ===== P1-4 剩余时间：不足 24 小时高亮 ===== */
+.cd.urgent{color:var(--accent-primary);font-weight:600}
+
+/* ===== P2-6 只看限免开启时，排序 Pill 置灰禁用 ===== */
+.pill[disabled]{opacity:.45;cursor:not-allowed}
