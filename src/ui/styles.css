@@ -432,3 +432,17 @@ h1,h2,h3{line-height:var(--lh-tight)}
 .btn-ghost.is-loading::before{border-color:rgba(0,0,0,.15);border-top-color:var(--text-secondary)}
 @keyframes btnSpin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn.is-loading::before{animation:none}}
+
+/* ===== 统一空状态模板（.empty-box） ===== */
+.empty-box{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:48px 16px;text-align:center}
+.empty-box svg{stroke:#C9CDD4;fill:none;stroke-width:2}
+.empty-title{margin:0;font-size:15px;font-weight:600;color:var(--text-primary)}
+.empty-sub{margin:0;font-size:13px;color:var(--text-tertiary);max-width:34em;line-height:1.6}
+.empty-actions{display:flex;gap:8px;margin-top:8px}
+
+/* ===== 面包屑 ===== */
+.crumbs{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text-tertiary);flex-wrap:wrap}
+.crumbs a{color:var(--text-secondary);text-decoration:none}
+.crumbs a:hover{color:var(--accent-primary)}
+.crumbs span.sep{color:var(--border-color)}
+.crumbs .cur{color:var(--text-primary);font-weight:500}
