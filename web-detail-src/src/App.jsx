@@ -66,7 +66,7 @@ function Cover({ rec, className }) {
   return (
     <div className={'relative overflow-hidden rounded-xl ' + (className || '')} style={{ background: GRAD[plat] || GRAD.none }}>
       {showImg ? (
-        <img src={rec.cover} alt="" className="h-full w-full object-cover" onError={() => setFailed(true)} />
+        <img src={rec.cover} alt="" className="absolute inset-0 h-full w-full object-cover" onError={() => setFailed(true)} />
       ) : (
         <div className="flex h-full w-full items-center justify-center text-4xl font-bold text-white/80">{INITIAL[plat] || '?'}</div>
       )}
@@ -93,7 +93,7 @@ function Hero({ rec }) {
   return (
     <section className="mx-auto max-w-5xl px-4 pt-5">
       <div className="grid gap-4 md:grid-cols-[minmax(0,380px)_1fr]">
-        <Cover rec={rec} className="aspect-video w-full" />
+        <Cover rec={rec} className="aspect-video w-full self-start" />
         <div className="flex flex-col">
           <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-2xl font-semibold text-[#1D2129]">{rec.name}</h1>
@@ -213,8 +213,8 @@ function Similar({ rec, items }) {
           const plat = platOf(s.source);
           return (
             <a key={s.source + ':' + s.id} href={'?key=' + encodeURIComponent(s.source + ':' + s.id)}
-               className="w-[180px] shrink-0 overflow-hidden rounded-xl border border-[#E5E6EB] bg-white shadow-[0_1px_4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,0,0,0.10)]">
-              <Cover rec={s} className="aspect-video w-full" />
+               className="w-[180px] shrink-0 self-start overflow-hidden rounded-xl border border-[#E5E6EB] bg-white shadow-[0_1px_4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,0,0,0.10)]">
+              <Cover rec={s} className="aspect-video w-full self-start" />
               <div className="p-2">
                 <div className="truncate text-[12.5px] font-medium text-[#1D2129]">{s.name}</div>
                 <div className="mt-1 flex items-baseline gap-1.5">
