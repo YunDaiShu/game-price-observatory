@@ -230,7 +230,7 @@ function PriceChart({ pts, rec, lowest }) {
         <path d={pts.map((pt, i) => (i ? 'L' : 'M') + X(i) + ',' + Y(pt[1])).join(' ') + ' L' + X(curIdx) + ',' + (H - padB) + ' L' + X(0) + ',' + (H - padB) + ' Z'} fill="url(#priceFill)" />
         <path ref={pathRef} d={pts.map((pt, i) => (i ? 'L' : 'M') + X(i) + ',' + Y(pt[1])).join(' ')} fill="none" stroke="#FF6A00" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
         <line x1={padL} y1={Y(lowest)} x2={W - padR} y2={Y(lowest)} stroke="#00B578" strokeWidth="1" strokeDasharray="4 4" />
-        <circle cx={X(lowIdx)} cy={Y(lowest)} r="6" fill="#00B578" stroke="#fff" strokeWidth="2" />
+        <circle className="pt-pop" style={{ animationDelay: '1000ms' }} cx={X(lowIdx)} cy={Y(lowest)} r="6" fill="#00B578" stroke="#fff" strokeWidth="2" />
         <text x={X(lowIdx) + 10} y={Y(lowest) - 10} fontSize="13" fontWeight="600" fill="#00B578">{'史低 ' + YEN + Number(lowest).toFixed(2)}</text>
         {hiIdx !== curIdx && hiIdx !== lowIdx && (
           <g>
@@ -238,12 +238,12 @@ function PriceChart({ pts, rec, lowest }) {
             <text x={X(hiIdx) + 10} y={Y(pts[hiIdx][1]) + 18} fontSize="13" fontWeight="600" fill="#EF4444">最高 {money(pts[hiIdx][1], rec.currency)}</text>
           </g>
         )}
-        <circle cx={X(curIdx)} cy={Y(pts[curIdx][1])} r="6" fill="#FF6A00" stroke="#fff" strokeWidth="2" />
+        <circle className="pt-pop" style={{ animationDelay: '1200ms' }} cx={X(curIdx)} cy={Y(pts[curIdx][1])} r="6" fill="#FF6A00" stroke="#fff" strokeWidth="2" />
         {hp && <line x1={X(hover)} y1={padT} x2={X(hover)} y2={H - padB} stroke="#C9CDD4" strokeWidth="1" strokeDasharray="3 3" />}
         {hp && <circle cx={X(hover)} cy={Y(hp[1])} r="4" fill="#fff" stroke="#FF6A00" strokeWidth="2" />}
       </svg>
       {hp && mouse && (
-        <div className="pointer-events-none absolute z-10 w-[150px] rounded-lg bg-white px-4 py-3 text-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+        <div className="tip-in pointer-events-none absolute z-10 w-[150px] rounded-lg bg-white px-4 py-3 text-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
              style={{ left: Math.min(Math.max(mouse.px - 75, 4), Math.max(4, mouse.boxW - 154)) + 'px', top: 10 }}>
           <div className="font-medium text-[#1D2129]">{fmtDay(hp[0])}</div>
           <div className="mt-1 text-[#4E5969]">当日价格 <span className="font-semibold text-[#1D2129]">{money(hp[1], rec.currency)}</span></div>
@@ -284,7 +284,7 @@ function AlertBar() {
                  className="h-full w-[88px] text-[15px] font-semibold text-[#1D2129] outline-none placeholder:font-normal placeholder:text-[#86909C]" />
         </span>
         <button onClick={submit}
-                className={'h-9 w-20 rounded-lg text-[14px] font-semibold text-white transition ' + (ok ? 'bg-[#00B578]' : 'bg-[#FF6A00] hover:bg-[#E55A00]')}>
+                className={'h-9 w-20 rounded-lg text-[14px] font-semibold text-white transition active:scale-[0.97] ' + (ok ? 'bg-[#00B578]' : 'bg-[#FF6A00] hover:bg-[#E55A00]')}>
           {ok ? '✓ 已设置' : '提醒我'}
         </button>
       </div>
@@ -331,8 +331,8 @@ function PriceDynamics({ rec, series }) {
               </div>
               <p className="text-[12px] text-[#86909C]">已有 {m.count} 条记录，预计 {estDays} 天后生成完整价格曲线</p>
               <div className="mt-1 flex gap-3">
-                <button className="rounded-lg bg-[#FF6A00] px-6 py-2.5 text-[14px] font-semibold text-white hover:bg-[#E55A00]">设置降价提醒</button>
-                <a href="../" className="rounded-lg border border-[#C9CDD4] bg-white px-6 py-2.5 text-[14px] text-[#4E5969] hover:bg-[#F7F8FA]">返回上一页</a>
+                <button className="rounded-lg bg-[#FF6A00] px-6 py-2.5 text-[14px] font-semibold text-white transition hover:bg-[#E55A00] active:scale-[0.97]">设置降价提醒</button>
+                <a href="../" className="rounded-lg border border-[#C9CDD4] bg-white px-6 py-2.5 text-[14px] text-[#4E5969] transition hover:bg-[#F7F8FA] active:scale-[0.97]">返回上一页</a>
               </div>
             </div>
           )}
