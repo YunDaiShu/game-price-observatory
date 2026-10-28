@@ -157,71 +157,128 @@ function Countdown({ end }) {
   );
 }
 
-function InfoGrid({ rec, series }) {
-  const cells = [
-    ['开发商', dash(rec.developer)],
-    ['发行商', dash(rec.publishers)],
-    ['支持中文', rec.supports_zh === true ? '是' : rec.supports_zh === false ? '否' : '—'],
-    ['媒体评分', dash(rec.metacritic)],
-    ['当前在线', typeof rec.players_online === 'number' ? rec.players_online.toLocaleString('en-US') : '—'],
-    ['价格快照', (series || []).length ? (series || []).length + ' 个' : '0 个']
-  ];
+function metricsOf(series, rec) {
+  const pts = (series || []).filter((p) => typeof p[1] === 'number' && p[1] >= 0);
+  if (!pts.length) return { count: 0 };
+  const prices = pts.map((p) => p[1]);
+  const lowest = Math.min(...prices);
+  const lowestDate = pts.find((p) => p[1] === lowest)[0];
+  const highest = Math.max(...prices);
+  const avg = prices.reduce((s, v) => s + v, 0) / prices.length;
+  const recent = pts.filter((p) => Date.now() - Date.parse(p[0]) <= 365 * 864e5).map((p) => p[1]);
+  const avgRecent = recent.length ? recent.reduce((s, v) => s + v, 0) / recent.length : null;
+  const base = rec.initial || null;
+  const discountDays = base ? pts.filter((p) => p[1] < base) : [];
+  const lastDiscount = discountDays.length ? discountDays[discountDays.length - 1][0] : null;
+  const daysAgo = lastDiscount ? Math.round((Date.now() - Date.parse(lastDiscount)) / 864e5) : null;
+  return { count: pts.length, pts, lowest, lowestDate, highest, avg, avgRecent, discountCount: discountDays.length, daysAgo };
+}
+
+function MetricBlock({ label, value, hint, color }) {
   return (
-    <section className="mx-auto max-w-5xl px-4 pt-5">
-      <div className="rounded-xl border border-[#E5E6EB] bg-white p-3 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-          {cells.filter(([, v]) => v !== '—').map(([k, v]) => (
-            <div key={k} className="rounded-lg bg-[#F7F8FA] px-3 py-2">
-              <div className="text-[11px] text-[#86909C]">{k}</div>
-              <div className="mt-0.5 text-[14px] font-semibold text-[#1D2129]">{v}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div className="px-4 py-3">
+      <div className="text-[13px] text-[#6B7280]">{label}</div>
+      <div className="mt-1 text-[24px] font-bold leading-tight" style={{ color: color || '#111827' }}>{value}</div>
+      {hint && <div className="mt-0.5 text-[12px] text-[#9CA3AF]">{hint}</div>}
+    </div>
   );
 }
 
-function History({ rec, series }) {
-  const pts = (series || []).filter((p) => typeof p[1] === 'number' && p[1] > 0);
-  const hasData = pts.length >= 2;
-  const W = 620, H = 160, padL = 42, padR = 12, padT = 12, padB = 24;
-  const ys = hasData ? pts.map((p) => p[1]) : [0, 1];
-  const min = Math.min(...ys), max = Math.max(...ys);
-  const X = (i) => padL + (W - padL - padR) * (i / Math.max(1, pts.length - 1));
-  const Y = (v) => padT + (H - padT - padB) * (1 - (v - min) / (max - min || 1));
+function AlertBar() {
+  const [v, setV] = useState('');
+  const [ok, setOk] = useState(false);
+  const submit = () => {
+    if (!v) return;
+    try { localStorage.setItem('gpr.alert', v); } catch (e) {}
+    setOk(true);
+    setTimeout(() => setOk(false), 2000);
+  };
+  return (
+    <div className="border-t border-[#E5E7EB] px-5 py-4">
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="text-[13px] text-[#6B7280]">当价格低于</span>
+        <span className="flex h-9 items-center rounded-lg border border-[#D1D5DB] bg-white px-3 focus-within:border-[#F59E0B] focus-within:ring-4 focus-within:ring-[#F59E0B]/20">
+          <span className="mr-1 text-[14px] text-[#9CA3AF]">¥</span>
+          <input value={v} onChange={(e) => setV(e.target.value.replace(/[^0-9.]/g, ''))} placeholder="输入期望价格"
+                 className="h-full w-[88px] text-[15px] font-semibold text-[#111827] outline-none placeholder:font-normal placeholder:text-[#9CA3AF]" />
+        </span>
+        <button onClick={submit}
+                className={'h-9 w-20 rounded-lg text-[14px] font-semibold text-white transition ' + (ok ? 'bg-[#10B981]' : 'bg-[#F59E0B] hover:bg-[#D97706]')}>
+          {ok ? '✓ 已设置' : '提醒我'}
+        </button>
+      </div>
+      <p className="mt-2 text-[12px] text-[#9CA3AF]">价格到达设定值时，我们将通过网站通知提醒你</p>
+    </div>
+  );
+}
+
+function PriceDynamics({ rec, series }) {
+  const m = metricsOf(series, rec);
+  const cur = rec.price;
+  const curColor = cur === 0 ? '#10B981' : (rec.cut > 0 ? '#F59E0B' : '#111827');
+  const hasChart = m.count >= 2;
+  const W = 1000, H = 280, padL = 52, padR = 16, padT = 16, padB = 32;
+  let min = 0, max = 1, X = () => 0, Y = () => 0;
+  if (hasChart) {
+    min = m.lowest * 0.85;
+    max = m.highest * 1.1 || 1;
+    X = (i) => padL + (W - padL - padR) * (i / (m.pts.length - 1));
+    Y = (v) => padT + (H - padT - padB) * (1 - (v - min) / (max - min || 1));
+  }
+  const progress = Math.min(100, Math.round((m.count / 5) * 100));
+  const estDays = Math.max(0, 5 - m.count);
+  const subcopy = cur === 0
+    ? '当前免费领取中' + (rec.initial ? '（原价 ' + money(rec.initial, rec.currency) + '），相当于省下 ' + money(rec.initial, rec.currency) : '')
+    : (rec.cut > 0 ? '当前折扣力度 -' + Math.abs(rec.cut) + '%，是入手好时机'
+      : '当前无折扣，建议设置降价提醒，低价时第一时间通知你');
   return (
     <section className="mx-auto max-w-5xl px-4 pt-5">
-      <div className="rounded-xl border border-[#E5E6EB] bg-white p-4 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
-        <h2 className="text-[15px] font-semibold text-[#1D2129]">价格历史</h2>
-        {!hasData ? (
-          <div className="flex flex-col items-center justify-center gap-3 py-8 text-center">
-            <svg viewBox="0 0 80 80" className="clock-breathe h-16 w-16" fill="none" stroke="#C9CDD4" strokeWidth="2">
-              <circle cx="40" cy="40" r="26" /><path d="M40 26v14l9 7" strokeLinecap="round" /><path d="M14 60l11-9 9 6 11-13 9 7" strokeLinecap="round" />
-            </svg>
-            <p className="text-[13px] text-[#86909C]">数据积累中，预计 2 天后自动生成价格曲线</p>
-          </div>
-        ) : (
-          <>
-            <svg viewBox={'0 0 ' + W + ' ' + H} className="mt-2 h-40 w-full">
-              {[0, 0.5, 1].map((t) => <line key={t} x1={padL} y1={padT + (H - padT - padB) * t} x2={W - padR} y2={padT + (H - padT - padB) * t} stroke="#E5E6EB" />)}
-              <polyline points={pts.map((p, i) => X(i) + ',' + Y(p[1])).join(' ')} fill="none" stroke="#FF6A00" strokeWidth="2" />
-              {pts.map((p, i) => <circle key={p[0]} cx={X(i)} cy={Y(p[1])} r="2.5" fill="#FF6A00" />)}
-            </svg>
-            <table className="mt-3 w-full text-[12px]">
-              <thead><tr className="text-[#86909C]"><th className="py-1 text-left font-normal">日期</th><th className="py-1 text-left font-normal">价格</th><th className="py-1 text-left font-normal">在线</th></tr></thead>
-              <tbody>
-                {pts.slice().reverse().map((r) => (
-                  <tr key={r[0]} className="border-t border-[#F2F3F5]">
-                    <td className="py-1.5 text-[#4E5969]">{r[0]}</td>
-                    <td className="py-1.5">{money(r[1], rec.currency)}</td>
-                    <td className="py-1.5 text-[#86909C]">{r[2] === null || r[2] === undefined ? '—' : r[2].toLocaleString('en-US')}</td>
-                  </tr>
+      <div className="overflow-hidden rounded-xl border border-[#E5E7EB] bg-white shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
+        <div className="flex items-center justify-between px-5 pt-4">
+          <h2 className="text-[15px] font-semibold text-[#111827]">价格动态</h2>
+        </div>
+        <div className="mt-2 grid grid-cols-2 md:grid-cols-4 md:divide-x md:divide-[#E5E7EB]">
+          <MetricBlock label="当前价格" value={money(cur, rec.currency)} color={curColor} />
+          <MetricBlock label="历史最低" value={m.count ? money(m.lowest, rec.currency) : '暂无'}
+                       hint={m.count ? String(m.lowestDate).replace(/-/g, '.') : ''} />
+          <MetricBlock label="平均价格" value={m.count ? money(Math.round(m.avg * 100) / 100, rec.currency) : '—'}
+                       hint={m.avgRecent !== null ? '近一年均价 ' + money(Math.round(m.avgRecent * 100) / 100, rec.currency) : ''} />
+          <MetricBlock label="打折次数" value={m.count ? m.discountCount + ' 次' : '0 次'}
+                       hint={m.daysAgo !== null ? '最近一次 ' + m.daysAgo + ' 天前' : ''} />
+        </div>
+        <div className="border-t border-[#E5E7EB]">
+          {hasChart ? (
+            <div className="px-3 py-4">
+              <svg viewBox={'0 0 ' + W + ' ' + H} className="h-[280px] w-full">
+                {[0, 0.25, 0.5, 0.75, 1].map((t) => (
+                  <line key={t} x1={padL} y1={padT + (H - padT - padB) * t} x2={W - padR} y2={padT + (H - padT - padB) * t} stroke="#F3F4F6" />
                 ))}
-              </tbody>
-            </table>
-          </>
-        )}
+                <polyline points={m.pts.map((p, i) => X(i) + ',' + Y(p[1])).join(' ')} fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinejoin="round" />
+                {m.pts.map((p, i) => (p[1] === m.highest && i === 0 ? null : null))}
+                <circle cx={X(m.pts.length - 1)} cy={Y(m.pts[m.pts.length - 1][1])} r="6" fill="#F59E0B" stroke="#fff" strokeWidth="2" />
+              </svg>
+              <div className="mt-1 text-center text-[12px] text-[#9CA3AF]">共 {m.count} 条价格记录</div>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center gap-3 px-5 py-12 text-center">
+              <svg viewBox="0 0 120 120" className="clock-breathe h-[120px] w-[120px]" fill="none" stroke="#D1D5DB" strokeWidth="2">
+                <path d="M12 88l22-20 18 12 24-30 20 14" strokeLinecap="round" strokeDasharray="6 6" />
+                <circle cx="60" cy="46" r="20" /><path d="M60 34v12l8 6" strokeLinecap="round" />
+              </svg>
+              <p className="text-[16px] font-medium text-[#374151]">价格数据正在收集中</p>
+              <p className="text-[14px] text-[#9CA3AF]">{subcopy}</p>
+              <div className="h-1.5 w-[240px] overflow-hidden rounded-full bg-[#E5E7EB]">
+                <div className="h-full rounded-full" style={{ width: progress + '%', background: 'linear-gradient(90deg,#F59E0B,#FBBF24)' }} />
+              </div>
+              <p className="text-[12px] text-[#9CA3AF]">已有 {m.count} 条记录，预计 {estDays} 天后生成完整价格曲线</p>
+              <div className="mt-1 flex gap-3">
+                <button className="rounded-lg bg-[#F59E0B] px-6 py-2.5 text-[14px] font-semibold text-white hover:bg-[#D97706]">设置降价提醒</button>
+                <a href="../" className="rounded-lg border border-[#D1D5DB] bg-white px-6 py-2.5 text-[14px] text-[#6B7280] hover:bg-[#F9FAFB]">返回上一页</a>
+              </div>
+            </div>
+          )}
+        </div>
+        <AlertBar />
       </div>
     </section>
   );
@@ -340,8 +397,7 @@ export default function App() {
     <div className="min-h-screen bg-[#F5F7FA] pb-10">
       <TopNav name={rec.name} onSearch={() => setSearchOpen(true)} />
       <Hero rec={rec} />
-      <InfoGrid rec={rec} series={series} />
-      <History rec={rec} series={series} />
+      <PriceDynamics rec={rec} series={series} />
       <Similar rec={rec} items={st.items} />
       <footer className="mx-auto mt-6 max-w-5xl px-4 text-center text-[11px] text-[#86909C]">
         数据来源公开接口 · 暂不支持玩家评论
