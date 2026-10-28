@@ -196,7 +196,7 @@ function History({ rec, series }) {
         <h2 className="text-[15px] font-semibold text-[#1D2129]">价格历史</h2>
         {!hasData ? (
           <div className="flex flex-col items-center justify-center gap-3 py-8 text-center">
-            <svg viewBox="0 0 80 80" className="h-16 w-16" fill="none" stroke="#C9CDD4" strokeWidth="2">
+            <svg viewBox="0 0 80 80" className="clock-breathe h-16 w-16" fill="none" stroke="#C9CDD4" strokeWidth="2">
               <circle cx="40" cy="40" r="26" /><path d="M40 26v14l9 7" strokeLinecap="round" /><path d="M14 60l11-9 9 6 11-13 9 7" strokeLinecap="round" />
             </svg>
             <p className="text-[13px] text-[#86909C]">数据积累中，预计 2 天后自动生成价格曲线</p>
