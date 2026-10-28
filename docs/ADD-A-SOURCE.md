@@ -10,7 +10,7 @@
 ```js
 export async function fetchYourSource(param) {
   const r = await fetch('https://example.com/api/...', {
-    headers: { 'User-Agent': 'game-price-radar/0.1 (open source; contact via repo)' }
+    headers: { 'User-Agent': 'game-price-observatory/0.1 (open source; contact via repo)' }
   });
   if (!r.ok) throw new Error('HTTP ' + r.status);
   const j = await r.json();
