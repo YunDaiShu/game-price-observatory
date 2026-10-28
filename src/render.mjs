@@ -5,7 +5,7 @@ import { isValidHttpUrl } from './lib/url.mjs';
 const UI = path.join(import.meta.dirname, 'ui');
 const read = (f) => fs.readFileSync(path.join(UI, f), 'utf8');
 
-const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特价', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
+const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 折扣', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
 const GROUP = (it) => (String(it.source).startsWith('steam') ? 'steam' : it.source);
 const TAB_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch' };
 const INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N' };
@@ -45,7 +45,7 @@ function card(it) {
       + (it.initial && it.initial > 0 ? '<span class="origin">' + money(it.initial) + '</span>' : '')
     : ((it.cut > 0 && it.initial && it.initial > it.price
         ? '<span class="badge">-' + Math.abs(it.cut) + '%</span><span class="price">' + money(it.price) + '</span><span class="origin">' + money(it.initial) + '</span>'
-        : '<span class="price plain">' + money(it.price) + '</span><span class="meta-tag">原价售卖</span>'));
+        : '<span class="price plain">' + money(it.price) + '</span><span class="meta-tag">无折扣</span>'));
 
   const meta = [];
   if (it.needs_base) meta.push('<span class="warn-tag">需本体</span>');
@@ -75,7 +75,7 @@ function card(it) {
     + '<div class="price-row">' + priceRow + '</div>'
     + '<div class="card-meta">' + meta.join('') + '</div>'
     + '<div class="tags">' + tags + '</div>'
-    + (isValidHttpUrl(it.url) ? '<a class="card-shop" href="' + it.url + '" target="_blank" rel="noopener noreferrer" title="打开商城页" aria-label="打开商城页">→</a>' : '')
+    + (isValidHttpUrl(it.url) ? '<a class="card-shop" href="' + it.url + '" target="_blank" rel="noopener noreferrer" title="前往商城购买 →" aria-label="前往商城购买">→</a>' : '')
     + '</article>';
 }
 
@@ -128,19 +128,19 @@ export function renderPage(payload) {
     + '</div></header>'
     + '<div class="wrap">'
     + toastHtml
-    + '<div class="meta-row"><span><b>' + items.length + '</b> 在榜</span><span><b>' + (payload.counts ? payload.counts.limited_free : 0) + '</b> 限免</span>'
-    + '<span><b>' + (payload.counts ? payload.counts.new_low : 0) + '</b> 新史低</span>'
-    + '<span class="meta-time">抓取 ' + escapeHtml(payload.generated_at_bj || '') + '</span></div>'
+    + '<div class="meta-row"><span>共 <b>' + items.length + '</b> 款游戏</span><span><b>' + (payload.counts ? payload.counts.limited_free : 0) + '</b> 款限免中</span>'
+    + '<span><b>' + (payload.counts ? payload.counts.new_low : 0) + '</b> 款新史低</span>'
+    + '<span class="meta-time">数据更新于 ' + escapeHtml(String(payload.generated_at_bj || '').slice(5)) + '</span></div>'
     + '<div class="sticky-bar"><div class="tabs" role="tablist">' + tabsHtml + '</div>'
     + '<div class="pills">'
-    + '<button class="pill" type="button" data-filter="newlow" aria-pressed="false">只看新史低</button>'
-    + '<button class="pill" type="button" data-filter="hasend" aria-pressed="false">有截止时间</button>'
+    + '<button class="pill" type="button" data-filter="newlow" aria-pressed="false">🔥 仅看新史低</button>'
+    + '<button class="pill" type="button" data-filter="hasend" aria-pressed="false">⏰ 即将截止</button>'
+    + '<button class="toggle" type="button" id="toggleFree" aria-pressed="false"><span class="track"></span>仅显示限免</button>'
     + '<span style="width:8px"></span>'
-    + '<button class="pill" type="button" data-sort="cut" aria-pressed="true">折扣</button>'
-    + '<button class="pill" type="button" data-sort="price" aria-pressed="false">价格</button>'
-    + '<button class="pill" type="button" data-sort="players" aria-pressed="false">在线</button>'
-    + '<button class="pill" type="button" data-sort="end" aria-pressed="false">截止</button>'
-    + '<button class="toggle" type="button" id="toggleFree" aria-pressed="false"><span class="track"></span>只看限免</button>'
+    + '<button class="pill" type="button" data-sort="cut" aria-pressed="true">折扣力度</button>'
+    + '<button class="pill" type="button" data-sort="price" aria-pressed="false">价格 ↓</button>'
+    + '<button class="pill" type="button" data-sort="players" aria-pressed="false">在线人数 ↓</button>'
+    + '<button class="pill" type="button" data-sort="end" aria-pressed="false">截止时间 ↑</button>'
     + '<span class="showing" id="showing">显示 ' + items.length + ' / ' + items.length + '</span>'
     + '</div></div>'
     + '<main class="grid" id="grid">' + items.map(card).join('') + '<div class="empty" id="empty" hidden>没有匹配的条目</div></main>'
