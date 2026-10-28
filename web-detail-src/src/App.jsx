@@ -59,16 +59,24 @@ function resolve(st) {
   };
 }
 
+function coverSrc(rec) {
+  const plat = platOf(rec.source);
+  if (!rec.cover) return null;
+  if (plat === 'gog') return 'https://images.weserv.nl/?url=' + encodeURIComponent(rec.cover) + '&w=460&h=215&fit=cover&output=jpg&q=80';
+  return rec.cover;
+}
+
 function Cover({ rec, className }) {
   const plat = platOf(rec.source);
   const [failed, setFailed] = useState(false);
-  const showImg = rec.cover && !failed;
+  const src = coverSrc(rec);
+  const showImg = src && !failed;
   return (
     <div className={'relative overflow-hidden rounded-xl ' + (className || '')} style={{ background: GRAD[plat] || GRAD.none }}>
       {showImg ? (
-        <img src={rec.cover} alt="" className="absolute inset-0 h-full w-full object-cover" onError={() => setFailed(true)} />
+        <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover" onError={() => setFailed(true)} />
       ) : (
-        <div className="flex h-full w-full items-center justify-center text-4xl font-bold text-white/80">{INITIAL[plat] || '?'}</div>
+        <div className="absolute inset-0 flex items-center justify-center bg-black/20 text-3xl font-bold text-white/85">{INITIAL[plat] || '?'}</div>
       )}
     </div>
   );
@@ -294,6 +302,7 @@ export default function App() {
   }
 
   const rec = r.rec;
+  useEffect(() => { document.title = (rec.name || '详情') + ' · 游戏价格观测站'; }, [rec.name]);
   const series = st.series[rec.source + ':' + rec.id] || [];
 
   return (
