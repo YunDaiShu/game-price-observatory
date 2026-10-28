@@ -327,3 +327,16 @@ html,body{max-width:100%;overflow-x:clip}
   .modal.hero-anim{transition:none}
   .modal.hero-in .m-cover,.modal.hero-in #mCards .info-card,.modal.hero-in #mMeta,.modal.hero-in #mCta{animation:none}
 }
+
+/* Hero 展开/回落：CSS 变量驱动的确定性动画 */
+@keyframes heroExpand{
+  from{transform:translate(var(--hx,0),var(--hy,0)) scale(var(--hsx,1),var(--hsy,1));border-radius:12px}
+  to{transform:translate(0,0) scale(1,1);border-radius:16px}
+}
+@keyframes heroCollapse{
+  from{transform:translate(0,0) scale(1,1);border-radius:16px}
+  to{transform:translate(var(--hx,0),var(--hy,0)) scale(var(--hsx,1),var(--hsy,1));border-radius:12px}
+}
+.modal.hero-run{animation:heroExpand 400ms cubic-bezier(.4,0,.2,1) both}
+.modal.hero-back{animation:heroCollapse 320ms cubic-bezier(.4,0,.2,1) both}
+@media (prefers-reduced-motion:reduce){.modal.hero-run,.modal.hero-back{animation:none}}
