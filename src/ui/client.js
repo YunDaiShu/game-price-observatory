@@ -340,7 +340,7 @@
   function recordOf(key) {
     if (byKey[key]) {
       var d = byKey[key];
-      return { source: d.source, id: d.id, name: d.name, price: d.price, initial: d.initial, cut: d.cut, url: d.url, end: d.end, zh: d.zh, lowest: d.lowest, tags: d.tags, cover: d.cover || null, needsBase: d.needsBase || null };
+    return { source: d.source, id: d.id, name: d.name, price: d.price, initial: d.initial, cut: d.cut, url: d.url, end: d.end, zh: d.zh, lowest: d.lowest, tags: d.tags, cover: d.cover || null, needsBase: d.needsBase || null, currency: d.currency || 'CNY' };
     }
     var hit = (SEARCH || []).find(function (r) { return r.s + ':' + r.i === key; });
     if (!hit) return null;
