@@ -131,7 +131,7 @@ export function renderPage(payload) {
     + '<div class="meta-row"><span>共 <b>' + items.length + '</b> 款游戏</span><span><b>' + (payload.counts ? payload.counts.limited_free : 0) + '</b> 款限免中</span>'
     + '<span><b>' + (payload.counts ? payload.counts.new_low : 0) + '</b> 款新史低</span>'
     + '<span class="meta-time">数据更新于 ' + escapeHtml(String(payload.generated_at_bj || '').slice(5)) + '</span></div>'
-    + '<div class="sticky-bar"><div class="tabs" role="tablist">' + tabsHtml + '</div>'
+    + '<div class="sticky-bar"><button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="tabsRow">☰ 平台筛选</button><div class="tabs" id="tabsRow" role="tablist">' + tabsHtml + '</div>'
     + '<div class="pills">'
     + '<button class="pill" type="button" data-filter="newlow" aria-pressed="false">🔥 仅看新史低</button>'
     + '<button class="pill" type="button" data-filter="hasend" aria-pressed="false">⏰ 即将截止</button>'
