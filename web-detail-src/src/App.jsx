@@ -86,7 +86,7 @@ function TopNav({ name, onSearch }) {
   return (
     <header className="sticky top-0 z-40 border-b border-[#E5E6EB] bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center gap-4 px-4">
-        <a href="../" className="flex items-center gap-1 text-sm text-[#4E5969] hover:text-[#1D2129]">‹ 返回</a>
+        <a href="../" className="group flex items-center gap-1 text-sm text-[#4E5969] transition hover:text-[#FF6A00]">← 返回</a>
         <div className="min-w-0 flex-1 truncate text-center text-[15px] font-semibold text-[#1D2129]">{name || '加载中…'}</div>
         <button onClick={onSearch} className="text-[#86909C] hover:text-[#1D2129]" aria-label="搜索">⌕</button>
       </div>
@@ -117,9 +117,12 @@ function Hero({ rec }) {
             {discounted && <span className="rounded bg-[#FF6A00] px-1.5 py-0.5 text-[12px] font-medium text-white">-{Math.abs(rec.cut)}%</span>}
             {discounted && <s className="text-[13px] text-[#86909C]">{money(rec.initial, rec.currency)}</s>}
             {rec.free_kind === 'limited' && <span className="rounded bg-[#00B578] px-1.5 py-0.5 text-[12px] text-white">限免</span>}
-            {lowMatters && <span className="text-[12px] text-[#86909C]">史低 {money(rec.lowest_price, rec.currency)}</span>}
+            {lowMatters && (rec.price !== null && rec.lowest_price === rec.price
+              ? <span className="rounded bg-[#FF6A00] px-1.5 py-0.5 text-[12px] font-medium text-white">🏷 史低</span>
+              : <span className="text-[12px] text-[#86909C]">史低 {money(rec.lowest_price, rec.currency)}</span>)}
           </div>
           {rec.promo_end && <div className="mt-2 text-[12px] text-[#86909C]">促销截止 {new Date(rec.promo_end).toLocaleString('zh-CN', { hour12: false })}</div>}
+          <Countdown end={rec.promo_end} />
           {rec.url && (
             <a href={rec.url} target="_blank" rel="noopener noreferrer"
                className="mt-4 block w-full rounded-lg py-2.5 text-center text-[15px] font-semibold text-white transition hover:opacity-85"
@@ -130,6 +133,27 @@ function Hero({ rec }) {
         </div>
       </div>
     </section>
+  );
+}
+
+function Countdown({ end }) {
+  const [left, setLeft] = useState(null);
+  useEffect(() => {
+    if (!end) { setLeft(null); return; }
+    const tick = () => setLeft(Date.parse(end) - Date.now());
+    tick();
+    const t = setInterval(tick, 1000);
+    return () => clearInterval(t);
+  }, [end]);
+  if (left === null || Number.isNaN(left)) return null;
+  if (left <= 0) return <div className="mt-2 text-[13px] font-semibold text-[#86909C]">促销已结束</div>;
+  const s = Math.floor(left / 1000);
+  const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+  const urgent = left < 3600000;
+  return (
+    <div className={'mt-2 text-[13px] font-semibold ' + (urgent ? 'text-[#F53F3F]' : 'text-[#FF6A00]')}>
+      {urgent ? '即将截止 · ' : '距离截止约还有 '}{d}天 {h}小时 {m}分钟 {sec}秒
+    </div>
   );
 }
 
@@ -146,7 +170,7 @@ function InfoGrid({ rec, series }) {
     <section className="mx-auto max-w-5xl px-4 pt-5">
       <div className="rounded-xl border border-[#E5E6EB] bg-white p-3 shadow-[0_1px_4px_rgba(0,0,0,0.06)]">
         <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-          {cells.map(([k, v]) => (
+          {cells.filter(([, v]) => v !== '—').map(([k, v]) => (
             <div key={k} className="rounded-lg bg-[#F7F8FA] px-3 py-2">
               <div className="text-[11px] text-[#86909C]">{k}</div>
               <div className="mt-0.5 text-[14px] font-semibold text-[#1D2129]">{v}</div>
@@ -216,6 +240,8 @@ function Similar({ rec, items }) {
   return (
     <section className="mx-auto max-w-5xl px-4 pt-5">
       <h2 className="text-[15px] font-semibold text-[#1D2129]">相似游戏</h2>
+      <div className="relative">
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-[100px] w-12 bg-gradient-to-l from-[#F5F7FA] to-transparent" />
       <div className="mt-2 flex gap-3 overflow-x-auto pb-2">
         {list.map((s) => {
           const plat = platOf(s.source);
@@ -317,7 +343,7 @@ export default function App() {
       <History rec={rec} series={series} />
       <Similar rec={rec} items={st.items} />
       <footer className="mx-auto mt-6 max-w-5xl px-4 text-center text-[11px] text-[#86909C]">
-        数据来自各平台公开接口 · 抓取 {st.at || '—'} · 因平台接口限制，当前暂不支持玩家评论
+        数据来源公开接口 · 暂不支持玩家评论
       </footer>
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} index={st.index}
                      onPick={(k) => { location.href = '?key=' + encodeURIComponent(k); }} />
