@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 const PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
 const INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N' };
@@ -157,6 +157,104 @@ function Countdown({ end }) {
   );
 }
 
+function PriceChart({ pts, rec, lowest, lowestDate }) {
+  const boxRef = useRef(null);
+  const pathRef = useRef(null);
+  const [inView, setInView] = useState(false);
+  const [hover, setHover] = useState(null);
+  const W = 1000, H = 280, padL = 56, padR = 20, padT = 18, padB = 34;
+  const prices = pts.map((p) => p[1]);
+  const min = lowest * 0.85;
+  const max = (Math.max(...prices) || 1) * 1.1;
+  const X = (i) => padL + (W - padL - padR) * (i / Math.max(1, pts.length - 1));
+  const Y = (v) => padT + (H - padT - padB) * (1 - (v - min) / (max - min || 1));
+  const ticks = [0, 1, 2, 3, 4].map((i) => min + ((max - min) / 4) * i).reverse();
+  const months = [];
+  pts.forEach((p, i) => {
+    const key = String(p[0]).slice(0, 7);
+    if (!months.length || months[months.length - 1].key !== key) months.push({ key, i, label: Number(key.slice(5, 7)) + '月' });
+  });
+  const lowIdx = pts.findIndex((p) => p[1] === lowest);
+  const curIdx = pts.length - 1;
+
+  useEffect(() => {
+    if (!boxRef.current) return;
+    const ob = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { setInView(true); ob.disconnect(); } }); }, { threshold: 0.2 });
+    ob.observe(boxRef.current);
+    return () => ob.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const p = pathRef.current;
+    if (!p || !p.getTotalLength) return;
+    const len = p.getTotalLength();
+    p.style.strokeDasharray = String(len);
+    p.style.strokeDashoffset = inView ? '0' : String(len);
+    p.style.transition = inView ? 'stroke-dashoffset 1200ms cubic-bezier(0.25,1,0.5,1)' : 'none';
+  }, [inView, pts.length]);
+
+  const onMove = (e) => {
+    const svg = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - svg.left) / svg.width) * W;
+    let best = 0, bd = Infinity;
+    pts.forEach((p, i) => { const d = Math.abs(X(i) - x); if (d < bd) { bd = d; best = i; } });
+    setHover(best);
+  };
+  const hp = hover !== null ? pts[hover] : null;
+
+  return (
+    <div ref={boxRef} className="relative px-3 py-4">
+      <svg viewBox={'0 0 ' + W + ' ' + H} className="h-[280px] w-full" onMouseMove={onMove} onMouseLeave={() => setHover(null)}>
+        <defs>
+          <linearGradient id="priceFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(245,158,11,0.15)" />
+            <stop offset="100%" stopColor="rgba(245,158,11,0)" />
+          </linearGradient>
+        </defs>
+        {ticks.map((t, i) => (
+          <g key={'y' + i}>
+            <line x1={padL} y1={Y(t)} x2={W - padR} y2={Y(t)} stroke="#F3F4F6" strokeWidth="1" />
+            <text x={padL - 8} y={Y(t) + 4} textAnchor="end" fontSize="12" fill="#9CA3AF">¥{Number(t).toFixed(2)}</text>
+          </g>
+        ))}
+        {months.map((mo) => (
+          <g key={'m' + mo.key}>
+            <line x1={X(mo.i)} y1={padT} x2={X(mo.i)} y2={H - padB} stroke="#F3F4F6" strokeWidth="1" />
+            <text x={X(mo.i)} y={H - 10} textAnchor="middle" fontSize="12" fill="#9CA3AF">{mo.label}</text>
+          </g>
+        ))}
+        <path d={pts.map((p, i) => (i ? 'L' : 'M') + X(i) + ',' + Y(p[1])).join(' ') + ' L' + X(curIdx) + ',' + (H - padB) + ' L' + X(0) + ',' + (H - padB) + ' Z'} fill="url(#priceFill)" />
+        <path ref={pathRef} d={pts.map((p, i) => (i ? 'L' : 'M') + X(i) + ',' + Y(p[1])).join(' ')} fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+        <line x1={padL} y1={Y(lowest)} x2={W - padR} y2={Y(lowest)} stroke="#10B981" strokeWidth="1" strokeDasharray="4 4" />
+        {lowIdx >= 0 && (
+          <g>
+            <circle cx={X(lowIdx)} cy={Y(lowest)} r="6" fill="#10B981" stroke="#fff" strokeWidth="2" />
+            <text x={X(lowIdx) + 10} y={Y(lowest) - 10} fontSize="13" fontWeight="600" fill="#10B981">史低 ¥{Number(lowest).toFixed(2)}</text>
+          </g>
+        )}
+        <circle cx={X(curIdx)} cy={Y(pts[curIdx][1])} r="6" fill="#F59E0B" stroke="#fff" strokeWidth="2" />
+        {hp && (
+          <g>
+            <line x1={X(hover)} y1={padT} x2={X(hover)} y2={H - padB} stroke="#D1D5DB" strokeWidth="1" strokeDasharray="3 3" />
+            <circle cx={X(hover)} cy={Y(hp[1])} r="4" fill="#fff" stroke="#F59E0B" strokeWidth="2" />
+          </g>
+        )}
+      </svg>
+      {hp && (
+        <div className="pointer-events-none absolute z-10 rounded-lg bg-white px-4 py-3 text-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+             style={{ left: 'calc(' + (X(hover) / W) * 100 + '% - 60px)', top: 12 }}>
+          <div className="font-medium text-[#111827]">{String(hp[0]).replace(/-/g, '年').replace(/^/, '').replace('年', '年')}日</div>
+          <div className="mt-1 text-[#6B7280]">当日价格 <span className="font-semibold text-[#111827]">{money(hp[1], rec.currency)}</span></div>
+          {rec.initial && hp[1] < rec.initial && (
+            <div className="text-[#10B981]">折扣 -{Math.round((1 - hp[1] / rec.initial) * 100)}%</div>
+          )}
+        </div>
+      )}
+      <div className="mt-2 text-center text-[12px] text-[#9CA3AF]">共 {pts.length} 条价格记录 · 悬停查看每日价格</div>
+    </div>
+  );
+}
+
 function metricsOf(series, rec) {
   const pts = (series || []).filter((p) => typeof p[1] === 'number' && p[1] >= 0);
   if (!pts.length) return { count: 0 };
@@ -248,17 +346,7 @@ function PriceDynamics({ rec, series }) {
         </div>
         <div className="border-t border-[#E5E7EB]">
           {hasChart ? (
-            <div className="px-3 py-4">
-              <svg viewBox={'0 0 ' + W + ' ' + H} className="h-[280px] w-full">
-                {[0, 0.25, 0.5, 0.75, 1].map((t) => (
-                  <line key={t} x1={padL} y1={padT + (H - padT - padB) * t} x2={W - padR} y2={padT + (H - padT - padB) * t} stroke="#F3F4F6" />
-                ))}
-                <polyline points={m.pts.map((p, i) => X(i) + ',' + Y(p[1])).join(' ')} fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinejoin="round" />
-                {m.pts.map((p, i) => (p[1] === m.highest && i === 0 ? null : null))}
-                <circle cx={X(m.pts.length - 1)} cy={Y(m.pts[m.pts.length - 1][1])} r="6" fill="#F59E0B" stroke="#fff" strokeWidth="2" />
-              </svg>
-              <div className="mt-1 text-center text-[12px] text-[#9CA3AF]">共 {m.count} 条价格记录</div>
-            </div>
+            <PriceChart pts={m.pts} rec={rec} lowest={m.lowest} lowestDate={m.lowestDate} />
           ) : (
             <div className="flex flex-col items-center gap-3 px-5 py-12 text-center">
               <svg viewBox="0 0 120 120" className="clock-breathe h-[120px] w-[120px]" fill="none" stroke="#D1D5DB" strokeWidth="2">
