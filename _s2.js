@@ -66,7 +66,10 @@
     [].forEach.call(document.querySelectorAll('[data-end-abs]'), function (el) {
       var end = Number(el.getAttribute('data-end-abs'));
       if (!end) return;
-      if (el.classList.contains('cd')) el.textContent = fmtLeft(end - now);
+      if (el.classList.contains('cd')) {
+        el.textContent = fmtLeft(end - now);
+        el.classList.toggle('urgent', end - now > 0 && end - now < 86400000);
+      }
       else el.textContent = '截止 ' + fmtEnd(end);
     });
     if (modalOpen && current && current.end) {
@@ -195,6 +198,11 @@
   if (toggleFree) toggleFree.addEventListener('click', function () {
     state.freeOnly = toggleFree.getAttribute('aria-pressed') !== 'true';
     toggleFree.setAttribute('aria-pressed', state.freeOnly ? 'true' : 'false');
+    // 只看限免时，排序 Pill 无意义 → 置灰禁用
+    sorts.forEach(function (s) {
+      s.disabled = state.freeOnly;
+      s.setAttribute('aria-disabled', state.freeOnly ? 'true' : 'false');
+    });
     apply();
   });
 
