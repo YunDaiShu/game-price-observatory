@@ -325,7 +325,7 @@
       + '<div class="sres-list">' + hits.map(rowOf).join('') + '</div>'
       + '<button class="sres-more" type="button">在列表中查看 ' + hits.length + ' 个结果 ›</button>';
     [].forEach.call(box.querySelectorAll('.sres-row'), function (el) {
-      el.addEventListener('click', function () { openModal(el.getAttribute('data-key')); box.hidden = true; });
+      el.addEventListener('click', function () { openModal(el.getAttribute('data-key')); dimGrid(true); box.hidden = true; });
     });
     var more = box.querySelector('.sres-more');
     if (more) more.addEventListener('click', function (e) {
@@ -342,6 +342,61 @@
     else renderSearch('');
   });
 
+  /* ---------- Hero Transition：卡片 → 弹窗 ---------- */
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var heroRect = null;
+  function dimGrid(on) {
+    if (grid) grid.classList.toggle('hero-dim', !!on);
+  }
+  function heroOpen(card, key) {
+    var r = card.getBoundingClientRect();
+    heroRect = { left: r.left, top: r.top, width: r.width, height: r.height, key: key };
+    var modal = document.querySelector('.modal');
+    if (document.startViewTransition && !reduced) {
+      card.style.viewTransitionName = 'hero';
+      modal.style.viewTransitionName = 'hero';
+      var vt = document.startViewTransition(function () { openModal(key); dimGrid(true); });
+      vt.finished.finally(function () {
+        card.style.viewTransitionName = '';
+        modal.style.viewTransitionName = '';
+      });
+      return;
+    }
+    openModal(key);
+    dimGrid(true);
+    if (reduced) return;
+    var mr = modal.getBoundingClientRect();
+    if (!mr.width || !mr.height) return;
+    modal.classList.add('hero-anim');
+    modal.style.transition = 'none';
+    modal.style.transform = 'translate(' + (r.left - mr.left) + 'px,' + (r.top - mr.top) + 'px) scale(' + (r.width / mr.width) + ',' + (r.height / mr.height) + ')';
+    modal.style.borderRadius = '12px';
+    requestAnimationFrame(function () {
+      modal.style.transition = '';
+      modal.style.transform = 'none';
+      modal.style.borderRadius = '16px';
+      modal.classList.add('hero-in');
+    });
+  }
+  function heroClose() {
+    var modal = document.querySelector('.modal');
+    if (reduced || !heroRect || !modal) { dimGrid(false); closeModal(); return; }
+    var card = document.querySelector('.card[data-key="' + heroRect.key + '"]');
+    var target = card ? card.getBoundingClientRect() : heroRect;
+    var mr = modal.getBoundingClientRect();
+    modal.classList.remove('hero-in');
+    modal.style.transition = 'transform 320ms cubic-bezier(.4,0,.2,1),border-radius 320ms';
+    modal.style.transform = 'translate(' + (target.left - mr.left) + 'px,' + (target.top - mr.top) + 'px) scale(' + (target.width / mr.width) + ',' + (target.height / mr.height) + ')';
+    modal.style.borderRadius = '12px';
+    dimGrid(false);
+    setTimeout(function () {
+      closeModal();
+      modal.style.transition = '';
+      modal.style.transform = '';
+      modal.style.borderRadius = '';
+      modal.classList.remove('hero-anim');
+    }, 320);
+  }
   /* ---------- Modal ---------- */
   var overlay = document.getElementById('overlay');
   var modalOpen = false, current = null;
@@ -448,14 +503,14 @@
   cards.forEach(function (c) {
     c.addEventListener('click', function (e) {
       if (e.target && e.target.closest && (e.target.closest('.cover-go') || e.target.closest('.card-shop'))) return;
-      openModal(c.getAttribute('data-key'));
+      heroOpen(c, c.getAttribute('data-key'));
     });
     c.addEventListener('keydown', function (e) { if (e.key === 'Enter') openModal(c.getAttribute('data-key')); });
   });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
-  if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') heroClose(); });
+  if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) heroClose(); });
   var mx = document.getElementById('mClose');
-  if (mx) mx.addEventListener('click', closeModal);
+  if (mx) mx.addEventListener('click', heroClose);
 
   coverFallback();
   apply();
