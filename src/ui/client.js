@@ -352,33 +352,22 @@
     var r = card.getBoundingClientRect();
     heroRect = { left: r.left, top: r.top, width: r.width, height: r.height, key: key };
     var modal = document.querySelector('.modal');
-    if (false && document.startViewTransition && !reduced) {
-      card.style.viewTransitionName = 'hero';
-      modal.style.viewTransitionName = 'hero';
-      var vt = document.startViewTransition(function () { openModal(key); dimGrid(true); });
-      vt.finished.finally(function () {
-        card.style.viewTransitionName = '';
-        modal.style.viewTransitionName = '';
-      });
-      return;
-    }
     openModal(key);
     dimGrid(true);
-    if (reduced) { modal.classList.add('hero-in'); return; }
+    modal.classList.add('hero-in');
+    if (reduced || !modal.animate) return;
     var mr = modal.getBoundingClientRect();
     if (!mr.width || !mr.height) return;
-    modal.classList.add('hero-anim');
-    modal.style.transition = 'none';
-    modal.style.transform = 'translate(' + (r.left - mr.left) + 'px,' + (r.top - mr.top) + 'px) scale(' + (r.width / mr.width) + ',' + (r.height / mr.height) + ')';
-    modal.style.borderRadius = '12px';
-    void modal.offsetWidth;   // 强制回流，锁定起始帧
-    requestAnimationFrame(function () {
-      modal.style.transition = 'transform 400ms cubic-bezier(.4,0,.2,1),border-radius 400ms cubic-bezier(.4,0,.2,1)';
-      modal.style.transform = 'none';
-      modal.style.borderRadius = '16px';
-      modal.classList.add('hero-in');
-    });
+    var dx = r.left - mr.left, dy = r.top - mr.top;
+    var sx = r.width / mr.width, sy = r.height / mr.height;
+    try {
+      modal.animate([
+        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ')', borderRadius: '12px' },
+        { transform: 'translate(0,0) scale(1,1)', borderRadius: '16px' }
+      ], { duration: 400, easing: 'cubic-bezier(.4,0,.2,1)' });
+    } catch (e) { /* 忽略不支持 WAAPI 的环境 */ }
   }
+
   function heroClose() {
     var modal = document.querySelector('.modal');
     if (reduced || !heroRect || !modal) { dimGrid(false); closeModal(); return; }
@@ -386,17 +375,22 @@
     var target = card ? card.getBoundingClientRect() : heroRect;
     var mr = modal.getBoundingClientRect();
     modal.classList.remove('hero-in');
-    modal.style.transition = 'transform 320ms cubic-bezier(.4,0,.2,1),border-radius 320ms';
-    modal.style.transform = 'translate(' + (target.left - mr.left) + 'px,' + (target.top - mr.top) + 'px) scale(' + (target.width / mr.width) + ',' + (target.height / mr.height) + ')';
-    modal.style.borderRadius = '12px';
     dimGrid(false);
-    setTimeout(function () {
+    var done = function () {
       closeModal();
-      modal.style.transition = '';
       modal.style.transform = '';
       modal.style.borderRadius = '';
-      modal.classList.remove('hero-anim');
-    }, 320);
+    };
+    if (!modal.animate || !mr.width) { done(); return; }
+    var dx = target.left - mr.left, dy = target.top - mr.top;
+    var sx = target.width / mr.width, sy = target.height / mr.height;
+    try {
+      var anim = modal.animate([
+        { transform: 'translate(0,0) scale(1,1)', borderRadius: '16px' },
+        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ')', borderRadius: '12px' }
+      ], { duration: 320, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
+      anim.finished.then(done).catch(done);
+    } catch (e) { done(); }
   }
   /* ---------- Modal ---------- */
   var overlay = document.getElementById('overlay');
