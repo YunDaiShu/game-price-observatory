@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fetchSteam } from './fetchers/steam.mjs';
 import { fetchAppStore } from './fetchers/appstore.mjs';
 import { fetchSwitch } from './fetchers/switch.mjs';
+import { fetchXbox } from './fetchers/xbox.mjs';
 import { fetchSteamSpecials } from './fetchers/steam-specials.mjs';
 import { fetchEpic } from './fetchers/epic.mjs';
 import { fetchGog } from './fetchers/gog.mjs';
@@ -107,6 +108,18 @@ if (process.env.SKIP_COVER_PROBE !== '1') {
   }
 }
 
+// Xbox（美服 / USD）：关键词 → 微软商店搜索接口
+if (DISABLED.includes('xbox')) {
+  console.log('xbox    已按 DISABLE_SOURCES 跳过');
+} else try {
+  const wlX = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'watchlist.json'), 'utf8'));
+  const xb = await fetchXbox(wlX.xbox || [], { max: 40 });
+  raw.push(...xb.items);
+  if (xb.errors.length) errors.push({ source: 'xbox', target: '部分关键词', error: xb.errors.length + ' 个未命中' });
+  console.log('xbox    ' + xb.items.length + ' 条');
+} catch (e) {
+  errors.push({ source: 'xbox', target: 'xbox', error: String((e && e.message) || e).slice(0, 120) });
+}
 const normalized = raw.map(normalizeItem);
 
 // 链接合法性校验：拼错的地址比没地址更糟
@@ -176,6 +189,16 @@ fs.writeFileSync(path.join(ROOT, 'docs', 'index.html'), renderPage(payload), 'ut
 fs.writeFileSync(path.join(ROOT, 'docs', '.nojekyll'), '', 'utf8');
 // /about 页面（PRD P2-5）
 fs.mkdirSync(path.join(ROOT, 'docs', 'about'), { recursive: true });
+// 源健康看板：把各源最近一次成功/失败写进 about 页
+try {
+  const rows = Object.keys(health || {}).map((k) => {
+    const h = health[k] || {};
+    return '<tr><td style="padding:4px 12px 4px 0"><b>' + k + '</b></td><td style="padding:4px 0;color:#4E5969">' + (h.pausedUntil ? '熔断至 ' + h.pausedUntil : (h.lastOk ? '最近成功 ' + h.lastOk : '—')) + (h.failStreak ? ' · 连续失败 ' + h.failStreak : '') + '</td></tr>';
+  }).join('');
+  let aboutTpl = fs.readFileSync(path.join(ROOT, 'src', 'ui', 'about.html'), 'utf8');
+  aboutTpl = aboutTpl.replace('<!--HEALTH-->', rows ? '<div class="card"><p><b>数据源健康状态</b></p><table style="border-collapse:collapse;font-size:13px">' + rows + '</table></div>' : '');
+  fs.writeFileSync(path.join(ROOT, 'docs', 'about', 'index.html'), aboutTpl, 'utf8');
+} catch (e) { console.error('health board failed: ' + e.message); }
 fs.copyFileSync(path.join(ROOT, 'src', 'ui', 'about.html'), path.join(ROOT, 'docs', 'about', 'index.html'));
 // 供详情页（docs/detail）读取实时数据：Pages 只发布 docs/
 writeJson(path.join(ROOT, 'docs', 'latest.json'), payload);
