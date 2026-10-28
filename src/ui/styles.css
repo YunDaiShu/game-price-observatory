@@ -340,3 +340,24 @@ html,body{max-width:100%;overflow-x:clip}
 .modal.hero-run{animation:heroExpand 400ms cubic-bezier(.4,0,.2,1) both}
 .modal.hero-back{animation:heroCollapse 320ms cubic-bezier(.4,0,.2,1) both}
 @media (prefers-reduced-motion:reduce){.modal.hero-run,.modal.hero-back{animation:none}}
+
+/* ===== 滚动进入视口淡入 ===== */
+@keyframes cardReveal{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.card.card-reveal{animation:cardReveal 300ms cubic-bezier(.4,0,.2,1) both}
+
+/* ===== 价格数值脉冲 ===== */
+@keyframes pricePulse{0%{transform:scale(1)}40%{transform:scale(1.05)}100%{transform:scale(1)}}
+.price.price-pulse{display:inline-block;animation:pricePulse 200ms ease-out}
+
+/* ===== 搜索框聚焦：宽度 300 → 500 + 背景渐暗 ===== */
+.search{width:340px;transition:width 250ms ease,box-shadow 250ms ease,border-color 250ms ease}
+body.search-focus .search{width:500px}
+body.search-focus::before{content:"";position:fixed;inset:0;background:rgba(15,23,42,.10);z-index:5;pointer-events:none;animation:fadeIn 250ms ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media (max-width:767px){body.search-focus .search{width:100%}}
+@media (prefers-reduced-motion:reduce){
+  .card.card-reveal{animation:none}
+  .price.price-pulse{animation:none}
+  .search{transition:none}
+  body.search-focus::before{animation:none}
+}
