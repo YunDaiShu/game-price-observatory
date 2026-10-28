@@ -124,6 +124,15 @@
     });
   }
 
+  /* ---------- 滚动进入视口淡入：下方 30px → 0（300ms） ---------- */
+  if ('IntersectionObserver' in window && !reduced) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('card-reveal'); revealIO.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+    cards.forEach(function (card) { revealIO.observe(card); });
+  }
   function matches(card) {
     var okTab = state.tab === 'all' || card.getAttribute('data-group') === state.tab;
     var okFree = !state.freeOnly || card.getAttribute('data-free') === '1';
