@@ -206,6 +206,7 @@
       if (tab.getAttribute('aria-selected') === 'true') return;
       state.tab = tab.getAttribute('data-group');
       tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+      pulsePrices();
       moveIndicator(tab);
       apply();
     });
@@ -222,6 +223,7 @@
     s.addEventListener('click', function () {
       state.sort = s.getAttribute('data-sort');
       sorts.forEach(function (x) { x.setAttribute('aria-pressed', x === s ? 'true' : 'false'); });
+      pulsePrices();
       flip(function () { orderBy().forEach(function (c) { grid.appendChild(c); }); });
     });
   });
