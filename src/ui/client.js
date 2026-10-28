@@ -142,6 +142,15 @@
     });
   }
   var applyTimer = null;
+  function pulsePrices() {
+    if (reduced) return;
+    [].forEach.call(grid ? grid.querySelectorAll('.card:not([hidden]) .price') : [], function (el) {
+      if (el.classList.contains('price-pulse')) return;
+      el.classList.add('price-pulse');
+      setTimeout(function () { el.classList.remove('price-pulse'); }, 220);
+    });
+  }
+
   function apply() {
     if (applyTimer) { clearTimeout(applyTimer); applyTimer = null; }
     var want = new Map();
@@ -168,6 +177,7 @@
       if (grid) grid.classList.toggle('single', visible === 1);
       updateShowing(visible);
       if (empty) empty.hidden = visible > 0;
+      pulsePrices();
       applyTimer = null;
     }
 
@@ -333,6 +343,11 @@
       box.hidden = true;
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  }
+
+  if (qInput) {
+    qInput.addEventListener('focus', function () { document.body.classList.add('search-focus'); });
+    qInput.addEventListener('blur', function () { document.body.classList.remove('search-focus'); });
   }
 
   if (qInput) qInput.addEventListener('input', function () {
