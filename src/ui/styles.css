@@ -291,3 +291,16 @@ html,body{max-width:100%;overflow-x:clip}
 .card:hover .card-shop{transform:none;opacity:1}
 @media (hover:none),(max-width:767px){.card-shop{transform:none;opacity:1}}
 @media (prefers-reduced-motion:reduce){.tab-indicator{transition:none}.card-shop{transition:none}}
+
+/* ===== 无障碍：尊重系统"减少动态" ===== */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  .card:hover{transform:none}
+  .card-shop{transform:none}
+  .tab-indicator{transition:none}
+}
