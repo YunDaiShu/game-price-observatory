@@ -11,8 +11,8 @@
   var stickyBar = document.querySelector('.sticky-bar');
   var total = cards.length;
 
-  var PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
-  var INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N' };
+  var PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服', xbox: 'Xbox' };
+  var INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N', xbox: 'X' };
   var LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
   /* ---------- Tab 底部橙色指示条（滑动 250ms） ---------- */
   var tabRow = document.querySelector('.tabs');
