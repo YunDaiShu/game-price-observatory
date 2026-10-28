@@ -416,3 +416,19 @@ h1,h2,h3{line-height:var(--lh-tight)}
 .cd{font-variant-numeric:tabular-nums}
 
 .pill.is-off{opacity:.45;cursor:not-allowed}
+
+/* ===== 按钮体系：.btn + 变体（主/次/危险/禁用/加载） ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 16px;border:1px solid transparent;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:background-color 120ms ease,color 120ms ease,border-color 120ms ease,transform 80ms ease,opacity 120ms ease}
+.btn:active{transform:scale(.97)}
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;transform:none}
+.btn-primary{background:var(--accent-primary);color:#fff}
+.btn-primary:hover{background:#E55A00}
+.btn-ghost{background:#fff;color:var(--text-secondary);border-color:var(--border-color)}
+.btn-ghost:hover{border-color:var(--accent-primary);color:var(--accent-primary)}
+.btn-danger{background:#F53F3F;color:#fff}
+.btn-block{display:flex;width:100%}
+.btn.is-loading{pointer-events:none;opacity:.75}
+.btn.is-loading::before{content:"";width:14px;height:14px;border:2px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;animation:btnSpin 700ms linear infinite}
+.btn-ghost.is-loading::before{border-color:rgba(0,0,0,.15);border-top-color:var(--text-secondary)}
+@keyframes btnSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn.is-loading::before{animation:none}}
