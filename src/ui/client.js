@@ -14,6 +14,16 @@
   var PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
   var INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N' };
   var LABEL = { steam: 'Steam', 'steam-specials': 'Steam 特惠', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
+  /* ---------- Tab 底部橙色指示条（滑动 250ms） ---------- */
+  var tabRow = document.querySelector('.tabs');
+  var ind = null;
+  function moveIndicator(tab) {
+    if (!tabRow || !tab) return;
+    if (!ind) { ind = document.createElement('span'); ind.className = 'tab-indicator'; tabRow.appendChild(ind); }
+    var tr = tabRow.getBoundingClientRect(), br = tab.getBoundingClientRect();
+    ind.style.width = Math.round(br.width) + 'px';
+    ind.style.transform = 'translateX(' + Math.round(br.left - tr.left + tabRow.scrollLeft) + 'px)';
+  }
   var state = { tab: 'all', freeOnly: false, newLow: false, hasEnd: false, sort: 'cut', q: '' };
 
   function curOf(cur) { return cur === 'USD' ? '$' : cur === 'JPY' ? '\uFFE5' : '\u00A5'; }
@@ -177,6 +187,7 @@
       if (tab.getAttribute('aria-selected') === 'true') return;
       state.tab = tab.getAttribute('data-group');
       tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+      moveIndicator(tab);
       apply();
     });
   });
@@ -449,4 +460,6 @@
   coverFallback();
   apply();
   tick();
+  moveIndicator(document.querySelector('.tab[aria-selected="true"]'));
+  window.addEventListener('resize', function () { moveIndicator(document.querySelector('.tab[aria-selected="true"]')); });
 })();
