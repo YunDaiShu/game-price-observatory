@@ -229,11 +229,11 @@ html,body{max-width:100%;overflow-x:clip}
 }
 /* 常驻，无需 hover 触发 */
 .card-shop:hover{filter:brightness(.9)}   /* 背景加深 10% */
-.card[data-group="steam"] .card-shop{background:#171A21}
-.card[data-group="epic"] .card-shop{background:#000000}
-.card[data-group="gog"] .card-shop{background:#8A4FFF}
-.card[data-group="appstore"] .card-shop{background:#007AFF}
-.card[data-group="switch"] .card-shop{background:#E60012}
+.card[data-group="steam"]:hover .card-shop{background:#171A21}
+.card[data-group="epic"]:hover .card-shop{background:#000000}
+.card[data-group="gog"]:hover .card-shop{background:#8A4FFF}
+.card[data-group="appstore"]:hover .card-shop{background:#007AFF}
+.card[data-group="switch"]:hover .card-shop{background:#E60012}
 
 /* 防碰撞：标签行右侧留出按钮所占空间（按钮 36 + 右边距 16 - 内边距补偿 8） */
 .card .tags{padding-right:44px}
