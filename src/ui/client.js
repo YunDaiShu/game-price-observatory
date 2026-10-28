@@ -222,7 +222,7 @@
   });
   sorts.forEach(function (s) {
     s.addEventListener('click', function () {
-      if (s.disabled) { showToast('仅显示限免模式下不支持排序，请先关闭该开关'); return; }
+      if (state.freeOnly) { showToast('仅显示限免模式下不支持排序，请先关闭该开关'); return; }
       state.sort = s.getAttribute('data-sort');
       sorts.forEach(function (x) { x.setAttribute('aria-pressed', x === s ? 'true' : 'false'); });
       pulsePrices();
@@ -234,7 +234,7 @@
     toggleFree.setAttribute('aria-pressed', state.freeOnly ? 'true' : 'false');
     // 只看限免时，排序 Pill 无意义 → 置灰禁用
     sorts.forEach(function (s) {
-      s.disabled = state.freeOnly;
+      s.classList.toggle('is-off', state.freeOnly);
       s.setAttribute('aria-disabled', state.freeOnly ? 'true' : 'false');
     });
     apply();
