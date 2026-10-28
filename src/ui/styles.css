@@ -361,3 +361,9 @@ body.search-focus::before{content:"";position:fixed;inset:0;background:rgba(15,2
   .search{transition:none}
   body.search-focus::before{animation:none}
 }
+
+.card[data-group="xbox"] .cover{background:linear-gradient(135deg,#0e7a0d,#107C10)}
+.card[data-group="xbox"]:hover .card-shop{background:#107C10}
+.m-cover[data-plat="xbox"]{background-image:linear-gradient(135deg,#107C10,#0e7a0d)}
+.cta[data-plat="xbox"]{background:#107C10}
+.sres-thumb[data-group="xbox"]{background:linear-gradient(135deg,#107C10,#0e7a0d)}
