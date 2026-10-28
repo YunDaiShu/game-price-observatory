@@ -238,6 +238,247 @@ function PriceChart({ pts, rec, lowest, lowestDate }) {
         )}
         {(() => { const hi = pts.reduce((bi, p, i) => (p[1] > pts[bi][1] ? i : bi), 0); if (hi === curIdx || hi === lowIdx) return null; return (<g><circle cx={X(hi)} cy={Y(pts[hi][1])} r="6" fill="#EF4444" stroke="#fff" strokeWidth="2" /><text x={X(hi) + 10} y={Y(pts[hi][1]) + 18} fontSize="13" fontWeight="600" fill="#EF4444">最高 {money(pts[hi][1], rec.currency)}</text></g>); })()}
         <circle cx={X(curIdx)} cy={Y(pts[curIdx][1])} r="6" fill="#F59E0B" stroke="#fff" strokeWidth="2" />
+      </svg>
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+
+const PLAT = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
+const INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N' };
+const GRAD = {
+  steam: 'linear-gradient(135deg,#1b2838,#0b1219)',
+  epic: 'linear-gradient(135deg,#2b2b2b,#0a0a0a)',
+  gog: 'linear-gradient(135deg,#4a1030,#2a0a1a)',
+  appstore: 'linear-gradient(135deg,#4dabf7,#5f3dc4)',
+  switch: 'linear-gradient(135deg,#E60012,#8f0009)',
+  none: 'linear-gradient(135deg,#667eea,#764ba2)'
+};
+const CTA = { steam: '#171A21', epic: '#000000', gog: '#8A4FFF', appstore: '#007AFF', switch: '#E60012', none: '#4E5969' };
+
+const platOf = (s) => (String(s).indexOf('steam') === 0 ? 'steam' : s);
+const curOf = (c) => (c === 'USD' ? '$' : c === 'JPY' ? '\uFFE5' : '\u00A5');
+const money = (v, c) => (v === null || v === undefined ? '—'
+  : v === 0 ? '免费'
+    : c === 'JPY' ? curOf(c) + Number(v).toLocaleString('en-US') + '\u5186'
+      : curOf(c) + (c === 'CNY' ? v : Number(v).toLocaleString('en-US')));
+const dash = (v) => (v === null || v === undefined || v === '' ? '—' : v);
+
+function useData() {
+  const [s, setS] = useState({ loading: true, items: [], index: [], series: {}, key: null, at: null });
+  useEffect(() => {
+    const key = new URLSearchParams(location.search).get('key');
+    Promise.all([
+      fetch('../latest.json').then((r) => (r.ok ? r.json() : null)).catch(() => null),
+      fetch('../search-index.json').then((r) => (r.ok ? r.json() : null)).catch(() => null)
+    ]).then(([latest, idx]) => {
+      setS({
+        loading: false,
+        items: (latest && latest.items) || [],
+        index: Array.isArray(idx) ? idx : [],
+        series: (latest && latest.series) || {},
+        at: latest && latest.generated_at_bj,
+        key
+      });
+    });
+  }, []);
+  return s;
+}
+
+function resolve(st) {
+  const k = st.key || (st.items[0] ? st.items[0].source + ':' + st.items[0].id : null);
+  if (!k) return null;
+  const p = k.split(':');
+  const full = st.items.find((i) => i.source === p[0] && String(i.id) === p[1]);
+  if (full) return { rec: full, partial: false };
+  const slim = st.index.find((r) => r.s === p[0] && String(r.i) === p[1]);
+  if (!slim) return null;
+  return {
+    partial: true,
+    rec: {
+      source: slim.s, id: slim.i, name: slim.n, price: slim.p, initial: slim.o, cut: slim.c, url: slim.u,
+      promo_end: slim.e, players_online: slim.pl, lowest_price: slim.lo, cover: slim.cv, currency: slim.cur || 'CNY',
+      tags: slim.tg || [], supports_zh: slim.zh, developer: slim.dv, publishers: slim.pb, release_date: slim.rd, metacritic: slim.mc
+    }
+  };
+}
+
+function coverSrc(rec) {
+  const plat = platOf(rec.source);
+  if (!rec.cover) return null;
+  if (plat === 'gog') return 'https://images.weserv.nl/?url=' + encodeURIComponent(rec.cover) + '&w=460&h=215&fit=cover&output=jpg&q=80';
+  return rec.cover;
+}
+
+function Cover({ rec, className }) {
+  const plat = platOf(rec.source);
+  const [failed, setFailed] = useState(false);
+  const src = coverSrc(rec);
+  const showImg = src && !failed;
+  return (
+    <div className={'relative overflow-hidden rounded-xl ' + (className || '')} style={{ background: GRAD[plat] || GRAD.none }}>
+      {showImg ? (
+        <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover" onError={() => setFailed(true)} />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/20 text-3xl font-bold text-white/85">{INITIAL[plat] || '?'}</div>
+      )}
+    </div>
+  );
+}
+
+function TopNav({ name, onSearch }) {
+  return (
+    <header className="sticky top-0 z-40 border-b border-[#E5E6EB] bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-14 max-w-5xl items-center gap-4 px-4">
+        <a href="../" className="group flex items-center gap-1 text-sm text-[#4E5969] transition hover:text-[#FF6A00]">← 返回</a>
+        <div className="min-w-0 flex-1 truncate text-center text-[15px] font-semibold text-[#1D2129]">{name || '加载中…'}</div>
+        <button onClick={onSearch} className="text-[#86909C] hover:text-[#1D2129]" aria-label="搜索">⌕</button>
+      </div>
+    </header>
+  );
+}
+
+function Hero({ rec }) {
+  const plat = platOf(rec.source);
+  const discounted = rec.cut > 0 && rec.initial && rec.initial > rec.price;
+  const lowMatters = rec.lowest_price !== null && rec.lowest_price !== undefined && (discounted || rec.lowest_price < rec.price);
+  return (
+    <section className="mx-auto max-w-5xl px-4 pt-5">
+      <div className="grid gap-4 md:grid-cols-[minmax(0,380px)_1fr]">
+        <Cover rec={rec} className="aspect-video w-full self-start" />
+        <div className="flex flex-col">
+          <div className="flex flex-wrap items-center gap-2">
+            <h1 className="text-2xl font-semibold text-[#1D2129]">{rec.name}</h1>
+            <span className="rounded bg-[#F2F3F5] px-2 py-0.5 text-[11px] text-[#4E5969]">{PLAT[plat] || rec.source}</span>
+          </div>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {(rec.tags || []).slice(0, 6).map((t) => (
+              <span key={t} className="rounded-full bg-[#F2F3F5] px-2.5 py-1 text-[12px] text-[#4E5969]">{t}</span>
+            ))}
+          </div>
+          <div className="mt-4 flex flex-wrap items-baseline gap-2">
+            <span className="text-[34px] font-bold leading-none text-[#1D2129]">{money(rec.price, rec.currency)}</span>
+            {discounted && <span className="rounded bg-[#FF6A00] px-1.5 py-0.5 text-[12px] font-medium text-white">-{Math.abs(rec.cut)}%</span>}
+            {discounted && <s className="text-[13px] text-[#86909C]">{money(rec.initial, rec.currency)}</s>}
+            {rec.free_kind === 'limited' && <span className="rounded bg-[#00B578] px-1.5 py-0.5 text-[12px] text-white">限免</span>}
+            {lowMatters && (rec.price !== null && rec.lowest_price === rec.price
+              ? <span className="rounded bg-[#FF6A00] px-1.5 py-0.5 text-[12px] font-medium text-white">🏷 史低</span>
+              : <span className="text-[12px] text-[#86909C]">史低 {money(rec.lowest_price, rec.currency)}</span>)}
+          </div>
+          {rec.promo_end && <div className="mt-2 text-[12px] text-[#86909C]">促销截止 {new Date(rec.promo_end).toLocaleString('zh-CN', { hour12: false })}</div>}
+          <Countdown end={rec.promo_end} />
+          {rec.url && (
+            <a href={rec.url} target="_blank" rel="noopener noreferrer"
+               className="mt-4 block w-full rounded-lg py-2.5 text-center text-[15px] font-semibold text-white transition hover:opacity-85"
+               style={{ background: CTA[plat] || CTA.none }}>
+              打开 {PLAT[plat] || rec.source} 商店页 →
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Countdown({ end }) {
+  const [left, setLeft] = useState(null);
+  useEffect(() => {
+    if (!end) { setLeft(null); return; }
+    const tick = () => setLeft(Date.parse(end) - Date.now());
+    tick();
+    const t = setInterval(tick, 1000);
+    return () => clearInterval(t);
+  }, [end]);
+  if (left === null || Number.isNaN(left)) return null;
+  if (left <= 0) return <div className="mt-2 text-[13px] font-semibold text-[#86909C]">促销已结束</div>;
+  const s = Math.floor(left / 1000);
+  const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+  const urgent = left < 3600000;
+  return (
+    <div className={'mt-2 text-[13px] font-semibold ' + (urgent ? 'text-[#F53F3F]' : 'text-[#FF6A00]')}>
+      {urgent ? '即将截止 · ' : '距离截止约还有 '}{d}天 {h}小时 {m}分钟 {sec}秒
+    </div>
+  );
+}
+
+function fmtDay(s) { const m = String(s).match(/^(\\d{4})-(\\d{1,2})-(\\d{1,2})$/); return m ? (m[1] + '年' + Number(m[2]) + '月' + Number(m[3]) + '日') : String(s); }
+
+function PriceChart({ pts, rec, lowest, lowestDate }) {
+  const boxRef = useRef(null);
+  const pathRef = useRef(null);
+  const [inView, setInView] = useState(false);
+  const [mouse, setMouse] = useState(null);
+  const hover = mouse ? mouse.idx : null;
+  const W = 1000, H = 280, padL = 56, padR = 20, padT = 18, padB = 34;
+  const prices = pts.map((p) => p[1]);
+  const min = lowest * 0.85;
+  const max = (Math.max(...prices) || 1) * 1.1;
+  const X = (i) => padL + (W - padL - padR) * (i / Math.max(1, pts.length - 1));
+  const Y = (v) => padT + (H - padT - padB) * (1 - (v - min) / (max - min || 1));
+  const ticks = [0, 1, 2, 3, 4].map((i) => min + ((max - min) / 4) * i).reverse();
+  const months = [];
+  pts.forEach((p, i) => {
+    const key = String(p[0]).slice(0, 7);
+    if (!months.length || months[months.length - 1].key !== key) months.push({ key, i, label: Number(key.slice(5, 7)) + '月' });
+  });
+  const lowIdx = pts.findIndex((p) => p[1] === lowest);
+  const curIdx = pts.length - 1;
+
+  useEffect(() => {
+    if (!boxRef.current) return;
+    const ob = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { setInView(true); ob.disconnect(); } }); }, { threshold: 0.2 });
+    ob.observe(boxRef.current);
+    return () => ob.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const p = pathRef.current;
+    if (!p || !p.getTotalLength) return;
+    const len = p.getTotalLength();
+    p.style.strokeDasharray = String(len);
+    p.style.strokeDashoffset = inView ? '0' : String(len);
+    p.style.transition = inView ? 'stroke-dashoffset 1200ms cubic-bezier(0.25,1,0.5,1)' : 'none';
+  }, [inView, pts.length]);
+
+  const onMove = (e) => {
+    const svg = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - svg.left) / svg.width) * W;
+    let best = 0, bd = Infinity;
+    pts.forEach((p, i) => { const d = Math.abs(X(i) - x); if (d < bd) { bd = d; best = i; } });
+    const px = e.clientX - svg.left;
+    setMouse({ idx: best, px, boxW: svg.width });
+  };
+  const hp = hover !== null ? pts[hover] : null;
+
+  return (
+    <div ref={boxRef} className="relative px-3 py-4">
+      <svg viewBox={'0 0 ' + W + ' ' + H} className="h-[280px] w-full" onMouseMove={onMove} onMouseLeave={() => setMouse(null)}>
+        <defs>
+          <linearGradient id="priceFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(245,158,11,0.15)" />
+            <stop offset="100%" stopColor="rgba(245,158,11,0)" />
+          </linearGradient>
+        </defs>
+        {ticks.map((t, i) => (
+          <g key={'y' + i}>
+            <line x1={padL} y1={Y(t)} x2={W - padR} y2={Y(t)} stroke="#F3F4F6" strokeWidth="1" />
+            <text x={padL - 8} y={Y(t) + 4} textAnchor="end" fontSize="12" fill="#9CA3AF">¥{Number(t).toFixed(2)}</text>
+          </g>
+        ))}
+        {months.map((mo) => (
+          <g key={'m' + mo.key}>
+            <line x1={X(mo.i)} y1={padT} x2={X(mo.i)} y2={H - padB} stroke="#F3F4F6" strokeWidth="1" />
+            <text x={X(mo.i)} y={H - 10} textAnchor="middle" fontSize="12" fill="#9CA3AF">{mo.label}</text>
+          </g>
+        ))}
+        <path d={pts.map((p, i) => (i ? 'L' : 'M') + X(i) + ',' + Y(p[1])).join(' ') + ' L' + X(curIdx) + ',' + (H - padB) + ' L' + X(0) + ',' + (H - padB) + ' Z'} fill="url(#priceFill)" />
+        <path ref={pathRef} d={pts.map((p, i) => (i ? 'L' : 'M') + X(i) + ',' + Y(p[1])).join(' ')} fill="none" stroke="#F59E0B" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+        <line x1={padL} y1={Y(lowest)} x2={W - padR} y2={Y(lowest)} stroke="#10B981" strokeWidth="1" strokeDasharray="4 4" />
+        {lowIdx >= 0 && (
+          <g>
+            <circle cx={X(lowIdx)} cy={Y(lowest)} r="6" fill="#10B981" stroke="#fff" strokeWidth="2" />
+            <text x={X(lowIdx) + 10} y={Y(lowest) - 10} fontSize="13" fontWeight="600" fill="#10B981">史低 ¥{Number(lowest).toFixed(2)}</text>
+          </g>
+        )}
+        {(() => { const hi = pts.reduce((bi, p, i) => (p[1] > pts[bi][1] ? i : bi), 0); if (hi === curIdx || hi === lowIdx) return null; return (<g><circle cx={X(hi)} cy={Y(pts[hi][1])} r="6" fill="#EF4444" stroke="#fff" strokeWidth="2" /><text x={X(hi) + 10} y={Y(pts[hi][1]) + 18} fontSize="13" fontWeight="600" fill="#EF4444">最高 {money(pts[hi][1], rec.currency)}</text></g>); })()}
+        <circle cx={X(curIdx)} cy={Y(pts[curIdx][1])} r="6" fill="#F59E0B" stroke="#fff" strokeWidth="2" />
         {hp && mouse && (
         <div className="pointer-events-none absolute z-10 w-[150px] rounded-lg bg-white px-4 py-3 text-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
              style={{
