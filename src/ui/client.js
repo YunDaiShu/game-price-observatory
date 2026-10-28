@@ -240,6 +240,18 @@
     apply();
   });
 
+  /* ---------- 移动端导航收起 ---------- */
+  var navToggle = document.getElementById('navToggle');
+  var tabsRow = document.getElementById('tabsRow');
+  if (navToggle && tabsRow) {
+    navToggle.addEventListener('click', function () {
+      var open = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+      tabsRow.classList.toggle('open', !open);
+      if (!open) moveIndicator(document.querySelector('.tab[aria-selected="true"]'));
+    });
+  }
+
   /* ---------- Sticky ---------- */
   if (stickyBar) {
     var onScroll = function () { stickyBar.classList.toggle('stuck', window.scrollY > 40); };
@@ -541,6 +553,15 @@
   if (mx) mx.addEventListener('click', heroClose);
 
   coverFallback();
+  /* 禁用态解释：button:disabled 不派发 click，用父容器捕获（pillsRowCapture） */
+  (function () {
+    var row = document.querySelector('.pills');
+    if (!row) return;
+    row.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('.pill') : null;
+      if (t && t.disabled) showToast('仅显示限免模式下不支持排序，请先关闭该开关');
+    });
+  })();
   apply();
   tick();
   moveIndicator(document.querySelector('.tab[aria-selected="true"]'));
