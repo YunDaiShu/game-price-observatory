@@ -40,7 +40,9 @@ function card(it) {
   const endText = fmtEnd(it.promo_end);
 
   const priceRow = it.price === 0
-    ? '<span class="price free">免费</span>'
+    ? (it.free_kind === 'limited' ? '<span class="badge-free">限免</span>' : '')
+      + '<span class="price free">免费</span>'
+      + (it.initial && it.initial > 0 ? '<span class="origin">' + money(it.initial) + '</span>' : '')
     : ((it.cut > 0 && it.initial && it.initial > it.price
         ? '<span class="badge">-' + Math.abs(it.cut) + '%</span><span class="price">' + money(it.price) + '</span><span class="origin">' + money(it.initial) + '</span>'
         : '<span class="price plain">' + money(it.price) + '</span><span class="meta-tag">原价售卖</span>'));
@@ -53,12 +55,12 @@ function card(it) {
   if (lowMeaningful) {
     meta.push('<span>史低 ' + money(it.lowest_price) + '</span>');
   }
-  if (endText) {
-    meta.push('<span class="cd" data-end-abs="' + endMs + '">剩余 --</span>');
-  }
+  if (endText) meta.push('<span class="cd" data-end-abs="' + endMs + '">剩余 --</span>');
   if (typeof it.players_online === 'number') meta.push('<span>在线 ' + it.players_online.toLocaleString('en-US') + '</span>');
 
-  const tags = (it.tags || []).slice(0, 3).map((t) => '<span>' + escapeHtml(t) + '</span>').join('');
+  const tagList = (it.tags || []).filter(Boolean);
+  const tags = (tagList.length ? tagList : [LABEL[it.source] || it.source]).slice(0, 3)
+    .map((t) => '<span>' + escapeHtml(t) + '</span>').join('');
 
   return '<article class="card" data-group="' + g + '" data-key="' + key + '" data-name="' + escapeHtml(String(it.name).toLowerCase()) + '"'
     + ' data-cut="' + (it.cut || 0) + '" data-price="' + (it.price === null || it.price === undefined ? 999999 : it.price) + '"'
@@ -113,6 +115,11 @@ export function renderPage(payload) {
   return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
     + '<meta name="viewport" content="width=device-width,initial-scale=1">'
     + '<title>游戏价格观测站 · 限免 / 折扣 / 史低</title>'
+    + '<link rel="preconnect" href="https://cdn.cloudflare.steamstatic.com" crossorigin>'
+    + '<link rel="preconnect" href="https://cdn1.epicgames.com" crossorigin>'
+    + '<link rel="preconnect" href="https://img-eshop.cdn.nintendo.net" crossorigin>'
+    + '<link rel="preconnect" href="https://is1-ssl.mzstatic.com" crossorigin>'
+    + '<link rel="preconnect" href="https://images.weserv.nl" crossorigin>'
     + '<style>' + read('styles.css') + '</style></head><body>'
     + '<header class="header"><div class="in">'
     + '<div class="brand"><span class="brand-dot"></span><h1>游戏价格观测站</h1><small>限免 · 折扣 · 史低</small></div>'
@@ -121,8 +128,9 @@ export function renderPage(payload) {
     + '</div></header>'
     + '<div class="wrap">'
     + toastHtml
-    + '<div class="meta-row"><span><b>' + items.length + '</b>在榜</span><span><b>' + (payload.counts ? payload.counts.limited_free : 0) + '</b>限免</span>'
-    + '<span><b>' + (payload.counts ? payload.counts.new_low : 0) + '</b>新史低</span><span>抓取 ' + escapeHtml(payload.generated_at_bj || '') + '</span></div>'
+    + '<div class="meta-row"><span><b>' + items.length + '</b> 在榜</span><span><b>' + (payload.counts ? payload.counts.limited_free : 0) + '</b> 限免</span>'
+    + '<span><b>' + (payload.counts ? payload.counts.new_low : 0) + '</b> 新史低</span>'
+    + '<span class="meta-time">抓取 ' + escapeHtml(payload.generated_at_bj || '') + '</span></div>'
     + '<div class="sticky-bar"><div class="tabs" role="tablist">' + tabsHtml + '</div>'
     + '<div class="pills">'
     + '<button class="pill" type="button" data-filter="newlow" aria-pressed="false">只看新史低</button>'
