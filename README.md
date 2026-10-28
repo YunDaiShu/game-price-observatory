@@ -85,7 +85,7 @@ node src/index.mjs
 ## 目录结构
 
 ```text
-game-price-radar/
+game-price-observatory/
 ├─ src/
 │  ├─ index.mjs              主流程：抓取 → 归一 → 史低 → 限免过滤 → 排序 → 输出
 │  ├─ render.mjs             页面模板（限免专区 / 榜单 / 倒计时 / 徽章）
@@ -241,6 +241,7 @@ STEAMPY_API_URL=https://your-proxy.example.com/steampy.json node src/index.mjs
 | App Store | `itunes.apple.com/lookup / search / rss` | 官方文档化 API |
 | Epic | `store-site-backend-static .../freeGamesPromotions` | 站内公开接口（无文档） |
 | GOG | `catalog.gog.com/v1/catalog` | 站内公开接口（无文档） |
+| Xbox（美服，USD） | `storeedgefd.dsx.mp.microsoft.com/v9.0/pages/searchResults` | 站内公开接口（无文档） |
 | Switch（日服） | `search.nintendo.jp` | 站内公开接口（无文档） |
 
 本站**不存储任何图片**：封面一律热链（GOG 经 `images.weserv.nl` 代理），仓库内只有代码与 JSON。
