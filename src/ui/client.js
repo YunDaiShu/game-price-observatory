@@ -352,7 +352,7 @@
     var r = card.getBoundingClientRect();
     heroRect = { left: r.left, top: r.top, width: r.width, height: r.height, key: key };
     var modal = document.querySelector('.modal');
-    if (document.startViewTransition && !reduced) {
+    if (false && document.startViewTransition && !reduced) {
       card.style.viewTransitionName = 'hero';
       modal.style.viewTransitionName = 'hero';
       var vt = document.startViewTransition(function () { openModal(key); dimGrid(true); });
@@ -364,7 +364,7 @@
     }
     openModal(key);
     dimGrid(true);
-    if (reduced) return;
+    if (reduced) { modal.classList.add('hero-in'); return; }
     var mr = modal.getBoundingClientRect();
     if (!mr.width || !mr.height) return;
     modal.classList.add('hero-anim');
