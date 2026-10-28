@@ -68,7 +68,7 @@ function card(it) {
     + ' data-end="' + endMs + '" data-free="' + (it.free_kind === 'limited' ? 1 : 0) + '"'
     + ' data-newlow="' + (it.is_new_low === true ? 1 : 0) + '" tabindex="0">'
     + '<div class="cover"><span class="cover-tag">' + (LABEL[it.source] || it.source) + '</span>'
-    + (coverOf(it) ? '<img class="cover-img" loading="lazy" alt="" src="' + coverOf(it) + '"' + (proxyOf(it) ? ' data-proxy="' + proxyOf(it) + '"' : ' onerror="this.remove()"') + '>' : '')
+    + (coverOf(it) ? '<img class="cover-img" loading="lazy" decoding="async" fetchpriority="low" width="460" height="215" alt="" src="' + coverOf(it) + '"' + (proxyOf(it) ? ' data-proxy="' + proxyOf(it) + '"' : ' onerror="this.remove()"') + '>' : '')
     + '<a class="cover-go" href="detail/?key=' + encodeURIComponent(key) + '" title="打开详情页">↗</a>'
     + (INITIAL[g] || '?') + '</div>'
     + '<h3 class="name" title="' + escapeHtml(it.name) + '">' + escapeHtml(it.name) + '</h3>'
