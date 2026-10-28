@@ -224,7 +224,39 @@
       tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
       pulsePrices();
       moveIndicator(tab);
-      apply();
+      /* 清空筛选（空状态按钮） */
+  var emptyReset = document.getElementById('emptyReset');
+  if (emptyReset) emptyReset.addEventListener('click', function () {
+    state.tab = 'all'; state.freeOnly = false; state.newLow = false; state.hasEnd = false; state.q = '';
+    if (qInput) qInput.value = '';
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-group') === 'all' ? 'true' : 'false'); });
+    if (toggleFree) toggleFree.setAttribute('aria-pressed', 'false');
+    pills.forEach(function (p) { p.setAttribute('aria-pressed', 'false'); });
+    sorts.forEach(function (s) { s.classList.remove('is-off'); s.setAttribute('aria-disabled', 'false'); });
+    /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
+  })();
+  apply();
+    showToast('已清空全部筛选条件');
+  });
+  /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
+  })();
+  apply();
     });
   });
   pills.forEach(function (p) {
@@ -232,7 +264,39 @@
       var f = p.getAttribute('data-filter');
       if (f === 'newlow') { state.newLow = !state.newLow; p.setAttribute('aria-pressed', state.newLow ? 'true' : 'false'); }
       if (f === 'hasend') { state.hasEnd = !state.hasEnd; p.setAttribute('aria-pressed', state.hasEnd ? 'true' : 'false'); }
-      apply();
+      /* 清空筛选（空状态按钮） */
+  var emptyReset = document.getElementById('emptyReset');
+  if (emptyReset) emptyReset.addEventListener('click', function () {
+    state.tab = 'all'; state.freeOnly = false; state.newLow = false; state.hasEnd = false; state.q = '';
+    if (qInput) qInput.value = '';
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-group') === 'all' ? 'true' : 'false'); });
+    if (toggleFree) toggleFree.setAttribute('aria-pressed', 'false');
+    pills.forEach(function (p) { p.setAttribute('aria-pressed', 'false'); });
+    sorts.forEach(function (s) { s.classList.remove('is-off'); s.setAttribute('aria-disabled', 'false'); });
+    /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
+  })();
+  apply();
+    showToast('已清空全部筛选条件');
+  });
+  /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
+  })();
+  apply();
     });
   });
   sorts.forEach(function (s) {
@@ -252,7 +316,39 @@
       s.classList.toggle('is-off', state.freeOnly);
       s.setAttribute('aria-disabled', state.freeOnly ? 'true' : 'false');
     });
-    apply();
+    /* 清空筛选（空状态按钮） */
+  var emptyReset = document.getElementById('emptyReset');
+  if (emptyReset) emptyReset.addEventListener('click', function () {
+    state.tab = 'all'; state.freeOnly = false; state.newLow = false; state.hasEnd = false; state.q = '';
+    if (qInput) qInput.value = '';
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-group') === 'all' ? 'true' : 'false'); });
+    if (toggleFree) toggleFree.setAttribute('aria-pressed', 'false');
+    pills.forEach(function (p) { p.setAttribute('aria-pressed', 'false'); });
+    sorts.forEach(function (s) { s.classList.remove('is-off'); s.setAttribute('aria-disabled', 'false'); });
+    /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
+  })();
+  apply();
+    showToast('已清空全部筛选条件');
+  });
+  /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
+  })();
+  apply();
   });
 
   /* ---------- 移动端导航收起 ---------- */
@@ -398,7 +494,39 @@
 
   if (qInput) qInput.addEventListener('input', function () {
     state.q = String(qInput.value || '').trim().toLowerCase();
-    apply();
+    /* 清空筛选（空状态按钮） */
+  var emptyReset = document.getElementById('emptyReset');
+  if (emptyReset) emptyReset.addEventListener('click', function () {
+    state.tab = 'all'; state.freeOnly = false; state.newLow = false; state.hasEnd = false; state.q = '';
+    if (qInput) qInput.value = '';
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-group') === 'all' ? 'true' : 'false'); });
+    if (toggleFree) toggleFree.setAttribute('aria-pressed', 'false');
+    pills.forEach(function (p) { p.setAttribute('aria-pressed', 'false'); });
+    sorts.forEach(function (s) { s.classList.remove('is-off'); s.setAttribute('aria-disabled', 'false'); });
+    /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
+  })();
+  apply();
+    showToast('已清空全部筛选条件');
+  });
+  /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
+  })();
+  apply();
     if (state.q.length >= 1) loadIndex(function () { renderSearch(state.q); });
     else renderSearch('');
   });
@@ -576,6 +704,38 @@
       var t = e.target && e.target.closest ? e.target.closest('.pill') : null;
       if (t && t.disabled) showToast('仅显示限免模式下不支持排序，请先关闭该开关');
     });
+  })();
+  /* 清空筛选（空状态按钮） */
+  var emptyReset = document.getElementById('emptyReset');
+  if (emptyReset) emptyReset.addEventListener('click', function () {
+    state.tab = 'all'; state.freeOnly = false; state.newLow = false; state.hasEnd = false; state.q = '';
+    if (qInput) qInput.value = '';
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-group') === 'all' ? 'true' : 'false'); });
+    if (toggleFree) toggleFree.setAttribute('aria-pressed', 'false');
+    pills.forEach(function (p) { p.setAttribute('aria-pressed', 'false'); });
+    sorts.forEach(function (s) { s.classList.remove('is-off'); s.setAttribute('aria-disabled', 'false'); });
+    /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
+  })();
+  apply();
+    showToast('已清空全部筛选条件');
+  });
+  /* 深链：?tab=steam 直接选中对应平台 */
+  (function () {
+    var t = new URLSearchParams(location.search).get('tab');
+    if (!t) return;
+    var el = document.querySelector('.tab[data-group="' + t + '"]');
+    if (!el) return;
+    state.tab = t;
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
+    moveIndicator(el);
   })();
   apply();
   tick();
