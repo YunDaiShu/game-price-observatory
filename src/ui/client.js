@@ -161,6 +161,7 @@
   }
 
   function apply() {
+    pulsePrices(); /* PULSE_V2 */
     if (applyTimer) { clearTimeout(applyTimer); applyTimer = null; }
     var want = new Map();
     cards.forEach(function (c) { want.set(c, matches(c)); });
