@@ -355,19 +355,17 @@
     openModal(key);
     dimGrid(true);
     modal.classList.add('hero-in');
-    modal.dataset.heroDbg = 'reduced=' + reduced + ',animate=' + (typeof modal.animate);
-    if (reduced || !modal.animate) { modal.dataset.heroDbg += ',skip=api'; return; }
+    if (reduced) return;
     var mr = modal.getBoundingClientRect();
-    if (!mr.width || !mr.height) { modal.dataset.heroDbg += ',skip=size(' + Math.round(mr.width) + 'x' + Math.round(mr.height) + ')'; return; }
+    if (!mr.width || !mr.height) return;
     var dx = r.left - mr.left, dy = r.top - mr.top;
     var sx = r.width / mr.width, sy = r.height / mr.height;
-    try {
-      modal.animate([
-        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ')', borderRadius: '12px' },
-        { transform: 'translate(0,0) scale(1,1)', borderRadius: '16px' }
-      ], { duration: 400, easing: 'cubic-bezier(.4,0,.2,1)' });
-      modal.dataset.heroDbg += ',animated';
-    } catch (e) { modal.dataset.heroDbg += ',err=' + (e && e.name); }
+    modal.style.setProperty('--hx', dx + 'px');
+    modal.style.setProperty('--hy', dy + 'px');
+    modal.style.setProperty('--hsx', String(sx));
+    modal.style.setProperty('--hsy', String(sy));
+    modal.classList.add('hero-run');
+    setTimeout(function () { modal.classList.remove('hero-run'); }, 460);
   }
 
   function heroClose() {
@@ -383,16 +381,15 @@
       modal.style.transform = '';
       modal.style.borderRadius = '';
     };
-    if (!modal.animate || !mr.width) { done(); return; }
+    if (!mr.width) { done(); return; }
     var dx = target.left - mr.left, dy = target.top - mr.top;
     var sx = target.width / mr.width, sy = target.height / mr.height;
-    try {
-      var anim = modal.animate([
-        { transform: 'translate(0,0) scale(1,1)', borderRadius: '16px' },
-        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ')', borderRadius: '12px' }
-      ], { duration: 320, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
-      anim.finished.then(done).catch(done);
-    } catch (e) { done(); }
+    modal.style.setProperty('--hx', dx + 'px');
+    modal.style.setProperty('--hy', dy + 'px');
+    modal.style.setProperty('--hsx', String(sx));
+    modal.style.setProperty('--hsy', String(sy));
+    modal.classList.add('hero-back');
+    setTimeout(function () { modal.classList.remove('hero-back'); done(); }, 330);
   }
   /* ---------- Modal ---------- */
   var overlay = document.getElementById('overlay');
