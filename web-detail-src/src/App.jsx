@@ -157,11 +157,14 @@ function Countdown({ end }) {
   );
 }
 
+function fmtDay(s) { const m = String(s).match(/^(\\d{4})-(\\d{1,2})-(\\d{1,2})$/); return m ? (m[1] + '年' + Number(m[2]) + '月' + Number(m[3]) + '日') : String(s); }
+
 function PriceChart({ pts, rec, lowest, lowestDate }) {
   const boxRef = useRef(null);
   const pathRef = useRef(null);
   const [inView, setInView] = useState(false);
-  const [hover, setHover] = useState(null);
+  const [mouse, setMouse] = useState(null);
+  const hover = mouse ? mouse.idx : null;
   const W = 1000, H = 280, padL = 56, padR = 20, padT = 18, padB = 34;
   const prices = pts.map((p) => p[1]);
   const min = lowest * 0.85;
@@ -198,13 +201,14 @@ function PriceChart({ pts, rec, lowest, lowestDate }) {
     const x = ((e.clientX - svg.left) / svg.width) * W;
     let best = 0, bd = Infinity;
     pts.forEach((p, i) => { const d = Math.abs(X(i) - x); if (d < bd) { bd = d; best = i; } });
-    setHover(best);
+    const px = e.clientX - svg.left;
+    setMouse({ idx: best, px, boxW: svg.width });
   };
   const hp = hover !== null ? pts[hover] : null;
 
   return (
     <div ref={boxRef} className="relative px-3 py-4">
-      <svg viewBox={'0 0 ' + W + ' ' + H} className="h-[280px] w-full" onMouseMove={onMove} onMouseLeave={() => setHover(null)}>
+      <svg viewBox={'0 0 ' + W + ' ' + H} className="h-[280px] w-full" onMouseMove={onMove} onMouseLeave={() => setMouse(null)}>
         <defs>
           <linearGradient id="priceFill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="rgba(245,158,11,0.15)" />
@@ -232,18 +236,15 @@ function PriceChart({ pts, rec, lowest, lowestDate }) {
             <text x={X(lowIdx) + 10} y={Y(lowest) - 10} fontSize="13" fontWeight="600" fill="#10B981">史低 ¥{Number(lowest).toFixed(2)}</text>
           </g>
         )}
+        {(() => { const hi = pts.reduce((bi, p, i) => (p[1] > pts[bi][1] ? i : bi), 0); if (hi === curIdx || hi === lowIdx) return null; return (<g><circle cx={X(hi)} cy={Y(pts[hi][1])} r="6" fill="#EF4444" stroke="#fff" strokeWidth="2" /><text x={X(hi) + 10} y={Y(pts[hi][1]) + 18} fontSize="13" fontWeight="600" fill="#EF4444">最高 {money(pts[hi][1], rec.currency)}</text></g>); })()}
         <circle cx={X(curIdx)} cy={Y(pts[curIdx][1])} r="6" fill="#F59E0B" stroke="#fff" strokeWidth="2" />
-        {hp && (
-          <g>
-            <line x1={X(hover)} y1={padT} x2={X(hover)} y2={H - padB} stroke="#D1D5DB" strokeWidth="1" strokeDasharray="3 3" />
-            <circle cx={X(hover)} cy={Y(hp[1])} r="4" fill="#fff" stroke="#F59E0B" strokeWidth="2" />
-          </g>
-        )}
-      </svg>
-      {hp && (
-        <div className="pointer-events-none absolute z-10 rounded-lg bg-white px-4 py-3 text-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
-             style={{ left: 'calc(' + (X(hover) / W) * 100 + '% - 60px)', top: 12 }}>
-          <div className="font-medium text-[#111827]">{String(hp[0]).replace(/-/g, '年').replace(/^/, '').replace('年', '年')}日</div>
+        {hp && mouse && (
+        <div className="pointer-events-none absolute z-10 w-[150px] rounded-lg bg-white px-4 py-3 text-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+             style={{
+               left: Math.min(Math.max(mouse.px - 75, 4), Math.max(4, mouse.boxW - 154)) + 'px',
+               top: 10
+             }}>
+          <div className="font-medium text-[#111827]">{fmtDay(hp[0])}</div>
           <div className="mt-1 text-[#6B7280]">当日价格 <span className="font-semibold text-[#111827]">{money(hp[1], rec.currency)}</span></div>
           {rec.initial && hp[1] < rec.initial && (
             <div className="text-[#10B981]">折扣 -{Math.round((1 - hp[1] / rec.initial) * 100)}%</div>
