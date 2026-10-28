@@ -355,9 +355,10 @@
     openModal(key);
     dimGrid(true);
     modal.classList.add('hero-in');
-    if (reduced || !modal.animate) return;
+    modal.dataset.heroDbg = 'reduced=' + reduced + ',animate=' + (typeof modal.animate);
+    if (reduced || !modal.animate) { modal.dataset.heroDbg += ',skip=api'; return; }
     var mr = modal.getBoundingClientRect();
-    if (!mr.width || !mr.height) return;
+    if (!mr.width || !mr.height) { modal.dataset.heroDbg += ',skip=size(' + Math.round(mr.width) + 'x' + Math.round(mr.height) + ')'; return; }
     var dx = r.left - mr.left, dy = r.top - mr.top;
     var sx = r.width / mr.width, sy = r.height / mr.height;
     try {
@@ -365,7 +366,8 @@
         { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ')', borderRadius: '12px' },
         { transform: 'translate(0,0) scale(1,1)', borderRadius: '16px' }
       ], { duration: 400, easing: 'cubic-bezier(.4,0,.2,1)' });
-    } catch (e) { /* 忽略不支持 WAAPI 的环境 */ }
+      modal.dataset.heroDbg += ',animated';
+    } catch (e) { modal.dataset.heroDbg += ',err=' + (e && e.name); }
   }
 
   function heroClose() {
