@@ -222,6 +222,7 @@
   });
   sorts.forEach(function (s) {
     s.addEventListener('click', function () {
+      if (s.disabled) { showToast('仅显示限免模式下不支持排序，请先关闭该开关'); return; }
       state.sort = s.getAttribute('data-sort');
       sorts.forEach(function (x) { x.setAttribute('aria-pressed', x === s ? 'true' : 'false'); });
       pulsePrices();
