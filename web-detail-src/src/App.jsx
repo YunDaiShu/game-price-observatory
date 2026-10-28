@@ -99,6 +99,19 @@ function Countdown({ end }) {
   );
 }
 
+function Crumbs({ rec }) {
+  const plat = platOf(rec.source);
+  return (
+    <nav className="crumbs mb-3 flex flex-wrap items-center gap-1.5 text-[12.5px] text-[#86909C]" aria-label="面包屑">
+      <a href="../">全部游戏</a>
+      <span className="sep text-[#C9CDD4]">›</span>
+      <a href={'../?tab=' + plat}>{PLAT[plat] || rec.source}</a>
+      <span className="sep text-[#C9CDD4]">›</span>
+      <span className="font-medium text-[#1D2129]">{rec.name}</span>
+    </nav>
+  );
+}
+
 function Hero({ rec }) {
   const plat = platOf(rec.source);
   const discounted = rec.cut > 0 && rec.initial && rec.initial > rec.price;
@@ -452,6 +465,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F5F7FA] pb-10">
       <TopNav name={rec.name} onSearch={() => setSearchOpen(true)} />
+      <div className="mx-auto max-w-5xl px-4 pt-4"><Crumbs rec={rec} /></div>
       <Hero rec={rec} />
       <PriceDynamics rec={rec} series={series} />
       <Similar rec={rec} items={st.items} />
