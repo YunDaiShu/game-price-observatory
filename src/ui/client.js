@@ -340,7 +340,13 @@
     var hits = pool.filter(function (r) { return String(r.n).toLowerCase().indexOf(q) >= 0; }).slice(0, 12);
     box.hidden = false;
     if (!hits.length) {
-      box.innerHTML = '<div class="sres-head"><span>搜索结果</span><span>0 个</span></div><div class="sres-row" style="cursor:default;color:var(--text-tertiary);font-size:13px">没有匹配的条目</div>';
+      box.innerHTML = '<div class="sres-head"><span>搜索结果</span><span>0 个</span></div>'
+        + '<div class="sres-empty">'
+        + '<svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="#D1D5DB" stroke-width="2"><circle cx="28" cy="28" r="14"/><path d="M38 38l12 12" stroke-linecap="round"/></svg>'
+        + '<p class="sres-empty-t">没有找到相关游戏</p>'
+        + '<p class="sres-empty-s">试试更短的关键词，或切换到对应平台 Tab 浏览</p>'
+        + '<button class="sres-empty-btn" type="button">清空搜索</button>'
+        + '</div>';
       return;
     }
     box.innerHTML = '<div class="sres-head"><span>搜索结果</span><span><b>' + hits.length + '</b> 个</span></div>'
