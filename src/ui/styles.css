@@ -80,7 +80,7 @@ body{margin:0;background:var(--bg-primary);color:var(--text-secondary);font:14px
 .price-row{display:flex;align-items:baseline;gap:var(--space-sm);flex:none}
 .badge{background:var(--accent-primary);color:#fff;font-size:12px;font-weight:500;border-radius:var(--radius-badge);padding:2px 6px;align-self:center}
 .price{font-size:24px;font-weight:700;color:var(--text-primary);line-height:1.2}
-.price.free{color:var(--accent-secondary);font-size:22px}
+.price.free{color:var(--accent-secondary);font-size:24px}
 .origin{font-size:14px;color:var(--text-tertiary);text-decoration:line-through}
 .card-meta{display:flex;gap:var(--space-sm);flex-wrap:wrap;font-size:12px;color:var(--text-tertiary);line-height:1.5}
 .card-meta .cd{color:var(--accent-primary)}
@@ -367,3 +367,19 @@ body.search-focus::before{content:"";position:fixed;inset:0;background:rgba(15,2
 .m-cover[data-plat="xbox"]{background-image:linear-gradient(135deg,#107C10,#0e7a0d)}
 .cta[data-plat="xbox"]{background:#107C10}
 .sres-thumb[data-group="xbox"]{background:linear-gradient(135deg,#107C10,#0e7a0d)}
+
+/* ===== 移动端最小点击区 44×44（WCAG 2.5.5） ===== */
+@media (max-width:767px){
+  .pill{min-height:44px;padding:0 16px;display:inline-flex;align-items:center}
+  .tab{min-height:44px}
+  .toggle{min-height:44px;padding:0 4px}
+  .card-shop{min-width:44px;min-height:44px;width:44px;height:44px;font-size:18px}
+  .sres-row{min-height:56px}
+}
+
+/* 搜索空态 */
+.sres-empty{display:flex;flex-direction:column;align-items:center;gap:8px;padding:32px 16px;text-align:center}
+.sres-empty-t{margin:0;font-size:15px;font-weight:600;color:var(--text-primary)}
+.sres-empty-s{margin:0;font-size:12.5px;color:var(--text-tertiary)}
+.sres-empty-btn{margin-top:4px;height:36px;padding:0 16px;border-radius:8px;border:1px solid var(--border-color);background:#fff;color:var(--text-secondary);font-size:13px;cursor:pointer}
+.sres-empty-btn:hover{border-color:var(--accent-primary);color:var(--accent-primary)}
