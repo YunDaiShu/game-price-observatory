@@ -143,7 +143,7 @@ export function renderPage(payload) {
     + '<button class="pill" type="button" data-sort="end" aria-pressed="false">截止时间 ↑</button>'
     + '<span class="showing" id="showing">显示 ' + items.length + ' / ' + items.length + '</span>'
     + '</div></div>'
-    + '<main class="grid" id="grid">' + items.map(card).join('') + '<div class="empty" id="empty" hidden>没有匹配的条目</div></main>'
+    + '<main class="grid" id="grid">' + items.map(card).join('') + '<div class="empty" id="empty" hidden><div class="empty-box"><svg viewBox="0 0 80 80" width="80" height="80"><circle cx="34" cy="34" r="18"/><path d="M48 48l14 14" stroke-linecap="round"/></svg><p class="empty-title">没有符合条件的游戏</p><p class="empty-sub">当前筛选条件下暂无条目，试试放宽条件或切换到「全部」</p><div class="empty-actions"><button class="btn btn-primary" id="emptyReset" type="button">清空筛选</button></div></div></div></main>'
     + '<footer>数据来源各平台公开接口 · 价格以商店页面为准 · <a href="https://github.com/YunDaiShu/game-price-radar">game-price-radar</a> · <a href="about/">关于</a></footer>'
     + '</div>'
     + '<div class="overlay" id="overlay" hidden><div class="modal" role="dialog" aria-modal="true">'
