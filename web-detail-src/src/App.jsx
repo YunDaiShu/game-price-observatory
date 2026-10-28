@@ -276,6 +276,11 @@ export default function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const r = useMemo(() => resolve(st), [st]);
 
+  const titleName = r && r.rec ? r.rec.name : '';
+  useEffect(() => {
+    document.title = titleName ? titleName + ' · 游戏价格观测站' : '游戏价格观测站 · 详情';
+  }, [titleName]);
+
   if (st.loading) {
     return (
       <div className="min-h-screen bg-[#F5F7FA]">
@@ -302,7 +307,6 @@ export default function App() {
   }
 
   const rec = r.rec;
-  useEffect(() => { document.title = (rec.name || '详情') + ' · 游戏价格观测站'; }, [rec.name]);
   const series = st.series[rec.source + ':' + rec.id] || [];
 
   return (
