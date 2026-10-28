@@ -3,7 +3,7 @@
 > 每天自动抓取游戏平台的**官方公开接口**，生成当日折扣 / 限时免费榜单与静态页，用来做「史低情报」类内容。
 > **零 API key、零运行时依赖、单源失效不影响整站。**
 
-- 🌐 在线页面：<https://yundaishu.github.io/game-price-radar/>
+- 🌐 在线页面：<https://yundaishu.github.io/game-price-observatory/>
 - 📄 数据快照：[`data/latest.json`](data/latest.json)（历史在 [`data/history/`](data/history)）
 - 📘 字段字典：[`docs/FIELDS.md`](docs/FIELDS.md)
 - ⚖️ 许可证：MIT
