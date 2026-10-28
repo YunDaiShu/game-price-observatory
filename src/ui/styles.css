@@ -304,3 +304,26 @@ html,body{max-width:100%;overflow-x:clip}
   .card-shop{transform:none}
   .tab-indicator{transition:none}
 }
+
+/* ===== Hero Transition：卡片 → 弹窗共享元素过渡 ===== */
+.grid.hero-dim{opacity:.3;filter:blur(4px);transition:opacity 200ms ease,filter 200ms ease;pointer-events:none}
+.modal.hero-anim{transition:transform 400ms cubic-bezier(.4,0,.2,1),border-radius 400ms cubic-bezier(.4,0,.2,1);will-change:transform}
+.modal{transform-origin:center center}
+@keyframes heroCover{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+@keyframes heroItem{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes heroCta{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.modal.hero-in .m-cover{animation:heroCover 260ms ease both}
+.modal.hero-in #mCards .info-card{animation:heroItem 220ms ease both}
+.modal.hero-in #mCards .info-card:nth-child(1){animation-delay:100ms}
+.modal.hero-in #mCards .info-card:nth-child(2){animation-delay:150ms}
+.modal.hero-in #mCards .info-card:nth-child(3){animation-delay:200ms}
+.modal.hero-in #mCards .info-card:nth-child(4){animation-delay:250ms}
+.modal.hero-in #mCards .info-card:nth-child(5){animation-delay:250ms}
+.modal.hero-in #mMeta{animation:heroItem 200ms ease both;animation-delay:250ms}
+.modal.hero-in #mCta{animation:heroCta 200ms ease both;animation-delay:280ms}
+@media (max-width:767px){.grid.hero-dim{filter:none!important}}
+@media (prefers-reduced-motion:reduce){
+  .grid.hero-dim{filter:none!important;transition:none}
+  .modal.hero-anim{transition:none}
+  .modal.hero-in .m-cover,.modal.hero-in #mCards .info-card,.modal.hero-in #mMeta,.modal.hero-in #mCta{animation:none}
+}
