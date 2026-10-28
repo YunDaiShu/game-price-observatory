@@ -5,10 +5,10 @@ import { isValidHttpUrl } from './lib/url.mjs';
 const UI = path.join(import.meta.dirname, 'ui');
 const read = (f) => fs.readFileSync(path.join(UI, f), 'utf8');
 
-const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 折扣', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服' };
+const LABEL = { steam: 'Steam', 'steam-specials': 'Steam 折扣', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch 日服', xbox: 'Xbox' };
 const GROUP = (it) => (String(it.source).startsWith('steam') ? 'steam' : it.source);
-const TAB_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch' };
-const INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N' };
+const TAB_LABEL = { steam: 'Steam', epic: 'Epic', gog: 'GOG', appstore: 'App Store', switch: 'Switch', xbox: 'Xbox' };
+const INITIAL = { steam: 'S', epic: 'E', gog: 'G', appstore: 'A', switch: 'N', xbox: 'X' };
 const fmtEnd = (iso) => {
   if (!iso) return null;
   const d = new Date(iso);
@@ -90,7 +90,7 @@ export function renderPage(payload) {
   for (const it of items) { const g = GROUP(it); groupCount[g] = (groupCount[g] || 0) + 1; }
 
   const tabs = [{ key: 'all', text: '全部', n: items.length }]
-    .concat(['steam', 'epic', 'gog', 'appstore', 'switch']
+    .concat(['steam', 'epic', 'gog', 'appstore', 'switch', 'xbox']
       .filter((g) => groupCount[g])
       .map((g) => ({ key: g, text: TAB_LABEL[g], n: groupCount[g] })));
 
