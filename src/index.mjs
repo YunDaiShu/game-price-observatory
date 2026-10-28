@@ -187,19 +187,23 @@ writeJson(path.join(ROOT, 'data', 'history', today + '.json'), payload);
 fs.mkdirSync(path.join(ROOT, 'docs'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'docs', 'index.html'), renderPage(payload), 'utf8');
 fs.writeFileSync(path.join(ROOT, 'docs', '.nojekyll'), '', 'utf8');
+
+// /about 页面 + 数据源健康看板
+fs.mkdirSync(path.join(ROOT, 'docs', 'about'), { recursive: true });
+fs.copyFileSync(path.join(ROOT, 'src', 'ui', 'about.html'), path.join(ROOT, 'docs', 'about', 'index.html'));
+try {
+  const rows = Object.keys(health || {}).sort().map((k) => {
+    const h = health[k] || {};
+    const st = h.pausedUntil ? ('熔断至 ' + h.pausedUntil) : (h.lastOk ? ('最近成功 ' + h.lastOk) : '—');
+    return '<tr><td style="padding:4px 12px 4px 0"><b>' + k + '</b></td><td style="padding:4px 0;color:#4E5969">' + st + (h.failStreak ? ' · 连续失败 ' + h.failStreak + ' 次' : '') + '</td></tr>';
+  }).join('');
+  const p2 = path.join(ROOT, 'docs', 'about', 'index.html');
+  let tpl = fs.readFileSync(p2, 'utf8');
+  const html = rows ? '<div class="card"><p><b>数据源健康状态</b></p><table style="border-collapse:collapse;font-size:13px">' + rows + '</table><p style="margin-top:8px;color:#86909C;font-size:12px">连续失败 3 次会自动熔断 2 天</p></div>' : '';
+  fs.writeFileSync(p2, tpl.split('<!--HEALTH-->').join(html), 'utf8');
+} catch (e) { console.error('health board failed: ' + e.message); }
 // /about 页面（PRD P2-5）
 fs.mkdirSync(path.join(ROOT, 'docs', 'about'), { recursive: true });
-// 源健康看板：把各源最近一次成功/失败写进 about 页
-try {
-  const rows = Object.keys(health || {}).map((k) => {
-    const h = health[k] || {};
-    return '<tr><td style="padding:4px 12px 4px 0"><b>' + k + '</b></td><td style="padding:4px 0;color:#4E5969">' + (h.pausedUntil ? '熔断至 ' + h.pausedUntil : (h.lastOk ? '最近成功 ' + h.lastOk : '—')) + (h.failStreak ? ' · 连续失败 ' + h.failStreak : '') + '</td></tr>';
-  }).join('');
-  let aboutTpl = fs.readFileSync(path.join(ROOT, 'src', 'ui', 'about.html'), 'utf8');
-  aboutTpl = aboutTpl.replace('<!--HEALTH-->', rows ? '<div class="card"><p><b>数据源健康状态</b></p><table style="border-collapse:collapse;font-size:13px">' + rows + '</table></div>' : '');
-  fs.writeFileSync(path.join(ROOT, 'docs', 'about', 'index.html'), aboutTpl, 'utf8');
-} catch (e) { console.error('health board failed: ' + e.message); }
-fs.copyFileSync(path.join(ROOT, 'src', 'ui', 'about.html'), path.join(ROOT, 'docs', 'about', 'index.html'));
 // 供详情页（docs/detail）读取实时数据：Pages 只发布 docs/
 writeJson(path.join(ROOT, 'docs', 'latest.json'), payload);
 // 全量搜索索引（页面首次输入时懒加载）
