@@ -93,7 +93,7 @@
   function updateShowing(visible) {
     if (!showing) return;
     var filtered = state.tab !== 'all' || state.freeOnly || state.newLow || state.hasEnd || state.q;
-    showing.textContent = filtered ? ('共找到 ' + visible + ' 款游戏') : ('共 ' + total + ' 款游戏');
+    showing.textContent = filtered ? ('筛选结果：' + visible + ' 款') : ('共 ' + total + ' 款游戏');
   }
 
   /* ---------- FLIP ---------- */
