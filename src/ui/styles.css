@@ -267,3 +267,27 @@ html,body{max-width:100%;overflow-x:clip}
 
 /* ===== P2-6 只看限免开启时，排序 Pill 置灰禁用 ===== */
 .pill[disabled]{opacity:.45;cursor:not-allowed}
+
+/* ===== 列表页视觉统一 ===== */
+.badge{min-width:44px;text-align:center;justify-content:center;display:inline-block}
+.badge-free{display:inline-block;min-width:44px;text-align:center;background:#10B981;color:#fff;font-size:12px;font-weight:500;border-radius:var(--radius-badge);padding:2px 6px}
+.card .tags{padding-right:44px;overflow:hidden}
+.card .tags span{max-width:88px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tab .n{font-size:13px;color:#9CA3AF;font-weight:400;margin-left:6px}
+.tab[aria-selected="true"] .n{color:var(--accent-primary)}
+.meta-row b{font-weight:700;color:var(--text-primary);margin-right:2px}
+.meta-row span{color:var(--text-tertiary)}
+.meta-row .meta-time{margin-left:auto;color:#9CA3AF}
+.badge,.badge-free{transition:transform 150ms ease,box-shadow 150ms ease}
+.badge:hover,.badge-free:hover{transform:translateY(-2px);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+
+/* Tab 橙色滑动指示条（替代 ::after 静态下划线） */
+.tabs{position:relative}
+.tab[aria-selected="true"]::after{display:none}
+.tab-indicator{position:absolute;left:0;bottom:-1px;height:2px;background:var(--accent-primary);transition:transform 250ms cubic-bezier(.4,0,.2,1),width 250ms cubic-bezier(.4,0,.2,1)}
+.pill:active{transform:scale(.96)}
+.pill{transition:background-color 120ms ease,color 120ms ease,transform 100ms ease,border-color 120ms ease}
+.card-shop{transform:translateX(6px);opacity:0}
+.card:hover .card-shop{transform:none;opacity:1}
+@media (hover:none),(max-width:767px){.card-shop{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.tab-indicator{transition:none}.card-shop{transition:none}}
