@@ -414,3 +414,5 @@ h1,h2,h3{line-height:var(--lh-tight)}
 .card-meta,.tags span{font-size:var(--fs-meta)}
 .meta-row,.showing{font-size:var(--fs-meta)}
 .cd{font-variant-numeric:tabular-nums}
+
+.pill.is-off{opacity:.45;cursor:not-allowed}
