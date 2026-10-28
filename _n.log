@@ -1,17 +1,18 @@
 switch  40 条
+封面探测：10 张，缺图 2
 英文别名：新增 12 条（缓存 41 条）
-OK 在榜 59 条（限免 2 / 新史低 0） 失败 11
-   分来源: {"epic":12,"switch":40,"appstore":7}
+OK 在榜 69 条（限免 2 / 新史低 0） 失败 10
+   分来源: {"epic":12,"switch":40,"steam-specials":10,"appstore":7}
    epic          免费       -100%  Home - A Unique Horror Adventure | 至10-29
    epic          免费       -100%  Sker Ritual | 至10-29
    switch        ¥5758    -93%   nOS ニューオペレーティングシステム ウルトラデラックス | 至11-20
    switch        ¥1239    -92%   Hitman: Absolution Nintendo Swit | 至11-04
+   steam-specials¥5.8     -90%   Outlast | 至11-02
+   steam-specials¥7.6     -90%   Outlast 2 | 至11-02
+   steam-specials¥19.6    -90%   Shadow of the Tomb Raider: Defin | 至11-06
    switch        ¥1198    -83%   Stuff it! ウルトラ版 | 至11-15
    switch        ¥1588    -81%   My Cozy Room アキ版 | 至11-22
    epic          ¥12.4    -80%   Eternal Threads | 至11-02
-   epic          ¥11.55   -65%   纪念碑谷（Monument Valley） | 至11-02
-   switch        ¥3990    -60%   秘密の富豪恋愛：禁断の欲望イケメン (Billionaire S | 至12-01
-   switch        ¥3990    -60%   秘密の富豪恋愛：禁断の欲望ガールズ (Billionaire S | 至12-01
    ! steam -> 已熔断跳过（连续 9 次失败，2026-10-29 后重试）
    ! steam -> 已熔断跳过（连续 9 次失败，2026-10-29 后重试）
    ! steam -> 已熔断跳过（连续 9 次失败，2026-10-29 后重试）
@@ -22,4 +23,3 @@ OK 在榜 59 条（限免 2 / 新史低 0） 失败 11
    ! steam -> 已熔断跳过（连续 9 次失败，2026-10-29 后重试）
    ! steam -> 已熔断跳过（连续 9 次失败，2026-10-29 后重试）
    ! gog -> 已熔断跳过（连续 3 次失败，2026-10-29 后重试）
-   ! steam-specials -> TIMEOUT
