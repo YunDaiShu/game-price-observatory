@@ -29,6 +29,21 @@
   function curOf(cur) { return cur === 'USD' ? '$' : cur === 'JPY' ? '\uFFE5' : '\u00A5'; }
   function fmtMoney(v, cur) { return cur === 'JPY' ? '\uFFE5' + Number(v).toLocaleString('en-US') + '\u5186' : curOf(cur) + (cur === 'CNY' ? v : Number(v).toLocaleString('en-US')); }
   var EASE = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
+
+  /* ---------- 迷你 Toast ---------- */
+  var toastEl = null, toastTimer = null;
+  function showToast(msg) {
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.className = 'mini-toast';
+      document.body.appendChild(toastEl);
+    }
+    toastEl.textContent = msg;
+    toastEl.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('on'); }, 2200);
+  }
+
   var MOVE_MS = 260;
 
   /* ---------- 封面兜底：6s 未加载成功则移除 img，露出平台渐变 ---------- */
@@ -358,13 +373,13 @@
         + '<svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="#D1D5DB" stroke-width="2"><circle cx="28" cy="28" r="14"/><path d="M38 38l12 12" stroke-linecap="round"/></svg>'
         + '<p class="sres-empty-t">没有找到相关游戏</p>'
         + '<p class="sres-empty-s">试试更短的关键词，或切换到对应平台 Tab 浏览</p>'
-        + '<button class="sres-empty-btn" type="button">清空搜索</button>'
+        + '<button class="sres-empty-btn btn btn-ghost" type="button">清空搜索</button>'
         + '</div>';
       return;
     }
     box.innerHTML = '<div class="sres-head"><span>搜索结果</span><span><b>' + hits.length + '</b> 个</span></div>'
       + '<div class="sres-list">' + hits.map(rowOf).join('') + '</div>'
-      + '<button class="sres-more" type="button">在列表中查看 ' + hits.length + ' 个结果 ›</button>';
+      + '<button class="sres-more btn btn-ghost btn-block" type="button">在列表中查看 ' + hits.length + ' 个结果 ›</button>';
     [].forEach.call(box.querySelectorAll('.sres-row'), function (el) {
       el.addEventListener('click', function () { openModal(el.getAttribute('data-key')); dimGrid(true); box.hidden = true; });
     });
