@@ -344,7 +344,7 @@
     }
     var hit = (SEARCH || []).find(function (r) { return r.s + ':' + r.i === key; });
     if (!hit) return null;
-    return { source: hit.s, id: hit.i, name: hit.n, price: hit.p, initial: hit.o, cut: hit.c, url: hit.u, end: hit.e, zh: hit.zh, lowest: hit.lo, tags: hit.tg, cover: hit.cv || null };
+    return { source: hit.s, id: hit.i, name: hit.n, price: hit.p, initial: hit.o, cut: hit.c, url: hit.u, end: hit.e, zh: hit.zh, lowest: hit.lo, tags: hit.tg, cover: hit.cv || null, currency: hit.cur || 'CNY' };
   }
 
   function setCover(rec) {
