@@ -1,20 +1,18 @@
 {
-  "generated_at": "2026-10-28T12:31:44.997Z",
-  "generated_at_bj": "2026-10-28 20:31",
+  "generated_at": "2026-10-28T12:38:35.240Z",
+  "generated_at_bj": "2026-10-28 20:38",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
-    "total": 100,
+    "total": 92,
     "limited_free": 2,
     "new_low": 0,
-    "failed": 0
+    "failed": 11
   },
   "by_source": {
     "epic": 12,
-    "gog": 23,
     "switch": 40,
-    "steam-specials": 10,
-    "steam": 8,
+    "xbox": 33,
     "appstore": 7
   },
   "items": [
@@ -60,233 +58,6 @@
     },
     {
       "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Simulation",
-        "Horror"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 2,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1254210921",
-      "name": "The Black Within",
-      "price": 2,
-      "initial": 49,
-      "cut": 96,
-      "url": "https://www.gog.com/en/game/the_black_within",
-      "cover": "https://images.gog-statics.com/262b0d8e8b804ce84f62db51e51ad336db43a54ba68f008fc03de7c90ba3683b.png",
-      "name_en": "The Black Within"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Indie",
-        "Story Rich",
-        "Atmospheric",
-        "2D",
-        "Puzzle",
-        "Science",
-        "Pixel Graphics"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 2,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1207667163",
-      "name": "The Way",
-      "price": 2,
-      "initial": 48,
-      "cut": 96,
-      "url": "https://www.gog.com/en/game/the_way",
-      "cover": "https://images.gog-statics.com/4f6c3d9fc73ac9cdad653ee0603d5f80dc11a9e74f12919dc238f6779e146998.png",
-      "name_en": "The Way"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Puzzle",
-        "Classic",
-        "First-Person",
-        "Point&Click",
-        "FPS",
-        "Logic",
-        "Puzzle Platformer"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 1,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1207658958",
-      "name": "Atlantis 3: The New World",
-      "price": 1,
-      "initial": 20,
-      "cut": 95,
-      "url": "https://www.gog.com/en/game/atlantis_3_the_new_world",
-      "cover": "https://images.gog-statics.com/0077048ad2213a74fe61f19e94621be5e409365951483c1fe60e71110002c596.png",
-      "name_en": "Atlantis 3: The New World"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Indie",
-        "Atmospheric",
-        "Exploration",
-        "Sci-fi",
-        "Puzzle",
-        "First-Person",
-        "Mystery"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1462182139",
-      "name": "Euphoria: Supreme Mechanics",
-      "price": 3,
-      "initial": 59,
-      "cut": 95,
-      "url": "https://www.gog.com/en/game/euphoria_supreme_mechanics",
-      "cover": "https://images.gog-statics.com/eab19dfa2c4bb8fa0dfa0b97dbd9d0cb710884c8dfdc4c23a479d82841ed8ccf.png",
-      "name_en": "Euphoria: Supreme Mechanics"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Strategy",
-        "Dark",
-        "Choices Matter",
-        "Management",
-        "Historical",
-        "Survival",
-        "Real-Time",
-        "War"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 5,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1116827902",
-      "name": "War Hospital",
-      "price": 5,
-      "initial": 108,
-      "cut": 95,
-      "url": "https://www.gog.com/en/game/war_hospital",
-      "cover": "https://images.gog-statics.com/2eb4df3a485da22503f23f2fd888027b862be6bcb2e4efbe92f9832bb907c8cc.png",
-      "name_en": "War Hospital"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Indie",
-        "Story Rich",
-        "Exploration",
-        "Puzzle",
-        "Mystery",
-        "Logic",
-        "Narrative"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1170675521",
-      "name": "Alice VR",
-      "price": 3,
-      "initial": 42,
-      "cut": 93,
-      "url": "https://www.gog.com/en/game/alice_vr",
-      "cover": "https://images.gog-statics.com/19a75d19f7bef65cc300e89a11b7061e2e9f13d8bbb2376a1a88f825a6ca6a1f.png",
-      "name_en": "Alice VR"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Action",
-        "Indie",
-        "Atmospheric",
-        "Sci-fi",
-        "Female Protagonist",
-        "Third Person",
-        "Stealth"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 5,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1638321975",
-      "name": "Cyberpunk SFX",
-      "price": 5,
-      "initial": 67,
-      "cut": 93,
-      "url": "https://www.gog.com/en/game/cyberpunk_sfx",
-      "cover": "https://images.gog-statics.com/500e5247642a9d27fc73a09db334e14461d6c0165c9af8917e8b855694bb2d94.png",
-      "name_en": "Cyberpunk SFX"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Action",
-        "Indie",
-        "Story Rich",
-        "Atmospheric",
-        "Role-playing",
-        "2D",
-        "Sci-fi",
-        "Science"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 5,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1929434313",
-      "name": "Dex",
-      "price": 5,
-      "initial": 68,
-      "cut": 93,
-      "url": "https://www.gog.com/en/game/dex",
-      "cover": "https://images.gog-statics.com/e9029c481d84815c77706610f11af8af6bdb64f793124bd02b70a8da2871d90f.png",
-      "name_en": "Dex"
-    },
-    {
-      "promo_start": null,
       "promo_end": "2026-11-20T14:59:59.000Z",
       "tags": [],
       "supports_zh": "unknown",
@@ -306,439 +77,6 @@
       "needs_base": null,
       "release_date": "2026.10.25",
       "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Indie",
-        "Fantasy",
-        "Story Rich",
-        "Atmospheric",
-        "Strategy",
-        "Role-playing",
-        "Turn-Based",
-        "Great Soundtrack"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 6,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1411626324",
-      "name": "Tower of Time",
-      "price": 6,
-      "initial": 80,
-      "cut": 93,
-      "url": "https://www.gog.com/en/game/tower_of_time",
-      "cover": "https://images.gog-statics.com/c3ef2332c0b7274735c0c75239a49f22fd42bff695b9457ecb6ca792c0c16c05.png",
-      "name_en": "Tower of Time"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Action",
-        "Fantasy",
-        "Exploration",
-        "Sci-fi",
-        "Science",
-        "Open World",
-        "Multiplayer"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1115004086",
-      "name": "We are the Dwarves",
-      "price": 3,
-      "initial": 44,
-      "cut": 93,
-      "url": "https://www.gog.com/en/game/we_are_the_dwarves",
-      "cover": "https://images.gog-statics.com/f3fc5110844e065535913fe2e32a78076d4339cc83edaa8735837d2120602c85.png",
-      "name_en": "We are the Dwarves"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Puzzle",
-        "Classic",
-        "Female Protagonist",
-        "Point&Click",
-        "Logic",
-        "Crime",
-        "Noir"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1207661333",
-      "name": "1954 Alcatraz",
-      "price": 3,
-      "initial": 36,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/1954_alcatraz",
-      "cover": "https://images.gog-statics.com/005222a9a49b3b47993b4e73f9b4a4c1d8306039a6ea205a437b23b2e73506d0.png",
-      "name_en": "1954 Alcatraz"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Indie",
-        "2D",
-        "Classic",
-        "Casual",
-        "Pixel Graphics",
-        "Third Person",
-        "Point&Click"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1207666213",
-      "name": "A Golden Wake",
-      "price": 3,
-      "initial": 36,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/a_golden_wake",
-      "cover": "https://images.gog-statics.com/6b8617b8cd6ce994130c16175140871089fceaa15772e0951a8f9e02655fa6c2.png",
-      "name_en": "A Golden Wake"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Indie",
-        "Story Rich",
-        "2D",
-        "Classic",
-        "Casual",
-        "Female Protagonist",
-        "Pixel Graphics"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1207664583",
-      "name": "Always Sometimes Monsters",
-      "price": 3,
-      "initial": 36,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/always_sometimes_monsters",
-      "cover": "https://images.gog-statics.com/5fb0f806d9a7cc0b71938d298888fa20c5b192a4480ab315080880f512eb70d8.png",
-      "name_en": "Always Sometimes Monsters"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Action",
-        "Indie",
-        "Strategy",
-        "Classic",
-        "Science",
-        "Tactical",
-        "Tower Defense"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1207664863",
-      "name": "Anomaly Defenders",
-      "price": 3,
-      "initial": 36,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/anomaly_defenders",
-      "cover": "https://images.gog-statics.com/94097d91dcf5c58fc403a69b50127436ef867737291b2c36d46722173e2dc6f0.png",
-      "name_en": "Anomaly Defenders"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Action",
-        "Indie",
-        "Strategy",
-        "Classic",
-        "Science",
-        "Tactical",
-        "Difficult",
-        "Top-Down"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1207659035",
-      "name": "Anomaly Warzone Earth",
-      "price": 3,
-      "initial": 36,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/anomaly_warzone_earth",
-      "cover": "https://images.gog-statics.com/a58fb41c7d426ce7e440d10d4debfec79da78bfad76d5b35951dfc3bafb06d53.png",
-      "name_en": "Anomaly Warzone Earth"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Puzzle",
-        "Classic",
-        "First-Person",
-        "Mystery",
-        "Point&Click",
-        "Logic"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1294416884",
-      "name": "Atlantis Evolution",
-      "price": 3,
-      "initial": 37,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/atlantis_evolution",
-      "cover": "https://images.gog-statics.com/82880d053bec582c86e51c33fbb8d6954b0af5b102061dc2e886b060576461af.png",
-      "name_en": "Atlantis Evolution"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Adventure",
-        "Atmospheric",
-        "2D",
-        "Puzzle",
-        "Dark",
-        "Horror",
-        "Platformer",
-        "Point&Click"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1297501772",
-      "name": "Bad Dream: Fever",
-      "price": 3,
-      "initial": 37,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/bad_dream_fever",
-      "cover": "https://images.gog-statics.com/b232f1356a845450ba784c3ed0142be7d7084e0fac1f46cc43d7d921c78e6bc6.png",
-      "name_en": "Bad Dream: Fever"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Indie",
-        "Puzzle",
-        "Simulation",
-        "Classic",
-        "Casual",
-        "Family Friendly",
-        "Building",
-        "Managerial"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1089398960",
-      "name": "Bridge Constructor",
-      "price": 3,
-      "initial": 36,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/bridge_constructor",
-      "cover": "https://images.gog-statics.com/ea6ae0f79beb5c0c4a00122b0a419818a77b33ea276f5cb32c26ffbfb18960d3.png",
-      "name_en": "Bridge Constructor"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Indie",
-        "Puzzle",
-        "Simulation",
-        "Classic",
-        "Casual",
-        "Family Friendly",
-        "Building",
-        "Medieval"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1633252128",
-      "name": "Bridge Constructor Medieval",
-      "price": 3,
-      "initial": 36,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/bridge_constructor_medieval",
-      "cover": "https://images.gog-statics.com/2dc4af5012df443cd89c80dcee3a099943ed3d993c55c1933835855f9a0fc924.png",
-      "name_en": "Bridge Constructor Medieval"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Indie",
-        "Puzzle",
-        "Simulation",
-        "Classic",
-        "Casual",
-        "Family Friendly",
-        "Building",
-        "Managerial"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1751054287",
-      "name": "Bridge Constructor Playground",
-      "price": 3,
-      "initial": 36,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/bridge_constructor_playground",
-      "cover": "https://images.gog-statics.com/a5e6c394b56db24c39ad9975bf2ff8c7aaef0f82182f1fdd4c7b3960fb050673.png",
-      "name_en": "Bridge Constructor Playground"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Sci-fi",
-        "Puzzle",
-        "Simulation",
-        "Science",
-        "Funny",
-        "Sandbox",
-        "Difficult",
-        "Building"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1942942943",
-      "name": "Bridge Constructor Portal",
-      "price": 3,
-      "initial": 37,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/bridge_constructor_portal",
-      "cover": "https://images.gog-statics.com/de38c015ddce2e1b782d4669bb200eca18d196b4f12f510876221364b13cb6f5.png",
-      "name_en": "Bridge Constructor Portal"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Indie",
-        "Puzzle",
-        "Simulation",
-        "Casual",
-        "Family Friendly",
-        "Building",
-        "Managerial",
-        "Physics"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1827432329",
-      "name": "Bridge Constructor Stunts",
-      "price": 3,
-      "initial": 36,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/bridge_constructor_stunts",
-      "cover": "https://images.gog-statics.com/2b84cfd1e1fc01b85f9be1f2ca4cb567ea2aa95dd691c28257353d7fdf61d7be.png",
-      "name_en": "Bridge Constructor Stunts"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Indie",
-        "Puzzle",
-        "Simulation",
-        "Casual",
-        "Sandbox",
-        "Building",
-        "Crafting",
-        "Managerial"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": 3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "gog",
-      "id": "1381086285",
-      "name": "Bridge Constructor: The Walking Dead",
-      "price": 3,
-      "initial": 37,
-      "cut": 92,
-      "url": "https://www.gog.com/en/game/bridge_constructor_the_walking_dead",
-      "cover": "https://images.gog-statics.com/c02edd112c7865200c69bc1a8c2e9af2a797fe467237e0a99f0203f2587d28ec.png",
-      "name_en": "Bridge Constructor: The Walking Dead"
     },
     {
       "promo_start": null,
@@ -764,43 +102,47 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-06T17:00:00.000Z",
-      "tags": [],
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
       "supports_zh": "unknown",
-      "lowest_price": 14.7,
-      "is_new_low": false,
+      "lowest_price": null,
+      "is_new_low": null,
       "players_online": null,
       "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "391220",
-      "name": "Rise of the Tomb Raider™",
-      "free": false,
-      "price": 14.7,
-      "initial": 147,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "BNQQ3WVBNZCQ",
+      "name": "Shadow of the Tomb Raider Definitive Edition",
+      "price": 3.99,
+      "initial": 39.99,
       "cut": 90,
-      "url": "https://store.steampowered.com/app/391220/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/391220/header.jpg"
+      "url": "https://www.microsoft.com/store/productId/BNQQ3WVBNZCQ",
+      "cover": "https://store-images.s-microsoft.com/image/apps.23964.68112460555114547.f599eff6-c432-4510-af15-bfe339796812.955330ba-ec69-4007-a274-96058599d8f5",
+      "region": "US"
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-06T17:00:00.000Z",
-      "tags": [],
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
       "supports_zh": "unknown",
-      "lowest_price": 19.6,
-      "is_new_low": false,
+      "lowest_price": null,
+      "is_new_low": null,
       "players_online": null,
       "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "750920",
-      "name": "Shadow of the Tomb Raider: Definitive Edition",
-      "free": false,
-      "price": 19.6,
-      "initial": 196,
-      "cut": 90,
-      "url": "https://store.steampowered.com/app/750920/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/750920/header.jpg"
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9MW10GX140N1",
+      "name": "Hogwarts Legacy: Digital Deluxe Edition",
+      "price": 11.99,
+      "initial": 79.99,
+      "cut": 85,
+      "url": "https://www.microsoft.com/store/productId/9MW10GX140N1",
+      "cover": "https://store-images.s-microsoft.com/image/apps.64128.13853283465555502.df9a42b7-95ee-4088-89b3-08a50204f8ef.da71d8cf-7bb7-4f0d-a0e0-9df90aba8b88",
+      "region": "US"
     },
     {
       "promo_start": null,
@@ -867,86 +209,6 @@
       "name_en": "Eternal Threads"
     },
     {
-      "promo_start": null,
-      "promo_end": "2026-11-02T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 14,
-      "is_new_low": false,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "242760",
-      "name": "The Forest",
-      "free": false,
-      "price": 14,
-      "initial": 70,
-      "cut": 80,
-      "url": "https://store.steampowered.com/app/242760/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/242760/header.jpg"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-02T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 37.25,
-      "is_new_low": false,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "264710",
-      "name": "Subnautica - 深海迷航",
-      "free": false,
-      "price": 37.25,
-      "initial": 149,
-      "cut": 75,
-      "url": "https://store.steampowered.com/app/264710/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/264710/header.jpg"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-02T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 30.24,
-      "is_new_low": false,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "1326470",
-      "name": "Sons Of The Forest",
-      "free": false,
-      "price": 30.24,
-      "initial": 108,
-      "cut": 72,
-      "url": "https://store.steampowered.com/app/1326470/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1326470/header.jpg"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-02T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 40.8,
-      "is_new_low": false,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "1304930",
-      "name": "The Outlast Trials",
-      "free": false,
-      "price": 40.8,
-      "initial": 136,
-      "cut": 70,
-      "url": "https://store.steampowered.com/app/1304930/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1304930/header.jpg"
-    },
-    {
       "promo_start": "2026-10-19T15:00:00.000Z",
       "promo_end": "2026-11-02T16:00:00.000Z",
       "tags": [],
@@ -965,6 +227,50 @@
       "url": "https://store.epicgames.com/zh-CN/p/monument-valley-02",
       "cover": "https://cdn1.epicgames.com/spt-assets/e56a7411805046d3b5b7253a6e4e0faa/monument-valley-1gys5.jpg",
       "name_en": "Monument Valley"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9N1WWHGKBX3P",
+      "name": "Sea of Thieves: 2026 Deluxe Edition",
+      "price": 17.49,
+      "initial": 49.99,
+      "cut": 65,
+      "url": "https://www.microsoft.com/store/productId/9N1WWHGKBX3P",
+      "cover": "https://store-images.s-microsoft.com/image/apps.60597.13967663488775544.509c7068-af09-4098-9b3b-00abbd68d1f4.44d913b9-c074-410c-be6b-9c2587a23524",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9MWNNM41MB6D",
+      "name": "Sea of Thieves: X Edition",
+      "price": 27.99,
+      "initial": 79.99,
+      "cut": 65,
+      "url": "https://www.microsoft.com/store/productId/9MWNNM41MB6D",
+      "cover": "https://store-images.s-microsoft.com/image/apps.7882.13840377073141063.357a179e-5729-40b7-8689-0efa7ea7e423.7e34bd0d-211b-49f8-96f1-4b9d0f87c232",
+      "region": "US"
     },
     {
       "promo_start": null,
@@ -1046,6 +352,28 @@
     },
     {
       "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9P6ZXP2ZRQCV",
+      "name": "Grand Theft Auto V Enhanced (PC) and Great White Shark Card Bundle",
+      "price": 20.24,
+      "initial": 44.99,
+      "cut": 55,
+      "url": "https://www.microsoft.com/store/productId/9P6ZXP2ZRQCV",
+      "cover": "https://store-images.s-microsoft.com/image/apps.34539.14614495066919731.9492c222-e5d1-4feb-b0b1-ecbcaf7e453f.d573cd70-77e7-4897-bd18-23b4b5e1e077",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
       "promo_end": "2026-11-13T14:59:59.000Z",
       "tags": [],
       "supports_zh": "unknown",
@@ -1065,26 +393,6 @@
       "needs_base": null,
       "release_date": "2026.10.24",
       "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-05T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 74.5,
-      "is_new_low": false,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "3240220",
-      "name": "Grand Theft Auto V 增强版",
-      "free": false,
-      "price": 74.5,
-      "initial": 149,
-      "cut": 50,
-      "url": "https://store.steampowered.com/app/3240220/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/3240220/header.jpg"
     },
     {
       "promo_start": null,
@@ -1154,6 +462,30 @@
       "needs_base": null,
       "release_date": "2026.10.8",
       "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure",
+        "Role playing",
+        "Shooter"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9P0617LN3SF9",
+      "name": "7 Days to Die (Game Preview)",
+      "price": 24.46,
+      "initial": 44.49,
+      "cut": 45,
+      "url": "https://www.microsoft.com/store/productId/9P0617LN3SF9",
+      "cover": "https://store-images.s-microsoft.com/image/apps.59451.14625844531663575.3e9c3e1a-4cb9-4312-941d-02836382abc5.d38459a5-466b-4c70-8d3f-d472943251a8",
+      "region": "US"
     },
     {
       "promo_start": "2026-10-19T15:00:00.000Z",
@@ -1293,6 +625,28 @@
     },
     {
       "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9P8479BFGDDW",
+      "name": "The Mound: Omen of Cthulhu - Deluxe Edition",
+      "price": 29.99,
+      "initial": 39.99,
+      "cut": 25,
+      "url": "https://www.microsoft.com/store/productId/9P8479BFGDDW",
+      "cover": "https://store-images.s-microsoft.com/image/apps.42260.14099316323548148.ea8eddc4-e601-400b-b22e-c096df759142.1caab1bd-bc22-4246-b487-e578f1fd54b7",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
       "promo_end": "2027-01-07T14:59:59.000Z",
       "tags": [
         "アクション",
@@ -1340,6 +694,160 @@
       "needs_base": null,
       "release_date": "2026.10.22",
       "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Strategy"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NBH81H3VB7P",
+      "name": "Age of Empires 25th Anniversary Collection",
+      "price": 95.99,
+      "initial": 119.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NBH81H3VB7P",
+      "cover": "https://store-images.s-microsoft.com/image/apps.65195.13517649525046440.c95bfc94-b547-4de0-b0c6-33c56c2c1635.fd6cc280-07a5-44ee-95d1-40480106199e",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Strategy"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NN144QSW0T0",
+      "name": "Age of Mythology: Retold Premium Edition",
+      "price": 39.99,
+      "initial": 49.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NN144QSW0T0",
+      "cover": "https://store-images.s-microsoft.com/image/apps.11424.13752337963608113.3c47c041-f989-44b0-87bf-b7fd43360a66.e07102a4-ad1e-4312-a9b6-404362943ce4",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Shooter"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9N8TRM7F6KGC",
+      "name": "DOOM Eternal Deluxe Edition (PC)",
+      "price": 39.99,
+      "initial": 49.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9N8TRM7F6KGC",
+      "cover": "https://store-images.s-microsoft.com/image/apps.7892.14042627103975188.9e5c3c03-16b3-4a74-a9cd-c41b8e8632d5.333c0c48-f866-4de8-a043-d061da5c1727",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Role playing"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9PFRG44XZCFJ",
+      "name": "Fallout 4: Anniversary Edition",
+      "price": 47.99,
+      "initial": 59.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9PFRG44XZCFJ",
+      "cover": "https://store-images.s-microsoft.com/image/apps.61178.14199495301608061.222a9c4b-4b6c-4b60-bd5a-27c78c53c08a.6505cf67-b346-4060-8922-a83dbf9b9d74",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Racing & flying"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9P1HX37NMJLT",
+      "name": "Forza Horizon 5 Deluxe Edition",
+      "price": 63.99,
+      "initial": 79.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9P1HX37NMJLT",
+      "cover": "https://store-images.s-microsoft.com/image/apps.30953.14506879174941978.138d3eab-0b06-443b-a252-c99592521394.14d1c0fa-a49d-46bb-b177-7173e55078c7",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Racing & flying"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9MTLKM2DJMZ2",
+      "name": "Forza Horizon 5 Premium Edition",
+      "price": 79.99,
+      "initial": 99.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9MTLKM2DJMZ2",
+      "cover": "https://store-images.s-microsoft.com/image/apps.23625.13806078025361171.9723cf5e-1e29-4d9d-ad0a-cc37a95bb75d.e02f4ead-d89b-45cd-8eb5-5dcbf44ae91f",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Racing & flying"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9N4XW3N02MNJ",
+      "name": "Forza Horizon 6 Premium Edition",
+      "price": 95.99,
+      "initial": 119.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9N4XW3N02MNJ",
+      "cover": "https://store-images.s-microsoft.com/image/apps.60342.13547047233571036.013c5ec3-a5d7-4e8a-83e7-470299116376.2346f664-c01a-4b06-a92c-4819a43e8f75",
+      "region": "US"
     },
     {
       "promo_start": null,
@@ -1391,6 +899,402 @@
     },
     {
       "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Simulation"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NSRWS3C42PP",
+      "name": "Goat Simulator 3 - Multiversal Traveler's Edition (Windows Edition)",
+      "price": 31.99,
+      "initial": 39.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NSRWS3C42PP",
+      "cover": "https://store-images.s-microsoft.com/image/apps.16602.14372255187366366.902074b8-4319-4728-8369-be482f751082.f9723817-7fa2-4d6f-a43b-dd220866463c",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Strategy"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9PLSBTJB87Q7",
+      "name": "Halo Wars 2: Complete Edition",
+      "price": 47.99,
+      "initial": 59.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9PLSBTJB87Q7",
+      "cover": "https://store-images.s-microsoft.com/image/apps.7812.14307168999728048.1152921504737161583.876003c9-7e73-4649-8708-466f009bc2e1",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9P0SWLC2F1XJ",
+      "name": "Indiana Jones and the Great Circle™: Digital Premium Edition",
+      "price": 79.99,
+      "initial": 99.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9P0SWLC2F1XJ",
+      "cover": "https://store-images.s-microsoft.com/image/apps.12555.14524964047097043.d9c9d5af-d2c8-4c6b-b3b9-a50b9e78a0b1.9a8ba2c9-a88c-4765-9960-0d6789e0bfad",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NJN1MC1X5FK",
+      "name": "LEGO® Star Wars™: The Skywalker Saga",
+      "price": 47.99,
+      "initial": 59.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NJN1MC1X5FK",
+      "cover": "https://store-images.s-microsoft.com/image/apps.63979.13677920620920924.f0d2262f-b971-4299-914b-194791cb9c5b.a77c90df-095b-4212-a7c6-f2c1a0753ffd",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NLSQ26HM4X5",
+      "name": "LEGO® Star Wars™: The Skywalker Saga Galactic Edition",
+      "price": 63.99,
+      "initial": 79.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NLSQ26HM4X5",
+      "cover": "https://store-images.s-microsoft.com/image/apps.30370.13701110362522514.83a450e3-15f7-4f27-9789-b3ba2e64144a.c77c8b39-70ed-4f4b-8eab-fa58d38359fb",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9PJRSMJ5PSD1",
+      "name": "LEGO® Star Wars™:The Skywalker Saga Deluxe Edition",
+      "price": 55.99,
+      "initial": 69.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9PJRSMJ5PSD1",
+      "cover": "https://store-images.s-microsoft.com/image/apps.33307.14276796497039318.d693449b-3af3-430b-9a1d-70b1d96fbcbc.2370461e-b50a-4f3a-90be-6ec1b8fc22cd",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Simulation"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NH8N0M7CWLN",
+      "name": "Microsoft Flight Simulator (2020) Deluxe 40th Anniversary Edition",
+      "price": 71.99,
+      "initial": 89.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NH8N0M7CWLN",
+      "cover": "https://store-images.s-microsoft.com/image/apps.57274.13630274674230323.ef522ebd-e0ea-449e-b0c8-3271887caa67.2e92ae62-cd3e-458f-a8f8-3927865645e2",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Simulation"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9PJ15D3RDXMV",
+      "name": "Microsoft Flight Simulator (2020) Premium Deluxe 40th Anniversary Edition",
+      "price": 95.99,
+      "initial": 119.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9PJ15D3RDXMV",
+      "cover": "https://store-images.s-microsoft.com/image/apps.13845.14225646405929875.ed2b05a2-f9fd-4a33-b808-807366c017bf.5f1f24de-445f-4bf0-af0b-cf1de8aec6d5",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Simulation"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NV2Q5P1L5CC",
+      "name": "Microsoft Flight Simulator 2024 - Aviator Edition",
+      "price": 159.99,
+      "initial": 199.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NV2Q5P1L5CC",
+      "cover": "https://store-images.s-microsoft.com/image/apps.51609.14406935353956462.3e5ea973-8477-49b6-97a0-33b4d669d86c.56a5977b-8285-4894-8266-7f400f59dcbd",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Simulation"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9N7MNF1QC3X4",
+      "name": "Microsoft Flight Simulator 2024 - Deluxe Edition",
+      "price": 79.99,
+      "initial": 99.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9N7MNF1QC3X4",
+      "cover": "https://store-images.s-microsoft.com/image/apps.51634.14061677204079335.ea8cd46e-0327-464c-b53a-4212ba44ea8d.adb44e70-6c91-4aec-b964-18dd95090a73",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Simulation"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9N7J4DKK7V15",
+      "name": "Microsoft Flight Simulator 2024 - Premium Deluxe Edition",
+      "price": 103.99,
+      "initial": 129.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9N7J4DKK7V15",
+      "cover": "https://store-images.s-microsoft.com/image/apps.54430.14068704152123556.d31c769e-21e4-479a-b5e4-a027fa3af233.5414b535-bddb-4254-94f8-fed1d63a279c",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9MV69L4JSD31",
+      "name": "Minecraft Legends Deluxe Edition",
+      "price": 39.99,
+      "initial": 49.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9MV69L4JSD31",
+      "cover": "https://store-images.s-microsoft.com/image/apps.7120.13799013845909804.d667b16a-f72a-44c6-913e-e9ab0a88905b.19e2302b-ffbb-46eb-bd03-5475765cbdda",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "BZ271JBBZ9DC",
+      "name": "RESIDENT EVIL 2 Deluxe Edition",
+      "price": 39.99,
+      "initial": 49.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/BZ271JBBZ9DC",
+      "cover": "https://store-images.s-microsoft.com/image/apps.8380.63971194712892648.2292346f-d9ca-4a4a-b979-4d2ce30b77e4.2b9e6c2b-6989-486c-8fbc-b3babccaabfd",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Action & adventure"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NKD5GJTS6FH",
+      "name": "Sea of Thieves: 2026 Premium Edition",
+      "price": 47.99,
+      "initial": 59.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NKD5GJTS6FH",
+      "cover": "https://store-images.s-microsoft.com/image/apps.21866.13663299324798234.a7493622-f0f3-472b-8980-d90f064020c6.a709d5e4-bf98-4a09-a76a-9510798c5531",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Role playing"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9PL9P3QZMRBM",
+      "name": "Starfield Premium Edition",
+      "price": 55.99,
+      "initial": 69.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9PL9P3QZMRBM",
+      "cover": "https://store-images.s-microsoft.com/image/apps.35303.14316786733461812.bb5a977a-c90a-4411-a25d-25a3b96c55d8.8680717f-accb-432e-b597-0a6a1082d23e",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Role playing"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NF62X1QH3CM",
+      "name": "The Elder Scrolls IV: Oblivion Remastered - Deluxe Edition",
+      "price": 47.99,
+      "initial": 59.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NF62X1QH3CM",
+      "cover": "https://store-images.s-microsoft.com/image/apps.2491.13600922562511446.33e2012a-753e-4784-941b-7dea06df4293.921917ad-a736-4257-a023-f0ed4a0b7f92",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Role playing"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9P1MLQ9QR8S8",
+      "name": "The Elder Scrolls Online: Deluxe Edition",
+      "price": 47.99,
+      "initial": 59.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9P1MLQ9QR8S8",
+      "cover": "https://store-images.s-microsoft.com/image/apps.57985.14508755531047399.1b205e29-62e5-4b5e-b043-7e715476333b.2324acc1-08e3-40c6-bd21-35e243c83f64",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Role playing"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NFW7GND3WNZ",
+      "name": "The Elder Scrolls V: Skyrim Anniversary Edition (PC)",
+      "price": 39.99,
+      "initial": 49.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NFW7GND3WNZ",
+      "cover": "https://store-images.s-microsoft.com/image/apps.19255.13586736676110446.c8b376ae-5aab-4806-b3fc-2e7fb6cba918.3bc4ca25-6acf-4895-a222-919b46972b1b",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
       "promo_end": "2026-11-11T14:59:59.000Z",
       "tags": [
         "アクション",
@@ -1414,6 +1318,28 @@
       "needs_base": null,
       "release_date": "2026.10.25",
       "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Shooter"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9P8M6BX9WKVS",
+      "name": "Wolfenstein II: Deluxe Edition",
+      "price": 47.99,
+      "initial": 59.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9P8M6BX9WKVS",
+      "cover": "https://store-images.s-microsoft.com/image/apps.29631.14089494351645511.a9752c7c-4a8d-4bd9-afef-e1099f454c88.2fcb0691-c312-464f-ae5a-d64cd244d9c1",
+      "region": "US"
     },
     {
       "promo_start": null,
@@ -1541,27 +1467,6 @@
       "needs_base": null,
       "release_date": "2026.9.18",
       "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-10-30T17:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 30.6,
-      "is_new_low": false,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "5335510",
-      "name": "Moon Sweepers",
-      "free": false,
-      "price": 30.6,
-      "initial": 36,
-      "cut": 15,
-      "url": "https://store.steampowered.com/app/5335510/",
-      "cover": null,
-      "cover_missing": true
     },
     {
       "promo_start": null,
@@ -1785,47 +1690,6 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-10T17:00:40.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 48.6,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "2223980",
-      "name": "Nomad Drive",
-      "free": false,
-      "price": 48.6,
-      "initial": 54,
-      "cut": 10,
-      "url": "https://store.steampowered.com/app/2223980/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/2223980/header.jpg"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-03T17:00:06.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 78.3,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "4922630",
-      "name": "The Long Dark: Iron Road",
-      "free": false,
-      "price": 78.3,
-      "initial": 87,
-      "cut": 10,
-      "url": "https://store.steampowered.com/app/4922630/",
-      "cover": null,
-      "cover_missing": true
-    },
-    {
-      "promo_start": null,
       "promo_end": "2026-11-22T14:59:59.000Z",
       "tags": [
         "パズル",
@@ -1991,40 +1855,6 @@
       "promo_start": null,
       "promo_end": null,
       "tags": [
-        "动作",
-        "角色扮演",
-        "单人",
-        "多人",
-        "玩家对战",
-        "线上玩家对战"
-      ],
-      "supports_zh": true,
-      "lowest_price": 298,
-      "is_new_low": null,
-      "players_online": 23134,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "1245620",
-      "name": "艾尔登法环",
-      "url": "https://store.steampowered.com/app/1245620/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
-      "developer": "FromSoftware, Inc.",
-      "publishers": "FromSoftware, Inc.、Bandai Namco Entertainment",
-      "release_date": "2022 年 2 月 24 日",
-      "short_desc": "艾尔登法环是以正统黑暗奇幻世界为舞台的动作RPG游戏。 走进辽阔的场景与地下迷宫探索未知，挑战困难重重的险境，享受克服困境时的成就感吧。 不仅如此，登场角色之间的利害关系谱成的群像剧，更是不容错过。",
-      "metacritic": 94,
-      "always_show": false,
-      "free": false,
-      "price": 298,
-      "initial": 298,
-      "cut": 0,
-      "name_en": "ELDEN RING"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
         "Games"
       ],
       "supports_zh": "unknown",
@@ -2045,74 +1875,6 @@
       "seller": "East2west Network Tech. Co. Ltd.",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "避难所：生存"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "冒险",
-        "角色扮演",
-        "策略",
-        "单人",
-        "多人",
-        "合作"
-      ],
-      "supports_zh": true,
-      "lowest_price": 268,
-      "is_new_low": null,
-      "players_online": 28395,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "1086940",
-      "name": "博德之门3",
-      "url": "https://store.steampowered.com/app/1086940/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
-      "developer": "Larian Studios",
-      "publishers": "Larian Studios",
-      "release_date": "2023 年 8 月 3 日",
-      "short_desc": "《博德之门3》是一款以“龙与地下城”世界为背景的、强调故事与队伍冒险体验的角色扮演游戏。你的每一个选择，都会编织出一段关于同伴与背叛、生存与牺牲，以及至上力量诱惑的故事。",
-      "metacritic": 96,
-      "always_show": false,
-      "free": false,
-      "price": 268,
-      "initial": 268,
-      "cut": 0,
-      "name_en": "Baldur's Gate 3"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "动作",
-        "冒险",
-        "角色扮演",
-        "单人",
-        "Steam 成就",
-        "完全支持控制器"
-      ],
-      "supports_zh": true,
-      "lowest_price": 268,
-      "is_new_low": null,
-      "players_online": 14211,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "2358720",
-      "name": "黑神话：悟空",
-      "url": "https://store.steampowered.com/app/2358720/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
-      "developer": "Game Science",
-      "publishers": "Game Science",
-      "release_date": "2024 年 8 月 19 日",
-      "short_desc": "《黑神话：悟空》是一款以中国神话为背景的动作角色扮演游戏。你将扮演一位“天命人”，为了探寻昔日传说的真相，踏上一条充满危险与惊奇的西游之路。",
-      "metacritic": null,
-      "always_show": false,
-      "free": false,
-      "price": 268,
-      "initial": 268,
-      "cut": 0,
-      "name_en": "Black Myth: Wukong"
     },
     {
       "promo_start": null,
@@ -2188,40 +1950,6 @@
       "seller": "DIVASKY LIMITED",
       "note": "App Store 无折扣字段，此为当前售价",
       "name_en": "劫后公司"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "角色扮演",
-        "单人",
-        "Steam 成就",
-        "完全支持控制器",
-        "Steam 集换式卡牌",
-        "可调整文字大小"
-      ],
-      "supports_zh": true,
-      "lowest_price": 298,
-      "is_new_low": null,
-      "players_online": 115072,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "1091500",
-      "name": "赛博朋克 2077",
-      "url": "https://store.steampowered.com/app/1091500/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
-      "developer": "CD PROJEKT RED",
-      "publishers": "CD PROJEKT RED",
-      "release_date": "2020 年 12 月 9 日",
-      "short_desc": "《赛博朋克 2077》是一款开放世界动作冒险 RPG 游戏。故事发生在暗黑未来的夜之城，一座五光十色、危机四伏的超级大都会，权力更迭和无尽的身体改造是这里不变的主题。",
-      "metacritic": 86,
-      "always_show": false,
-      "free": false,
-      "price": 298,
-      "initial": 298,
-      "cut": 0,
-      "name_en": "Cyberpunk 2077"
     },
     {
       "promo_start": null,
@@ -2321,40 +2049,6 @@
     {
       "promo_start": null,
       "promo_end": null,
-      "tags": [
-        "角色扮演",
-        "单人",
-        "Steam 成就",
-        "Steam 集换式卡牌",
-        "Steam 创意工坊",
-        "可调整文字大小"
-      ],
-      "supports_zh": true,
-      "lowest_price": 199,
-      "is_new_low": null,
-      "players_online": 39746,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "292030",
-      "name": "巫师3：狂猎 — 重制版",
-      "url": "https://store.steampowered.com/app/292030/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg",
-      "developer": "CD PROJEKT RED",
-      "publishers": "CD PROJEKT RED",
-      "release_date": "2015 年 5 月 18 日",
-      "short_desc": "《巫师 3：狂猎 — 重制版》为这款广受好评的角色扮演游戏带来了全方位的升级和优化。扮演猎魔人利维亚的杰洛特，在黑暗的奇幻开放世界中踏上追寻养女希里的史诗之旅。",
-      "metacritic": 93,
-      "always_show": false,
-      "free": false,
-      "price": 199,
-      "initial": 199,
-      "cut": 0,
-      "name_en": "The Witcher 3: Wild Hunt — Remastered"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 31,
@@ -2391,108 +2085,6 @@
       "url": "https://store.epicgames.com/zh-CN/p/model-builder-complete-edition-f9b456",
       "cover": "https://cdn1.epicgames.com/spt-assets/7472ec268e344e77a85e95976c0ffc6d/model-builder-1vfgr.png",
       "name_en": "Model Builder: Complete Edition"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "冒险",
-        "休闲",
-        "独立",
-        "大型多人在线",
-        "角色扮演",
-        "免费开玩"
-      ],
-      "supports_zh": true,
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": 4440,
-      "free_kind": "permanent",
-      "currency": "CNY",
-      "source": "steam",
-      "id": "2325290",
-      "name": "Sky 光·遇",
-      "url": "https://store.steampowered.com/app/2325290/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/2325290/header.jpg",
-      "developer": "thatgamecompany",
-      "publishers": "thatgamecompany",
-      "release_date": "2024 年 4 月 10 日",
-      "short_desc": "一场令人心驰神往的开放世界冒险正等着你！探索神奇的领域，恢复失落之光。在光遇中，你将超越语言限制，与全球玩家建立羁绊。参与季节活动，完成任务、解开谜题，让我们一起拥抱善意、新发现与真挚的情谊。",
-      "metacritic": null,
-      "always_show": true,
-      "free": true,
-      "price": 0,
-      "initial": 0,
-      "cut": 0,
-      "name_en": "Sky: Children of the Light"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "独立",
-        "角色扮演",
-        "模拟",
-        "单人",
-        "多人",
-        "合作"
-      ],
-      "supports_zh": true,
-      "lowest_price": 48,
-      "is_new_low": null,
-      "players_online": 61764,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "413150",
-      "name": "Stardew Valley",
-      "url": "https://store.steampowered.com/app/413150/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg",
-      "developer": "ConcernedApe",
-      "publishers": "ConcernedApe",
-      "release_date": "2016 年 2 月 26 日",
-      "short_desc": "你继承了你爷爷在星露谷留下的老旧农场。带着爷爷留下的残旧工具和几枚硬币开始了你的新生活。你能适应这小镇上的生活并且将这个杂草丛生的老旧农场变成一个繁荣的家吗？",
-      "metacritic": 89,
-      "always_show": false,
-      "free": false,
-      "price": 48,
-      "initial": 48,
-      "cut": 0,
-      "name_en": "Stardew Valley"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "动作",
-        "冒险",
-        "独立",
-        "角色扮演",
-        "单人",
-        "多人"
-      ],
-      "supports_zh": true,
-      "lowest_price": 42,
-      "is_new_low": null,
-      "players_online": 33886,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "105600",
-      "name": "Terraria",
-      "url": "https://store.steampowered.com/app/105600/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg",
-      "developer": "Re-Logic",
-      "publishers": "Re-Logic",
-      "release_date": "2011 年 5 月 16 日",
-      "short_desc": "挖掘，战斗，探索，建造！在这个动感十足的冒险游戏里没有什么是不可能的。四人包依然可用！",
-      "metacritic": 83,
-      "always_show": false,
-      "free": false,
-      "price": 42,
-      "initial": 42,
-      "cut": 0,
-      "name_en": "Terraria"
     },
     {
       "promo_start": null,
@@ -2535,7 +2127,63 @@
       "name_en": "Them's Fightin' Herds"
     }
   ],
-  "errors": [],
+  "errors": [
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam",
+      "target": "steam",
+      "error": "已熔断跳过（连续 9 次失败，2026-10-29 后重试）"
+    },
+    {
+      "source": "steam-specials",
+      "target": "steam-specials",
+      "error": "已熔断跳过（连续 3 次失败，2026-10-30 后重试）"
+    },
+    {
+      "source": "gog",
+      "target": "gog",
+      "error": "已熔断跳过（连续 3 次失败，2026-10-29 后重试）"
+    }
+  ],
   "series": {
     "switch:70070000041183": [
       [
@@ -3276,6 +2924,146 @@
         null
       ]
     ],
+    "xbox:CFQ7TTC0KHS0": [
+      [
+        "2026-10-28",
+        1,
+        null
+      ]
+    ],
+    "xbox:CFQ7TTC0P85B": [
+      [
+        "2026-10-28",
+        1,
+        null
+      ]
+    ],
+    "xbox:BNQQ3WVBNZCQ": [
+      [
+        "2026-10-28",
+        3.99,
+        null
+      ]
+    ],
+    "xbox:CFQ7TTC0K5DJ": [
+      [
+        "2026-10-28",
+        1,
+        null
+      ]
+    ],
+    "xbox:9PG26DBX43L1": [
+      [
+        "2026-10-28",
+        8.99,
+        null
+      ]
+    ],
+    "xbox:9NR3P7V543DK": [
+      [
+        "2026-10-28",
+        19.99,
+        null
+      ]
+    ],
+    "xbox:9N1WWHGKBX3P": [
+      [
+        "2026-10-28",
+        17.49,
+        null
+      ]
+    ],
+    "xbox:9MWNNM41MB6D": [
+      [
+        "2026-10-28",
+        27.99,
+        null
+      ]
+    ],
+    "xbox:9P6ZXP2ZRQCV": [
+      [
+        "2026-10-28",
+        20.24,
+        null
+      ]
+    ],
+    "xbox:9P0617LN3SF9": [
+      [
+        "2026-10-28",
+        24.46,
+        null
+      ]
+    ],
+    "xbox:9P8479BFGDDW": [
+      [
+        "2026-10-28",
+        29.99,
+        null
+      ]
+    ],
+    "xbox:9NBH81H3VB7P": [
+      [
+        "2026-10-28",
+        95.99,
+        null
+      ]
+    ],
+    "xbox:9NN144QSW0T0": [
+      [
+        "2026-10-28",
+        39.99,
+        null
+      ]
+    ],
+    "xbox:9PMNT8L893XQ": [
+      [
+        "2026-10-28",
+        55.99,
+        null
+      ]
+    ],
+    "xbox:9NFHWSJ3JWSC": [
+      [
+        "2026-10-28",
+        39.99,
+        null
+      ]
+    ],
+    "xbox:9N8TRM7F6KGC": [
+      [
+        "2026-10-28",
+        39.99,
+        null
+      ]
+    ],
+    "xbox:9PFRG44XZCFJ": [
+      [
+        "2026-10-28",
+        47.99,
+        null
+      ]
+    ],
+    "xbox:9P1HX37NMJLT": [
+      [
+        "2026-10-28",
+        63.99,
+        null
+      ]
+    ],
+    "xbox:9MTLKM2DJMZ2": [
+      [
+        "2026-10-28",
+        79.99,
+        null
+      ]
+    ],
+    "xbox:9N4XW3N02MNJ": [
+      [
+        "2026-10-28",
+        95.99,
+        null
+      ]
+    ],
     "switch:70010000131088": [
       [
         "2026-10-28",
@@ -3287,6 +3075,146 @@
       [
         "2026-10-28",
         1500,
+        null
+      ]
+    ],
+    "xbox:9NSRWS3C42PP": [
+      [
+        "2026-10-28",
+        31.99,
+        null
+      ]
+    ],
+    "xbox:9PLSBTJB87Q7": [
+      [
+        "2026-10-28",
+        47.99,
+        null
+      ]
+    ],
+    "xbox:9P0SWLC2F1XJ": [
+      [
+        "2026-10-28",
+        79.99,
+        null
+      ]
+    ],
+    "xbox:9NJN1MC1X5FK": [
+      [
+        "2026-10-28",
+        47.99,
+        null
+      ]
+    ],
+    "xbox:9NLSQ26HM4X5": [
+      [
+        "2026-10-28",
+        63.99,
+        null
+      ]
+    ],
+    "xbox:9PJRSMJ5PSD1": [
+      [
+        "2026-10-28",
+        55.99,
+        null
+      ]
+    ],
+    "xbox:9NH8N0M7CWLN": [
+      [
+        "2026-10-28",
+        71.99,
+        null
+      ]
+    ],
+    "xbox:9PJ15D3RDXMV": [
+      [
+        "2026-10-28",
+        95.99,
+        null
+      ]
+    ],
+    "xbox:9NV2Q5P1L5CC": [
+      [
+        "2026-10-28",
+        159.99,
+        null
+      ]
+    ],
+    "xbox:9N7MNF1QC3X4": [
+      [
+        "2026-10-28",
+        79.99,
+        null
+      ]
+    ],
+    "xbox:9N7J4DKK7V15": [
+      [
+        "2026-10-28",
+        103.99,
+        null
+      ]
+    ],
+    "xbox:9NZ12RV7B7R3": [
+      [
+        "2026-10-28",
+        31.99,
+        null
+      ]
+    ],
+    "xbox:9MV69L4JSD31": [
+      [
+        "2026-10-28",
+        39.99,
+        null
+      ]
+    ],
+    "xbox:9NZKLBVMJ3RF": [
+      [
+        "2026-10-28",
+        55.99,
+        null
+      ]
+    ],
+    "xbox:BZ271JBBZ9DC": [
+      [
+        "2026-10-28",
+        39.99,
+        null
+      ]
+    ],
+    "xbox:9NKD5GJTS6FH": [
+      [
+        "2026-10-28",
+        47.99,
+        null
+      ]
+    ],
+    "xbox:9PL9P3QZMRBM": [
+      [
+        "2026-10-28",
+        55.99,
+        null
+      ]
+    ],
+    "xbox:9NF62X1QH3CM": [
+      [
+        "2026-10-28",
+        47.99,
+        null
+      ]
+    ],
+    "xbox:9NDJMKW4F4QH": [
+      [
+        "2026-10-28",
+        31.99,
+        null
+      ]
+    ],
+    "xbox:9P8M6BX9WKVS": [
+      [
+        "2026-10-28",
+        47.99,
         null
       ]
     ],
