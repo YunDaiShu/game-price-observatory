@@ -259,6 +259,7 @@ function Similar({ rec, items }) {
             </a>
           );
         })}
+        </div>
       </div>
     </section>
   );
