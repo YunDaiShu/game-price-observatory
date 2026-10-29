@@ -447,9 +447,16 @@ h1,h2,h3{line-height:var(--lh-tight)}
 .crumbs span.sep{color:var(--border-color)}
 .crumbs .cur{color:var(--text-primary);font-weight:500}
 
-/* ===== 圆角单一来源（禁止散落硬编码） ===== */
-.btn,.sres-empty-btn,.sres-more,.sres-row,.nav-toggle{border-radius:var(--radius-btn)}
-.pill,.toggle .track{border-radius:var(--radius-pill)}
-.card-shop,.m-x{border-radius:var(--radius-round)}
-.tab{border-radius:var(--radius-btn) var(--radius-btn) 0 0}
-.info-card,.cards4,.chart-wrap,.cta{border-radius:var(--radius-btn)}
+
+/* RADIUS_FINAL：圆角唯一来源，置于文件末尾并以 !important 保证优先级 */
+:root{
+  --radius-btn:8px !important;
+  --radius-pill:999px !important;
+  --radius-round:50% !important;
+}
+.btn,.sres-empty-btn,.sres-more,.sres-row,.nav-toggle,.cta,.info-card,.cards4,.chart-wrap{border-radius:8px !important}
+.pill,.toggle .track{border-radius:999px !important}
+.card-shop,.m-x{border-radius:50% !important}
+.tab{border-radius:8px 8px 0 0 !important}
+.card{border-radius:12px !important}
+.cover,.sres-thumb{border-radius:8px !important}
