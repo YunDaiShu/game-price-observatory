@@ -29,3 +29,10 @@ body {
 @keyframes tipIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .tip-in{animation:tipIn 100ms ease-out both}
 @media (prefers-reduced-motion: reduce){.pt-pop,.tip-in{animation:none}}
+
+/* 详情页与主站共用圆角单一来源 */
+:root{--radius-btn:8px;--radius-pill:999px;--radius-round:50%}
+.rounded-btn{border-radius:var(--radius-btn)!important}
+.rounded-lg{border-radius:var(--radius-btn)!important}
+.rounded-xl{border-radius:12px!important}
+.rounded-full{border-radius:var(--radius-pill)!important}
