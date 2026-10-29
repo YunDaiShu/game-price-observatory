@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-29T01:59:21.369Z",
-  "generated_at_bj": "2026-10-29 09:59",
+  "generated_at": "2026-10-29T05:39:45.860Z",
+  "generated_at_bj": "2026-10-29 13:39",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
@@ -530,23 +530,23 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-09T17:00:00.000Z",
+      "promo_end": "2026-11-06T17:00:00.000Z",
       "tags": [],
       "supports_zh": "unknown",
-      "lowest_price": 9.8,
-      "is_new_low": null,
+      "lowest_price": 14.7,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam-specials",
-      "id": "1345940",
-      "name": "Dying Light Essentials Edition",
+      "id": "391220",
+      "name": "Rise of the Tomb Raider™",
       "free": false,
-      "price": 9.8,
-      "initial": 98,
+      "price": 14.7,
+      "initial": 147,
       "cut": 90,
-      "url": "https://store.steampowered.com/app/1345940/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1345940/header.jpg"
+      "url": "https://store.steampowered.com/app/391220/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/391220/header.jpg"
     },
     {
       "promo_start": null,
@@ -1042,28 +1042,6 @@
       "region": "JP"
     },
     {
-      "promo_start": null,
-      "promo_end": "2026-11-24T14:59:59.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70050000083576",
-      "name": "両面反転パズル 追加ステージパック Vol.1",
-      "price": 500,
-      "initial": 833,
-      "cut": 40,
-      "url": "https://store-jp.nintendo.com/list/software/70050000083576.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/f93b4163b5ac5221bf038e125627643f727a662a65c4909e3578bbf3d6d9661d.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.5",
-      "region": "JP"
-    },
-    {
       "promo_start": "2026-10-19T15:00:00.000Z",
       "promo_end": "2026-11-02T16:00:00.000Z",
       "tags": [],
@@ -1132,6 +1110,27 @@
       "needs_base": null,
       "release_date": "2026.10.15",
       "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-03T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 243.6,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "3764200",
+      "name": "Resident Evil Requiem",
+      "free": false,
+      "price": 243.6,
+      "initial": 348,
+      "cut": 30,
+      "url": "https://store.steampowered.com/app/3764200/",
+      "cover": null,
+      "cover_missing": true
     },
     {
       "promo_start": null,
@@ -2213,6 +2212,31 @@
     },
     {
       "promo_start": null,
+      "promo_end": "2026-11-29T14:59:59.000Z",
+      "tags": [
+        "パズル",
+        "パーティー"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000138027",
+      "name": "美女コーデチェック 今日の服装これで正解？",
+      "price": 420,
+      "initial": 467,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000138027.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/ed990fa98b957b1c3904ca5da36f1dcc56a247315acc05c2dc946d2e8500aef8.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.5",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
       "promo_end": "2026-11-11T17:00:39.000Z",
       "tags": [],
       "supports_zh": "unknown",
@@ -2256,27 +2280,6 @@
       "needs_base": null,
       "release_date": "2026.12.10",
       "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-11T17:00:15.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 291.6,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "4017880",
-      "name": "异界揭踪／ANOMALITH",
-      "free": false,
-      "price": 291.6,
-      "initial": 324,
-      "cut": 10,
-      "url": "https://store.steampowered.com/app/4017880/",
-      "cover": null,
-      "cover_missing": true
     },
     {
       "promo_start": null,
@@ -2351,6 +2354,32 @@
       "cut": 10,
       "url": "https://store-jp.nintendo.com/list/software/70010000119219.html",
       "cover": "https://img-eshop.cdn.nintendo.net/i/b8d0ecd1cf7bea2f4702ff75c8ba678141b6e563de5fff0ce67b71457d9e5224.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.5",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-29T14:59:59.000Z",
+      "tags": [
+        "学習",
+        "パズル",
+        "コミュニケーション"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000138067",
+      "name": "あそんでおぼえる はじめての英語",
+      "price": 680,
+      "initial": 758,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000138067.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/22d8777d76630fc6c59868c3e9e4b8d79bef7a050739ac3ad205af53d7827eac.jpg",
       "needs_base": null,
       "release_date": "2026.11.5",
       "region": "JP"
@@ -2454,32 +2483,6 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-29T14:59:59.000Z",
-      "tags": [
-        "パズル",
-        "パーティー",
-        "コミュニケーション"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000139047",
-      "name": "バナナを探せ！〜美少女脳トレゲーム〜",
-      "price": 420,
-      "initial": 467,
-      "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000139047.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/1c3547b20aea54f3ae3cc81cafc9710edef161ed2c570b3a2b2c86cf4886409e.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.5",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
       "promo_end": null,
       "tags": [],
       "supports_zh": "unknown",
@@ -2532,7 +2535,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 18455,
+      "players_online": 14462,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2591,7 +2594,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": null,
-      "players_online": 36302,
+      "players_online": 22371,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2625,7 +2628,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": null,
-      "players_online": 3955,
+      "players_online": 7292,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2734,7 +2737,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": null,
-      "players_online": 112889,
+      "players_online": 88870,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2863,7 +2866,7 @@
       "supports_zh": true,
       "lowest_price": 199,
       "is_new_low": null,
-      "players_online": 23133,
+      "players_online": 17637,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2937,7 +2940,7 @@
       "supports_zh": true,
       "lowest_price": null,
       "is_new_low": null,
-      "players_online": 3001,
+      "players_online": 2846,
       "free_kind": "permanent",
       "currency": "CNY",
       "source": "steam",
@@ -2971,7 +2974,7 @@
       "supports_zh": true,
       "lowest_price": 48,
       "is_new_low": null,
-      "players_online": 37001,
+      "players_online": 36530,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -3005,7 +3008,7 @@
       "supports_zh": true,
       "lowest_price": 42,
       "is_new_low": null,
-      "players_online": 20335,
+      "players_online": 20993,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -3123,6 +3126,11 @@
         "2026-10-27",
         19.6,
         null
+      ],
+      [
+        "2026-10-29",
+        19.6,
+        null
       ]
     ],
     "switch:70070000041202": [
@@ -3178,6 +3186,11 @@
         "2026-10-27",
         37.25,
         null
+      ],
+      [
+        "2026-10-29",
+        37.25,
+        null
       ]
     ],
     "steam-specials:1326470": [
@@ -3185,11 +3198,21 @@
         "2026-10-27",
         30.24,
         null
+      ],
+      [
+        "2026-10-29",
+        30.24,
+        null
       ]
     ],
     "steam-specials:1304930": [
       [
         "2026-10-27",
+        40.8,
+        null
+      ],
+      [
+        "2026-10-29",
         40.8,
         null
       ]
@@ -3262,6 +3285,11 @@
     "steam-specials:3240220": [
       [
         "2026-10-27",
+        74.5,
+        null
+      ],
+      [
+        "2026-10-29",
         74.5,
         null
       ]
@@ -3537,6 +3565,11 @@
     "steam-specials:5335510": [
       [
         "2026-10-27",
+        30.6,
+        null
+      ],
+      [
+        "2026-10-29",
         30.6,
         null
       ]
@@ -4409,6 +4442,132 @@
         null
       ]
     ],
+    "gog:1810099340": [
+      [
+        "2026-10-29",
+        3,
+        null
+      ]
+    ],
+    "gog:1254210921": [
+      [
+        "2026-10-29",
+        2,
+        null
+      ]
+    ],
+    "gog:2137859649": [
+      [
+        "2026-10-29",
+        2,
+        null
+      ]
+    ],
+    "gog:1207667163": [
+      [
+        "2026-10-29",
+        2,
+        null
+      ]
+    ],
+    "gog:1207658958": [
+      [
+        "2026-10-29",
+        1,
+        null
+      ]
+    ],
+    "gog:1462182139": [
+      [
+        "2026-10-29",
+        3,
+        null
+      ]
+    ],
+    "gog:1321737474": [
+      [
+        "2026-10-29",
+        2,
+        null
+      ]
+    ],
+    "gog:1323998332": [
+      [
+        "2026-10-29",
+        2,
+        null
+      ]
+    ],
+    "gog:1091409855": [
+      [
+        "2026-10-29",
+        7,
+        null
+      ]
+    ],
+    "gog:1116827902": [
+      [
+        "2026-10-29",
+        5,
+        null
+      ]
+    ],
+    "gog:1599346921": [
+      [
+        "2026-10-29",
+        8,
+        null
+      ]
+    ],
+    "gog:1170675521": [
+      [
+        "2026-10-29",
+        3,
+        null
+      ]
+    ],
+    "gog:1638321975": [
+      [
+        "2026-10-29",
+        5,
+        null
+      ]
+    ],
+    "gog:1084856569": [
+      [
+        "2026-10-29",
+        7,
+        null
+      ]
+    ],
+    "gog:1207658897": [
+      [
+        "2026-10-29",
+        1,
+        null
+      ]
+    ],
+    "gog:1249359495": [
+      [
+        "2026-10-29",
+        5,
+        null
+      ]
+    ],
+    "steam-specials:1345940": [
+      [
+        "2026-10-29",
+        9.8,
+        null
+      ]
+    ],
+    "steam-specials:2050650": [
+      [
+        "2026-10-29",
+        49.5,
+        null
+      ]
+    ],
     "switch:70010000129290": [
       [
         "2026-10-29",
@@ -4521,10 +4680,24 @@
         null
       ]
     ],
+    "steam-specials:4348910": [
+      [
+        "2026-10-29",
+        49.5,
+        null
+      ]
+    ],
     "switch:70010000131664": [
       [
         "2026-10-29",
         4180,
+        null
+      ]
+    ],
+    "steam-specials:4017880": [
+      [
+        "2026-10-29",
+        291.6,
         null
       ]
     ],
@@ -4547,6 +4720,55 @@
         "2026-10-29",
         420,
         null
+      ]
+    ],
+    "steam:1245620": [
+      [
+        "2026-10-29",
+        298,
+        18455
+      ]
+    ],
+    "steam:1086940": [
+      [
+        "2026-10-29",
+        268,
+        36302
+      ]
+    ],
+    "steam:2358720": [
+      [
+        "2026-10-29",
+        268,
+        3955
+      ]
+    ],
+    "steam:1091500": [
+      [
+        "2026-10-29",
+        298,
+        112889
+      ]
+    ],
+    "steam:292030": [
+      [
+        "2026-10-29",
+        199,
+        23133
+      ]
+    ],
+    "steam:413150": [
+      [
+        "2026-10-29",
+        48,
+        37001
+      ]
+    ],
+    "steam:105600": [
+      [
+        "2026-10-29",
+        42,
+        20335
       ]
     ]
   }
