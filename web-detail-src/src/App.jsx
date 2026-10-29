@@ -87,7 +87,7 @@ function Countdown({ end }) {
     const t = setInterval(tick, 1000);
     return () => clearInterval(t);
   }, [end]);
-  if (left === null || Number.isNaN(left)) return null;
+  if (left === null || Number.isNaN(left)) return <div className="mt-2 h-[20px]" aria-hidden="true" />;
   if (left <= 0) return <div className="mt-2 text-[13px] font-semibold text-[#86909C]">促销已结束</div>;
   const s = Math.floor(left / 1000);
   const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
@@ -120,7 +120,7 @@ function Hero({ rec }) {
     <section className="mx-auto max-w-5xl px-4 pt-5">
       <div className="grid gap-4 md:grid-cols-[minmax(0,380px)_1fr]">
         <Cover rec={rec} className="aspect-video w-full self-start" />
-        <div className="flex flex-col">
+        <div className="flex h-full flex-col">
           <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-2xl font-semibold text-[#1D2129]">{rec.name}</h1>
             <span className="rounded bg-[#F2F3F5] px-2 py-0.5 text-[11px] text-[#4E5969]">{PLAT[plat] || rec.source}</span>
@@ -144,7 +144,7 @@ function Hero({ rec }) {
           <Countdown end={rec.promo_end} />
           {rec.url && (
             <a href={rec.url} target="_blank" rel="noopener noreferrer"
-               className="mt-3 block w-full rounded-lg py-2.5 text-center text-[15px] font-semibold text-white transition hover:opacity-85"
+               className="mt-auto block h-9 w-full rounded-btn text-center text-[14px] font-semibold leading-9 text-white transition hover:opacity-85"
                style={{ background: CTA[plat] || CTA.none }}>
               打开 {PLAT[plat] || rec.source} 商店页 →
             </a>
