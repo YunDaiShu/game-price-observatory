@@ -139,14 +139,18 @@
     });
   }
 
-  /* ---------- 滚动进入视口淡入：下方 30px → 0（300ms） ---------- */
-  if ('IntersectionObserver' in window && !reduced) {
-    var revealIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('card-reveal'); revealIO.unobserve(en.target); }
-      });
-    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
-    cards.forEach(function (card) { revealIO.observe(card); });
+  /* ---------- 加载即依次入场（staggerReveal）：与滚动无关 ---------- */
+  function staggerReveal() {
+    if (reduced) return;
+    var list = [].slice.call(document.querySelectorAll('.card'));
+    list.forEach(function (el, i) {
+      if (el.hidden) return;
+      el.style.setProperty('--rev-delay', Math.min(i * 50, 1200) + 'ms');
+      el.classList.add('card-reveal');
+    });
+    setTimeout(function () {
+      list.forEach(function (el) { el.classList.remove('card-reveal'); el.style.removeProperty('--rev-delay'); });
+    }, 1800);
   }
   function matches(card) {
     var okTab = state.tab === 'all' || card.getAttribute('data-group') === state.tab;
@@ -243,6 +247,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
     showToast('已清空全部筛选条件');
   });
@@ -256,6 +261,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
     });
   });
@@ -283,6 +289,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
     showToast('已清空全部筛选条件');
   });
@@ -296,6 +303,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
     });
   });
@@ -335,6 +343,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
     showToast('已清空全部筛选条件');
   });
@@ -348,6 +357,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
   });
 
@@ -513,6 +523,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
     showToast('已清空全部筛选条件');
   });
@@ -526,6 +537,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
     if (state.q.length >= 1) loadIndex(function () { renderSearch(state.q); });
     else renderSearch('');
@@ -724,6 +736,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
     showToast('已清空全部筛选条件');
   });
@@ -737,6 +750,7 @@
     tabs.forEach(function (x) { x.setAttribute('aria-selected', x === el ? 'true' : 'false'); });
     moveIndicator(el);
   })();
+  staggerReveal();
   apply();
   tick();
   moveIndicator(document.querySelector('.tab[aria-selected="true"]'));
