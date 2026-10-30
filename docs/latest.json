@@ -1,64 +1,24 @@
 {
-  "generated_at": "2026-10-29T05:39:45.860Z",
-  "generated_at_bj": "2026-10-29 13:39",
+  "generated_at": "2026-10-30T05:38:27.067Z",
+  "generated_at_bj": "2026-10-30 13:38",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
-    "total": 126,
-    "limited_free": 2,
+    "total": 125,
+    "limited_free": 0,
     "new_low": 0,
     "failed": 0
   },
   "by_source": {
-    "epic": 12,
     "gog": 16,
     "switch": 40,
     "steam-specials": 10,
-    "xbox": 33,
+    "xbox": 34,
+    "epic": 10,
     "steam": 8,
     "appstore": 7
   },
   "items": [
-    {
-      "promo_start": "2026-10-22T15:00:00.000Z",
-      "promo_end": "2026-10-29T15:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": "limited",
-      "currency": "CNY",
-      "source": "epic",
-      "id": "06190191cede42afb633fe89ef08c27e",
-      "name": "Home - A Unique Horror Adventure",
-      "price": 0,
-      "initial": 15,
-      "cut": 100,
-      "url": "https://store.epicgames.com/zh-CN/p/home-19212a",
-      "cover": "https://cdn1.epicgames.com/spt-assets/46fc0cdb9f164a848e916249a8f68fc7/home-1f6qi.png",
-      "name_en": "Home - A Unique Horror Adventure"
-    },
-    {
-      "promo_start": "2026-10-22T15:00:00.000Z",
-      "promo_end": "2026-10-29T15:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": "limited",
-      "currency": "CNY",
-      "source": "epic",
-      "id": "6aab3ddef4f84fbc9dd81c60f9d8549c",
-      "name": "Sker Ritual",
-      "price": 0,
-      "initial": 78,
-      "cut": 100,
-      "url": "https://store.epicgames.com/zh-CN/p/sker-ritual-aac702",
-      "cover": "https://cdn1.epicgames.com/spt-assets/43d96f4437e34c87b7eff08831d1b1de/sker-ritual-14x61.jpg",
-      "name_en": "Sker Ritual"
-    },
     {
       "promo_start": null,
       "promo_end": null,
@@ -72,7 +32,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 3,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -96,7 +56,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 2,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -125,7 +85,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 2,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -154,7 +114,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 2,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -183,7 +143,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 1,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -212,7 +172,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 3,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -241,7 +201,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 2,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -270,7 +230,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 2,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -299,7 +259,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 7,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -328,7 +288,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 5,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -352,7 +312,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 8,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -381,7 +341,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 3,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -410,7 +370,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 5,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -437,7 +397,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 7,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -465,7 +425,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 1,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -492,7 +452,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 5,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -572,26 +532,6 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-06T17:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 19.6,
-      "is_new_low": false,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "750920",
-      "name": "Shadow of the Tomb Raider: Definitive Edition",
-      "free": false,
-      "price": 19.6,
-      "initial": 196,
-      "cut": 90,
-      "url": "https://store.steampowered.com/app/750920/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/750920/header.jpg"
-    },
-    {
-      "promo_start": null,
       "promo_end": null,
       "tags": [
         "Action & adventure"
@@ -611,6 +551,28 @@
       "url": "https://www.microsoft.com/store/productId/9MW10GX140N1",
       "cover": "https://store-images.s-microsoft.com/image/apps.64128.13853283465555502.df9a42b7-95ee-4088-89b3-08a50204f8ef.da71d8cf-7bb7-4f0d-a0e0-9df90aba8b88",
       "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-12T14:59:59.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70050000081337",
+      "name": "Rotwood: Drakin Armoury Pack (ロトウード：ドラキン・アーマリーパック )",
+      "price": 655,
+      "initial": 4290,
+      "cut": 85,
+      "url": "https://store-jp.nintendo.com/list/software/70050000081337.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/58a4b70c2ecde287e1c02f1fea1ae9bcfa7c9b8e5b806ac62544de7cc4559d43.jpg",
+      "needs_base": null,
+      "release_date": "2026.10.30",
+      "region": "JP"
     },
     {
       "promo_start": "2026-10-19T15:00:00.000Z",
@@ -638,7 +600,7 @@
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 49.5,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -731,6 +693,50 @@
       "url": "https://store.epicgames.com/zh-CN/p/monument-valley-02",
       "cover": "https://cdn1.epicgames.com/spt-assets/e56a7411805046d3b5b7253a6e4e0faa/monument-valley-1gys5.jpg",
       "name_en": "Monument Valley"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Simulation"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NH8N0M7CWLN",
+      "name": "Microsoft Flight Simulator (2020) Deluxe 40th Anniversary Edition",
+      "price": 31.49,
+      "initial": 89.99,
+      "cut": 65,
+      "url": "https://www.microsoft.com/store/productId/9NH8N0M7CWLN",
+      "cover": "https://store-images.s-microsoft.com/image/apps.57274.13630274674230323.ef522ebd-e0ea-449e-b0c8-3271887caa67.2e92ae62-cd3e-458f-a8f8-3927865645e2",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Simulation"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9PJ15D3RDXMV",
+      "name": "Microsoft Flight Simulator (2020) Premium Deluxe 40th Anniversary Edition",
+      "price": 41.99,
+      "initial": 119.99,
+      "cut": 65,
+      "url": "https://www.microsoft.com/store/productId/9PJ15D3RDXMV",
+      "cover": "https://store-images.s-microsoft.com/image/apps.13845.14225646405929875.ed2b05a2-f9fd-4a33-b808-807366c017bf.5f1f24de-445f-4bf0-af0b-cf1de8aec6d5",
+      "region": "US"
     },
     {
       "promo_start": null,
@@ -1042,48 +1048,24 @@
       "region": "JP"
     },
     {
-      "promo_start": "2026-10-19T15:00:00.000Z",
-      "promo_end": "2026-11-02T16:00:00.000Z",
+      "promo_start": null,
+      "promo_end": "2026-11-05T18:00:00.000Z",
       "tags": [],
       "supports_zh": "unknown",
-      "lowest_price": 54.6,
-      "is_new_low": false,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "epic",
-      "id": "4e469c7d8bbf49bcabc2c07127d3d946",
-      "name": "《Sorry We’re Closed》",
-      "price": 54.6,
-      "initial": 78,
-      "cut": 30,
-      "url": "https://store.epicgames.com/zh-CN/p/sorry-were-closed-724c86",
-      "cover": "https://cdn1.epicgames.com/spt-assets/9ab7eaaeb2f041969b350955b789f0f7/sorry-were-closed-1orqh.png",
-      "name_en": "Sorry We're Closed"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-03T14:59:59.000Z",
-      "tags": [
-        "アドベンチャー"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
+      "lowest_price": 51.59,
       "is_new_low": null,
       "players_online": null,
       "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000136605",
-      "name": "夜勤事件",
-      "price": 990,
-      "initial": 1420,
-      "cut": 30,
-      "url": "https://store-jp.nintendo.com/list/software/70010000136605.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/09f854578aa0fb20e44fead9b5cda9b36fc05b7a127b783ee6effd7d981454e4.jpg",
-      "needs_base": null,
-      "release_date": "2026.9.24",
-      "region": "JP"
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "648800",
+      "name": "Raft",
+      "free": false,
+      "price": 51.59,
+      "initial": 77,
+      "cut": 33,
+      "url": "https://store.steampowered.com/app/648800/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/648800/header.jpg"
     },
     {
       "promo_start": null,
@@ -1117,7 +1099,7 @@
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 243.6,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -1131,6 +1113,54 @@
       "url": "https://store.steampowered.com/app/3764200/",
       "cover": null,
       "cover_missing": true
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-12T13:59:59.000Z",
+      "tags": [
+        "アドベンチャー",
+        "ロールプレイング",
+        "その他"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000125948",
+      "name": "The Thaumaturge",
+      "price": 3900,
+      "initial": 5571,
+      "cut": 30,
+      "url": "https://store-jp.nintendo.com/list/software/70010000125948.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/7d5cad2455fdaeafad8e3df2d0d6bdeea5b52007c59646f1663a2afc76ea9210.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-12T13:59:59.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70070000036269",
+      "name": "The Thaumaturge: Deluxe Edition",
+      "price": 4300,
+      "initial": 6143,
+      "cut": 30,
+      "url": "https://store-jp.nintendo.com/list/software/70070000036269.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/0ba4fe127a6d018ee2593e38506e1b51b6bc21a46c746eb1994214af9116be61.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
+      "region": "JP"
     },
     {
       "promo_start": null,
@@ -1224,6 +1254,31 @@
       "cover": "https://img-eshop.cdn.nintendo.net/i/e496ecf1312d93de2818c0ad4fbad2b519fb71f52717aa5b01787eb18ce50e43.jpg",
       "needs_base": null,
       "release_date": "2026.10.22",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-15T14:59:59.000Z",
+      "tags": [
+        "アドベンチャー",
+        "アクション"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000128733",
+      "name": "Sword of the Sea",
+      "price": 4380,
+      "initial": 5513,
+      "cut": 21,
+      "url": "https://store-jp.nintendo.com/list/software/70010000128733.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/b53578325c55c682427849041d9fed1f4fca7c22553e1d2993e91da452851d14.jpg",
+      "needs_base": null,
+      "release_date": "2026.10.30",
       "region": "JP"
     },
     {
@@ -1583,50 +1638,6 @@
       "needs_base": null,
       "release_date": "2026.11.26",
       "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Simulation"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "USD",
-      "source": "xbox",
-      "id": "9NH8N0M7CWLN",
-      "name": "Microsoft Flight Simulator (2020) Deluxe 40th Anniversary Edition",
-      "price": 71.99,
-      "initial": 89.99,
-      "cut": 20,
-      "url": "https://www.microsoft.com/store/productId/9NH8N0M7CWLN",
-      "cover": "https://store-images.s-microsoft.com/image/apps.57274.13630274674230323.ef522ebd-e0ea-449e-b0c8-3271887caa67.2e92ae62-cd3e-458f-a8f8-3927865645e2",
-      "region": "US"
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "Simulation"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "USD",
-      "source": "xbox",
-      "id": "9PJ15D3RDXMV",
-      "name": "Microsoft Flight Simulator (2020) Premium Deluxe 40th Anniversary Edition",
-      "price": 95.99,
-      "initial": 119.99,
-      "cut": 20,
-      "url": "https://www.microsoft.com/store/productId/9PJ15D3RDXMV",
-      "cover": "https://store-images.s-microsoft.com/image/apps.13845.14225646405929875.ed2b05a2-f9fd-4a33-b808-807366c017bf.5f1f24de-445f-4bf0-af0b-cf1de8aec6d5",
-      "region": "US"
     },
     {
       "promo_start": null,
@@ -2187,61 +2198,11 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-29T14:59:59.000Z",
-      "tags": [
-        "パズル",
-        "パーティー"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000138021",
-      "name": "黒髪美女とサマーバカンス間違い探し",
-      "price": 420,
-      "initial": 467,
-      "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000138021.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/afc8e8756911a22bb49c2382bf09b894bf5d7d744349ee123c829aadd1ed7885.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.5",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-29T14:59:59.000Z",
-      "tags": [
-        "パズル",
-        "パーティー"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000138027",
-      "name": "美女コーデチェック 今日の服装これで正解？",
-      "price": 420,
-      "initial": 467,
-      "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000138027.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/ed990fa98b957b1c3904ca5da36f1dcc56a247315acc05c2dc946d2e8500aef8.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.5",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
       "promo_end": "2026-11-11T17:00:39.000Z",
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 49.5,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -2255,6 +2216,56 @@
       "url": "https://store.steampowered.com/app/4348910/",
       "cover": null,
       "cover_missing": true
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-19T14:59:59.000Z",
+      "tags": [
+        "ロールプレイング",
+        "アドベンチャー"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000130918",
+      "name": "天空の世界シェルテーラ",
+      "price": 1540,
+      "initial": 1711,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000130918.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/2982aa251244a7e17f6363f7bd6d976c10b948a2fe96c0edc6b6bdf6466176dc.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.6",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-19T14:59:59.000Z",
+      "tags": [
+        "ロールプレイング",
+        "アドベンチャー"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000140853",
+      "name": "天空の世界シェルテーラ Nintendo Switch 2 Edition",
+      "price": 1640,
+      "initial": 1822,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000140853.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/4e19f95bd1ba8cbc9e5ffbb74011e54f405c85a37128a81b9b6a7d0dfbfda483.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.6",
+      "region": "JP"
     },
     {
       "promo_start": null,
@@ -2279,32 +2290,6 @@
       "cover": "https://img-eshop.cdn.nintendo.net/i/567df1095f4db35020427d52564630499e85a9819472cad0b384f3f010111ff2.jpg",
       "needs_base": null,
       "release_date": "2026.12.10",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-29T14:59:59.000Z",
-      "tags": [
-        "パズル",
-        "アドベンチャー",
-        "トレーニング"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000137502",
-      "name": "意味がわかると不気味なマンガ 〜ーゾッとする意味怖謎解き都市伝説怪談ゲームー〜",
-      "price": 420,
-      "initial": 467,
-      "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000137502.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/c1c1cf19838ffa383a09c56393e4cd8fa7ae86898b791036a9277ae3272c161f.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.5",
       "region": "JP"
     },
     {
@@ -2360,54 +2345,25 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-29T14:59:59.000Z",
+      "promo_end": null,
       "tags": [
-        "学習",
-        "パズル",
-        "コミュニケーション"
+        "Action & adventure"
       ],
       "supports_zh": "unknown",
       "lowest_price": null,
       "is_new_low": null,
       "players_online": null,
       "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000138067",
-      "name": "あそんでおぼえる はじめての英語",
-      "price": 680,
-      "initial": 758,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9MZV840NDMBM",
+      "name": "Minecraft Dungeons II Deluxe Edition",
+      "price": 44.99,
+      "initial": 49.99,
       "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000138067.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/22d8777d76630fc6c59868c3e9e4b8d79bef7a050739ac3ad205af53d7827eac.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.5",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-29T14:59:59.000Z",
-      "tags": [
-        "パズル",
-        "パーティー"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000138014",
-      "name": "ギャルと南国バカンス 常夏の思い出",
-      "price": 420,
-      "initial": 467,
-      "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000138014.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/fe2dc8e9f5f85389782827b9798c58f2c8420e8e113b89ad37f83174f4235b75.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.5",
-      "region": "JP"
+      "url": "https://www.microsoft.com/store/productId/9MZV840NDMBM",
+      "cover": "https://store-images.s-microsoft.com/image/apps.28383.13596461372408012.94cfead7-27a0-44f4-8127-77eac62fa825.d97b27a5-8d69-48a8-9b88-2daa7aac21f8",
+      "region": "US"
     },
     {
       "promo_start": null,
@@ -2534,8 +2490,8 @@
       ],
       "supports_zh": true,
       "lowest_price": 298,
-      "is_new_low": null,
-      "players_online": 14462,
+      "is_new_low": false,
+      "players_online": 15218,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2593,8 +2549,8 @@
       ],
       "supports_zh": true,
       "lowest_price": 268,
-      "is_new_low": null,
-      "players_online": 22371,
+      "is_new_low": false,
+      "players_online": 22241,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2617,6 +2573,26 @@
     {
       "promo_start": null,
       "promo_end": null,
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 75,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "epic",
+      "id": "3be0a0d8479946d78f60d90c9442a0b4",
+      "name": "浮游世界",
+      "price": 75,
+      "initial": 75,
+      "cut": 0,
+      "url": "https://store.epicgames.com/zh-CN/p/flotsam-266287",
+      "cover": "https://cdn1.epicgames.com/spt-assets/5c36b876e80d4285b9993947efeeaf2b/flotsam-1yczl.jpg",
+      "name_en": "Flotsam"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
       "tags": [
         "动作",
         "冒险",
@@ -2627,8 +2603,8 @@
       ],
       "supports_zh": true,
       "lowest_price": 268,
-      "is_new_low": null,
-      "players_online": 7292,
+      "is_new_low": false,
+      "players_online": 9320,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2736,8 +2712,8 @@
       ],
       "supports_zh": true,
       "lowest_price": 298,
-      "is_new_low": null,
-      "players_online": 88870,
+      "is_new_low": false,
+      "players_online": 88065,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2865,8 +2841,8 @@
       ],
       "supports_zh": true,
       "lowest_price": 199,
-      "is_new_low": null,
-      "players_online": 17637,
+      "is_new_low": false,
+      "players_online": 17128,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2940,7 +2916,7 @@
       "supports_zh": true,
       "lowest_price": null,
       "is_new_low": null,
-      "players_online": 2846,
+      "players_online": 2572,
       "free_kind": "permanent",
       "currency": "CNY",
       "source": "steam",
@@ -2973,8 +2949,8 @@
       ],
       "supports_zh": true,
       "lowest_price": 48,
-      "is_new_low": null,
-      "players_online": 36530,
+      "is_new_low": false,
+      "players_online": 37470,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -3007,8 +2983,8 @@
       ],
       "supports_zh": true,
       "lowest_price": 42,
-      "is_new_low": null,
-      "players_online": 20993,
+      "is_new_low": false,
+      "players_online": 22294,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -3117,6 +3093,11 @@
     "steam-specials:391220": [
       [
         "2026-10-27",
+        14.7,
+        null
+      ],
+      [
+        "2026-10-29",
         14.7,
         null
       ]
@@ -4554,13 +4535,6 @@
         null
       ]
     ],
-    "steam-specials:1345940": [
-      [
-        "2026-10-29",
-        9.8,
-        null
-      ]
-    ],
     "steam-specials:2050650": [
       [
         "2026-10-29",
@@ -4603,10 +4577,10 @@
         null
       ]
     ],
-    "switch:70050000083576": [
+    "steam-specials:3764200": [
       [
         "2026-10-29",
-        500,
+        243.6,
         null
       ]
     ],
@@ -4680,6 +4654,13 @@
         null
       ]
     ],
+    "switch:70010000138027": [
+      [
+        "2026-10-29",
+        420,
+        null
+      ]
+    ],
     "steam-specials:4348910": [
       [
         "2026-10-29",
@@ -4694,17 +4675,17 @@
         null
       ]
     ],
-    "steam-specials:4017880": [
-      [
-        "2026-10-29",
-        291.6,
-        null
-      ]
-    ],
     "switch:70010000137502": [
       [
         "2026-10-29",
         420,
+        null
+      ]
+    ],
+    "switch:70010000138067": [
+      [
+        "2026-10-29",
+        680,
         null
       ]
     ],
@@ -4715,60 +4696,53 @@
         null
       ]
     ],
-    "switch:70010000139047": [
-      [
-        "2026-10-29",
-        420,
-        null
-      ]
-    ],
     "steam:1245620": [
       [
         "2026-10-29",
         298,
-        18455
+        14462
       ]
     ],
     "steam:1086940": [
       [
         "2026-10-29",
         268,
-        36302
+        22371
       ]
     ],
     "steam:2358720": [
       [
         "2026-10-29",
         268,
-        3955
+        7292
       ]
     ],
     "steam:1091500": [
       [
         "2026-10-29",
         298,
-        112889
+        88870
       ]
     ],
     "steam:292030": [
       [
         "2026-10-29",
         199,
-        23133
+        17637
       ]
     ],
     "steam:413150": [
       [
         "2026-10-29",
         48,
-        37001
+        36530
       ]
     ],
     "steam:105600": [
       [
         "2026-10-29",
         42,
-        20335
+        20993
       ]
     ]
   }
