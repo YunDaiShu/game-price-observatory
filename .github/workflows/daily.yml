@@ -60,3 +60,33 @@ jobs:
               body,
               labels: ['automation']
             });
+
+      - name: Close stale failure issues
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // 抓取成功后，把历史遗留的失败 issue 自动关闭，避免常开堆积
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'automation',
+              per_page: 100,
+            });
+            const stale = issues.filter((i) => !i.pull_request && i.title.startsWith('每日抓取失败'));
+            for (const i of stale) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: i.number,
+                body: '本次抓取已恢复正常，自动关闭。',
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: i.number,
+                state: 'closed',
+              });
+            }
+            core.info('closed ' + stale.length + ' stale issue(s)');
