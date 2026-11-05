@@ -4,34 +4,34 @@
     "pausedUntil": null,
     "lastError": null,
     "lastFail": null,
-    "lastOk": "2026-11-04"
+    "lastOk": "2026-11-05"
   },
   "steam": {
     "failStreak": 0,
     "pausedUntil": null,
     "lastError": null,
     "lastFail": null,
-    "lastOk": "2026-11-04"
+    "lastOk": "2026-11-05"
   },
   "steam-specials": {
     "failStreak": 0,
     "pausedUntil": null,
     "lastError": null,
     "lastFail": null,
-    "lastOk": "2026-11-04"
+    "lastOk": "2026-11-05"
   },
   "epic": {
     "failStreak": 0,
     "pausedUntil": null,
     "lastError": null,
     "lastFail": null,
-    "lastOk": "2026-11-04"
+    "lastOk": "2026-11-05"
   },
   "gog": {
     "failStreak": 0,
     "pausedUntil": null,
     "lastError": null,
     "lastFail": null,
-    "lastOk": "2026-11-04"
+    "lastOk": "2026-11-05"
   }
 }

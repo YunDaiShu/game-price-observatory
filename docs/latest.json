@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-04T06:07:08.800Z",
-  "generated_at_bj": "2026-11-04 14:07",
+  "generated_at": "2026-11-05T06:35:25.765Z",
+  "generated_at_bj": "2026-11-05 14:35",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
-    "total": 124,
+    "total": 125,
     "limited_free": 1,
     "new_low": 0,
     "failed": 0
@@ -12,9 +12,9 @@
   "by_source": {
     "epic": 11,
     "gog": 17,
-    "switch": 40,
     "steam-specials": 10,
-    "xbox": 31,
+    "xbox": 32,
+    "switch": 40,
     "steam": 8,
     "appstore": 7
   },
@@ -501,7 +501,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 5,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -517,25 +517,23 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-04T14:59:59.000Z",
+      "promo_end": "2026-11-09T17:00:00.000Z",
       "tags": [],
       "supports_zh": "unknown",
-      "lowest_price": null,
+      "lowest_price": 9.8,
       "is_new_low": null,
       "players_online": null,
       "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70050000082474",
-      "name": "Hitman: Absolution Nintendo Switch 2 Edition アップグレードパス",
-      "price": 1239,
-      "initial": 15351,
-      "cut": 92,
-      "url": "https://store-jp.nintendo.com/list/software/70050000082474.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/c6adf2c146e2b1b9943722f50d59c1cc28a286671045f76ab20a0c7502f4ef8a.jpg",
-      "needs_base": true,
-      "release_date": "2026.10.22",
-      "region": "JP"
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "1345940",
+      "name": "Dying Light Essentials Edition",
+      "free": false,
+      "price": 9.8,
+      "initial": 98,
+      "cut": 90,
+      "url": "https://store.steampowered.com/app/1345940/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1345940/header.jpg"
     },
     {
       "promo_start": null,
@@ -578,50 +576,6 @@
       "url": "https://www.microsoft.com/store/productId/BNQQ3WVBNZCQ",
       "cover": "https://store-images.s-microsoft.com/image/apps.23964.68112460555114547.f599eff6-c432-4510-af15-bfe339796812.955330ba-ec69-4007-a274-96058599d8f5",
       "region": "US"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-29T14:59:59.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70070000041328",
-      "name": "ピアノ：学習と演奏 マスターピース　エディション",
-      "price": 2789,
-      "initial": 26015,
-      "cut": 89,
-      "url": "https://store-jp.nintendo.com/list/software/70070000041328.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/8237adc9ef97b7857075d9650be095305a3254ab03bad8a323f8018259f43d9c.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.3",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-28T14:59:59.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70070000041317",
-      "name": "スマーフ　の　カラフル　ストーリー クリエイティブ スタジオ エディション",
-      "price": 2290,
-      "initial": 17539,
-      "cut": 87,
-      "url": "https://store-jp.nintendo.com/list/software/70070000041317.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/2bd6554f7180b21894897b923be023b298c0109be03dd46b6b6719fa598e0504.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.2",
-      "region": "JP"
     },
     {
       "promo_start": null,
@@ -757,59 +711,7 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-12-08T14:59:59.000Z",
-      "tags": [
-        "シミュレーション",
-        "コミュニケーション",
-        "ロールプレイング"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000129290",
-      "name": "怪獣ガールズ：モンスターを捕まえて恋に落ちろ (Kaiju Girls: Trap Giant Monsters & Fall in Love)",
-      "price": 3990,
-      "initial": 9975,
-      "cut": 60,
-      "url": "https://store-jp.nintendo.com/list/software/70010000129290.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/60e830bdd5cb3683825ffbca3dd8ff28a9e1ce064c99f657e050cb3f0cd09398.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.12",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-12-08T14:59:59.000Z",
-      "tags": [
-        "シミュレーション",
-        "コミュニケーション",
-        "ロールプレイング"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000129296",
-      "name": "怪獣ボーイズ：モンスターを捕まえて恋に落ちろ (Kaiju Boys: Trap Giant Monsters & Fall in Love)",
-      "price": 3990,
-      "initial": 9975,
-      "cut": 60,
-      "url": "https://store-jp.nintendo.com/list/software/70010000129296.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/f62b7c2e06b3379cc3e373a0a5f33f285bdd3a6f1206f9e9a2c0735b64a7fe1a.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.12",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-12-08T14:59:59.000Z",
+      "promo_end": "2026-12-15T14:59:59.000Z",
       "tags": [
         "シミュレーション",
         "ストラテジー",
@@ -822,20 +724,20 @@
       "free_kind": null,
       "currency": "JPY",
       "source": "switch",
-      "id": "70010000120015",
-      "name": "猫 vs ネット：ミーム大戦 ガールズ (Cats vs Internet: Rise of the Memes Girls)",
+      "id": "70010000123147",
+      "name": "ペットに恋した俺：モンスターからアニマル男子を守れ (My Pet Seduced Me: Save Animal Boys from the Monster)",
       "price": 3990,
       "initial": 9975,
       "cut": 60,
-      "url": "https://store-jp.nintendo.com/list/software/70010000120015.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/03f987d14703214c60290f6ed19f7a5f168ff3d82d389e1ac2c4243148e56bfe.jpg",
+      "url": "https://store-jp.nintendo.com/list/software/70010000123147.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/e751e787aaff9444135639b9990f8aad8709a1063681b74fc0d86c95b2277957.jpg",
       "needs_base": null,
-      "release_date": "2026.11.12",
+      "release_date": "2026.11.19",
       "region": "JP"
     },
     {
       "promo_start": null,
-      "promo_end": "2026-12-08T14:59:59.000Z",
+      "promo_end": "2026-12-15T14:59:59.000Z",
       "tags": [
         "シミュレーション",
         "ストラテジー",
@@ -848,15 +750,67 @@
       "free_kind": null,
       "currency": "JPY",
       "source": "switch",
-      "id": "70010000120043",
-      "name": "猫 vs ネット：ミーム大戦 ボーイズ (Cats vs Internet: Rise of the Memes Boys)",
+      "id": "70010000123141",
+      "name": "ペットに恋した俺：モンスターからアニマル娘を守れ (My Pet Seduced Me: Save Animal Girls from the Monster)",
       "price": 3990,
       "initial": 9975,
       "cut": 60,
-      "url": "https://store-jp.nintendo.com/list/software/70010000120043.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/de869a2dc0433fb366d4f60a115bf0495dd547e82bcdf18f5fb087c3733f0375.jpg",
+      "url": "https://store-jp.nintendo.com/list/software/70010000123141.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/c8a1b214337213bc6da4caa5fe3eb0504987c8c60849f755b09bce26677e671d.jpg",
       "needs_base": null,
-      "release_date": "2026.11.12",
+      "release_date": "2026.11.19",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-15T14:59:59.000Z",
+      "tags": [
+        "シミュレーション",
+        "コミュニケーション",
+        "実用"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000137606",
+      "name": "レインボー・ロマンス：男子大学生同士の恋 (Rainbow Romance: College Boys in Love)",
+      "price": 3990,
+      "initial": 9975,
+      "cut": 60,
+      "url": "https://store-jp.nintendo.com/list/software/70010000137606.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/67bebabfc07daa5f1ff2eab1f8a635f794500aa7624196a7bbdbcef2b11c495c.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.19",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-15T14:59:59.000Z",
+      "tags": [
+        "シミュレーション",
+        "コミュニケーション",
+        "実用"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000137600",
+      "name": "レインボー・ロマンス：女子大学生同士の恋 (Rainbow Romance: College Girls in Love)",
+      "price": 3990,
+      "initial": 9975,
+      "cut": 60,
+      "url": "https://store-jp.nintendo.com/list/software/70010000137600.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/29e1105ad36a87d35b61b4d7074300b29c54c2a94303aefbf116cf7118f9727c.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.19",
       "region": "JP"
     },
     {
@@ -883,28 +837,6 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-20T14:59:59.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70070000041487",
-      "name": "塗り絵の達人：ドット絵ドリーマー:オリジン シーズン 7",
-      "price": 2101,
-      "initial": 4204,
-      "cut": 50,
-      "url": "https://store-jp.nintendo.com/list/software/70070000041487.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/fcb2b9f32d02ada4faa102da285146055f83db9e1426e9301c9d592252a1a30e.jpg",
-      "needs_base": null,
-      "release_date": "2026.10.31",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
       "promo_end": "2026-11-05T18:00:00.000Z",
       "tags": [],
       "supports_zh": "unknown",
@@ -922,6 +854,55 @@
       "cut": 50,
       "url": "https://store.steampowered.com/app/3240220/",
       "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/3240220/header.jpg"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-11-29T14:59:59.000Z",
+      "tags": [
+        "パズル"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000139733",
+      "name": "Marble Saga - The Curse of the Sun Temple",
+      "price": 800,
+      "initial": 1600,
+      "cut": 50,
+      "url": "https://store-jp.nintendo.com/list/software/70010000139733.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/25d7885767ccd5190d7731794671133c95382f6127f85bb70b0a8417bb374e0a.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2027-01-31T14:59:59.000Z",
+      "tags": [
+        "パズル",
+        "パーティー"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000104582",
+      "name": "ぴよっとぷらねっと",
+      "price": 400,
+      "initial": 800,
+      "cut": 50,
+      "url": "https://store-jp.nintendo.com/list/software/70010000104582.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/5ba349ad57c4f4cf9541b5d9bb25be75fdf24ed389d1e67ff16b51ced95a3d4a.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.26",
+      "region": "JP"
     },
     {
       "promo_start": null,
@@ -949,11 +930,11 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-24T13:59:59.000Z",
+      "promo_end": "2026-12-01T14:59:59.000Z",
       "tags": [
+        "アーケード",
         "アクション",
-        "アドベンチャー",
-        "アーケード"
+        "レース"
       ],
       "supports_zh": "unknown",
       "lowest_price": null,
@@ -962,15 +943,15 @@
       "free_kind": null,
       "currency": "JPY",
       "source": "switch",
-      "id": "70010000131610",
-      "name": "The Lost Pit",
-      "price": 1505,
-      "initial": 2665,
-      "cut": 44,
-      "url": "https://store-jp.nintendo.com/list/software/70010000131610.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/ecba1ba6c7ebd0a22eb23cae23bd38d32596b600b9f12e181ee27ef530c8a643.jpg",
+      "id": "70010000138343",
+      "name": "Big Jhow Jet",
+      "price": 1488,
+      "initial": 2605,
+      "cut": 43,
+      "url": "https://store-jp.nintendo.com/list/software/70010000138343.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/1bd9f0a6af59f75d4b55f3955d7ec94da21054d5272fb97eddbfb83a65fa3a77.jpg",
       "needs_base": null,
-      "release_date": "2026.11.13",
+      "release_date": "2026.11.20",
       "region": "JP"
     },
     {
@@ -995,22 +976,22 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-09T18:00:00.000Z",
+      "promo_end": "2026-11-05T18:00:00.000Z",
       "tags": [],
       "supports_zh": "unknown",
-      "lowest_price": 202.8,
-      "is_new_low": false,
+      "lowest_price": 19.8,
+      "is_new_low": null,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam-specials",
-      "id": "3768760",
-      "name": "007 初露锋芒",
+      "id": "3949040",
+      "name": "我们到了吗？",
       "free": false,
-      "price": 202.8,
-      "initial": 338,
+      "price": 19.8,
+      "initial": 33,
       "cut": 40,
-      "url": "https://store.steampowered.com/app/3768760/",
+      "url": "https://store.steampowered.com/app/3949040/",
       "cover": null,
       "cover_missing": true
     },
@@ -1082,11 +1063,11 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-12T13:59:59.000Z",
+      "promo_end": "2027-01-19T14:59:59.000Z",
       "tags": [
-        "アドベンチャー",
-        "ロールプレイング",
-        "その他"
+        "アクション",
+        "パーティー",
+        "コミュニケーション"
       ],
       "supports_zh": "unknown",
       "lowest_price": null,
@@ -1095,37 +1076,15 @@
       "free_kind": null,
       "currency": "JPY",
       "source": "switch",
-      "id": "70010000125948",
-      "name": "The Thaumaturge",
-      "price": 3900,
-      "initial": 5571,
-      "cut": 30,
-      "url": "https://store-jp.nintendo.com/list/software/70010000125948.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/7d5cad2455fdaeafad8e3df2d0d6bdeea5b52007c59646f1663a2afc76ea9210.jpg",
+      "id": "70010000140461",
+      "name": "ボクらの消しゴム落とし4 オンラインバトル",
+      "price": 700,
+      "initial": 980,
+      "cut": 29,
+      "url": "https://store-jp.nintendo.com/list/software/70010000140461.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/35d5ca309c2c08ff323bdfbab7193882b42ebc9f821ec447f35d52feb4b71825.jpg",
       "needs_base": null,
-      "release_date": "2026.11.12",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-12T13:59:59.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70070000036269",
-      "name": "The Thaumaturge: Deluxe Edition",
-      "price": 4300,
-      "initial": 6143,
-      "cut": 30,
-      "url": "https://store-jp.nintendo.com/list/software/70070000036269.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/0ba4fe127a6d018ee2593e38506e1b51b6bc21a46c746eb1994214af9116be61.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.12",
+      "release_date": "2026.11.19",
       "region": "JP"
     },
     {
@@ -1177,31 +1136,6 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-04T14:59:59.000Z",
-      "tags": [
-        "アクション",
-        "アドベンチャー"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000135983",
-      "name": "蒼き雷霆（アームドブルー） ガンヴォルト トライアングル エディション Nintendo Switch 2 Edition",
-      "price": 6480,
-      "initial": 8258,
-      "cut": 22,
-      "url": "https://store-jp.nintendo.com/list/software/70010000135983.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/e496ecf1312d93de2818c0ad4fbad2b519fb71f52717aa5b01787eb18ce50e43.jpg",
-      "needs_base": null,
-      "release_date": "2026.10.22",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
       "promo_end": "2026-11-15T14:59:59.000Z",
       "tags": [
         "アドベンチャー",
@@ -1224,27 +1158,6 @@
       "needs_base": null,
       "release_date": "2026.10.30",
       "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-10T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 214.4,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "3669870",
-      "name": "控制: 共振",
-      "free": false,
-      "price": 214.4,
-      "initial": 268,
-      "cut": 20,
-      "url": "https://store.steampowered.com/app/3669870/",
-      "cover": null,
-      "cover_missing": true
     },
     {
       "promo_start": null,
@@ -1288,6 +1201,28 @@
       "cut": 20,
       "url": "https://www.microsoft.com/store/productId/9NN144QSW0T0",
       "cover": "https://store-images.s-microsoft.com/image/apps.11424.13752337963608113.3c47c041-f989-44b0-87bf-b7fd43360a66.e07102a4-ad1e-4312-a9b6-404362943ce4",
+      "region": "US"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "Role playing"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "USD",
+      "source": "xbox",
+      "id": "9NFHQ2719J83",
+      "name": "Avowed Premium Edition",
+      "price": 47.99,
+      "initial": 59.99,
+      "cut": 20,
+      "url": "https://www.microsoft.com/store/productId/9NFHQ2719J83",
+      "cover": "https://store-images.s-microsoft.com/image/apps.54988.13594600110987132.5376950b-9493-4428-9d55-8d6df3956a11.4c4f796b-ac3a-4272-af0d-2b7d861b2fb7",
       "region": "US"
     },
     {
@@ -1513,30 +1448,6 @@
       "url": "https://www.microsoft.com/store/productId/9P0SWLC2F1XJ",
       "cover": "https://store-images.s-microsoft.com/image/apps.12555.14524964047097043.d9c9d5af-d2c8-4c6b-b3b9-a50b9e78a0b1.9a8ba2c9-a88c-4765-9960-0d6789e0bfad",
       "region": "US"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-25T14:59:59.000Z",
-      "tags": [
-        "アドベンチャー"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000140286",
-      "name": "MagicalCharming!",
-      "price": 2200,
-      "initial": 2750,
-      "cut": 20,
-      "url": "https://store-jp.nintendo.com/list/software/70010000140286.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/77a421ceb91958314dbbe04184093e8dfeb8cdf14ba97b5afdb06558470cef1d.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.26",
-      "region": "JP"
     },
     {
       "promo_start": null,
@@ -1858,32 +1769,6 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-21T14:59:59.000Z",
-      "tags": [
-        "シミュレーション",
-        "ロールプレイング",
-        "アドベンチャー"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000140059",
-      "name": "クロスランド せいれいたちとつむぐせかい",
-      "price": 3700,
-      "initial": 4625,
-      "cut": 20,
-      "url": "https://store-jp.nintendo.com/list/software/70010000140059.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/e1e203955dddbf1201b7b4429fd80a455c435cca9e0506fa987445af10631dcf.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.17",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
       "promo_end": "2026-11-12T14:59:59.000Z",
       "tags": [
         "アクション",
@@ -1935,23 +1820,49 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-17T18:00:53.000Z",
+      "promo_end": "2026-11-06T17:00:43.000Z",
       "tags": [],
       "supports_zh": "unknown",
-      "lowest_price": 89.64,
+      "lowest_price": 59.5,
       "is_new_low": null,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam-specials",
-      "id": "2320980",
-      "name": "乐浮岛",
+      "id": "1799840",
+      "name": "Queen's Domain",
       "free": false,
-      "price": 89.64,
-      "initial": 108,
-      "cut": 17,
-      "url": "https://store.steampowered.com/app/2320980/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/2320980/header.jpg"
+      "price": 59.5,
+      "initial": 70,
+      "cut": 15,
+      "url": "https://store.steampowered.com/app/1799840/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1799840/header.jpg"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "学習",
+        "パズル",
+        "トレーニング"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000139513",
+      "name": "ひらがなピック！文字をえらんでことば完成",
+      "price": 680,
+      "initial": 761,
+      "cut": 11,
+      "url": "https://store-jp.nintendo.com/list/software/70010000139513.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/bfc3842979e2f1d30d617f1aad5be96ef07fd4392298b583109fa9efd175fb99.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
+      "region": "JP"
     },
     {
       "promo_start": null,
@@ -1973,28 +1884,6 @@
       "cover": "https://img-eshop.cdn.nintendo.net/i/df1c0a30c9d92df3ab14dbf74c7e9b76b0e4c4b9d52bb7cb74e9204bb4ee1144.jpg",
       "needs_base": null,
       "release_date": "2026.10.29",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-04T14:59:59.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70050000082160",
-      "name": "蒼き雷霆（アームドブルー） ガンヴォルト トライアングル エディション Nintendo Switch 2 Edition アップグレードパス",
-      "price": 1500,
-      "initial": 1667,
-      "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70050000082160.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/43ecdb9eb81802d8d99f63e953525849f6780c48ac9c4f7de60f439a4308a91c.jpg",
-      "needs_base": true,
-      "release_date": "2026.10.22",
       "region": "JP"
     },
     {
@@ -2071,6 +1960,56 @@
     },
     {
       "promo_start": null,
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "パズル",
+        "パーティー"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000140645",
+      "name": "美女と一緒にフィットネスパズル",
+      "price": 420,
+      "initial": 467,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000140645.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/803c510ddb8d2571bc4718a4c93054c04e51b726d809e1f738aabad44ae1bf88.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "パズル",
+        "パーティー"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000137899",
+      "name": "気になるあの人とおうち時間パズル",
+      "price": 420,
+      "initial": 467,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000137899.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/ac3f344f661468b3891afa3b5bdb1f696f13df73a1cbfbb95f76ca5c198379e5.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
       "promo_end": "2026-11-11T17:00:39.000Z",
       "tags": [],
       "supports_zh": "unknown",
@@ -2104,31 +2043,6 @@
       "free_kind": null,
       "currency": "JPY",
       "source": "switch",
-      "id": "70010000130918",
-      "name": "天空の世界シェルテーラ",
-      "price": 1540,
-      "initial": 1711,
-      "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000130918.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/2982aa251244a7e17f6363f7bd6d976c10b948a2fe96c0edc6b6bdf6466176dc.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.6",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-19T14:59:59.000Z",
-      "tags": [
-        "ロールプレイング",
-        "アドベンチャー"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
       "id": "70010000140853",
       "name": "天空の世界シェルテーラ Nintendo Switch 2 Edition",
       "price": 1640,
@@ -2138,6 +2052,31 @@
       "cover": "https://img-eshop.cdn.nintendo.net/i/4e19f95bd1ba8cbc9e5ffbb74011e54f405c85a37128a81b9b6a7d0dfbfda483.jpg",
       "needs_base": null,
       "release_date": "2026.11.6",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "アドベンチャー",
+        "パーティー"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000139465",
+      "name": "心霊写真検証室 〜あなたには見えますか？〜",
+      "price": 420,
+      "initial": 467,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000139465.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/f97fb491c6e77d4248e26be50b0eeb2b22892620343be004656ee307af624ca0.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
       "region": "JP"
     },
     {
@@ -2167,11 +2106,9 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-29T14:59:59.000Z",
+      "promo_end": "2026-12-06T14:59:59.000Z",
       "tags": [
-        "パズル",
-        "アドベンチャー",
-        "トレーニング"
+        "アドベンチャー"
       ],
       "supports_zh": "unknown",
       "lowest_price": null,
@@ -2180,15 +2117,15 @@
       "free_kind": null,
       "currency": "JPY",
       "source": "switch",
-      "id": "70010000137502",
-      "name": "意味がわかると不気味なマンガ 〜ーゾッとする意味怖謎解き都市伝説怪談ゲームー〜",
+      "id": "70010000138033",
+      "name": "呪いのマンション 〜誰もいないはずの部屋〜",
       "price": 420,
       "initial": 467,
       "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000137502.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/c1c1cf19838ffa383a09c56393e4cd8fa7ae86898b791036a9277ae3272c161f.jpg",
+      "url": "https://store-jp.nintendo.com/list/software/70010000138033.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/947d777409a58d3b4d6fff04aec494ea57e591c0f12ecd52c8bb443ef82c6234.jpg",
       "needs_base": null,
-      "release_date": "2026.11.5",
+      "release_date": "2026.11.12",
       "region": "JP"
     },
     {
@@ -2219,32 +2156,10 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-12T14:59:59.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70070000041064",
-      "name": "Hokko Spaces - Sunshine Edition",
-      "price": 1129,
-      "initial": 1255,
-      "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70070000041064.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/cd3647bbeb730051d02d4cf07c9eaac29dfb0af38d871e2ea85a719ac298e9d4.jpg",
-      "needs_base": null,
-      "release_date": "2026.10.30",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-11-04T14:59:59.000Z",
+      "promo_end": "2026-11-18T14:59:59.000Z",
       "tags": [
-        "アクション",
-        "アドベンチャー"
+        "シューティング",
+        "アクション"
       ],
       "supports_zh": "unknown",
       "lowest_price": null,
@@ -2253,13 +2168,13 @@
       "free_kind": null,
       "currency": "JPY",
       "source": "switch",
-      "id": "70010000119219",
-      "name": "Marvel's Guardians of the Galaxy: Encore Edition",
-      "price": 4700,
-      "initial": 5222,
+      "id": "70010000136641",
+      "name": "Industria (インダストリアー)",
+      "price": 2970,
+      "initial": 3300,
       "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000119219.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/b8d0ecd1cf7bea2f4702ff75c8ba678141b6e563de5fff0ce67b71457d9e5224.jpg",
+      "url": "https://store-jp.nintendo.com/list/software/70010000136641.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/9500f4fea6ef6c918c9f9def2b99b0aaf54c9e4a782574f0721d988eeb8a9b59.jpg",
       "needs_base": null,
       "release_date": "2026.11.5",
       "region": "JP"
@@ -2312,7 +2227,7 @@
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 31.5,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -2329,11 +2244,10 @@
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-04T14:59:59.000Z",
+      "promo_end": "2026-12-06T14:59:59.000Z",
       "tags": [
-        "アクション",
-        "アドベンチャー",
-        "ロールプレイング"
+        "パズル",
+        "パーティー"
       ],
       "supports_zh": "unknown",
       "lowest_price": null,
@@ -2342,21 +2256,25 @@
       "free_kind": null,
       "currency": "JPY",
       "source": "switch",
-      "id": "70010000125083",
-      "name": "クライムライト／CRYMELIGHT",
-      "price": 3278,
-      "initial": 3642,
+      "id": "70010000140654",
+      "name": "キレイなお姉さんのいる日常パズル 〜思わず見とれる大人の魅力〜",
+      "price": 420,
+      "initial": 467,
       "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000125083.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/96a08bd5be512b36dd31bfb060adf39d99a739113f193a7d698664054ac70c1a.jpg",
+      "url": "https://store-jp.nintendo.com/list/software/70010000140654.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/2631969c2d186bc9b4aaa278813d0cd8d575855d93e060617f8f068a3d9690ae.jpg",
       "needs_base": null,
-      "release_date": "2026.11.5",
+      "release_date": "2026.11.12",
       "region": "JP"
     },
     {
       "promo_start": null,
-      "promo_end": "2026-11-04T14:59:59.000Z",
-      "tags": [],
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "学習",
+        "実用",
+        "トレーニング"
+      ],
       "supports_zh": "unknown",
       "lowest_price": null,
       "is_new_low": null,
@@ -2364,15 +2282,41 @@
       "free_kind": null,
       "currency": "JPY",
       "source": "switch",
-      "id": "70070000040446",
-      "name": "クライムライト／CRYMELIGHT デラックスエディション",
-      "price": 6578,
-      "initial": 7309,
+      "id": "70010000140115",
+      "name": "クイズ！世界びっくり戦争史ー4択で楽しく世界史トリビア雑学教養学習テストー",
+      "price": 420,
+      "initial": 467,
       "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70070000040446.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/77cda22975518c372932eeae7c797cc160181f5c0a2ac2cee2703af93ac28fa4.jpg",
+      "url": "https://store-jp.nintendo.com/list/software/70010000140115.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/3178eeb54fff108201a7c66c3ca085bd1b04589a6bf794b13f94001c49307974.jpg",
       "needs_base": null,
-      "release_date": "2026.11.5",
+      "release_date": "2026.11.12",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "学習",
+        "パズル",
+        "トレーニング"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000140256",
+      "name": "サクッと世界の国旗クイズ〜文字を選んで国名完成！ひらめき脳活チャレンジ〜",
+      "price": 420,
+      "initial": 467,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000140256.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/f3b3f497e4c4c06641fbf4dda37722ad7f49e19f1448048b317838f5c2b1da7a.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
       "region": "JP"
     },
     {
@@ -2397,6 +2341,110 @@
       "cover": "https://img-eshop.cdn.nintendo.net/i/fa7644410f4edb11490ae28635ad7ae9123305863bc00f70e4b591aa5da2e579.jpg",
       "needs_base": null,
       "release_date": "2026.10.16",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "学習",
+        "実用",
+        "トレーニング"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000140127",
+      "name": "スマホ脳を叩き起こす 化学式リハビリテスト",
+      "price": 420,
+      "initial": 467,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000140127.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/0d3d3ea0ab7e090d1ee2d016c742f8ebdc2e70ae9c1b6400d21793b417ad7ea5.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "学習",
+        "実用",
+        "トレーニング"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000140133",
+      "name": "スマホ脳を叩き起こす 計算リハビリテスト",
+      "price": 420,
+      "initial": 467,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000140133.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/31efb67754bf023e88d2790b1352bc21f0f34195dcfbaca3418cfce898213890.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "パズル",
+        "実用",
+        "トレーニング"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000140085",
+      "name": "そろえて！ワイルド！オスケモモンタージュパズル",
+      "price": 420,
+      "initial": 467,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000140085.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/9f1413ebe9c7d2ae6ac76f6d20cac03de2e4d893213f01ba7cd3dcc0cff00635.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-06T14:59:59.000Z",
+      "tags": [
+        "パズル",
+        "学習",
+        "トレーニング"
+      ],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70010000139495",
+      "name": "マッチ棒IQクイズ ～ひらめきで解く脳トレパズル～",
+      "price": 420,
+      "initial": 467,
+      "cut": 10,
+      "url": "https://store-jp.nintendo.com/list/software/70010000139495.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/bd0f3266676994363bafad3a780c56d9a3f9e3ff851838d69a6dc7c174d10085.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.12",
       "region": "JP"
     },
     {
@@ -2433,7 +2481,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": false,
-      "players_online": 15006,
+      "players_online": 13166,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2492,7 +2540,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": false,
-      "players_online": 23980,
+      "players_online": 20344,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2546,7 +2594,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": false,
-      "players_online": 10669,
+      "players_online": 9191,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2675,7 +2723,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": false,
-      "players_online": 78949,
+      "players_online": 67560,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2804,7 +2852,7 @@
       "supports_zh": true,
       "lowest_price": 199,
       "is_new_low": false,
-      "players_online": 16204,
+      "players_online": 13694,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2898,7 +2946,7 @@
       "supports_zh": true,
       "lowest_price": null,
       "is_new_low": null,
-      "players_online": 2366,
+      "players_online": 2415,
       "free_kind": "permanent",
       "currency": "CNY",
       "source": "steam",
@@ -2932,7 +2980,7 @@
       "supports_zh": true,
       "lowest_price": 48,
       "is_new_low": false,
-      "players_online": 37925,
+      "players_online": 34743,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2966,7 +3014,7 @@
       "supports_zh": true,
       "lowest_price": 42,
       "is_new_low": false,
-      "players_online": 19606,
+      "players_online": 18771,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -3081,6 +3129,11 @@
         "2026-11-03",
         1239,
         null
+      ],
+      [
+        "2026-11-04",
+        1239,
+        null
       ]
     ],
     "steam-specials:238320": [
@@ -3130,6 +3183,11 @@
       ],
       [
         "2026-11-03",
+        14.7,
+        null
+      ],
+      [
+        "2026-11-04",
         14.7,
         null
       ]
@@ -3208,6 +3266,11 @@
       ],
       [
         "2026-11-03",
+        62,
+        null
+      ],
+      [
+        "2026-11-04",
         62,
         null
       ]
@@ -3355,6 +3418,11 @@
         "2026-11-03",
         33,
         null
+      ],
+      [
+        "2026-11-04",
+        33,
+        null
       ]
     ],
     "switch:70010000127180": [
@@ -3438,6 +3506,11 @@
       ],
       [
         "2026-11-03",
+        74.5,
+        null
+      ],
+      [
+        "2026-11-04",
         74.5,
         null
       ]
@@ -3697,6 +3770,11 @@
         "2026-11-03",
         6908,
         null
+      ],
+      [
+        "2026-11-04",
+        6908,
+        null
       ]
     ],
     "switch:70070000036536": [
@@ -3766,6 +3844,11 @@
         "2026-11-03",
         4990,
         null
+      ],
+      [
+        "2026-11-04",
+        4990,
+        null
       ]
     ],
     "switch:70010000135983": [
@@ -3806,6 +3889,11 @@
       ],
       [
         "2026-11-03",
+        6480,
+        null
+      ],
+      [
+        "2026-11-04",
         6480,
         null
       ]
@@ -3862,6 +3950,11 @@
         "2026-11-03",
         3980,
         null
+      ],
+      [
+        "2026-11-04",
+        3980,
+        null
       ]
     ],
     "switch:70010000111042": [
@@ -3914,6 +4007,11 @@
       ],
       [
         "2026-11-03",
+        1480,
+        null
+      ],
+      [
+        "2026-11-04",
         1480,
         null
       ]
@@ -4026,6 +4124,11 @@
         "2026-11-03",
         1500,
         null
+      ],
+      [
+        "2026-11-04",
+        1500,
+        null
       ]
     ],
     "switch:70010000139110": [
@@ -4116,6 +4219,11 @@
         "2026-11-03",
         2600,
         null
+      ],
+      [
+        "2026-11-04",
+        2600,
+        null
       ]
     ],
     "switch:70010000119219": [
@@ -4156,6 +4264,11 @@
       ],
       [
         "2026-11-03",
+        4700,
+        null
+      ],
+      [
+        "2026-11-04",
         4700,
         null
       ]
@@ -4212,6 +4325,11 @@
         "2026-11-03",
         3278,
         null
+      ],
+      [
+        "2026-11-04",
+        3278,
+        null
       ]
     ],
     "switch:70070000040446": [
@@ -4252,6 +4370,11 @@
       ],
       [
         "2026-11-03",
+        6578,
+        null
+      ],
+      [
+        "2026-11-04",
         6578,
         null
       ]
@@ -4308,6 +4431,11 @@
         "2026-11-03",
         2860,
         null
+      ],
+      [
+        "2026-11-04",
+        2860,
+        null
       ]
     ],
     "epic:be5600439b434624802764f704755cde": [
@@ -4348,6 +4476,11 @@
       ],
       [
         "2026-11-03",
+        169,
+        null
+      ],
+      [
+        "2026-11-04",
         169,
         null
       ]
@@ -4392,6 +4525,11 @@
         "2026-11-03",
         64.8,
         null
+      ],
+      [
+        "2026-11-04",
+        64.8,
+        null
       ]
     ],
     "appstore:1544190466": [
@@ -4432,6 +4570,11 @@
       ],
       [
         "2026-11-03",
+        6,
+        null
+      ],
+      [
+        "2026-11-04",
         6,
         null
       ]
@@ -4476,6 +4619,11 @@
         "2026-11-03",
         20,
         null
+      ],
+      [
+        "2026-11-04",
+        20,
+        null
       ]
     ],
     "appstore:1238778050": [
@@ -4516,6 +4664,11 @@
       ],
       [
         "2026-11-03",
+        24,
+        null
+      ],
+      [
+        "2026-11-04",
         24,
         null
       ]
@@ -4560,6 +4713,11 @@
         "2026-11-03",
         12,
         null
+      ],
+      [
+        "2026-11-04",
+        12,
+        null
       ]
     ],
     "epic:4a88d0dc64114b20b67339c74543f859": [
@@ -4600,6 +4758,11 @@
       ],
       [
         "2026-11-03",
+        12,
+        null
+      ],
+      [
+        "2026-11-04",
         12,
         null
       ]
@@ -4644,6 +4807,11 @@
         "2026-11-03",
         18,
         null
+      ],
+      [
+        "2026-11-04",
+        18,
+        null
       ]
     ],
     "appstore:6749045841": [
@@ -4684,6 +4852,11 @@
       ],
       [
         "2026-11-03",
+        12,
+        null
+      ],
+      [
+        "2026-11-04",
         12,
         null
       ]
@@ -4728,6 +4901,11 @@
         "2026-11-03",
         6,
         null
+      ],
+      [
+        "2026-11-04",
+        6,
+        null
       ]
     ],
     "epic:c76046dddcdb43619c33ce0395941033": [
@@ -4768,6 +4946,11 @@
       ],
       [
         "2026-11-03",
+        31,
+        null
+      ],
+      [
+        "2026-11-04",
         31,
         null
       ]
@@ -4812,6 +4995,11 @@
         "2026-11-03",
         70,
         null
+      ],
+      [
+        "2026-11-04",
+        70,
+        null
       ]
     ],
     "epic:af6b823b8698465f9aedc3bddf2e8686": [
@@ -4852,6 +5040,11 @@
       ],
       [
         "2026-11-03",
+        53,
+        null
+      ],
+      [
+        "2026-11-04",
         53,
         null
       ]
@@ -4896,6 +5089,11 @@
         "2026-11-03",
         60,
         null
+      ],
+      [
+        "2026-11-04",
+        60,
+        null
       ]
     ],
     "xbox:BNQQ3WVBNZCQ": [
@@ -4931,6 +5129,11 @@
       ],
       [
         "2026-11-03",
+        3.99,
+        null
+      ],
+      [
+        "2026-11-04",
         3.99,
         null
       ]
@@ -4970,6 +5173,11 @@
         "2026-11-03",
         11.99,
         null
+      ],
+      [
+        "2026-11-04",
+        11.99,
+        null
       ]
     ],
     "xbox:9N1WWHGKBX3P": [
@@ -5005,6 +5213,11 @@
       ],
       [
         "2026-11-03",
+        17.49,
+        null
+      ],
+      [
+        "2026-11-04",
         17.49,
         null
       ]
@@ -5044,6 +5257,11 @@
         "2026-11-03",
         27.99,
         null
+      ],
+      [
+        "2026-11-04",
+        27.99,
+        null
       ]
     ],
     "xbox:9P6ZXP2ZRQCV": [
@@ -5079,6 +5297,11 @@
       ],
       [
         "2026-11-03",
+        20.24,
+        null
+      ],
+      [
+        "2026-11-04",
         20.24,
         null
       ]
@@ -5118,6 +5341,11 @@
         "2026-11-03",
         24.46,
         null
+      ],
+      [
+        "2026-11-04",
+        24.46,
+        null
       ]
     ],
     "xbox:9P8479BFGDDW": [
@@ -5153,6 +5381,11 @@
       ],
       [
         "2026-11-03",
+        29.99,
+        null
+      ],
+      [
+        "2026-11-04",
         29.99,
         null
       ]
@@ -5192,6 +5425,11 @@
         "2026-11-03",
         95.99,
         null
+      ],
+      [
+        "2026-11-04",
+        95.99,
+        null
       ]
     ],
     "xbox:9NN144QSW0T0": [
@@ -5227,6 +5465,11 @@
       ],
       [
         "2026-11-03",
+        39.99,
+        null
+      ],
+      [
+        "2026-11-04",
         39.99,
         null
       ]
@@ -5266,6 +5509,11 @@
         "2026-11-03",
         39.99,
         null
+      ],
+      [
+        "2026-11-04",
+        39.99,
+        null
       ]
     ],
     "xbox:9PFRG44XZCFJ": [
@@ -5301,6 +5549,11 @@
       ],
       [
         "2026-11-03",
+        47.99,
+        null
+      ],
+      [
+        "2026-11-04",
         47.99,
         null
       ]
@@ -5340,6 +5593,11 @@
         "2026-11-03",
         63.99,
         null
+      ],
+      [
+        "2026-11-04",
+        63.99,
+        null
       ]
     ],
     "xbox:9MTLKM2DJMZ2": [
@@ -5375,6 +5633,11 @@
       ],
       [
         "2026-11-03",
+        79.99,
+        null
+      ],
+      [
+        "2026-11-04",
         79.99,
         null
       ]
@@ -5414,6 +5677,11 @@
         "2026-11-03",
         95.99,
         null
+      ],
+      [
+        "2026-11-04",
+        95.99,
+        null
       ]
     ],
     "switch:70010000131088": [
@@ -5449,6 +5717,11 @@
       ],
       [
         "2026-11-03",
+        980,
+        null
+      ],
+      [
+        "2026-11-04",
         980,
         null
       ]
@@ -5488,6 +5761,11 @@
         "2026-11-03",
         1500,
         null
+      ],
+      [
+        "2026-11-04",
+        1500,
+        null
       ]
     ],
     "xbox:9NSRWS3C42PP": [
@@ -5523,6 +5801,11 @@
       ],
       [
         "2026-11-03",
+        31.99,
+        null
+      ],
+      [
+        "2026-11-04",
         31.99,
         null
       ]
@@ -5562,6 +5845,11 @@
         "2026-11-03",
         47.99,
         null
+      ],
+      [
+        "2026-11-04",
+        47.99,
+        null
       ]
     ],
     "xbox:9P0SWLC2F1XJ": [
@@ -5597,6 +5885,11 @@
       ],
       [
         "2026-11-03",
+        79.99,
+        null
+      ],
+      [
+        "2026-11-04",
         79.99,
         null
       ]
@@ -5717,6 +6010,11 @@
         "2026-11-03",
         31.49,
         null
+      ],
+      [
+        "2026-11-04",
+        31.49,
+        null
       ]
     ],
     "xbox:9PJ15D3RDXMV": [
@@ -5752,6 +6050,11 @@
       ],
       [
         "2026-11-03",
+        41.99,
+        null
+      ],
+      [
+        "2026-11-04",
         41.99,
         null
       ]
@@ -5791,6 +6094,11 @@
         "2026-11-03",
         159.99,
         null
+      ],
+      [
+        "2026-11-04",
+        159.99,
+        null
       ]
     ],
     "xbox:9N7MNF1QC3X4": [
@@ -5826,6 +6134,11 @@
       ],
       [
         "2026-11-03",
+        79.99,
+        null
+      ],
+      [
+        "2026-11-04",
         79.99,
         null
       ]
@@ -5865,6 +6178,11 @@
         "2026-11-03",
         103.99,
         null
+      ],
+      [
+        "2026-11-04",
+        103.99,
+        null
       ]
     ],
     "xbox:9MV69L4JSD31": [
@@ -5900,6 +6218,11 @@
       ],
       [
         "2026-11-03",
+        39.99,
+        null
+      ],
+      [
+        "2026-11-04",
         39.99,
         null
       ]
@@ -5939,6 +6262,11 @@
         "2026-11-03",
         39.99,
         null
+      ],
+      [
+        "2026-11-04",
+        39.99,
+        null
       ]
     ],
     "xbox:9NKD5GJTS6FH": [
@@ -5974,6 +6302,11 @@
       ],
       [
         "2026-11-03",
+        47.99,
+        null
+      ],
+      [
+        "2026-11-04",
         47.99,
         null
       ]
@@ -6013,6 +6346,11 @@
         "2026-11-03",
         55.99,
         null
+      ],
+      [
+        "2026-11-04",
+        55.99,
+        null
       ]
     ],
     "xbox:9NF62X1QH3CM": [
@@ -6048,6 +6386,11 @@
       ],
       [
         "2026-11-03",
+        47.99,
+        null
+      ],
+      [
+        "2026-11-04",
         47.99,
         null
       ]
@@ -6087,6 +6430,11 @@
         "2026-11-03",
         47.99,
         null
+      ],
+      [
+        "2026-11-04",
+        47.99,
+        null
       ]
     ],
     "xbox:9NFW7GND3WNZ": [
@@ -6124,6 +6472,11 @@
         "2026-11-03",
         39.99,
         null
+      ],
+      [
+        "2026-11-04",
+        39.99,
+        null
       ]
     ],
     "xbox:9P8M6BX9WKVS": [
@@ -6159,6 +6512,11 @@
       ],
       [
         "2026-11-03",
+        47.99,
+        null
+      ],
+      [
+        "2026-11-04",
         47.99,
         null
       ]
@@ -6200,6 +6558,11 @@
         "2026-11-03",
         3,
         null
+      ],
+      [
+        "2026-11-04",
+        3,
+        null
       ]
     ],
     "gog:1254210921": [
@@ -6230,6 +6593,11 @@
       ],
       [
         "2026-11-03",
+        2,
+        null
+      ],
+      [
+        "2026-11-04",
         2,
         null
       ]
@@ -6264,6 +6632,11 @@
         "2026-11-03",
         2,
         null
+      ],
+      [
+        "2026-11-04",
+        2,
+        null
       ]
     ],
     "gog:1207667163": [
@@ -6294,6 +6667,11 @@
       ],
       [
         "2026-11-03",
+        2,
+        null
+      ],
+      [
+        "2026-11-04",
         2,
         null
       ]
@@ -6328,6 +6706,11 @@
         "2026-11-03",
         1,
         null
+      ],
+      [
+        "2026-11-04",
+        1,
+        null
       ]
     ],
     "gog:1462182139": [
@@ -6358,6 +6741,11 @@
       ],
       [
         "2026-11-03",
+        3,
+        null
+      ],
+      [
+        "2026-11-04",
         3,
         null
       ]
@@ -6392,6 +6780,11 @@
         "2026-11-03",
         2,
         null
+      ],
+      [
+        "2026-11-04",
+        2,
+        null
       ]
     ],
     "gog:1323998332": [
@@ -6422,6 +6815,11 @@
       ],
       [
         "2026-11-03",
+        2,
+        null
+      ],
+      [
+        "2026-11-04",
         2,
         null
       ]
@@ -6456,6 +6854,11 @@
         "2026-11-03",
         7,
         null
+      ],
+      [
+        "2026-11-04",
+        7,
+        null
       ]
     ],
     "gog:1116827902": [
@@ -6486,6 +6889,11 @@
       ],
       [
         "2026-11-03",
+        5,
+        null
+      ],
+      [
+        "2026-11-04",
         5,
         null
       ]
@@ -6520,6 +6928,11 @@
         "2026-11-03",
         8,
         null
+      ],
+      [
+        "2026-11-04",
+        8,
+        null
       ]
     ],
     "gog:1170675521": [
@@ -6550,6 +6963,11 @@
       ],
       [
         "2026-11-03",
+        3,
+        null
+      ],
+      [
+        "2026-11-04",
         3,
         null
       ]
@@ -6584,6 +7002,11 @@
         "2026-11-03",
         5,
         null
+      ],
+      [
+        "2026-11-04",
+        5,
+        null
       ]
     ],
     "gog:1084856569": [
@@ -6614,6 +7037,11 @@
       ],
       [
         "2026-11-03",
+        7,
+        null
+      ],
+      [
+        "2026-11-04",
         7,
         null
       ]
@@ -6648,6 +7076,11 @@
         "2026-11-03",
         1,
         null
+      ],
+      [
+        "2026-11-04",
+        1,
+        null
       ]
     ],
     "gog:1249359495": [
@@ -6678,6 +7111,11 @@
       ],
       [
         "2026-11-03",
+        5,
+        null
+      ],
+      [
+        "2026-11-04",
         5,
         null
       ]
@@ -6739,6 +7177,11 @@
         "2026-11-03",
         3990,
         null
+      ],
+      [
+        "2026-11-04",
+        3990,
+        null
       ]
     ],
     "switch:70010000129296": [
@@ -6764,6 +7207,11 @@
       ],
       [
         "2026-11-03",
+        3990,
+        null
+      ],
+      [
+        "2026-11-04",
         3990,
         null
       ]
@@ -6798,6 +7246,11 @@
         "2026-11-03",
         3990,
         null
+      ],
+      [
+        "2026-11-04",
+        3990,
+        null
       ]
     ],
     "switch:70010000120043": [
@@ -6830,6 +7283,11 @@
         "2026-11-03",
         3990,
         null
+      ],
+      [
+        "2026-11-04",
+        3990,
+        null
       ]
     ],
     "switch:70010000131610": [
@@ -6860,6 +7318,11 @@
       ],
       [
         "2026-11-03",
+        1505,
+        null
+      ],
+      [
+        "2026-11-04",
         1505,
         null
       ]
@@ -6911,6 +7374,11 @@
         "2026-11-03",
         2200,
         null
+      ],
+      [
+        "2026-11-04",
+        2200,
+        null
       ]
     ],
     "switch:70010000125542": [
@@ -6941,6 +7409,11 @@
       ],
       [
         "2026-11-03",
+        1200,
+        null
+      ],
+      [
+        "2026-11-04",
         1200,
         null
       ]
@@ -6975,6 +7448,11 @@
         "2026-11-03",
         1600,
         null
+      ],
+      [
+        "2026-11-04",
+        1600,
+        null
       ]
     ],
     "switch:70010000140054": [
@@ -7005,6 +7483,11 @@
       ],
       [
         "2026-11-03",
+        3700,
+        null
+      ],
+      [
+        "2026-11-04",
         3700,
         null
       ]
@@ -7039,6 +7522,11 @@
         "2026-11-03",
         3700,
         null
+      ],
+      [
+        "2026-11-04",
+        3700,
+        null
       ]
     ],
     "switch:70070000041327": [
@@ -7069,6 +7557,11 @@
       ],
       [
         "2026-11-03",
+        2400,
+        null
+      ],
+      [
+        "2026-11-04",
         2400,
         null
       ]
@@ -7103,6 +7596,11 @@
         "2026-11-03",
         3290,
         null
+      ],
+      [
+        "2026-11-04",
+        3290,
+        null
       ]
     ],
     "switch:70070000039556": [
@@ -7135,6 +7633,11 @@
         "2026-11-03",
         4156,
         null
+      ],
+      [
+        "2026-11-04",
+        4156,
+        null
       ]
     ],
     "switch:70010000137377": [
@@ -7165,6 +7668,11 @@
       ],
       [
         "2026-11-03",
+        350,
+        null
+      ],
+      [
+        "2026-11-04",
         350,
         null
       ]
@@ -7213,6 +7721,11 @@
         "2026-11-03",
         49.5,
         null
+      ],
+      [
+        "2026-11-04",
+        49.5,
+        null
       ]
     ],
     "switch:70010000131664": [
@@ -7245,11 +7758,21 @@
         "2026-11-03",
         4180,
         null
+      ],
+      [
+        "2026-11-04",
+        4180,
+        null
       ]
     ],
     "switch:70010000137502": [
       [
         "2026-10-29",
+        420,
+        null
+      ],
+      [
+        "2026-11-04",
         420,
         null
       ]
@@ -7298,6 +7821,11 @@
         "2026-11-03",
         298,
         15456
+      ],
+      [
+        "2026-11-04",
+        298,
+        15006
       ]
     ],
     "steam:1086940": [
@@ -7330,6 +7858,11 @@
         "2026-11-03",
         268,
         22316
+      ],
+      [
+        "2026-11-04",
+        268,
+        23980
       ]
     ],
     "steam:2358720": [
@@ -7362,6 +7895,11 @@
         "2026-11-03",
         268,
         10198
+      ],
+      [
+        "2026-11-04",
+        268,
+        10669
       ]
     ],
     "steam:1091500": [
@@ -7394,6 +7932,11 @@
         "2026-11-03",
         298,
         80652
+      ],
+      [
+        "2026-11-04",
+        298,
+        78949
       ]
     ],
     "steam:292030": [
@@ -7426,6 +7969,11 @@
         "2026-11-03",
         199,
         16542
+      ],
+      [
+        "2026-11-04",
+        199,
+        16204
       ]
     ],
     "steam:413150": [
@@ -7458,6 +8006,11 @@
         "2026-11-03",
         48,
         37288
+      ],
+      [
+        "2026-11-04",
+        48,
+        37925
       ]
     ],
     "steam:105600": [
@@ -7490,6 +8043,11 @@
         "2026-11-03",
         42,
         18979
+      ],
+      [
+        "2026-11-04",
+        42,
+        19606
       ]
     ],
     "switch:70050000081337": [
@@ -7515,6 +8073,11 @@
       ],
       [
         "2026-11-03",
+        655,
+        null
+      ],
+      [
+        "2026-11-04",
         655,
         null
       ]
@@ -7544,6 +8107,11 @@
         "2026-11-03",
         51.59,
         null
+      ],
+      [
+        "2026-11-04",
+        51.59,
+        null
       ]
     ],
     "switch:70010000125948": [
@@ -7569,6 +8137,11 @@
       ],
       [
         "2026-11-03",
+        3900,
+        null
+      ],
+      [
+        "2026-11-04",
         3900,
         null
       ]
@@ -7598,6 +8171,11 @@
         "2026-11-03",
         4300,
         null
+      ],
+      [
+        "2026-11-04",
+        4300,
+        null
       ]
     ],
     "switch:70010000128733": [
@@ -7623,6 +8201,11 @@
       ],
       [
         "2026-11-03",
+        4380,
+        null
+      ],
+      [
+        "2026-11-04",
         4380,
         null
       ]
@@ -7652,6 +8235,11 @@
         "2026-11-03",
         1540,
         null
+      ],
+      [
+        "2026-11-04",
+        1540,
+        null
       ]
     ],
     "switch:70010000140853": [
@@ -7677,6 +8265,11 @@
       ],
       [
         "2026-11-03",
+        1640,
+        null
+      ],
+      [
+        "2026-11-04",
         1640,
         null
       ]
@@ -7706,6 +8299,11 @@
         "2026-11-03",
         44.99,
         null
+      ],
+      [
+        "2026-11-04",
+        44.99,
+        null
       ]
     ],
     "epic:3be0a0d8479946d78f60d90c9442a0b4": [
@@ -7733,6 +8331,11 @@
         "2026-11-03",
         75,
         null
+      ],
+      [
+        "2026-11-04",
+        75,
+        null
       ]
     ],
     "switch:70070000041487": [
@@ -7750,6 +8353,11 @@
         "2026-11-02",
         2101,
         null
+      ],
+      [
+        "2026-11-04",
+        2101,
+        null
       ]
     ],
     "steam-specials:3241660": [
@@ -7765,6 +8373,11 @@
       ],
       [
         "2026-11-03",
+        22.75,
+        null
+      ],
+      [
+        "2026-11-04",
         22.75,
         null
       ]
@@ -7801,6 +8414,11 @@
         "2026-11-03",
         48.6,
         null
+      ],
+      [
+        "2026-11-04",
+        48.6,
+        null
       ]
     ],
     "switch:70070000041317": [
@@ -7811,6 +8429,11 @@
       ],
       [
         "2026-11-03",
+        2290,
+        null
+      ],
+      [
+        "2026-11-04",
         2290,
         null
       ]
@@ -7827,12 +8450,57 @@
         "2026-11-03",
         2789,
         null
+      ],
+      [
+        "2026-11-04",
+        2789,
+        null
       ]
     ],
     "steam-specials:3768760": [
       [
         "2026-11-03",
         202.8,
+        null
+      ],
+      [
+        "2026-11-04",
+        202.8,
+        null
+      ]
+    ],
+    "gog:1877761297": [
+      [
+        "2026-11-04",
+        5,
+        null
+      ]
+    ],
+    "steam-specials:3669870": [
+      [
+        "2026-11-04",
+        214.4,
+        null
+      ]
+    ],
+    "steam-specials:2320980": [
+      [
+        "2026-11-04",
+        89.64,
+        null
+      ]
+    ],
+    "switch:70070000041064": [
+      [
+        "2026-11-04",
+        1129,
+        null
+      ]
+    ],
+    "steam-specials:5266240": [
+      [
+        "2026-11-04",
+        31.5,
         null
       ]
     ]
