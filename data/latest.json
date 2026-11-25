@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-24T09:45:33.137Z",
-  "generated_at_bj": "2026-11-24 17:45",
+  "generated_at": "2026-11-25T08:20:49.103Z",
+  "generated_at_bj": "2026-11-25 16:20",
   "timezone_display": "Asia/Shanghai (UTC+8)",
   "region": "CN",
   "counts": {
     "total": 133,
     "limited_free": 1,
-    "new_low": 2,
+    "new_low": 0,
     "failed": 0
   },
   "by_source": {
     "epic": 11,
-    "steam-specials": 10,
-    "steam": 8,
     "gog": 18,
-    "switch": 39,
+    "steam-specials": 10,
     "xbox": 40,
+    "switch": 39,
+    "steam": 8,
     "appstore": 7
   },
   "items": [
@@ -38,61 +38,6 @@
       "url": "https://store.epicgames.com/zh-CN/p/mark-of-the-deep-f7dc08",
       "cover": "https://cdn1.epicgames.com/spt-assets/83a240506a884c10ad8fb99694e57a0d/mark-of-the-deep-w1ygr.png",
       "name_en": "Mark of the Deep"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-12-07T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 149,
-      "is_new_low": true,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "3768760",
-      "name": "007 初露锋芒",
-      "free": false,
-      "price": 149,
-      "initial": 298,
-      "cut": 50,
-      "url": "https://store.steampowered.com/app/3768760/",
-      "cover": null,
-      "cover_missing": true
-    },
-    {
-      "promo_start": null,
-      "promo_end": null,
-      "tags": [
-        "冒险",
-        "角色扮演",
-        "策略",
-        "单人",
-        "多人",
-        "合作"
-      ],
-      "supports_zh": true,
-      "lowest_price": 187.6,
-      "is_new_low": true,
-      "players_online": 18051,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam",
-      "id": "1086940",
-      "name": "博德之门3",
-      "url": "https://store.steampowered.com/app/1086940/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
-      "developer": "Larian Studios",
-      "publishers": "Larian Studios",
-      "release_date": "2023 年 8 月 3 日",
-      "short_desc": "《博德之门3》是一款以“龙与地下城”世界为背景的、强调故事与队伍冒险体验的角色扮演游戏。你的每一个选择，都会编织出一段关于同伴与背叛、生存与牺牲，以及至上力量诱惑的故事。",
-      "metacritic": 96,
-      "always_show": false,
-      "free": false,
-      "price": 187.6,
-      "initial": 268,
-      "cut": 30,
-      "name_en": "Baldur's Gate 3"
     },
     {
       "promo_start": null,
@@ -173,6 +118,26 @@
       "url": "https://www.gog.com/en/game/atlantis_3_the_new_world",
       "cover": "https://images.gog-statics.com/0077048ad2213a74fe61f19e94621be5e409365951483c1fe60e71110002c596.png",
       "name_en": "Atlantis 3: The New World"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-03T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 9.9,
+      "is_new_low": false,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "1238840",
+      "name": "Battlefield™ 1",
+      "free": false,
+      "price": 9.9,
+      "initial": 198,
+      "cut": 95,
+      "url": "https://store.steampowered.com/app/1238840/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1238840/header.jpg"
     },
     {
       "promo_start": null,
@@ -311,28 +276,6 @@
       "url": "https://www.gog.com/en/game/jet_kave_adventure",
       "cover": "https://images.gog-statics.com/32abf667d00a0b88304344e7ec35aad85a595af569ed28ec1190a97286c3e4d9.png",
       "name_en": "Jet Kave Adventure"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-12-17T14:59:59.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70070000042130",
-      "name": "nOS ニューオペレーティングシステム 壁紙 コレクション 4",
-      "price": 5560,
-      "initial": 77478,
-      "cut": 93,
-      "url": "https://store-jp.nintendo.com/list/software/70070000042130.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/a2623e17494dc9267884f8915570ecdb06d048e49d128636d9d4d724fe4dbc50.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.21",
-      "region": "JP"
     },
     {
       "promo_start": null,
@@ -541,7 +484,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 3,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -570,7 +513,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 3,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -599,7 +542,7 @@
       ],
       "supports_zh": "unknown",
       "lowest_price": 3,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -619,7 +562,7 @@
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 13.6,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -632,26 +575,6 @@
       "cut": 90,
       "url": "https://store.steampowered.com/app/1222140/",
       "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1222140/header.jpg"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-12-07T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 38.4,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "990080",
-      "name": "霍格沃茨之遗",
-      "free": false,
-      "price": 38.4,
-      "initial": 384,
-      "cut": 90,
-      "url": "https://store.steampowered.com/app/990080/",
-      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/990080/header.jpg"
     },
     {
       "promo_start": null,
@@ -718,27 +641,6 @@
       "url": "https://www.microsoft.com/store/productId/9PDV8FKWP3B4",
       "cover": "https://store-images.s-microsoft.com/image/apps.11136.14146895813128195.1152921504736926530.47c08185-64bc-49ff-9bb7-67105c1618af",
       "region": "US"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-12-05T18:00:00.000Z",
-      "tags": [],
-      "supports_zh": "unknown",
-      "lowest_price": 11.99,
-      "is_new_low": false,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "CNY",
-      "source": "steam-specials",
-      "id": "1066581",
-      "name": "The Escapists 2 - Game of the Year Edition",
-      "free": false,
-      "price": 11.99,
-      "initial": 119.99,
-      "cut": 90,
-      "url": "https://store.steampowered.com/app/1066581/",
-      "cover": null,
-      "cover_missing": true
     },
     {
       "promo_start": null,
@@ -850,11 +752,55 @@
     },
     {
       "promo_start": null,
+      "promo_end": "2026-12-21T14:59:59.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70070000042254",
+      "name": "ザ・トレフリックファミリー. 魔法 の 靴 エディション",
+      "price": 1754,
+      "initial": 7711,
+      "cut": 77,
+      "url": "https://store-jp.nintendo.com/list/software/70070000042254.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/1060b329805ab0c531ea2fe66baa4f0349b96e2f14126e646b8fb15baaa93622.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.25",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-21T14:59:59.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": null,
+      "is_new_low": null,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "JPY",
+      "source": "switch",
+      "id": "70070000042266",
+      "name": "フィット　マイ　キャット ホームスタイル エディション",
+      "price": 1663,
+      "initial": 6931,
+      "cut": 76,
+      "url": "https://store-jp.nintendo.com/list/software/70070000042266.html",
+      "cover": "https://img-eshop.cdn.nintendo.net/i/dcde6fcc904a031bdbc2ba6229d9b59f80e30ec700aa3d778ef79b8e88a086dd.jpg",
+      "needs_base": null,
+      "release_date": "2026.11.25",
+      "region": "JP"
+    },
+    {
+      "promo_start": null,
       "promo_end": "2026-12-07T18:00:00.000Z",
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 69.75,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -1329,6 +1275,27 @@
     },
     {
       "promo_start": null,
+      "promo_end": "2026-12-07T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 149,
+      "is_new_low": false,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "3768760",
+      "name": "007 初露锋芒",
+      "free": false,
+      "price": 149,
+      "initial": 298,
+      "cut": 50,
+      "url": "https://store.steampowered.com/app/3768760/",
+      "cover": null,
+      "cover_missing": true
+    },
+    {
+      "promo_start": null,
       "promo_end": null,
       "tags": [
         "Strategy"
@@ -1514,7 +1481,7 @@
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 118.8,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -1654,7 +1621,7 @@
       "tags": [],
       "supports_zh": "unknown",
       "lowest_price": 187.6,
-      "is_new_low": null,
+      "is_new_low": false,
       "players_online": null,
       "free_kind": null,
       "currency": "CNY",
@@ -1667,6 +1634,40 @@
       "cut": 30,
       "url": "https://store.steampowered.com/app/1086940/",
       "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg"
+    },
+    {
+      "promo_start": null,
+      "promo_end": null,
+      "tags": [
+        "冒险",
+        "角色扮演",
+        "策略",
+        "单人",
+        "多人",
+        "合作"
+      ],
+      "supports_zh": true,
+      "lowest_price": 187.6,
+      "is_new_low": false,
+      "players_online": 18729,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam",
+      "id": "1086940",
+      "name": "博德之门3",
+      "url": "https://store.steampowered.com/app/1086940/",
+      "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
+      "developer": "Larian Studios",
+      "publishers": "Larian Studios",
+      "release_date": "2023 年 8 月 3 日",
+      "short_desc": "《博德之门3》是一款以“龙与地下城”世界为背景的、强调故事与队伍冒险体验的角色扮演游戏。你的每一个选择，都会编织出一段关于同伴与背叛、生存与牺牲，以及至上力量诱惑的故事。",
+      "metacritic": 96,
+      "always_show": false,
+      "free": false,
+      "price": 187.6,
+      "initial": 268,
+      "cut": 30,
+      "name_en": "Baldur's Gate 3"
     },
     {
       "promo_start": null,
@@ -1870,6 +1871,27 @@
       "url": "https://store.epicgames.com/zh-CN/p/terrascape-2b12b1",
       "cover": "https://cdn1.epicgames.com/spt-assets/a740a2eed807469f88b9dff17e7cd3a3/terrascape-j7p8d.png",
       "name_en": "TerraScape"
+    },
+    {
+      "promo_start": null,
+      "promo_end": "2026-12-03T18:00:00.000Z",
+      "tags": [],
+      "supports_zh": "unknown",
+      "lowest_price": 223.5,
+      "is_new_low": false,
+      "players_online": null,
+      "free_kind": null,
+      "currency": "CNY",
+      "source": "steam-specials",
+      "id": "2483190",
+      "name": "极限竞速：地平线 6",
+      "free": false,
+      "price": 223.5,
+      "initial": 298,
+      "cut": 25,
+      "url": "https://store.steampowered.com/app/2483190/",
+      "cover": null,
+      "cover_missing": true
     },
     {
       "promo_start": null,
@@ -2554,31 +2576,6 @@
       "promo_end": "2026-12-20T14:59:59.000Z",
       "tags": [
         "パズル",
-        "パーティー"
-      ],
-      "supports_zh": "unknown",
-      "lowest_price": null,
-      "is_new_low": null,
-      "players_online": null,
-      "free_kind": null,
-      "currency": "JPY",
-      "source": "switch",
-      "id": "70010000140612",
-      "name": "セクシー美女と禁断のバカンス 〜魅惑の金髪美女たちに囲まれるドキドキ間違い探し〜",
-      "price": 420,
-      "initial": 467,
-      "cut": 10,
-      "url": "https://store-jp.nintendo.com/list/software/70010000140612.html",
-      "cover": "https://img-eshop.cdn.nintendo.net/i/1e2aff337123436c06962c722db3b1e7e8cec17868c508df4ae9c9af72bfa1cc.jpg",
-      "needs_base": null,
-      "release_date": "2026.11.26",
-      "region": "JP"
-    },
-    {
-      "promo_start": null,
-      "promo_end": "2026-12-20T14:59:59.000Z",
-      "tags": [
-        "パズル",
         "実用",
         "トレーニング"
       ],
@@ -2705,7 +2702,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": false,
-      "players_online": 14796,
+      "players_online": 14293,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2764,7 +2761,7 @@
       "supports_zh": true,
       "lowest_price": 268,
       "is_new_low": false,
-      "players_online": 10017,
+      "players_online": 8612,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -2893,7 +2890,7 @@
       "supports_zh": true,
       "lowest_price": 298,
       "is_new_low": false,
-      "players_online": 43740,
+      "players_online": 41251,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -3022,7 +3019,7 @@
       "supports_zh": true,
       "lowest_price": 199,
       "is_new_low": false,
-      "players_online": 14362,
+      "players_online": 12049,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -3136,7 +3133,7 @@
       "supports_zh": true,
       "lowest_price": null,
       "is_new_low": null,
-      "players_online": 3001,
+      "players_online": 2864,
       "free_kind": "permanent",
       "currency": "CNY",
       "source": "steam",
@@ -3170,7 +3167,7 @@
       "supports_zh": true,
       "lowest_price": 48,
       "is_new_low": false,
-      "players_online": 38350,
+      "players_online": 36851,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -3204,7 +3201,7 @@
       "supports_zh": true,
       "lowest_price": 42,
       "is_new_low": false,
-      "players_online": 17724,
+      "players_online": 18865,
       "free_kind": null,
       "currency": "CNY",
       "source": "steam",
@@ -3548,6 +3545,11 @@
         "2026-11-23",
         62,
         null
+      ],
+      [
+        "2026-11-24",
+        62,
+        null
       ]
     ],
     "steam-specials:242760": [
@@ -3793,6 +3795,11 @@
         "2026-11-23",
         33,
         null
+      ],
+      [
+        "2026-11-24",
+        33,
+        null
       ]
     ],
     "switch:70010000127180": [
@@ -3887,6 +3894,11 @@
       [
         "2026-11-05",
         74.5,
+        null
+      ],
+      [
+        "2026-11-24",
+        98.56,
         null
       ]
     ],
@@ -4604,6 +4616,11 @@
         "2026-11-23",
         1480,
         null
+      ],
+      [
+        "2026-11-24",
+        1480,
+        null
       ]
     ],
     "switch:70010000136766": [
@@ -5233,6 +5250,11 @@
         "2026-11-23",
         169,
         null
+      ],
+      [
+        "2026-11-24",
+        169,
+        null
       ]
     ],
     "epic:944b5b5d646d46bc92bc33edfe983d26": [
@@ -5373,6 +5395,11 @@
       ],
       [
         "2026-11-23",
+        108,
+        null
+      ],
+      [
+        "2026-11-24",
         108,
         null
       ]
@@ -5517,6 +5544,11 @@
         "2026-11-23",
         6,
         null
+      ],
+      [
+        "2026-11-24",
+        6,
+        null
       ]
     ],
     "appstore:6446614518": [
@@ -5657,6 +5689,11 @@
       ],
       [
         "2026-11-23",
+        15,
+        null
+      ],
+      [
+        "2026-11-24",
         15,
         null
       ]
@@ -5801,6 +5838,11 @@
         "2026-11-23",
         24,
         null
+      ],
+      [
+        "2026-11-24",
+        24,
+        null
       ]
     ],
     "appstore:6757729278": [
@@ -5941,6 +5983,11 @@
       ],
       [
         "2026-11-23",
+        12,
+        null
+      ],
+      [
+        "2026-11-24",
         12,
         null
       ]
@@ -6085,6 +6132,11 @@
         "2026-11-23",
         12,
         null
+      ],
+      [
+        "2026-11-24",
+        12,
+        null
       ]
     ],
     "appstore:1157863540": [
@@ -6225,6 +6277,11 @@
       ],
       [
         "2026-11-23",
+        12,
+        null
+      ],
+      [
+        "2026-11-24",
         12,
         null
       ]
@@ -6369,6 +6426,11 @@
         "2026-11-23",
         12,
         null
+      ],
+      [
+        "2026-11-24",
+        12,
+        null
       ]
     ],
     "appstore:1452113719": [
@@ -6509,6 +6571,11 @@
       ],
       [
         "2026-11-23",
+        6,
+        null
+      ],
+      [
+        "2026-11-24",
         6,
         null
       ]
@@ -6653,6 +6720,11 @@
         "2026-11-23",
         31,
         null
+      ],
+      [
+        "2026-11-24",
+        31,
+        null
       ]
     ],
     "epic:d3e5b556640144bfa5de2d5d3b283d68": [
@@ -6793,6 +6865,11 @@
       ],
       [
         "2026-11-23",
+        70,
+        null
+      ],
+      [
+        "2026-11-24",
         70,
         null
       ]
@@ -6937,6 +7014,11 @@
         "2026-11-23",
         37.1,
         null
+      ],
+      [
+        "2026-11-24",
+        37.1,
+        null
       ]
     ],
     "epic:1f723b00df58467998c4984ca39915ad": [
@@ -7077,6 +7159,11 @@
       ],
       [
         "2026-11-23",
+        60,
+        null
+      ],
+      [
+        "2026-11-24",
         60,
         null
       ]
@@ -7380,6 +7467,11 @@
         "2026-11-23",
         17.49,
         null
+      ],
+      [
+        "2026-11-24",
+        17.49,
+        null
       ]
     ],
     "xbox:9MWNNM41MB6D": [
@@ -7517,6 +7609,11 @@
         "2026-11-23",
         27.99,
         null
+      ],
+      [
+        "2026-11-24",
+        27.99,
+        null
       ]
     ],
     "xbox:9P6ZXP2ZRQCV": [
@@ -7629,6 +7726,11 @@
       ],
       [
         "2026-11-23",
+        24.46,
+        null
+      ],
+      [
+        "2026-11-24",
         24.46,
         null
       ]
@@ -7875,6 +7977,11 @@
         "2026-11-23",
         95.99,
         null
+      ],
+      [
+        "2026-11-24",
+        95.99,
+        null
       ]
     ],
     "xbox:9NN144QSW0T0": [
@@ -8010,6 +8117,11 @@
       ],
       [
         "2026-11-23",
+        24.99,
+        null
+      ],
+      [
+        "2026-11-24",
         24.99,
         null
       ]
@@ -8149,6 +8261,11 @@
         "2026-11-23",
         16.49,
         null
+      ],
+      [
+        "2026-11-24",
+        16.49,
+        null
       ]
     ],
     "xbox:9PFRG44XZCFJ": [
@@ -8284,6 +8401,11 @@
       ],
       [
         "2026-11-23",
+        29.99,
+        null
+      ],
+      [
+        "2026-11-24",
         29.99,
         null
       ]
@@ -8423,6 +8545,11 @@
         "2026-11-23",
         31.99,
         null
+      ],
+      [
+        "2026-11-24",
+        31.99,
+        null
       ]
     ],
     "xbox:9MTLKM2DJMZ2": [
@@ -8560,6 +8687,11 @@
         "2026-11-23",
         39.99,
         null
+      ],
+      [
+        "2026-11-24",
+        39.99,
+        null
       ]
     ],
     "xbox:9N4XW3N02MNJ": [
@@ -8695,6 +8827,11 @@
       ],
       [
         "2026-11-23",
+        89.99,
+        null
+      ],
+      [
+        "2026-11-24",
         89.99,
         null
       ]
@@ -8988,6 +9125,11 @@
         "2026-11-23",
         31.99,
         null
+      ],
+      [
+        "2026-11-24",
+        31.99,
+        null
       ]
     ],
     "xbox:9PLSBTJB87Q7": [
@@ -9123,6 +9265,11 @@
       ],
       [
         "2026-11-23",
+        47.99,
+        null
+      ],
+      [
+        "2026-11-24",
         47.99,
         null
       ]
@@ -9262,6 +9409,11 @@
         "2026-11-23",
         49.99,
         null
+      ],
+      [
+        "2026-11-24",
+        49.99,
+        null
       ]
     ],
     "xbox:9NJN1MC1X5FK": [
@@ -9309,6 +9461,11 @@
         "2026-11-23",
         5.99,
         null
+      ],
+      [
+        "2026-11-24",
+        5.99,
+        null
       ]
     ],
     "xbox:9NLSQ26HM4X5": [
@@ -9354,6 +9511,11 @@
       ],
       [
         "2026-11-23",
+        7.99,
+        null
+      ],
+      [
+        "2026-11-24",
         7.99,
         null
       ]
@@ -9520,6 +9682,11 @@
         "2026-11-23",
         31.49,
         null
+      ],
+      [
+        "2026-11-24",
+        31.49,
+        null
       ]
     ],
     "xbox:9PJ15D3RDXMV": [
@@ -9655,6 +9822,11 @@
       ],
       [
         "2026-11-23",
+        41.99,
+        null
+      ],
+      [
+        "2026-11-24",
         41.99,
         null
       ]
@@ -9794,6 +9966,11 @@
         "2026-11-23",
         139.99,
         null
+      ],
+      [
+        "2026-11-24",
+        139.99,
+        null
       ]
     ],
     "xbox:9N7MNF1QC3X4": [
@@ -9929,6 +10106,11 @@
       ],
       [
         "2026-11-23",
+        69.99,
+        null
+      ],
+      [
+        "2026-11-24",
         69.99,
         null
       ]
@@ -10068,6 +10250,11 @@
         "2026-11-23",
         90.99,
         null
+      ],
+      [
+        "2026-11-24",
+        90.99,
+        null
       ]
     ],
     "xbox:9MV69L4JSD31": [
@@ -10203,6 +10390,11 @@
       ],
       [
         "2026-11-23",
+        39.99,
+        null
+      ],
+      [
+        "2026-11-24",
         39.99,
         null
       ]
@@ -10342,6 +10534,11 @@
         "2026-11-23",
         9.99,
         null
+      ],
+      [
+        "2026-11-24",
+        9.99,
+        null
       ]
     ],
     "xbox:9NKD5GJTS6FH": [
@@ -10477,6 +10674,11 @@
       ],
       [
         "2026-11-23",
+        20.99,
+        null
+      ],
+      [
+        "2026-11-24",
         20.99,
         null
       ]
@@ -10616,6 +10818,11 @@
         "2026-11-23",
         34.99,
         null
+      ],
+      [
+        "2026-11-24",
+        34.99,
+        null
       ]
     ],
     "xbox:9NF62X1QH3CM": [
@@ -10751,6 +10958,11 @@
       ],
       [
         "2026-11-23",
+        35.99,
+        null
+      ],
+      [
+        "2026-11-24",
         35.99,
         null
       ]
@@ -11124,6 +11336,11 @@
         "2026-11-23",
         47.99,
         null
+      ],
+      [
+        "2026-11-24",
+        47.99,
+        null
       ]
     ],
     "switch:70010000137931": [
@@ -11288,6 +11505,11 @@
       ],
       [
         "2026-11-23",
+        2,
+        null
+      ],
+      [
+        "2026-11-24",
         2,
         null
       ]
@@ -11629,6 +11851,11 @@
       ],
       [
         "2026-11-23",
+        1,
+        null
+      ],
+      [
+        "2026-11-24",
         1,
         null
       ]
@@ -12076,6 +12303,11 @@
         "2026-11-23",
         5,
         null
+      ],
+      [
+        "2026-11-24",
+        5,
+        null
       ]
     ],
     "gog:1599346921": [
@@ -12208,6 +12440,11 @@
         "2026-11-23",
         8,
         null
+      ],
+      [
+        "2026-11-24",
+        8,
+        null
       ]
     ],
     "gog:1170675521": [
@@ -12338,6 +12575,11 @@
       ],
       [
         "2026-11-23",
+        3,
+        null
+      ],
+      [
+        "2026-11-24",
         3,
         null
       ]
@@ -12537,6 +12779,11 @@
       ],
       [
         "2026-11-23",
+        7,
+        null
+      ],
+      [
+        "2026-11-24",
         7,
         null
       ]
@@ -13471,6 +13718,11 @@
         "2026-11-23",
         3290,
         null
+      ],
+      [
+        "2026-11-24",
+        3290,
+        null
       ]
     ],
     "switch:70070000039556": [
@@ -13601,6 +13853,11 @@
       ],
       [
         "2026-11-23",
+        4156,
+        null
+      ],
+      [
+        "2026-11-24",
         4156,
         null
       ]
@@ -13893,6 +14150,11 @@
         "2026-11-23",
         4180,
         null
+      ],
+      [
+        "2026-11-24",
+        4180,
+        null
       ]
     ],
     "switch:70010000137502": [
@@ -14051,6 +14313,11 @@
         "2026-11-23",
         298,
         14773
+      ],
+      [
+        "2026-11-24",
+        298,
+        14796
       ]
     ],
     "steam:1086940": [
@@ -14183,6 +14450,11 @@
         "2026-11-23",
         268,
         19302
+      ],
+      [
+        "2026-11-24",
+        187.6,
+        18051
       ]
     ],
     "steam:2358720": [
@@ -14315,6 +14587,11 @@
         "2026-11-23",
         268,
         7664
+      ],
+      [
+        "2026-11-24",
+        268,
+        10017
       ]
     ],
     "steam:1091500": [
@@ -14447,6 +14724,11 @@
         "2026-11-23",
         298,
         46412
+      ],
+      [
+        "2026-11-24",
+        298,
+        43740
       ]
     ],
     "steam:292030": [
@@ -14579,6 +14861,11 @@
         "2026-11-23",
         199,
         12006
+      ],
+      [
+        "2026-11-24",
+        199,
+        14362
       ]
     ],
     "steam:413150": [
@@ -14711,6 +14998,11 @@
         "2026-11-23",
         48,
         36406
+      ],
+      [
+        "2026-11-24",
+        48,
+        38350
       ]
     ],
     "steam:105600": [
@@ -14843,6 +15135,11 @@
         "2026-11-23",
         42,
         16162
+      ],
+      [
+        "2026-11-24",
+        42,
+        17724
       ]
     ],
     "switch:70050000081337": [
@@ -15369,6 +15666,11 @@
         "2026-11-23",
         44.99,
         null
+      ],
+      [
+        "2026-11-24",
+        44.99,
+        null
       ]
     ],
     "epic:3be0a0d8479946d78f60d90c9442a0b4": [
@@ -15537,6 +15839,11 @@
         "2026-11-23",
         69.99,
         null
+      ],
+      [
+        "2026-11-24",
+        69.99,
+        null
       ]
     ],
     "steam-specials:2223980": [
@@ -15661,6 +15968,11 @@
       [
         "2026-11-09",
         202.8,
+        null
+      ],
+      [
+        "2026-11-24",
+        149,
         null
       ]
     ],
@@ -16811,6 +17123,11 @@
         "2026-11-23",
         2,
         null
+      ],
+      [
+        "2026-11-24",
+        2,
+        null
       ]
     ],
     "gog:1207661333": [
@@ -17087,6 +17404,11 @@
         "2026-11-23",
         3,
         null
+      ],
+      [
+        "2026-11-24",
+        3,
+        null
       ]
     ],
     "gog:1207659035": [
@@ -17162,6 +17484,11 @@
       ],
       [
         "2026-11-23",
+        3,
+        null
+      ],
+      [
+        "2026-11-24",
         3,
         null
       ]
@@ -18086,6 +18413,11 @@
         "2026-11-23",
         990,
         null
+      ],
+      [
+        "2026-11-24",
+        990,
+        null
       ]
     ],
     "steam-specials:4521650": [
@@ -18155,6 +18487,11 @@
         "2026-11-23",
         1990,
         null
+      ],
+      [
+        "2026-11-24",
+        1990,
+        null
       ]
     ],
     "switch:70010000130095": [
@@ -18210,6 +18547,11 @@
       ],
       [
         "2026-11-23",
+        2300,
+        null
+      ],
+      [
+        "2026-11-24",
         2300,
         null
       ]
@@ -18272,6 +18614,11 @@
       ],
       [
         "2026-11-23",
+        3200,
+        null
+      ],
+      [
+        "2026-11-24",
         3200,
         null
       ]
@@ -18390,6 +18737,11 @@
         "2026-11-23",
         2000,
         null
+      ],
+      [
+        "2026-11-24",
+        2000,
+        null
       ]
     ],
     "switch:70050000084146": [
@@ -18450,6 +18802,11 @@
       ],
       [
         "2026-11-23",
+        500,
+        null
+      ],
+      [
+        "2026-11-24",
         500,
         null
       ]
@@ -18538,6 +18895,11 @@
         "2026-11-23",
         1760,
         null
+      ],
+      [
+        "2026-11-24",
+        1760,
+        null
       ]
     ],
     "switch:70010000132137": [
@@ -18590,6 +18952,11 @@
         "2026-11-23",
         2550,
         null
+      ],
+      [
+        "2026-11-24",
+        2550,
+        null
       ]
     ],
     "gog:1294416884": [
@@ -18635,6 +19002,11 @@
       ],
       [
         "2026-11-23",
+        3,
+        null
+      ],
+      [
+        "2026-11-24",
         3,
         null
       ]
@@ -18814,6 +19186,11 @@
       ],
       [
         "2026-11-23",
+        7.99,
+        null
+      ],
+      [
+        "2026-11-24",
         7.99,
         null
       ]
@@ -19242,6 +19619,11 @@
         "2026-11-23",
         1,
         null
+      ],
+      [
+        "2026-11-24",
+        1,
+        null
       ]
     ],
     "steam-specials:817628": [
@@ -19296,6 +19678,11 @@
       ],
       [
         "2026-11-23",
+        5,
+        null
+      ],
+      [
+        "2026-11-24",
         5,
         null
       ]
@@ -19373,6 +19760,11 @@
         "2026-11-23",
         4300,
         null
+      ],
+      [
+        "2026-11-24",
+        4300,
+        null
       ]
     ],
     "steam-specials:499170": [
@@ -19436,6 +19828,11 @@
         "2026-11-23",
         2,
         null
+      ],
+      [
+        "2026-11-24",
+        2,
+        null
       ]
     ],
     "gog:1207664583": [
@@ -19466,6 +19863,11 @@
       ],
       [
         "2026-11-23",
+        3,
+        null
+      ],
+      [
+        "2026-11-24",
         3,
         null
       ]
@@ -19579,6 +19981,11 @@
         "2026-11-23",
         3990,
         null
+      ],
+      [
+        "2026-11-24",
+        3990,
+        null
       ]
     ],
     "switch:70010000137624": [
@@ -19604,6 +20011,11 @@
       ],
       [
         "2026-11-23",
+        3990,
+        null
+      ],
+      [
+        "2026-11-24",
         3990,
         null
       ]
@@ -19640,6 +20052,11 @@
         "2026-11-23",
         3990,
         null
+      ],
+      [
+        "2026-11-24",
+        3990,
+        null
       ]
     ],
     "switch:70010000137594": [
@@ -19665,6 +20082,11 @@
       ],
       [
         "2026-11-23",
+        3990,
+        null
+      ],
+      [
+        "2026-11-24",
         3990,
         null
       ]
@@ -19694,6 +20116,11 @@
         "2026-11-23",
         499,
         null
+      ],
+      [
+        "2026-11-24",
+        499,
+        null
       ]
     ],
     "switch:70010000106071": [
@@ -19719,6 +20146,11 @@
       ],
       [
         "2026-11-23",
+        2000,
+        null
+      ],
+      [
+        "2026-11-24",
         2000,
         null
       ]
@@ -19748,6 +20180,11 @@
         "2026-11-23",
         800,
         null
+      ],
+      [
+        "2026-11-24",
+        800,
+        null
       ]
     ],
     "switch:70010000133610": [
@@ -19773,6 +20210,11 @@
       ],
       [
         "2026-11-23",
+        780,
+        null
+      ],
+      [
+        "2026-11-24",
         780,
         null
       ]
@@ -19802,6 +20244,11 @@
         "2026-11-23",
         1640,
         null
+      ],
+      [
+        "2026-11-24",
+        1640,
+        null
       ]
     ],
     "switch:70010000141608": [
@@ -19827,6 +20274,11 @@
       ],
       [
         "2026-11-23",
+        990,
+        null
+      ],
+      [
+        "2026-11-24",
         990,
         null
       ]
@@ -19856,6 +20308,11 @@
         "2026-11-23",
         1400,
         null
+      ],
+      [
+        "2026-11-24",
+        1400,
+        null
       ]
     ],
     "switch:70010000144144": [
@@ -19881,6 +20338,11 @@
       ],
       [
         "2026-11-23",
+        800,
+        null
+      ],
+      [
+        "2026-11-24",
         800,
         null
       ]
@@ -19910,6 +20372,11 @@
         "2026-11-23",
         2749,
         null
+      ],
+      [
+        "2026-11-24",
+        2749,
+        null
       ]
     ],
     "switch:70010000138612": [
@@ -19935,6 +20402,11 @@
       ],
       [
         "2026-11-23",
+        2999,
+        null
+      ],
+      [
+        "2026-11-24",
         2999,
         null
       ]
@@ -19964,6 +20436,11 @@
         "2026-11-23",
         4980,
         null
+      ],
+      [
+        "2026-11-24",
+        4980,
+        null
       ]
     ],
     "switch:70010000138450": [
@@ -19991,6 +20468,11 @@
         "2026-11-23",
         980,
         null
+      ],
+      [
+        "2026-11-24",
+        980,
+        null
       ]
     ],
     "switch:70010000140250": [
@@ -20011,6 +20493,11 @@
       ],
       [
         "2026-11-23",
+        420,
+        null
+      ],
+      [
+        "2026-11-24",
         420,
         null
       ]
@@ -20040,6 +20527,11 @@
         "2026-11-23",
         3300,
         null
+      ],
+      [
+        "2026-11-24",
+        3300,
+        null
       ]
     ],
     "switch:70050000080629": [
@@ -20065,6 +20557,11 @@
       ],
       [
         "2026-11-23",
+        770,
+        null
+      ],
+      [
+        "2026-11-24",
         770,
         null
       ]
@@ -20094,6 +20591,11 @@
         "2026-11-23",
         3850,
         null
+      ],
+      [
+        "2026-11-24",
+        3850,
+        null
       ]
     ],
     "switch:70010000140612": [
@@ -20114,6 +20616,11 @@
       ],
       [
         "2026-11-23",
+        420,
+        null
+      ],
+      [
+        "2026-11-24",
         420,
         null
       ]
@@ -20141,6 +20648,11 @@
       ],
       [
         "2026-11-23",
+        420,
+        null
+      ],
+      [
+        "2026-11-24",
         420,
         null
       ]
@@ -20206,6 +20718,11 @@
         "2026-11-23",
         4.99,
         null
+      ],
+      [
+        "2026-11-24",
+        4.99,
+        null
       ]
     ],
     "switch:70070000042238": [
@@ -20233,6 +20750,11 @@
       ],
       [
         "2026-11-23",
+        8.99,
+        null
+      ],
+      [
+        "2026-11-24",
         8.99,
         null
       ]
@@ -20264,6 +20786,11 @@
         "2026-11-23",
         39.6,
         null
+      ],
+      [
+        "2026-11-24",
+        39.6,
+        null
       ]
     ],
     "xbox:9N97RC576957": [
@@ -20284,6 +20811,11 @@
       ],
       [
         "2026-11-23",
+        14.99,
+        null
+      ],
+      [
+        "2026-11-24",
         14.99,
         null
       ]
@@ -20330,6 +20862,11 @@
         "2026-11-23",
         7.99,
         null
+      ],
+      [
+        "2026-11-24",
+        7.99,
+        null
       ]
     ],
     "xbox:9PPDC1GHF831": [
@@ -20350,6 +20887,11 @@
       ],
       [
         "2026-11-23",
+        12,
+        null
+      ],
+      [
+        "2026-11-24",
         12,
         null
       ]
@@ -20396,6 +20938,11 @@
         "2026-11-23",
         14.99,
         null
+      ],
+      [
+        "2026-11-24",
+        14.99,
+        null
       ]
     ],
     "xbox:9MVBJ3NX67DS": [
@@ -20418,6 +20965,11 @@
         "2026-11-23",
         19.99,
         null
+      ],
+      [
+        "2026-11-24",
+        19.99,
+        null
       ]
     ],
     "xbox:9NNS5CDB6CVM": [
@@ -20438,6 +20990,11 @@
       ],
       [
         "2026-11-23",
+        14.99,
+        null
+      ],
+      [
+        "2026-11-24",
         14.99,
         null
       ]
@@ -20481,6 +21038,11 @@
         "2026-11-23",
         13.99,
         null
+      ],
+      [
+        "2026-11-24",
+        13.99,
+        null
       ]
     ],
     "xbox:9PHPXPZ0JQ4T": [
@@ -20501,6 +21063,11 @@
       ],
       [
         "2026-11-23",
+        69.99,
+        null
+      ],
+      [
+        "2026-11-24",
         69.99,
         null
       ]
@@ -20525,6 +21092,11 @@
         "2026-11-23",
         21,
         null
+      ],
+      [
+        "2026-11-24",
+        21,
+        null
       ]
     ],
     "switch:70010000122180": [
@@ -20545,6 +21117,11 @@
       ],
       [
         "2026-11-23",
+        1350,
+        null
+      ],
+      [
+        "2026-11-24",
         1350,
         null
       ]
@@ -20569,6 +21146,11 @@
         "2026-11-23",
         47,
         null
+      ],
+      [
+        "2026-11-24",
+        47,
+        null
       ]
     ],
     "switch:70070000042130": [
@@ -20586,6 +21168,11 @@
         "2026-11-23",
         5560,
         null
+      ],
+      [
+        "2026-11-24",
+        5560,
+        null
       ]
     ],
     "steam-specials:1551360": [
@@ -20601,6 +21188,11 @@
       ],
       [
         "2026-11-23",
+        79.2,
+        null
+      ],
+      [
+        "2026-11-24",
         79.2,
         null
       ]
@@ -20632,6 +21224,11 @@
         "2026-11-23",
         3,
         null
+      ],
+      [
+        "2026-11-24",
+        3,
+        null
       ]
     ],
     "steam-specials:1066581": [
@@ -20642,6 +21239,11 @@
       ],
       [
         "2026-11-23",
+        11.99,
+        null
+      ],
+      [
+        "2026-11-24",
         11.99,
         null
       ]
@@ -20658,12 +21260,78 @@
         "2026-11-23",
         1885,
         null
+      ],
+      [
+        "2026-11-24",
+        1885,
+        null
       ]
     ],
     "switch:70070000042093": [
       [
         "2026-11-23",
         1198,
+        null
+      ],
+      [
+        "2026-11-24",
+        1198,
+        null
+      ]
+    ],
+    "gog:1434036647": [
+      [
+        "2026-11-24",
+        3,
+        null
+      ]
+    ],
+    "gog:1089398960": [
+      [
+        "2026-11-24",
+        3,
+        null
+      ]
+    ],
+    "gog:1633252128": [
+      [
+        "2026-11-24",
+        3,
+        null
+      ]
+    ],
+    "steam-specials:1222140": [
+      [
+        "2026-11-24",
+        13.6,
+        null
+      ]
+    ],
+    "steam-specials:990080": [
+      [
+        "2026-11-24",
+        38.4,
+        null
+      ]
+    ],
+    "steam-specials:1174180": [
+      [
+        "2026-11-24",
+        69.75,
+        null
+      ]
+    ],
+    "steam-specials:2001120": [
+      [
+        "2026-11-24",
+        118.8,
+        null
+      ]
+    ],
+    "steam-specials:1086940": [
+      [
+        "2026-11-24",
+        187.6,
         null
       ]
     ]
